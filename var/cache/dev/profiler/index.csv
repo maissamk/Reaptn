@@ -717,3 +717,10 @@ f32f08,127.0.0.1,GET,http://127.0.0.1:8000/lib/owlcarousel/assets/owl.carousel.m
 4f1f3b,127.0.0.1,GET,http://127.0.0.1:8000/lib/owlcarousel/assets/owl.carousel.min.css,1739037824,,404,request
 b1d8f2,127.0.0.1,GET,http://127.0.0.1:8000/frontofficeimg/vegetable-item-5.jpg,1739037824,b72eda,404,request
 b72eda,127.0.0.1,GET,http://127.0.0.1:8000/frontofficeimg/vegetable-item-5.jpg,1739037824,,404,request
+f7bee6,127.0.0.1,GET,http://127.0.0.1:8000/,1739040832,,404,request
+61bc81,127.0.0.1,GET,http://127.0.0.1:8000/,1739040837,,404,request
+1a3d08,127.0.0.1,GET,http://127.0.0.1:8000/page,1739040843,,200,request
+ee6da8,127.0.0.1,GET,http://127.0.0.1:8000/lib/lightbox/css/lightbox.min.css,1739040845,c61e39,404,request
+c61e39,127.0.0.1,GET,http://127.0.0.1:8000/lib/lightbox/css/lightbox.min.css,1739040845,,404,request
+f33d88,127.0.0.1,GET,http://127.0.0.1:8000/lib/owlcarousel/assets/owl.carousel.min.css,1739040846,12c3e8,404,request
+12c3e8,127.0.0.1,GET,http://127.0.0.1:8000/lib/owlcarousel/assets/owl.carousel.min.css,1739040846,,404,request
