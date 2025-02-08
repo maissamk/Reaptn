@@ -724,3 +724,7 @@ ee6da8,127.0.0.1,GET,http://127.0.0.1:8000/lib/lightbox/css/lightbox.min.css,173
 c61e39,127.0.0.1,GET,http://127.0.0.1:8000/lib/lightbox/css/lightbox.min.css,1739040845,,404,request
 f33d88,127.0.0.1,GET,http://127.0.0.1:8000/lib/owlcarousel/assets/owl.carousel.min.css,1739040846,12c3e8,404,request
 12c3e8,127.0.0.1,GET,http://127.0.0.1:8000/lib/owlcarousel/assets/owl.carousel.min.css,1739040846,,404,request
+880b82,127.0.0.1,GET,http://127.0.0.1:8000/frontofficeimg/vegetable-item-5.jpg,1739040875,12c9a9,404,request
+12c9a9,127.0.0.1,GET,http://127.0.0.1:8000/frontofficeimg/vegetable-item-5.jpg,1739040875,,404,request
+612dad,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1739040891,6ef78a,404,request
+6ef78a,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1739040891,,404,request
