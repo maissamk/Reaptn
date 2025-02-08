@@ -717,3 +717,13 @@ f32f08,127.0.0.1,GET,http://127.0.0.1:8000/lib/owlcarousel/assets/owl.carousel.m
 4f1f3b,127.0.0.1,GET,http://127.0.0.1:8000/lib/owlcarousel/assets/owl.carousel.min.css,1739037824,,404,request
 b1d8f2,127.0.0.1,GET,http://127.0.0.1:8000/frontofficeimg/vegetable-item-5.jpg,1739037824,b72eda,404,request
 b72eda,127.0.0.1,GET,http://127.0.0.1:8000/frontofficeimg/vegetable-item-5.jpg,1739037824,,404,request
+841834,127.0.0.1,GET,http://127.0.0.1:8000/,1739040749,,404,request
+63e67a,127.0.0.1,GET,http://127.0.0.1:8000/page,1739040757,,200,request
+b2227b,127.0.0.1,GET,http://127.0.0.1:8000/lib/owlcarousel/assets/owl.carousel.min.css,1739040757,414164,404,request
+414164,127.0.0.1,GET,http://127.0.0.1:8000/lib/owlcarousel/assets/owl.carousel.min.css,1739040757,,404,request
+1d1933,127.0.0.1,GET,http://127.0.0.1:8000/lib/lightbox/css/lightbox.min.css,1739040758,d539d0,404,request
+d539d0,127.0.0.1,GET,http://127.0.0.1:8000/lib/lightbox/css/lightbox.min.css,1739040758,,404,request
+0e0df2,127.0.0.1,GET,http://127.0.0.1:8000/frontofficeimg/vegetable-item-5.jpg,1739040766,0ba2c1,404,request
+0ba2c1,127.0.0.1,GET,http://127.0.0.1:8000/frontofficeimg/vegetable-item-5.jpg,1739040766,,404,request
+0a96c1,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1739040770,5b09f1,404,request
+5b09f1,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1739040770,,404,request
