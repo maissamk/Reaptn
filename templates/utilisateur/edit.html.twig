@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Utilisateur{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Edit Utilisateur</h1>
+
+        <div class="card shadow-lg">
+            <div class="card-body">
+                {{ include('utilisateur/_form.html.twig', {'button_label': 'Update'}) }}
+
+                <div class="text-center mt-4">
+                    <!-- Delete Button (Centered and Styled) -->
+                    {{ include('utilisateur/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
