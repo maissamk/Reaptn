@@ -143,7 +143,7 @@ class __TwigTemplate_2be4e667c8711df0d6ac874f204ef57b extends Template
                                 <div class=\"dropdown-menu m-0 bg-secondary rounded-0\">
                                     <a href=\"";
         // line 38
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materielvente_index");
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_cart");
         yield "\" class=\"dropdown-item\">Cart</a>
                                     <a href=\"";
         // line 39
@@ -1510,7 +1510,7 @@ class __TwigTemplate_2be4e667c8711df0d6ac874f204ef57b extends Template
                             <div class=\"nav-item dropdown\">
                                 <a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">Pages</a>
                                 <div class=\"dropdown-menu m-0 bg-secondary rounded-0\">
-                                    <a href=\"{{path('app_materielvente_index')}}\" class=\"dropdown-item\">Cart</a>
+                                    <a href=\"{{path('app_cart')}}\" class=\"dropdown-item\">Cart</a>
                                     <a href=\"{{path('app_chackout')}}\" class=\"dropdown-item\">Chackout</a>
                                     <a href=\"{{path('app_testimonial')}}\" class=\"dropdown-item\">Testimonial</a>
                                     <a href=\"{{path('app_404')}}\" class=\"dropdown-item\">404 Page</a>
