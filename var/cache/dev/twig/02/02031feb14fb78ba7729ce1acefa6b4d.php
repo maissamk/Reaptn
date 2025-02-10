@@ -101,17 +101,17 @@ class __TwigTemplate_a0e92e2f495e4ff8325c04333cebe1a7 extends Template
         yield "</div>
                     </div>
 
-                    <div class=\"mb-3\">
-                        <label for=\"mdp\" class=\"form-label\">Mot de Passe</label>
-                        ";
+            <div class=\"mb-3\">
+    <label for=\"mdp\" class=\"form-label\">Mot de Passe</label>
+    ";
         // line 31
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 31, $this->source); })()), "mdp", [], "any", false, false, false, 31), 'widget', ["attr" => ["class" => "form-control"]]);
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 31, $this->source); })()), "mdp", [], "any", false, false, false, 31), 'widget', ["attr" => ["class" => "form-control", "type" => "password"]]);
         yield "
-                        <div class=\"text-danger\">";
+    <div class=\"text-danger\">";
         // line 32
         yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 32, $this->source); })()), "mdp", [], "any", false, false, false, 32), 'errors');
         yield "</div>
-                    </div>
+</div>
 
                     <div class=\"mb-3\">
                         <label for=\"tele\" class=\"form-label\">";
@@ -231,11 +231,11 @@ class __TwigTemplate_a0e92e2f495e4ff8325c04333cebe1a7 extends Template
                         <div class=\"text-danger\">{{ form_errors(form.email) }}</div>
                     </div>
 
-                    <div class=\"mb-3\">
-                        <label for=\"mdp\" class=\"form-label\">Mot de Passe</label>
-                        {{ form_widget(form.mdp, {'attr': {'class': 'form-control'}}) }}
-                        <div class=\"text-danger\">{{ form_errors(form.mdp) }}</div>
-                    </div>
+            <div class=\"mb-3\">
+    <label for=\"mdp\" class=\"form-label\">Mot de Passe</label>
+    {{ form_widget(form.mdp, {'attr': {'class': 'form-control', 'type': 'password'}}) }}
+    <div class=\"text-danger\">{{ form_errors(form.mdp) }}</div>
+</div>
 
                     <div class=\"mb-3\">
                         <label for=\"tele\" class=\"form-label\">{{ form_label(form.tele) }}</label>

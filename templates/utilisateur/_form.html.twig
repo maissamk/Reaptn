@@ -26,11 +26,11 @@
                         <div class="text-danger">{{ form_errors(form.email) }}</div>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="mdp" class="form-label">Mot de Passe</label>
-                        {{ form_widget(form.mdp, {'attr': {'class': 'form-control'}}) }}
-                        <div class="text-danger">{{ form_errors(form.mdp) }}</div>
-                    </div>
+            <div class="mb-3">
+    <label for="mdp" class="form-label">Mot de Passe</label>
+    {{ form_widget(form.mdp, {'attr': {'class': 'form-control', 'type': 'password'}}) }}
+    <div class="text-danger">{{ form_errors(form.mdp) }}</div>
+</div>
 
                     <div class="mb-3">
                         <label for="tele" class="form-label">{{ form_label(form.tele) }}</label>
