@@ -2684,6 +2684,6 @@ class __TwigTemplate_2be4e667c8711df0d6ac874f204ef57b extends Template
 
 
 {% endblock %}
-", "page/index.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\page\\index.html.twig");
+", "page/index.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\page\\index.html.twig");
     }
 }
