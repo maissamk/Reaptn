@@ -1,0 +1,119 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Materiel location{% endblock %}
+
+{% block body %}
+<!-- Navbar Start -->
+<div class="container-fluid fixed-top">
+    <div class="container topbar bg-primary d-none d-lg-block">
+        <div class="d-flex justify-content-between">
+            <div class="top-info ps-2">
+                <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">123 Street, New York</a></small>
+                <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">Email@Example.com</a></small>
+            </div>
+            <div class="top-link pe-2">
+                <a href="#" class="text-white"><small class="text-white mx-2">Privacy Policy</small>/</a>
+                <a href="#" class="text-white"><small class="text-white mx-2">Terms of Use</small>/</a>
+                <a href="#" class="text-white"><small class="text-white ms-2">Sales and Refunds</small></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container px-0">
+        <nav class="navbar navbar-light bg-white navbar-expand-xl">
+            <a href="{{ asset('index.html') }}" class="navbar-brand">
+                <h1 class="text-primary display-6">Fruitables</h1>
+            </a>
+            <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars text-primary"></span>
+            </button>
+            <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
+                <div class="navbar-nav mx-auto">
+                    <a href="{{ path('app_page') }}" class="nav-item nav-link active">Home</a>
+                    <a href="{{ path('app_shop') }}" class="nav-item nav-link">Shop</a>
+                    <a href="{{ path('app_shop_detail') }}" class="nav-item nav-link">Shop Detail</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                        <div class="dropdown-menu m-0 bg-secondary rounded-0">
+                            <a href="{{ path('app_cart') }}" class="dropdown-item">Cart</a>
+                            <a href="{{ path('app_chackout') }}" class="dropdown-item">Checkout</a>
+                            <a href="{{ path('app_testimonial') }}" class="dropdown-item">Testimonial</a>
+                            <a href="{{ path('app_404') }}" class="dropdown-item">404 Page</a>
+                        </div>
+                    </div>
+                    <a href="{{ path('app_contact') }}" class="nav-item nav-link">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<!-- Navbar End -->
+
+<div class="container mt-5 pt-5">
+    <h1 class="mb-4">Create New Contract</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Materiel agricole A louer</h1>
+
+        <div class="card p-4 shadow-sm">
+            <h4 class="mb-4">Materiellocations List</h4>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                        <th>Description</th>
+                        <th>Disponibilite</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for materiellocation in materiellocations %}
+                        <tr>
+                            <td>{{ materiellocation.id }}</td>
+                            <td>{{ materiellocation.nom }}</td>
+                            <td>{{ materiellocation.prix }}</td>
+                            <td>{{ materiellocation.description }}</td>
+                            <td>{{ materiellocation.disponibilite ? 'Yes' : 'No' }}</td>
+                            <td>
+                                <a href="{{ path('app_materiellocation_show', {'id': materiellocation.id}) }}" class="btn btn-info btn-sm">Show</a>
+                                <a href="{{ path('app_materiellocation_edit', {'id': materiellocation.id}) }}" class="btn btn-warning btn-sm">Edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6" class="text-center">No records found</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a href="{{ path('app_materiellocation_new') }}" class="btn btn-primary">Create new</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
