@@ -467,6 +467,6 @@ class __TwigTemplate_ef77167913a94db0fb6342f36bda50f6 extends Template
 <a href=\"#\" class=\"btn btn-primary border-3 border-primary rounded-circle back-to-top\"><i class=\"fa fa-arrow-up\"></i></a>   
 
 {% endblock %}
-", "materielvente/new.html.twig", "C:\\Users\\romdh\\OneDrive\\Bureau\\PI2025\\Reaptn\\templates\\materielvente\\new.html.twig");
+", "materielvente/new.html.twig", "C:\\Users\\DELL\\Downloads\\projet\\Reaptn\\templates\\materielvente\\new.html.twig");
     }
 }
