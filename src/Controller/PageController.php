@@ -19,7 +19,7 @@ final class PageController extends AbstractController
     #[Route('/shop', name: 'app_shop')]
     public function shop(): Response
     {
-        return $this->render('page/shop.html.twig', [
+        return $this->render('page/buyland.html.twig', [
             'controller_name' => 'PageController',
         ]);
     }
@@ -68,5 +68,12 @@ final class PageController extends AbstractController
             'controller_name' => 'PageController',
         ]);
     }
-
+    #[Route('/offre', name: 'app_offre')]
+    public function offre(): Response
+    {
+        return $this->render('offre/index.html.twig', [
+            'controller_name' => 'PageController',
+        ]);
+    }
+    
 }

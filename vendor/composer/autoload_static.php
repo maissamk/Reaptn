@@ -32,6 +32,10 @@ class ComposerStaticInit54c05e64f01f49eb136e9af7b3075bdd
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
+        'l' => 
+        array (
+            'libphonenumber\\' => 15,
+        ),
         'W' => 
         array (
             'Webmozart\\Assert\\' => 17,
@@ -131,6 +135,10 @@ class ComposerStaticInit54c05e64f01f49eb136e9af7b3075bdd
             'Monolog\\' => 8,
             'Masterminds\\' => 12,
         ),
+        'G' => 
+        array (
+            'Giggsey\\Locale\\' => 15,
+        ),
         'E' => 
         array (
             'Egulias\\EmailValidator\\' => 23,
@@ -170,6 +178,10 @@ class ComposerStaticInit54c05e64f01f49eb136e9af7b3075bdd
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+        ),
+        'libphonenumber\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src',
         ),
         'Webmozart\\Assert\\' => 
         array (
@@ -506,6 +518,10 @@ class ComposerStaticInit54c05e64f01f49eb136e9af7b3075bdd
         'Masterminds\\' => 
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
+        ),
+        'Giggsey\\Locale\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/giggsey/locale/src',
         ),
         'Egulias\\EmailValidator\\' => 
         array (
