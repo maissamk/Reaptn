@@ -75,7 +75,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
     ";
         // line 39
         yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
-        // line 1227
+        // line 1228
         yield "    </body>
 
 </html>
@@ -1519,7 +1519,8 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                         <span class=\"text-light\"><a href=\"#\"><i class=\"fas fa-copyright text-light me-2\"></i>Your Site Name</a>, All right reserved.</span>
                     </div>
                     <div class=\"col-md-6 my-auto text-center text-md-end text-white\">
-                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                        <!--/*** This template is free as long as y
+                        keep the below author’s credit link/attribution link/backlink. ***/-->
                         <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
                         <!--/*** you can purchase the Credit Removal License from \"https://htmlcodex.com/credit-removal\". ***/-->
                         Designed By <a class=\"border-bottom\" href=\"https://htmlcodex.com\">HTML Codex</a> Distributed By <a class=\"border-bottom\" href=\"https://themewagon.com\">ThemeWagon</a>
@@ -1535,9 +1536,9 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
         <a href=\"#\" class=\"btn btn-primary border-3 border-primary rounded-circle back-to-top\"><i class=\"fa fa-arrow-up\"></i></a>   
 
         ";
-        // line 1212
+        // line 1213
         yield from $this->unwrap()->yieldBlock('js', $context, $blocks);
-        // line 1224
+        // line 1225
         yield "
 
     ";
@@ -1550,7 +1551,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
         yield from [];
     }
 
-    // line 1212
+    // line 1213
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -1563,36 +1564,36 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "js"));
 
-        // line 1213
+        // line 1214
         yield "    <!-- JavaScript Libraries -->
     <script src=\"";
-        // line 1214
+        // line 1215
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 1215
+        // line 1216
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 1216
+        // line 1217
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib/easing/easing.min.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 1217
+        // line 1218
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib/waypoints/waypoints.min.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 1218
+        // line 1219
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib/lightbox/js/lightbox.min.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 1219
+        // line 1220
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib/owlcarousel/owl.carousel.min.js"), "html", null, true);
         yield "\"></script>
 
     <!-- Template Javascript -->
     <script src=\"";
-        // line 1222
+        // line 1223
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/main.js"), "html", null, true);
         yield "\"></script>
     ";
@@ -1618,7 +1619,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  1596 => 1222,  1590 => 1219,  1586 => 1218,  1582 => 1217,  1578 => 1216,  1574 => 1215,  1570 => 1214,  1567 => 1213,  1554 => 1212,  1541 => 1224,  1539 => 1212,  1505 => 1181,  1415 => 1094,  1387 => 1069,  1359 => 1044,  1278 => 966,  1258 => 949,  1238 => 932,  1218 => 915,  1196 => 896,  1172 => 875,  1148 => 854,  1124 => 833,  1100 => 812,  1076 => 791,  1045 => 763,  1010 => 731,  993 => 717,  976 => 703,  959 => 689,  942 => 675,  925 => 661,  908 => 647,  891 => 633,  865 => 610,  849 => 597,  833 => 584,  799 => 553,  780 => 537,  761 => 521,  734 => 497,  715 => 481,  688 => 457,  669 => 441,  642 => 417,  623 => 401,  596 => 377,  577 => 361,  558 => 345,  539 => 329,  520 => 313,  501 => 297,  482 => 281,  463 => 265,  340 => 145,  333 => 141,  279 => 90,  272 => 86,  265 => 82,  261 => 81,  257 => 80,  253 => 79,  246 => 75,  242 => 74,  238 => 73,  228 => 66,  200 => 40,  187 => 39,  174 => 31,  168 => 28,  161 => 24,  157 => 23,  151 => 20,  147 => 19,  141 => 16,  137 => 15,  133 => 14,  129 => 12,  116 => 11,  93 => 6,  79 => 1227,  77 => 39,  69 => 33,  67 => 11,  59 => 6,  52 => 1,);
+        return array (  1597 => 1223,  1591 => 1220,  1587 => 1219,  1583 => 1218,  1579 => 1217,  1575 => 1216,  1571 => 1215,  1568 => 1214,  1555 => 1213,  1542 => 1225,  1540 => 1213,  1505 => 1181,  1415 => 1094,  1387 => 1069,  1359 => 1044,  1278 => 966,  1258 => 949,  1238 => 932,  1218 => 915,  1196 => 896,  1172 => 875,  1148 => 854,  1124 => 833,  1100 => 812,  1076 => 791,  1045 => 763,  1010 => 731,  993 => 717,  976 => 703,  959 => 689,  942 => 675,  925 => 661,  908 => 647,  891 => 633,  865 => 610,  849 => 597,  833 => 584,  799 => 553,  780 => 537,  761 => 521,  734 => 497,  715 => 481,  688 => 457,  669 => 441,  642 => 417,  623 => 401,  596 => 377,  577 => 361,  558 => 345,  539 => 329,  520 => 313,  501 => 297,  482 => 281,  463 => 265,  340 => 145,  333 => 141,  279 => 90,  272 => 86,  265 => 82,  261 => 81,  257 => 80,  253 => 79,  246 => 75,  242 => 74,  238 => 73,  228 => 66,  200 => 40,  187 => 39,  174 => 31,  168 => 28,  161 => 24,  157 => 23,  151 => 20,  147 => 19,  141 => 16,  137 => 15,  133 => 14,  129 => 12,  116 => 11,  93 => 6,  79 => 1228,  77 => 39,  69 => 33,  67 => 11,  59 => 6,  52 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -2819,7 +2820,8 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                         <span class=\"text-light\"><a href=\"#\"><i class=\"fas fa-copyright text-light me-2\"></i>Your Site Name</a>, All right reserved.</span>
                     </div>
                     <div class=\"col-md-6 my-auto text-center text-md-end text-white\">
-                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                        <!--/*** This template is free as long as y
+                        keep the below author’s credit link/attribution link/backlink. ***/-->
                         <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
                         <!--/*** you can purchase the Credit Removal License from \"https://htmlcodex.com/credit-removal\". ***/-->
                         Designed By <a class=\"border-bottom\" href=\"https://htmlcodex.com\">HTML Codex</a> Distributed By <a class=\"border-bottom\" href=\"https://themewagon.com\">ThemeWagon</a>
