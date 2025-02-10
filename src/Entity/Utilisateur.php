@@ -5,8 +5,11 @@ namespace App\Entity;
 use App\Repository\UtilisateurRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 #[ORM\Entity(repositoryClass: UtilisateurRepository::class)]
+#[UniqueEntity(fields: ['email'], message: "Cet email est déjà utilisé.")]
 class Utilisateur
 {
     #[ORM\Id]
@@ -24,7 +27,7 @@ class Utilisateur
     #[Assert\Length(max: 30, maxMessage: "Le prénom ne doit pas dépasser 30 caractères.")]
     private ?string $prenom = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 50, unique: true)]
     #[Assert\NotBlank(message: "L'email est requis.")]
     #[Assert\Email(message: "L'email '{{ value }}' n'est pas valide.")]
     #[Assert\Length(max: 50, maxMessage: "L'email ne doit pas dépasser 50 caractères.")]
