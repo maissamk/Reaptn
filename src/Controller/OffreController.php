@@ -79,6 +79,13 @@ final class OffreController extends AbstractController
         return $this->redirectToRoute('app_offre_index', [], Response::HTTP_SEE_OTHER);
     }
    
-
+    #[Route('/inscriptionoffre', name: 'app_inscriptionoffre')]
+    public function inscriptionoffre(OffreRepository $offreRepository): Response
+    {
+        return $this->render('offre/inscriptionoffre.html.twig', [
+            'controller_name' => 'PageController',
+            'offres' => $offreRepository->findAll(),
+        ]);
+    }
    
 }
