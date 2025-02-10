@@ -78,6 +78,7 @@
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">App_KernelDevDebugContainer</parameter>
+    <parameter key="images_directory">C:\Users\LENOVO\Desktop\PI2025\Reaptn/public/uploads/images</parameter>
     <parameter key="event_dispatcher.event_aliases" type="collection">
       <parameter key="Symfony\Component\Console\Event\ConsoleCommandEvent">console.command</parameter>
       <parameter key="Symfony\Component\Console\Event\ConsoleErrorEvent">console.error</parameter>
@@ -351,11 +352,39 @@
     <service id="App\Entity" class="App\Entity" abstract="true">
       <tag name="container.excluded" source="in &quot;config/services.yaml&quot;"/>
     </service>
+    <service id="App\Controller\ContratController" class="App\Controller\ContratController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\ContratController"/>
+      </call>
+    </service>
     <service id="App\Controller\EmployeController" class="App\Controller\EmployeController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\EmployeController"/>
+      </call>
+    </service>
+    <service id="App\Controller\MaterielController" class="App\Controller\MaterielController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\MaterielController"/>
+      </call>
+    </service>
+    <service id="App\Controller\MateriellocationController" class="App\Controller\MateriellocationController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\MateriellocationController"/>
+      </call>
+    </service>
+    <service id="App\Controller\MaterielventeController" class="App\Controller\MaterielventeController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\MaterielventeController"/>
       </call>
     </service>
     <service id="App\Controller\OffreController" class="App\Controller\OffreController" public="true" autowire="true" autoconfigure="true">
@@ -372,13 +401,56 @@
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\PageController"/>
       </call>
     </service>
+    <service id="App\Controller\ParcelleProprietesController" class="App\Controller\ParcelleProprietesController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\ParcelleProprietesController"/>
+      </call>
+    </service>
+    <service id="App\Controller\UtilisateurController" class="App\Controller\UtilisateurController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\UtilisateurController"/>
+      </call>
+    </service>
+    <service id="App\Form\ContratType" class="App\Form\ContratType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\EmployeType" class="App\Form\EmployeType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\MateriellocationType" class="App\Form\MateriellocationType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\Materielvente1Type" class="App\Form\Materielvente1Type" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\Materielvente2Type" class="App\Form\Materielvente2Type" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\MaterielventeType" class="App\Form\MaterielventeType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
     <service id="App\Form\OffreType" class="App\Form\OffreType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Form\ParcelleProprietesType" class="App\Form\ParcelleProprietesType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\UtilisateurType" class="App\Form\UtilisateurType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Repository\CandidatRepository" class="App\Repository\CandidatRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\ContractRepository" class="App\Repository\ContractRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\ContratRepository" class="App\Repository\ContratRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -386,7 +458,27 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
+    <service id="App\Repository\LandPropertiesRepository" class="App\Repository\LandPropertiesRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\MateriellocationRepository" class="App\Repository\MateriellocationRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\MaterielventeRepository" class="App\Repository\MaterielventeRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="App\Repository\OffreRepository" class="App\Repository\OffreRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\ParcelleProprietesRepository" class="App\Repository\ParcelleProprietesRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\UtilisateurRepository" class="App\Repository\UtilisateurRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -417,7 +509,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.u2shiio"/>
+      <argument type="service" id=".service_locator.Vf.NgNA"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -1338,8 +1430,15 @@
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\ContratType</argument>
         <argument>App\Form\EmployeType</argument>
+        <argument>App\Form\MateriellocationType</argument>
+        <argument>App\Form\Materielvente1Type</argument>
+        <argument>App\Form\Materielvente2Type</argument>
+        <argument>App\Form\MaterielventeType</argument>
         <argument>App\Form\OffreType</argument>
+        <argument>App\Form\ParcelleProprietesType</argument>
+        <argument>App\Form\UtilisateurType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FileType</argument>
@@ -3304,7 +3403,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.u2shiio"/>
+      <argument type="service" id=".service_locator.Vf.NgNA"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <tag name="kernel.reset" method="reset"/>
@@ -3793,7 +3892,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.bB1pVnh"/>
+      <argument type="service" id=".service_locator.vkEPnSe"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -5054,7 +5153,7 @@
     <service id="doctrine.orm.configuration" class="Doctrine\ORM\Configuration" abstract="true"/>
     <service id="doctrine.orm.entity_manager.abstract" class="Doctrine\ORM\EntityManager" lazy="true" abstract="true"/>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.SMkQ6YH"/>
+      <argument type="service" id=".service_locator.eawitv0"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -5799,11 +5898,11 @@
         <argument>!Doctrine</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\doctrine\doctrine-migrations-bundle/templates</argument>
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\doctrine\doctrine-migrations-bundle/Resources/views</argument>
         <argument>DoctrineMigrations</argument>
       </call>
       <call method="addPath">
-        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\doctrine\doctrine-migrations-bundle/templates</argument>
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\doctrine\doctrine-migrations-bundle/Resources/views</argument>
         <argument>!DoctrineMigrations</argument>
       </call>
       <call method="addPath">
@@ -7039,25 +7138,71 @@
       <argument type="service" id="maker.file_manager"/>
       <argument type="service" id="maker.generator"/>
     </service>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ContratController" class="App\Controller\ContratController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ContratController" class="App\Controller\ContratController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\ContratController" class="App\Controller\ContratController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\EmployeController" class="App\Controller\EmployeController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\EmployeController" class="App\Controller\EmployeController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\EmployeController" class="App\Controller\EmployeController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\MaterielController" class="App\Controller\MaterielController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\MaterielController" class="App\Controller\MaterielController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\MaterielController" class="App\Controller\MaterielController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\MateriellocationController" class="App\Controller\MateriellocationController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\MateriellocationController" class="App\Controller\MateriellocationController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\MateriellocationController" class="App\Controller\MateriellocationController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\MaterielventeController" class="App\Controller\MaterielventeController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\MaterielventeController" class="App\Controller\MaterielventeController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\MaterielventeController" class="App\Controller\MaterielventeController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\OffreController" class="App\Controller\OffreController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\OffreController" class="App\Controller\OffreController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\OffreController" class="App\Controller\OffreController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\PageController" class="App\Controller\PageController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\PageController" class="App\Controller\PageController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\PageController" class="App\Controller\PageController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ParcelleProprietesController" class="App\Controller\ParcelleProprietesController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ParcelleProprietesController" class="App\Controller\ParcelleProprietesController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\ParcelleProprietesController" class="App\Controller\ParcelleProprietesController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\UtilisateurController" class="App\Controller\UtilisateurController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\UtilisateurController" class="App\Controller\UtilisateurController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\UtilisateurController" class="App\Controller\UtilisateurController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ContratType" class="App\Form\ContratType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\ContratType" class="App\Form\ContratType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\EmployeType" class="App\Form\EmployeType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\EmployeType" class="App\Form\EmployeType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\MateriellocationType" class="App\Form\MateriellocationType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\MateriellocationType" class="App\Form\MateriellocationType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\Materielvente1Type" class="App\Form\Materielvente1Type" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\Materielvente1Type" class="App\Form\Materielvente1Type" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\Materielvente2Type" class="App\Form\Materielvente2Type" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\Materielvente2Type" class="App\Form\Materielvente2Type" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\MaterielventeType" class="App\Form\MaterielventeType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\MaterielventeType" class="App\Form\MaterielventeType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\OffreType" class="App\Form\OffreType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\OffreType" class="App\Form\OffreType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ParcelleProprietesType" class="App\Form\ParcelleProprietesType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\ParcelleProprietesType" class="App\Form\ParcelleProprietesType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\UtilisateurType" class="App\Form\UtilisateurType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\UtilisateurType" class="App\Form\UtilisateurType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CandidatRepository" class="App\Repository\CandidatRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\CandidatRepository" class="App\Repository\CandidatRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ContractRepository" class="App\Repository\ContractRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\ContractRepository" class="App\Repository\ContractRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ContratRepository" class="App\Repository\ContratRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\ContratRepository" class="App\Repository\ContratRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\EmployeRepository" class="App\Repository\EmployeRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\EmployeRepository" class="App\Repository\EmployeRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\LandPropertiesRepository" class="App\Repository\LandPropertiesRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\LandPropertiesRepository" class="App\Repository\LandPropertiesRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\MateriellocationRepository" class="App\Repository\MateriellocationRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\MateriellocationRepository" class="App\Repository\MateriellocationRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\MaterielventeRepository" class="App\Repository\MaterielventeRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\MaterielventeRepository" class="App\Repository\MaterielventeRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\OffreRepository" class="App\Repository\OffreRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\OffreRepository" class="App\Repository\OffreRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ParcelleProprietesRepository" class="App\Repository\ParcelleProprietesRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\ParcelleProprietesRepository" class="App\Repository\ParcelleProprietesRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UtilisateurRepository" class="App\Repository\UtilisateurRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\UtilisateurRepository" class="App\Repository\UtilisateurRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.w7.f4fT" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7481,16 +7626,35 @@
         <argument key="loader" type="service_closure" id=".errored..service_locator.y4_Zrx..Symfony\Component\Config\Loader\LoaderInterface"/>
       </argument>
     </service>
-    <service id=".service_locator.JwMuhT7" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.0TK7yZ8" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="employeRepository" type="service_closure" id="App\Repository\EmployeRepository"/>
+        <argument key="contratRepository" type="service_closure" id="App\Repository\ContratRepository"/>
       </argument>
     </service>
     <service id=".service_locator.CsMkqUa" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.xpZJLkN" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="contrat" type="service_closure" id=".errored..service_locator.xpZJLkN.App\Entity\Contrat"/>
+      </argument>
+    </service>
+    <service id=".service_locator.0d0FLAy" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="contrat" type="service_closure" id=".errored..service_locator.0d0FLAy.App\Entity\Contrat"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.JwMuhT7" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="employeRepository" type="service_closure" id="App\Repository\EmployeRepository"/>
       </argument>
     </service>
     <service id=".service_locator.je7oNoj" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -7504,6 +7668,50 @@
       <argument type="collection">
         <argument key="employe" type="service_closure" id=".errored..service_locator.I3mS6IL.App\Entity\Employe"/>
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.9kKwU2t" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="em" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.cf8iMp4" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="materiellocationRepository" type="service_closure" id="App\Repository\MateriellocationRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.jUvKOz0" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="materiellocation" type="service_closure" id=".errored..service_locator.jUvKOz0.App\Entity\Materiellocation"/>
+      </argument>
+    </service>
+    <service id=".service_locator.qAUb40R" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="materiellocation" type="service_closure" id=".errored..service_locator.qAUb40R.App\Entity\Materiellocation"/>
+      </argument>
+    </service>
+    <service id=".service_locator.52Vt23p" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="materielventeRepository" type="service_closure" id="App\Repository\MaterielventeRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.kbe5N4e" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="materielvente" type="service_closure" id=".errored..service_locator.kbe5N4e.App\Entity\Materielvente"/>
+      </argument>
+    </service>
+    <service id=".service_locator.wZGs69i" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="materielvente" type="service_closure" id=".errored..service_locator.wZGs69i.App\Entity\Materielvente"/>
       </argument>
     </service>
     <service id=".service_locator.kjLqtAK" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -7525,35 +7733,127 @@
         <argument key="offre" type="service_closure" id=".errored..service_locator.V6favct.App\Entity\Offre"/>
       </argument>
     </service>
-    <service id=".service_locator.u2shiio" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.vs9Bn8g" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="parcelleProprietesRepository" type="service_closure" id="App\Repository\ParcelleProprietesRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.j.H5nS2" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="parcellePropriete" type="service_closure" id=".errored..service_locator.j.H5nS2.App\Entity\ParcelleProprietes"/>
+      </argument>
+    </service>
+    <service id=".service_locator.IU.QoY9" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="parcellePropriete" type="service_closure" id=".errored..service_locator.IU.QoY9.App\Entity\ParcelleProprietes"/>
+      </argument>
+    </service>
+    <service id=".service_locator.9QfjjfA" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="utilisateurRepository" type="service_closure" id="App\Repository\UtilisateurRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.8NzCy4M" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="utilisateur" type="service_closure" id=".errored..service_locator.8NzCy4M.App\Entity\Utilisateur"/>
+      </argument>
+    </service>
+    <service id=".service_locator.5iifHkm" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="utilisateur" type="service_closure" id=".errored..service_locator.5iifHkm.App\Entity\Utilisateur"/>
+      </argument>
+    </service>
+    <service id=".service_locator.Vf.NgNA" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="App\Controller\ContratController::delete" type="service_closure" id=".service_locator.0d0FLAy"/>
+        <argument key="App\Controller\ContratController::edit" type="service_closure" id=".service_locator.0d0FLAy"/>
+        <argument key="App\Controller\ContratController::index" type="service_closure" id=".service_locator.0TK7yZ8"/>
+        <argument key="App\Controller\ContratController::new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\ContratController::show" type="service_closure" id=".service_locator.xpZJLkN"/>
         <argument key="App\Controller\EmployeController::delete" type="service_closure" id=".service_locator.I3mS6IL"/>
         <argument key="App\Controller\EmployeController::edit" type="service_closure" id=".service_locator.I3mS6IL"/>
         <argument key="App\Controller\EmployeController::index" type="service_closure" id=".service_locator.JwMuhT7"/>
         <argument key="App\Controller\EmployeController::new" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\EmployeController::show" type="service_closure" id=".service_locator.je7oNoj"/>
+        <argument key="App\Controller\MaterielController::index" type="service_closure" id=".service_locator.9kKwU2t"/>
+        <argument key="App\Controller\MaterielController::new" type="service_closure" id=".service_locator.9kKwU2t"/>
+        <argument key="App\Controller\MateriellocationController::delete" type="service_closure" id=".service_locator.qAUb40R"/>
+        <argument key="App\Controller\MateriellocationController::edit" type="service_closure" id=".service_locator.qAUb40R"/>
+        <argument key="App\Controller\MateriellocationController::index" type="service_closure" id=".service_locator.cf8iMp4"/>
+        <argument key="App\Controller\MateriellocationController::new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\MateriellocationController::show" type="service_closure" id=".service_locator.jUvKOz0"/>
+        <argument key="App\Controller\MaterielventeController::delete" type="service_closure" id=".service_locator.wZGs69i"/>
+        <argument key="App\Controller\MaterielventeController::edit" type="service_closure" id=".service_locator.wZGs69i"/>
+        <argument key="App\Controller\MaterielventeController::index" type="service_closure" id=".service_locator.52Vt23p"/>
+        <argument key="App\Controller\MaterielventeController::new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\MaterielventeController::show" type="service_closure" id=".service_locator.kbe5N4e"/>
         <argument key="App\Controller\OffreController::delete" type="service_closure" id=".service_locator.V6favct"/>
         <argument key="App\Controller\OffreController::edit" type="service_closure" id=".service_locator.V6favct"/>
         <argument key="App\Controller\OffreController::index" type="service_closure" id=".service_locator.kjLqtAK"/>
         <argument key="App\Controller\OffreController::inscriptionoffre" type="service_closure" id=".service_locator.kjLqtAK"/>
         <argument key="App\Controller\OffreController::new" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\OffreController::show" type="service_closure" id=".service_locator.0uzROk4"/>
+        <argument key="App\Controller\ParcelleProprietesController::delete" type="service_closure" id=".service_locator.IU.QoY9"/>
+        <argument key="App\Controller\ParcelleProprietesController::edit" type="service_closure" id=".service_locator.IU.QoY9"/>
+        <argument key="App\Controller\ParcelleProprietesController::index" type="service_closure" id=".service_locator.vs9Bn8g"/>
+        <argument key="App\Controller\ParcelleProprietesController::new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\ParcelleProprietesController::show" type="service_closure" id=".service_locator.j.H5nS2"/>
+        <argument key="App\Controller\UtilisateurController::delete" type="service_closure" id=".service_locator.5iifHkm"/>
+        <argument key="App\Controller\UtilisateurController::edit" type="service_closure" id=".service_locator.5iifHkm"/>
+        <argument key="App\Controller\UtilisateurController::index" type="service_closure" id=".service_locator.9QfjjfA"/>
+        <argument key="App\Controller\UtilisateurController::new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\UtilisateurController::show" type="service_closure" id=".service_locator.8NzCy4M"/>
         <argument key="App\Kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
+        <argument key="App\Controller\ContratController:delete" type="service_closure" id=".service_locator.0d0FLAy"/>
+        <argument key="App\Controller\ContratController:edit" type="service_closure" id=".service_locator.0d0FLAy"/>
+        <argument key="App\Controller\ContratController:index" type="service_closure" id=".service_locator.0TK7yZ8"/>
+        <argument key="App\Controller\ContratController:new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\ContratController:show" type="service_closure" id=".service_locator.xpZJLkN"/>
         <argument key="App\Controller\EmployeController:delete" type="service_closure" id=".service_locator.I3mS6IL"/>
         <argument key="App\Controller\EmployeController:edit" type="service_closure" id=".service_locator.I3mS6IL"/>
         <argument key="App\Controller\EmployeController:index" type="service_closure" id=".service_locator.JwMuhT7"/>
         <argument key="App\Controller\EmployeController:new" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\EmployeController:show" type="service_closure" id=".service_locator.je7oNoj"/>
+        <argument key="App\Controller\MaterielController:index" type="service_closure" id=".service_locator.9kKwU2t"/>
+        <argument key="App\Controller\MaterielController:new" type="service_closure" id=".service_locator.9kKwU2t"/>
+        <argument key="App\Controller\MateriellocationController:delete" type="service_closure" id=".service_locator.qAUb40R"/>
+        <argument key="App\Controller\MateriellocationController:edit" type="service_closure" id=".service_locator.qAUb40R"/>
+        <argument key="App\Controller\MateriellocationController:index" type="service_closure" id=".service_locator.cf8iMp4"/>
+        <argument key="App\Controller\MateriellocationController:new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\MateriellocationController:show" type="service_closure" id=".service_locator.jUvKOz0"/>
+        <argument key="App\Controller\MaterielventeController:delete" type="service_closure" id=".service_locator.wZGs69i"/>
+        <argument key="App\Controller\MaterielventeController:edit" type="service_closure" id=".service_locator.wZGs69i"/>
+        <argument key="App\Controller\MaterielventeController:index" type="service_closure" id=".service_locator.52Vt23p"/>
+        <argument key="App\Controller\MaterielventeController:new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\MaterielventeController:show" type="service_closure" id=".service_locator.kbe5N4e"/>
         <argument key="App\Controller\OffreController:delete" type="service_closure" id=".service_locator.V6favct"/>
         <argument key="App\Controller\OffreController:edit" type="service_closure" id=".service_locator.V6favct"/>
         <argument key="App\Controller\OffreController:index" type="service_closure" id=".service_locator.kjLqtAK"/>
         <argument key="App\Controller\OffreController:inscriptionoffre" type="service_closure" id=".service_locator.kjLqtAK"/>
         <argument key="App\Controller\OffreController:new" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\OffreController:show" type="service_closure" id=".service_locator.0uzROk4"/>
+        <argument key="App\Controller\ParcelleProprietesController:delete" type="service_closure" id=".service_locator.IU.QoY9"/>
+        <argument key="App\Controller\ParcelleProprietesController:edit" type="service_closure" id=".service_locator.IU.QoY9"/>
+        <argument key="App\Controller\ParcelleProprietesController:index" type="service_closure" id=".service_locator.vs9Bn8g"/>
+        <argument key="App\Controller\ParcelleProprietesController:new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\ParcelleProprietesController:show" type="service_closure" id=".service_locator.j.H5nS2"/>
+        <argument key="App\Controller\UtilisateurController:delete" type="service_closure" id=".service_locator.5iifHkm"/>
+        <argument key="App\Controller\UtilisateurController:edit" type="service_closure" id=".service_locator.5iifHkm"/>
+        <argument key="App\Controller\UtilisateurController:index" type="service_closure" id=".service_locator.9QfjjfA"/>
+        <argument key="App\Controller\UtilisateurController:new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\UtilisateurController:show" type="service_closure" id=".service_locator.8NzCy4M"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
       </argument>
@@ -7715,11 +8015,18 @@
       <argument type="service" id="argument_resolver.query_parameter_value_resolver"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.bB1pVnh" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.vkEPnSe" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\ContratType" type="service_closure" id="App\Form\ContratType"/>
         <argument key="App\Form\EmployeType" type="service_closure" id="App\Form\EmployeType"/>
+        <argument key="App\Form\MateriellocationType" type="service_closure" id="App\Form\MateriellocationType"/>
+        <argument key="App\Form\Materielvente1Type" type="service_closure" id="App\Form\Materielvente1Type"/>
+        <argument key="App\Form\Materielvente2Type" type="service_closure" id="App\Form\Materielvente2Type"/>
+        <argument key="App\Form\MaterielventeType" type="service_closure" id="App\Form\MaterielventeType"/>
         <argument key="App\Form\OffreType" type="service_closure" id="App\Form\OffreType"/>
+        <argument key="App\Form\ParcelleProprietesType" type="service_closure" id="App\Form\ParcelleProprietesType"/>
+        <argument key="App\Form\UtilisateurType" type="service_closure" id="App\Form\UtilisateurType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service_closure" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service_closure" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ColorType" type="service_closure" id="form.type.color"/>
@@ -7845,12 +8152,19 @@
         <argument key="turbo.doctrine.event_listener" type="service_closure" id="turbo.doctrine.event_listener"/>
       </argument>
     </service>
-    <service id=".service_locator.SMkQ6YH" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.eawitv0" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\CandidatRepository" type="service_closure" id="App\Repository\CandidatRepository"/>
+        <argument key="App\Repository\ContractRepository" type="service_closure" id="App\Repository\ContractRepository"/>
+        <argument key="App\Repository\ContratRepository" type="service_closure" id="App\Repository\ContratRepository"/>
         <argument key="App\Repository\EmployeRepository" type="service_closure" id="App\Repository\EmployeRepository"/>
+        <argument key="App\Repository\LandPropertiesRepository" type="service_closure" id="App\Repository\LandPropertiesRepository"/>
+        <argument key="App\Repository\MateriellocationRepository" type="service_closure" id="App\Repository\MateriellocationRepository"/>
+        <argument key="App\Repository\MaterielventeRepository" type="service_closure" id="App\Repository\MaterielventeRepository"/>
         <argument key="App\Repository\OffreRepository" type="service_closure" id="App\Repository\OffreRepository"/>
+        <argument key="App\Repository\ParcelleProprietesRepository" type="service_closure" id="App\Repository\ParcelleProprietesRepository"/>
+        <argument key="App\Repository\UtilisateurRepository" type="service_closure" id="App\Repository\UtilisateurRepository"/>
       </argument>
     </service>
     <service id=".service_locator.KLVvNIq" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -8168,9 +8482,33 @@
         <argument key="web_link.http_header_serializer" type="service_closure" id="web_link.http_header_serializer" on-invalid="ignore"/>
       </argument>
     </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\ContratController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\ContratController"/>
+      <argument>App\Controller\ContratController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
     <service id=".service_locator.O2p6Lk7.App\Controller\EmployeController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\EmployeController"/>
       <argument>App\Controller\EmployeController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\MaterielController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\MaterielController"/>
+      <argument>App\Controller\MaterielController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\MateriellocationController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\MateriellocationController"/>
+      <argument>App\Controller\MateriellocationController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\MaterielventeController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\MaterielventeController"/>
+      <argument>App\Controller\MaterielventeController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.O2p6Lk7" method="withContext"/>
     </service>
@@ -8183,6 +8521,18 @@
     <service id=".service_locator.O2p6Lk7.App\Controller\PageController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\PageController"/>
       <argument>App\Controller\PageController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\ParcelleProprietesController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\ParcelleProprietesController"/>
+      <argument>App\Controller\ParcelleProprietesController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\UtilisateurController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\UtilisateurController"/>
+      <argument>App\Controller\UtilisateurController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.O2p6Lk7" method="withContext"/>
     </service>
@@ -8360,9 +8710,15 @@
       <call method="allowControllers">
         <argument type="collection">
           <argument>App\Kernel</argument>
+          <argument>App\Controller\ContratController</argument>
           <argument>App\Controller\EmployeController</argument>
+          <argument>App\Controller\MaterielController</argument>
+          <argument>App\Controller\MateriellocationController</argument>
+          <argument>App\Controller\MaterielventeController</argument>
           <argument>App\Controller\OffreController</argument>
           <argument>App\Controller\PageController</argument>
+          <argument>App\Controller\ParcelleProprietesController</argument>
+          <argument>App\Controller\UtilisateurController</argument>
           <argument>Doctrine\Bundle\DoctrineBundle\Controller\ProfilerController</argument>
         </argument>
       </call>
@@ -8564,17 +8920,47 @@
     <service id=".errored..service_locator.y4_Zrx..Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.y4_Zrx.&quot;: it needs an instance of &quot;Symfony\Component\Config\Loader\LoaderInterface&quot; but this type has been excluded from autowiring."/>
     </service>
+    <service id=".errored..service_locator.xpZJLkN.App\Entity\Contrat" class="App\Entity\Contrat">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.xpZJLkN&quot;: it needs an instance of &quot;App\Entity\Contrat&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.0d0FLAy.App\Entity\Contrat" class="App\Entity\Contrat">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.0d0FLAy&quot;: it needs an instance of &quot;App\Entity\Contrat&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
     <service id=".errored..service_locator.je7oNoj.App\Entity\Employe" class="App\Entity\Employe">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.je7oNoj&quot;: it needs an instance of &quot;App\Entity\Employe&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
     <service id=".errored..service_locator.I3mS6IL.App\Entity\Employe" class="App\Entity\Employe">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.I3mS6IL&quot;: it needs an instance of &quot;App\Entity\Employe&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
+    <service id=".errored..service_locator.jUvKOz0.App\Entity\Materiellocation" class="App\Entity\Materiellocation">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.jUvKOz0&quot;: it needs an instance of &quot;App\Entity\Materiellocation&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.qAUb40R.App\Entity\Materiellocation" class="App\Entity\Materiellocation">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.qAUb40R&quot;: it needs an instance of &quot;App\Entity\Materiellocation&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.kbe5N4e.App\Entity\Materielvente" class="App\Entity\Materielvente">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.kbe5N4e&quot;: it needs an instance of &quot;App\Entity\Materielvente&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.wZGs69i.App\Entity\Materielvente" class="App\Entity\Materielvente">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.wZGs69i&quot;: it needs an instance of &quot;App\Entity\Materielvente&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
     <service id=".errored..service_locator.0uzROk4.App\Entity\Offre" class="App\Entity\Offre">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.0uzROk4&quot;: it needs an instance of &quot;App\Entity\Offre&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
     <service id=".errored..service_locator.V6favct.App\Entity\Offre" class="App\Entity\Offre">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.V6favct&quot;: it needs an instance of &quot;App\Entity\Offre&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.j.H5nS2.App\Entity\ParcelleProprietes" class="App\Entity\ParcelleProprietes">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.j.H5nS2&quot;: it needs an instance of &quot;App\Entity\ParcelleProprietes&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.IU.QoY9.App\Entity\ParcelleProprietes" class="App\Entity\ParcelleProprietes">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.IU.QoY9&quot;: it needs an instance of &quot;App\Entity\ParcelleProprietes&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.8NzCy4M.App\Entity\Utilisateur" class="App\Entity\Utilisateur">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.8NzCy4M&quot;: it needs an instance of &quot;App\Entity\Utilisateur&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.5iifHkm.App\Entity\Utilisateur" class="App\Entity\Utilisateur">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.5iifHkm&quot;: it needs an instance of &quot;App\Entity\Utilisateur&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
     <service id=".console.command.about.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>about</argument>
@@ -9760,7 +10146,7 @@
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.w7.f4fT" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.u2shiio"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.Vf.NgNA"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -9784,10 +10170,14 @@
     <service id=".service_locator.80edgLI" alias="messenger.receiver_locator"/>
     <service id=".service_locator.h8Jkkd2" alias="messenger.retry_strategy_locator"/>
     <service id=".service_locator.bJ.4HC5" alias=".service_locator.w7.f4fT"/>
+    <service id=".service_locator.ccJpJqa" alias=".service_locator.qAUb40R"/>
+    <service id=".service_locator.ShRxZre" alias=".service_locator.wZGs69i"/>
     <service id=".service_locator.3.sg1hS" alias=".service_locator.V6favct"/>
-    <service id=".service_locator.9ZKAQv9" alias=".service_locator.u2shiio"/>
+    <service id=".service_locator.7LUKIni" alias=".service_locator.IU.QoY9"/>
+    <service id=".service_locator.RA4wN4W" alias=".service_locator.5iifHkm"/>
+    <service id=".service_locator.L1MFVrA" alias=".service_locator.Vf.NgNA"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
-    <service id=".service_locator.mbS.SzL" alias=".service_locator.bB1pVnh"/>
+    <service id=".service_locator.HzcRQ0z" alias=".service_locator.vkEPnSe"/>
     <service id=".service_locator.XtmiKbi" alias=".service_locator.MfxSDRP"/>
     <service id=".service_locator.O24_MAy" alias=".service_locator.yY.p4P7"/>
     <service id=".service_locator.jUv.zyj" alias=".service_locator.O2p6Lk7"/>
@@ -9811,13 +10201,29 @@
     <service id="doctrine.orm.default_metadata_driver" alias=".doctrine.orm.default_metadata_driver"/>
     <service id="security.event_dispatcher.main" alias="debug.security.event_dispatcher.main"/>
     <service id=".service_locator.gFlme_s" alias=".service_locator.y4_Zrx."/>
-    <service id=".service_locator.tpHEddv" alias=".service_locator.JwMuhT7"/>
+    <service id=".service_locator.8CdGlak" alias=".service_locator.0TK7yZ8"/>
     <service id=".service_locator.9e2t_lq" alias=".service_locator.CsMkqUa"/>
+    <service id=".service_locator.mTQcJzk" alias=".service_locator.xpZJLkN"/>
+    <service id=".service_locator.Ak.8WV8" alias=".service_locator.0d0FLAy"/>
+    <service id=".service_locator.tpHEddv" alias=".service_locator.JwMuhT7"/>
     <service id=".service_locator.1T4rAjt" alias=".service_locator.je7oNoj"/>
     <service id=".service_locator..EdiTAe" alias=".service_locator.I3mS6IL"/>
+    <service id=".service_locator.gaTSUXr" alias=".service_locator.9kKwU2t"/>
+    <service id=".service_locator.2oxVb13" alias=".service_locator.cf8iMp4"/>
+    <service id=".service_locator.kMrPpWt" alias=".service_locator.jUvKOz0"/>
+    <service id=".service_locator.ylQZD5a" alias=".service_locator.qAUb40R"/>
+    <service id=".service_locator.p_yAWZC" alias=".service_locator.52Vt23p"/>
+    <service id=".service_locator.9qLMPbZ" alias=".service_locator.kbe5N4e"/>
+    <service id=".service_locator.E6ouRTQ" alias=".service_locator.wZGs69i"/>
     <service id=".service_locator.qKPDMPG" alias=".service_locator.kjLqtAK"/>
     <service id=".service_locator.8LfxfNT" alias=".service_locator.0uzROk4"/>
     <service id=".service_locator.qFC67iW" alias=".service_locator.V6favct"/>
+    <service id=".service_locator.Jc6qzZG" alias=".service_locator.vs9Bn8g"/>
+    <service id=".service_locator.i6QuGK4" alias=".service_locator.j.H5nS2"/>
+    <service id=".service_locator.rl888st" alias=".service_locator.IU.QoY9"/>
+    <service id=".service_locator.OZ5fPAC" alias=".service_locator.9QfjjfA"/>
+    <service id=".service_locator.p3LtpT_" alias=".service_locator.8NzCy4M"/>
+    <service id=".service_locator.korIoL3" alias=".service_locator.5iifHkm"/>
     <service id=".service_locator.Q1z.f9O" alias=".service_locator.O2p6Lk7"/>
     <service id=".service_locator.dGUCsbe" alias=".service_locator.oR77BOj"/>
     <service id=".service_locator._kIAbz1" alias=".service_locator.TpoC7U9"/>

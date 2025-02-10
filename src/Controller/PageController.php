@@ -19,7 +19,7 @@ final class PageController extends AbstractController
     #[Route('/shop', name: 'app_shop')]
     public function shop(): Response
     {
-        return $this->render('page/shop.html.twig', [
+        return $this->render('page/buyland.html.twig', [
             'controller_name' => 'PageController',
         ]);
     }
