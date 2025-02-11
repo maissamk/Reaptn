@@ -1,0 +1,3 @@
+<?php //7693da5600a94df577a39ad969d999df
+
+return [PHP_INT_MAX, 'frontoffice/css/bootstrap.min.css'];
