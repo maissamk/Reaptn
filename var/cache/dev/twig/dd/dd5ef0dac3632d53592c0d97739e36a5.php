@@ -75,7 +75,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
     ";
         // line 39
         yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
-        // line 1232
+        // line 1227
         yield "    </body>
 
 </html>
@@ -237,52 +237,45 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
         // line 73
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("index.html");
         yield "\" class=\"nav-item nav-link active\">Home</a>
-                    <a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">view Lands</a>
-                    <div class=\"dropdown-menu m-0 bg-secondary rounded-0\">
-                       <a href=\"";
-        // line 76
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("buyland");
-        yield "\" class=\"nav-item nav-link\">Buy Land</a>
-                       <a href=\"";
-        // line 77
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("rentland");
-        yield "\" class=\"nav-item nav-link\">Rent Land</a>
-                    </div>
                             <a href=\"";
-        // line 79
+        // line 74
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("shop.html");
+        yield "\" class=\"nav-item nav-link\">Shop</a>
+                            <a href=\"";
+        // line 75
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("shop-detail.html");
         yield "\" class=\"nav-item nav-link\">Shop Detail</a>
                             <div class=\"nav-item dropdown\">
                                 <a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">Pages</a>
                                 <div class=\"dropdown-menu m-0 bg-secondary rounded-0\">
                                     <a href=\"";
-        // line 83
+        // line 79
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("cart.html");
         yield "\" class=\"dropdown-item\">Cart</a>
                                     <a href=\"";
-        // line 84
+        // line 80
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("chackout.html");
         yield "\" class=\"dropdown-item\">Chackout</a>
                                     <a href=\"";
-        // line 85
+        // line 81
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("testimonial.html");
         yield "\" class=\"dropdown-item\">Testimonial</a>
                                     <a href=\"";
-        // line 86
+        // line 82
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("404.html");
         yield "\" class=\"dropdown-item\">404 Page</a>
                                 </div>
                                 
                             </div>
                             <a href=\"";
-        // line 90
+        // line 86
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("contact.html");
         yield "\" class=\"nav-item nav-link\">Contact</a>
                         </div>
                         <div class=\"d-flex m-3 me-0\">
                             <button class=\"btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4\" data-bs-toggle=\"modal\" data-bs-target=\"#searchModal\"><i class=\"fas fa-search text-primary\"></i></button>
                             <a href=\"";
-        // line 94
+        // line 90
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("#");
         yield "\" class=\"position-relative me-4 my-auto\">
                                 <i class=\"fa fa-shopping-bag fa-2x\"></i>
@@ -336,14 +329,14 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                             <div class=\"carousel-inner\" role=\"listbox\">
                                 <div class=\"carousel-item active rounded\">
                                     <img src=\"";
-        // line 145
+        // line 141
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/hero-img-1.png"), "html", null, true);
         yield "\" class=\"img-fluid w-100 h-100 bg-secondary rounded\" alt=\"First slide\">
                                     <a href=\"#\" class=\"btn px-4 py-2 text-white rounded\">Fruites</a>
                                 </div>
                                 <div class=\"carousel-item rounded\">
                                     <img src=\"";
-        // line 149
+        // line 145
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/hero-img-2.jpg"), "html", null, true);
         yield "\" class=\"img-fluid w-100 h-100 rounded\" alt=\"Second slide\">
                                     <a href=\"#\" class=\"btn px-4 py-2 text-white rounded\">Vesitables</a>
@@ -466,7 +459,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                                             <div class=\"rounded position-relative fruite-item\">
                                                 <div class=\"fruite-img\">
                                                     <img src=\"";
-        // line 269
+        // line 265
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/fruite-item-5.jpg"), "html", null, true);
         yield "\" class=\"img-fluid w-100 rounded-top\" alt=\"\">
                                                 </div>
@@ -485,7 +478,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                                             <div class=\"rounded position-relative fruite-item\">
                                                 <div class=\"fruite-img\">
                                                     <img src=\"";
-        // line 285
+        // line 281
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/fruite-item-5.jpg"), "html", null, true);
         yield "\" class=\"img-fluid w-100 rounded-top\" alt=\"\">
                                                 </div>
@@ -504,7 +497,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                                             <div class=\"rounded position-relative fruite-item\">
                                                 <div class=\"fruite-img\">
                                                     <img src=\"";
-        // line 301
+        // line 297
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/fruite-item-2.jpg"), "html", null, true);
         yield "\" class=\"img-fluid w-100 rounded-top\" alt=\"\">
                                                 </div>
@@ -523,7 +516,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                                             <div class=\"rounded position-relative fruite-item\">
                                                 <div class=\"fruite-img\">
                                                     <img src=\"";
-        // line 317
+        // line 313
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/fruite-item-4.jpg"), "html", null, true);
         yield "\" class=\"img-fluid w-100 rounded-top\" alt=\"\">
                                                 </div>
@@ -542,7 +535,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                                             <div class=\"rounded position-relative fruite-item\">
                                                 <div class=\"fruite-img\">
                                                     <img src=\"";
-        // line 333
+        // line 329
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/fruite-item-3.jpg"), "html", null, true);
         yield "\" class=\"img-fluid w-100 rounded-top\" alt=\"\">
                                                 </div>
@@ -561,7 +554,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                                             <div class=\"rounded position-relative fruite-item\">
                                                 <div class=\"fruite-img\">
                                                     <img src=\"";
-        // line 349
+        // line 345
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/fruite-item-1.jpg"), "html", null, true);
         yield "\" class=\"img-fluid w-100 rounded-top\" alt=\"\">
                                                 </div>
@@ -580,7 +573,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                                             <div class=\"rounded position-relative fruite-item\">
                                                 <div class=\"fruite-img\">
                                                     <img src=\"";
-        // line 365
+        // line 361
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/fruite-item-2.jpg"), "html", null, true);
         yield "\" class=\"img-fluid w-100 rounded-top\" alt=\"\">
                                                 </div>
@@ -599,7 +592,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                                             <div class=\"rounded position-relative fruite-item\">
                                                 <div class=\"fruite-img\">
                                                     <img src=\"";
-        // line 381
+        // line 377
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/fruite-item-5.jpg"), "html", null, true);
         yield "\" class=\"img-fluid w-100 rounded-top\" alt=\"\">
                                                 </div>
@@ -626,7 +619,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                                             <div class=\"rounded position-relative fruite-item\">
                                                 <div class=\"fruite-img\">
                                                     <img src=\"";
-        // line 405
+        // line 401
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/fruite-item-5.jpg"), "html", null, true);
         yield "\" class=\"img-fluid w-100 rounded-top\" alt=\"\">
                                                 </div>
@@ -645,7 +638,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                                             <div class=\"rounded position-relative fruite-item\">
                                                 <div class=\"fruite-img\">
                                                     <img src=\"";
-        // line 421
+        // line 417
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/fruite-item-2.jpg"), "html", null, true);
         yield "\" class=\"img-fluid w-100 rounded-top\" alt=\"\">
                                                 </div>
@@ -672,7 +665,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                                             <div class=\"rounded position-relative fruite-item\">
                                                 <div class=\"fruite-img\">
                                                     <img src=\"";
-        // line 445
+        // line 441
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/fruite-item-1.jpg"), "html", null, true);
         yield "\" class=\"img-fluid w-100 rounded-top\" alt=\"\">
                                                 </div>
@@ -691,7 +684,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                                             <div class=\"rounded position-relative fruite-item\">
                                                 <div class=\"fruite-img\">
                                                     <img src=\"";
-        // line 461
+        // line 457
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/fruite-item-6.jpg"), "html", null, true);
         yield "\" class=\"img-fluid w-100 rounded-top\" alt=\"\">
                                                 </div>
@@ -718,7 +711,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                                             <div class=\"rounded position-relative fruite-item\">
                                                 <div class=\"fruite-img\">
                                                     <img src=\"";
-        // line 485
+        // line 481
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/fruite-item-5.jpg"), "html", null, true);
         yield "\" class=\"img-fluid w-100 rounded-top\" alt=\"\">
                                                 </div>
@@ -737,7 +730,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                                             <div class=\"rounded position-relative fruite-item\">
                                                 <div class=\"fruite-img\">
                                                     <img src=\"";
-        // line 501
+        // line 497
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/fruite-item-4.jpg"), "html", null, true);
         yield "\" class=\"img-fluid w-100 rounded-top\" alt=\"\">
                                                 </div>
@@ -764,7 +757,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                                             <div class=\"rounded position-relative fruite-item\">
                                                 <div class=\"fruite-img\">
                                                     <img src=\"";
-        // line 525
+        // line 521
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/fruite-item-3.jpg"), "html", null, true);
         yield "\" class=\"img-fluid w-100 rounded-top\" alt=\"\">
                                                 </div>
@@ -783,7 +776,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                                             <div class=\"rounded position-relative fruite-item\">
                                                 <div class=\"fruite-img\">
                                                     <img src=\"";
-        // line 541
+        // line 537
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/fruite-item-2.jpg"), "html", null, true);
         yield "\" class=\"img-fluid w-100 rounded-top\" alt=\"\">
                                                 </div>
@@ -802,7 +795,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                                             <div class=\"rounded position-relative fruite-item\">
                                                 <div class=\"fruite-img\">
                                                     <img src=\"";
-        // line 557
+        // line 553
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/fruite-item-1.jpg"), "html", null, true);
         yield "\" class=\"img-fluid w-100 rounded-top\" alt=\"\">
                                                 </div>
@@ -836,7 +829,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                         <a href=\"#\">
                             <div class=\"service-item bg-secondary rounded border border-secondary\">
                                 <img src=\"";
-        // line 588
+        // line 584
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/featur-1.jpg"), "html", null, true);
         yield "\" class=\"img-fluid rounded-top w-100\" alt=\"\">
                                 <div class=\"px-4 rounded-bottom\">
@@ -852,7 +845,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                         <a href=\"#\">
                             <div class=\"service-item bg-dark rounded border border-dark\">
                                 <img src=\"";
-        // line 601
+        // line 597
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/featur-2.jpg"), "html", null, true);
         yield "\" class=\"img-fluid rounded-top w-100\" alt=\"\">
                                 <div class=\"px-4 rounded-bottom\">
@@ -868,7 +861,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                         <a href=\"#\">
                             <div class=\"service-item bg-primary rounded border border-primary\">
                                 <img src=\"";
-        // line 614
+        // line 610
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/featur-3.jpg"), "html", null, true);
         yield "\" class=\"img-fluid rounded-top w-100\" alt=\"\">
                                 <div class=\"px-4 rounded-bottom\">
@@ -894,7 +887,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                     <div class=\"border border-primary rounded position-relative vesitable-item\">
                         <div class=\"vesitable-img\">
                             <img src=\"";
-        // line 637
+        // line 633
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/vegetable-item-6.jpg"), "html", null, true);
         yield "\" class=\"img-fluid w-100 rounded-top\" alt=\"\">
                         </div>
@@ -911,7 +904,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                     <div class=\"border border-primary rounded position-relative vesitable-item\">
                         <div class=\"vesitable-img\">
                             <img src=\"";
-        // line 651
+        // line 647
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/vegetable-item-1.jpg"), "html", null, true);
         yield "\" class=\"img-fluid w-100 rounded-top\" alt=\"\">
                         </div>
@@ -928,7 +921,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                     <div class=\"border border-primary rounded position-relative vesitable-item\">
                         <div class=\"vesitable-img\">
                             <img src=\"";
-        // line 665
+        // line 661
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/vegetable-item-3.png"), "html", null, true);
         yield "\" class=\"img-fluid w-100 rounded-top bg-light\" alt=\"\">
                         </div>
@@ -945,7 +938,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                     <div class=\"border border-primary rounded position-relative vesitable-item\">
                         <div class=\"vesitable-img\">
                             <img src=\"";
-        // line 679
+        // line 675
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/vegetable-item-4.jpg"), "html", null, true);
         yield "\" class=\"img-fluid w-100 rounded-top\" alt=\"\">
                         </div>
@@ -962,7 +955,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                     <div class=\"border border-primary rounded position-relative vesitable-item\">
                         <div class=\"vesitable-img\">
                             <img src=\"";
-        // line 693
+        // line 689
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/vegetable-item-5.jpg"), "html", null, true);
         yield "\" class=\"img-fluid w-100 rounded-top\" alt=\"\">
                         </div>
@@ -979,7 +972,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                     <div class=\"border border-primary rounded position-relative vesitable-item\">
                         <div class=\"vesitable-img\">
                             <img src=\"";
-        // line 707
+        // line 703
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/vegetable-item-6.jpg"), "html", null, true);
         yield "\" class=\"img-fluid w-100 rounded-top\" alt=\"\">
                         </div>
@@ -996,7 +989,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                     <div class=\"border border-primary rounded position-relative vesitable-item\">
                         <div class=\"vesitable-img\">
                             <img src=\"";
-        // line 721
+        // line 717
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/vegetable-item-5.jpg"), "html", null, true);
         yield "\" class=\"img-fluid w-100 rounded-top\" alt=\"\">
                         </div>
@@ -1013,7 +1006,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                     <div class=\"border border-primary rounded position-relative vesitable-item\">
                         <div class=\"vesitable-img\">
                             <img src=\"";
-        // line 735
+        // line 731
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/vegetable-item-6.jpg"), "html", null, true);
         yield "\" class=\"img-fluid w-100 rounded-top\" alt=\"\">
                         </div>
@@ -1048,7 +1041,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                     <div class=\"col-lg-6\">
                         <div class=\"position-relative\">
                             <img src=\"";
-        // line 767
+        // line 763
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/baner-1.png"), "html", null, true);
         yield "\" class=\"img-fluid w-100 rounded\" alt=\"\">
                             <div class=\"d-flex align-items-center justify-content-center bg-white rounded-circle position-absolute\" style=\"width: 140px; height: 140px; top: 0; left: 0;\">
@@ -1079,7 +1072,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                             <div class=\"row align-items-center\">
                                 <div class=\"col-6\">
                                     <img src=\"";
-        // line 795
+        // line 791
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/best-product-1.jpg"), "html", null, true);
         yield "\" class=\"img-fluid rounded-circle w-100\" alt=\"\">
                                 </div>
@@ -1103,7 +1096,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                             <div class=\"row align-items-center\">
                                 <div class=\"col-6\">
                                     <img src=\"";
-        // line 816
+        // line 812
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/best-product-2.jpg"), "html", null, true);
         yield "\" class=\"img-fluid rounded-circle w-100\" alt=\"\">
                                 </div>
@@ -1127,7 +1120,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                             <div class=\"row align-items-center\">
                                 <div class=\"col-6\">
                                     <img src=\"";
-        // line 837
+        // line 833
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/best-product-3.jpg"), "html", null, true);
         yield "\" class=\"img-fluid rounded-circle w-100\" alt=\"\">
                                 </div>
@@ -1151,7 +1144,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                             <div class=\"row align-items-center\">
                                 <div class=\"col-6\">
                                     <img src=\"";
-        // line 858
+        // line 854
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/best-product-4.jpg"), "html", null, true);
         yield "\" class=\"img-fluid rounded-circle w-100\" alt=\"\">
                                 </div>
@@ -1175,7 +1168,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                             <div class=\"row align-items-center\">
                                 <div class=\"col-6\">
                                     <img src=\"";
-        // line 879
+        // line 875
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/best-product-5.jpg"), "html", null, true);
         yield "\" class=\"img-fluid rounded-circle w-100\" alt=\"\">
                                 </div>
@@ -1199,7 +1192,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                             <div class=\"row align-items-center\">
                                 <div class=\"col-6\">
                                     <img src=\"";
-        // line 900
+        // line 896
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/best-product-6.jpg"), "html", null, true);
         yield "\" class=\"img-fluid rounded-circle w-100\" alt=\"\">
                                 </div>
@@ -1221,7 +1214,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                     <div class=\"col-md-6 col-lg-6 col-xl-3\">
                         <div class=\"text-center\">
                             <img src=\"";
-        // line 919
+        // line 915
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/fruite-item-1.jpg"), "html", null, true);
         yield "\" class=\"img-fluid rounded\" alt=\"\">
                             <div class=\"py-4\">
@@ -1241,7 +1234,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                     <div class=\"col-md-6 col-lg-6 col-xl-3\">
                         <div class=\"text-center\">
                             <img src=\"";
-        // line 936
+        // line 932
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/fruite-item-2.jpg"), "html", null, true);
         yield "\" class=\"img-fluid rounded\" alt=\"\">
                             <div class=\"py-4\">
@@ -1261,7 +1254,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                     <div class=\"col-md-6 col-lg-6 col-xl-3\">
                         <div class=\"text-center\">
                             <img src=\"";
-        // line 953
+        // line 949
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/fruite-item-3.jpg"), "html", null, true);
         yield "\" class=\"img-fluid rounded\" alt=\"\">
                             <div class=\"py-4\">
@@ -1281,7 +1274,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                     <div class=\"col-md-6 col-lg-6 col-xl-3\">
                         <div class=\"text-center\">
                             <img src=\"";
-        // line 970
+        // line 966
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/fruite-item-4.jpg"), "html", null, true);
         yield "\" class=\"img-fluid rounded\" alt=\"\">
                             <div class=\"py-2\">
@@ -1362,7 +1355,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                             <div class=\"d-flex align-items-center flex-nowrap\">
                                 <div class=\"bg-secondary rounded\">
                                     <img src=\"";
-        // line 1048
+        // line 1044
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/testimonial-1.jpg"), "html", null, true);
         yield "\" class=\"img-fluid rounded\" style=\"width: 100px; height: 100px;\" alt=\"\">
                                 </div>
@@ -1390,7 +1383,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                             <div class=\"d-flex align-items-center flex-nowrap\">
                                 <div class=\"bg-secondary rounded\">
                                     <img src=\"";
-        // line 1073
+        // line 1069
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/testimonial-1.jpg"), "html", null, true);
         yield "\" class=\"img-fluid rounded\" style=\"width: 100px; height: 100px;\" alt=\"\">
                                 </div>
@@ -1418,7 +1411,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                             <div class=\"d-flex align-items-center flex-nowrap\">
                                 <div class=\"bg-secondary rounded\">
                                     <img src=\"";
-        // line 1098
+        // line 1094
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/testimonial-1.jpg"), "html", null, true);
         yield "\" class=\"img-fluid rounded\" style=\"width: 100px; height: 100px;\" alt=\"\">
                                 </div>
@@ -1508,7 +1501,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                             <p>Phone: +0123 4567 8910</p>
                             <p>Payment Accepted</p>
                             <img src=\"";
-        // line 1185
+        // line 1181
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/payment.png"), "html", null, true);
         yield "\" class=\"img-fluid\" alt=\"\">
                         </div>
@@ -1526,8 +1519,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                         <span class=\"text-light\"><a href=\"#\"><i class=\"fas fa-copyright text-light me-2\"></i>Your Site Name</a>, All right reserved.</span>
                     </div>
                     <div class=\"col-md-6 my-auto text-center text-md-end text-white\">
-                        <!--/*** This template is free as long as y
-                        keep the below author’s credit link/attribution link/backlink. ***/-->
+                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
                         <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
                         <!--/*** you can purchase the Credit Removal License from \"https://htmlcodex.com/credit-removal\". ***/-->
                         Designed By <a class=\"border-bottom\" href=\"https://htmlcodex.com\">HTML Codex</a> Distributed By <a class=\"border-bottom\" href=\"https://themewagon.com\">ThemeWagon</a>
@@ -1543,9 +1535,9 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
         <a href=\"#\" class=\"btn btn-primary border-3 border-primary rounded-circle back-to-top\"><i class=\"fa fa-arrow-up\"></i></a>   
 
         ";
-        // line 1217
+        // line 1212
         yield from $this->unwrap()->yieldBlock('js', $context, $blocks);
-        // line 1229
+        // line 1224
         yield "
 
     ";
@@ -1558,7 +1550,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
         yield from [];
     }
 
-    // line 1217
+    // line 1212
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -1571,36 +1563,36 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "js"));
 
-        // line 1218
+        // line 1213
         yield "    <!-- JavaScript Libraries -->
     <script src=\"";
-        // line 1219
+        // line 1214
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 1220
+        // line 1215
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 1221
+        // line 1216
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib/easing/easing.min.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 1222
+        // line 1217
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib/waypoints/waypoints.min.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 1223
+        // line 1218
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib/lightbox/js/lightbox.min.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 1224
+        // line 1219
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("lib/owlcarousel/owl.carousel.min.js"), "html", null, true);
         yield "\"></script>
 
     <!-- Template Javascript -->
     <script src=\"";
-        // line 1227
+        // line 1222
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/main.js"), "html", null, true);
         yield "\"></script>
     ";
@@ -1626,7 +1618,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  1604 => 1227,  1598 => 1224,  1594 => 1223,  1590 => 1222,  1586 => 1221,  1582 => 1220,  1578 => 1219,  1575 => 1218,  1562 => 1217,  1549 => 1229,  1547 => 1217,  1512 => 1185,  1422 => 1098,  1394 => 1073,  1366 => 1048,  1285 => 970,  1265 => 953,  1245 => 936,  1225 => 919,  1203 => 900,  1179 => 879,  1155 => 858,  1131 => 837,  1107 => 816,  1083 => 795,  1052 => 767,  1017 => 735,  1000 => 721,  983 => 707,  966 => 693,  949 => 679,  932 => 665,  915 => 651,  898 => 637,  872 => 614,  856 => 601,  840 => 588,  806 => 557,  787 => 541,  768 => 525,  741 => 501,  722 => 485,  695 => 461,  676 => 445,  649 => 421,  630 => 405,  603 => 381,  584 => 365,  565 => 349,  546 => 333,  527 => 317,  508 => 301,  489 => 285,  470 => 269,  347 => 149,  340 => 145,  286 => 94,  279 => 90,  272 => 86,  268 => 85,  264 => 84,  260 => 83,  253 => 79,  248 => 77,  244 => 76,  238 => 73,  228 => 66,  200 => 40,  187 => 39,  174 => 31,  168 => 28,  161 => 24,  157 => 23,  151 => 20,  147 => 19,  141 => 16,  137 => 15,  133 => 14,  129 => 12,  116 => 11,  93 => 6,  79 => 1232,  77 => 39,  69 => 33,  67 => 11,  59 => 6,  52 => 1,);
+        return array (  1596 => 1222,  1590 => 1219,  1586 => 1218,  1582 => 1217,  1578 => 1216,  1574 => 1215,  1570 => 1214,  1567 => 1213,  1554 => 1212,  1541 => 1224,  1539 => 1212,  1505 => 1181,  1415 => 1094,  1387 => 1069,  1359 => 1044,  1278 => 966,  1258 => 949,  1238 => 932,  1218 => 915,  1196 => 896,  1172 => 875,  1148 => 854,  1124 => 833,  1100 => 812,  1076 => 791,  1045 => 763,  1010 => 731,  993 => 717,  976 => 703,  959 => 689,  942 => 675,  925 => 661,  908 => 647,  891 => 633,  865 => 610,  849 => 597,  833 => 584,  799 => 553,  780 => 537,  761 => 521,  734 => 497,  715 => 481,  688 => 457,  669 => 441,  642 => 417,  623 => 401,  596 => 377,  577 => 361,  558 => 345,  539 => 329,  520 => 313,  501 => 297,  482 => 281,  463 => 265,  340 => 145,  333 => 141,  279 => 90,  272 => 86,  265 => 82,  261 => 81,  257 => 80,  253 => 79,  246 => 75,  242 => 74,  238 => 73,  228 => 66,  200 => 40,  187 => 39,  174 => 31,  168 => 28,  161 => 24,  157 => 23,  151 => 20,  147 => 19,  141 => 16,  137 => 15,  133 => 14,  129 => 12,  116 => 11,  93 => 6,  79 => 1227,  77 => 39,  69 => 33,  67 => 11,  59 => 6,  52 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -1704,11 +1696,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                         <div class=\"navbar-nav mx-auto\">
                         
                             <a href=\"{{path('index.html')}}\" class=\"nav-item nav-link active\">Home</a>
-                    <a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">view Lands</a>
-                    <div class=\"dropdown-menu m-0 bg-secondary rounded-0\">
-                       <a href=\"{{ path('buyland') }}\" class=\"nav-item nav-link\">Buy Land</a>
-                       <a href=\"{{ path('rentland') }}\" class=\"nav-item nav-link\">Rent Land</a>
-                    </div>
+                            <a href=\"{{path('shop.html')}}\" class=\"nav-item nav-link\">Shop</a>
                             <a href=\"{{path('shop-detail.html')}}\" class=\"nav-item nav-link\">Shop Detail</a>
                             <div class=\"nav-item dropdown\">
                                 <a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">Pages</a>
@@ -2831,8 +2819,7 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
                         <span class=\"text-light\"><a href=\"#\"><i class=\"fas fa-copyright text-light me-2\"></i>Your Site Name</a>, All right reserved.</span>
                     </div>
                     <div class=\"col-md-6 my-auto text-center text-md-end text-white\">
-                        <!--/*** This template is free as long as y
-                        keep the below author’s credit link/attribution link/backlink. ***/-->
+                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
                         <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
                         <!--/*** you can purchase the Credit Removal License from \"https://htmlcodex.com/credit-removal\". ***/-->
                         Designed By <a class=\"border-bottom\" href=\"https://htmlcodex.com\">HTML Codex</a> Distributed By <a class=\"border-bottom\" href=\"https://themewagon.com\">ThemeWagon</a>
@@ -2865,6 +2852,6 @@ class __TwigTemplate_2d24a949b171c6be0012c1a2385bafe2 extends Template
     </body>
 
 </html>
-", "base.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\base.html.twig");
+", "base.html.twig", "C:\\Users\\asus\\Desktop\\PI2025\\pi2025\\templates\\base.html.twig");
     }
 }
