@@ -99,77 +99,76 @@ class __TwigTemplate_194452f27360348310d7c036a08e3628 extends Template
         // line 6
         yield "    <div class=\"container-fluid fruite py-5\">
         <div class=\"container py-5\">
-            <div class=\"text-center\">
-                <h1>Our Organic Products</h1>
-                <ul class=\"nav nav-pills d-inline-flex text-center mb-5\">
-                    <li class=\"nav-item\">
-                        <a class=\"d-flex m-2 py-2 bg-light rounded-pill active\" data-bs-toggle=\"pill\" href=\"#tab-1\">
-                            <span class=\"text-dark\" style=\"width: 130px;\">All Products</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class=\"row g-4\">
-                ";
-        // line 19
+            <div class=\"tab-class text-center\">
+                <div class=\"row g-4\">
+                    <div class=\"col-lg-4 text-start\">
+                        <h1>Our Organic Products</h1>
+                    </div>
+                </div>
+                <div class=\"tab-content\">
+                    <div id=\"tab-1\" class=\"tab-pane fade show p-0 active\">
+                        <div class=\"row g-4 flex-column\">
+                            ";
+        // line 17
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["offres"]) || array_key_exists("offres", $context) ? $context["offres"] : (function () { throw new RuntimeError('Variable "offres" does not exist.', 19, $this->source); })()));
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["offres"]) || array_key_exists("offres", $context) ? $context["offres"] : (function () { throw new RuntimeError('Variable "offres" does not exist.', 17, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["offre"]) {
+            // line 18
+            yield "                                <div class=\"card p-3 mb-3 d-flex flex-row align-items-center\" style=\"width: 100%;\">
+                                    <div class=\"flex-grow-1\">
+                                        <h4 class=\"fw-bold\">";
             // line 20
-            yield "                    <div class=\"col-lg-3\">
-                        <div class=\"card shadow-sm border-0\">
-                            <img src=\"/path/to/image.jpg\" class=\"card-img-top\" alt=\"";
-            // line 22
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["offre"], "titre", [], "any", false, false, false, 22), "html", null, true);
-            yield "\">
-                            <div class=\"card-body text-center\">
-                                <span class=\"badge bg-warning text-dark\">";
-            // line 24
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["offre"], "comp", [], "any", false, false, false, 24), "html", null, true);
-            yield "</span>
-                                <h5 class=\"card-title mt-2\">";
-            // line 25
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["offre"], "titre", [], "any", false, false, false, 25), "html", null, true);
-            yield "</h5>
-                                <p class=\"card-text\">";
-            // line 26
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["offre"], "descr", [], "any", false, false, false, 26), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["offre"], "titre", [], "any", false, false, false, 20), "html", null, true);
+            yield "</h4>
+                                        <p><strong>Statut:</strong> ";
+            // line 21
+            yield ((CoreExtension::getAttribute($this->env, $this->source, $context["offre"], "statut", [], "any", false, false, false, 21)) ? ("Yes") : ("No"));
             yield "</p>
-                                <div class=\"d-flex justify-content-center gap-2\">
-                                    <a href=\"";
-            // line 28
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_offre_show", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["offre"], "id", [], "any", false, false, false, 28)]), "html", null, true);
+                                        <p><strong>Description:</strong> ";
+            // line 22
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["offre"], "descr", [], "any", false, false, false, 22), "html", null, true);
+            yield "</p>
+                                        <p><strong>Compétences demandées:</strong> ";
+            // line 23
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["offre"], "comp", [], "any", false, false, false, 23), "html", null, true);
+            yield "</p>
+                                    </div>
+                                    <div class=\"text-end\">
+                                        <a href=\"";
+            // line 26
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_offre_show", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["offre"], "id", [], "any", false, false, false, 26)]), "html", null, true);
             yield "\" class=\"btn btn-primary btn-sm\">Show</a>
-                                    <a href=\"";
-            // line 29
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_offre_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["offre"], "id", [], "any", false, false, false, 29)]), "html", null, true);
+                                        <a href=\"";
+            // line 27
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_offre_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["offre"], "id", [], "any", false, false, false, 27)]), "html", null, true);
             yield "\" class=\"btn btn-warning btn-sm\">Edit</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                ";
+                            ";
             $context['_iterated'] = true;
         }
-        // line 38
+        // line 34
         if (!$context['_iterated']) {
-            // line 35
-            yield "                    <div class=\"col-12 text-center\">
-                        <p>No records found</p>
-                    </div>
-                ";
+            // line 31
+            yield "                                <div class=\"text-center\">
+                                    <p>No records found</p>
+                                </div>
+                            ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['offre'], $context['_parent'], $context['_iterated']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 39
-        yield "            </div>
-            <div class=\"text-end mt-4\">
-                <a href=\"";
-        // line 41
+        // line 35
+        yield "                            <div class=\"text-end\">
+                                <a href=\"";
+        // line 36
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_offre_new");
         yield "\" class=\"btn btn-success\">Create new</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -204,7 +203,7 @@ class __TwigTemplate_194452f27360348310d7c036a08e3628 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  171 => 41,  167 => 39,  158 => 35,  156 => 38,  146 => 29,  142 => 28,  137 => 26,  133 => 25,  129 => 24,  124 => 22,  120 => 20,  115 => 19,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  166 => 36,  163 => 35,  154 => 31,  152 => 34,  144 => 27,  140 => 26,  134 => 23,  130 => 22,  126 => 21,  122 => 20,  118 => 18,  113 => 17,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -216,40 +215,39 @@ class __TwigTemplate_194452f27360348310d7c036a08e3628 extends Template
 {% block body %}
     <div class=\"container-fluid fruite py-5\">
         <div class=\"container py-5\">
-            <div class=\"text-center\">
-                <h1>Our Organic Products</h1>
-                <ul class=\"nav nav-pills d-inline-flex text-center mb-5\">
-                    <li class=\"nav-item\">
-                        <a class=\"d-flex m-2 py-2 bg-light rounded-pill active\" data-bs-toggle=\"pill\" href=\"#tab-1\">
-                            <span class=\"text-dark\" style=\"width: 130px;\">All Products</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class=\"row g-4\">
-                {% for offre in offres %}
-                    <div class=\"col-lg-3\">
-                        <div class=\"card shadow-sm border-0\">
-                            <img src=\"/path/to/image.jpg\" class=\"card-img-top\" alt=\"{{ offre.titre }}\">
-                            <div class=\"card-body text-center\">
-                                <span class=\"badge bg-warning text-dark\">{{ offre.comp }}</span>
-                                <h5 class=\"card-title mt-2\">{{ offre.titre }}</h5>
-                                <p class=\"card-text\">{{ offre.descr }}</p>
-                                <div class=\"d-flex justify-content-center gap-2\">
-                                    <a href=\"{{ path('app_offre_show', {'id': offre.id}) }}\" class=\"btn btn-primary btn-sm\">Show</a>
-                                    <a href=\"{{ path('app_offre_edit', {'id': offre.id}) }}\" class=\"btn btn-warning btn-sm\">Edit</a>
+            <div class=\"tab-class text-center\">
+                <div class=\"row g-4\">
+                    <div class=\"col-lg-4 text-start\">
+                        <h1>Our Organic Products</h1>
+                    </div>
+                </div>
+                <div class=\"tab-content\">
+                    <div id=\"tab-1\" class=\"tab-pane fade show p-0 active\">
+                        <div class=\"row g-4 flex-column\">
+                            {% for offre in offres %}
+                                <div class=\"card p-3 mb-3 d-flex flex-row align-items-center\" style=\"width: 100%;\">
+                                    <div class=\"flex-grow-1\">
+                                        <h4 class=\"fw-bold\">{{ offre.titre }}</h4>
+                                        <p><strong>Statut:</strong> {{ offre.statut ? 'Yes' : 'No' }}</p>
+                                        <p><strong>Description:</strong> {{ offre.descr }}</p>
+                                        <p><strong>Compétences demandées:</strong> {{ offre.comp }}</p>
+                                    </div>
+                                    <div class=\"text-end\">
+                                        <a href=\"{{ path('app_offre_show', {'id': offre.id}) }}\" class=\"btn btn-primary btn-sm\">Show</a>
+                                        <a href=\"{{ path('app_offre_edit', {'id': offre.id}) }}\" class=\"btn btn-warning btn-sm\">Edit</a>
+                                    </div>
                                 </div>
+                            {% else %}
+                                <div class=\"text-center\">
+                                    <p>No records found</p>
+                                </div>
+                            {% endfor %}
+                            <div class=\"text-end\">
+                                <a href=\"{{ path('app_offre_new') }}\" class=\"btn btn-success\">Create new</a>
                             </div>
                         </div>
                     </div>
-                {% else %}
-                    <div class=\"col-12 text-center\">
-                        <p>No records found</p>
-                    </div>
-                {% endfor %}
-            </div>
-            <div class=\"text-end mt-4\">
-                <a href=\"{{ path('app_offre_new') }}\" class=\"btn btn-success\">Create new</a>
+                </div>
             </div>
         </div>
     </div>
