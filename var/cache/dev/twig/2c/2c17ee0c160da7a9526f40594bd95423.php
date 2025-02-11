@@ -71,6 +71,6 @@ class __TwigTemplate_e068326b435f062c80a774a21038cf81 extends Template
 
     public function getSourceContext(): Source
     {
-        return new Source("", "page/shop.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\page\\shop.html.twig");
+        return new Source("", "page/shop.html.twig", "C:\\Users\\asus\\Desktop\\PI2025\\pi2025\\templates\\page\\shop.html.twig");
     }
 }

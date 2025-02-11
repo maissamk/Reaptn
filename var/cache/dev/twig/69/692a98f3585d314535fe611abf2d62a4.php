@@ -387,6 +387,6 @@ class __TwigTemplate_7e7b1ce188687f5a5537caf55421aa7c extends Template
 
 
 
-{% endblock %}", "page/cart.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\page\\cart.html.twig");
+{% endblock %}", "page/cart.html.twig", "C:\\Users\\asus\\Desktop\\PI2025\\pi2025\\templates\\page\\cart.html.twig");
     }
 }
