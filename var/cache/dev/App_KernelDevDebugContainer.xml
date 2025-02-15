@@ -576,7 +576,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.wuX4pxM"/>
+      <argument type="service" id=".service_locator.DDnhcEi"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -3543,7 +3543,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.wuX4pxM"/>
+      <argument type="service" id=".service_locator.DDnhcEi"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <tag name="kernel.reset" method="reset"/>
@@ -6617,9 +6617,24 @@
         <argument>null</argument>
       </call>
       <call method="add">
-        <argument type="service" id=".security.request_matcher.D5xVT_B"/>
+        <argument type="service" id=".security.request_matcher.o4csc_x"/>
         <argument type="collection">
-          <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
+          <argument>ROLE_AGRICULTEUR</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id=".security.request_matcher.TTBUEfn"/>
+        <argument type="collection">
+          <argument>ROLE_CLIENT</argument>
+          <argument>ROLE_AGRICULTEUR</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id=".security.request_matcher.eYoUQCh"/>
+        <argument type="collection">
+          <argument>ROLE_AGRICULTEUR</argument>
         </argument>
         <argument>null</argument>
       </call>
@@ -7066,7 +7081,7 @@
         <argument type="collection">
           <argument key="login_path">app_login</argument>
           <argument key="default_target_path">app_page</argument>
-          <argument key="always_use_default_target_path">false</argument>
+          <argument key="always_use_default_target_path">true</argument>
           <argument key="target_path_parameter">_target_path</argument>
           <argument key="use_referer">false</argument>
         </argument>
@@ -7359,7 +7374,7 @@
         <argument type="collection">
           <argument key="login_path">admin_login</argument>
           <argument key="default_target_path">admin_dashboard</argument>
-          <argument key="always_use_default_target_path">false</argument>
+          <argument key="always_use_default_target_path">true</argument>
           <argument key="target_path_parameter">_target_path</argument>
           <argument key="use_referer">false</argument>
         </argument>
@@ -7502,12 +7517,28 @@
         <argument type="service" id=".security.request_matcher.obhk0jm"/>
       </argument>
     </service>
-    <service id=".security.request_matcher.X1FOpdX" class="Symfony\Component\HttpFoundation\RequestMatcher\PathRequestMatcher">
-      <argument>^/admin/login</argument>
+    <service id=".security.request_matcher.3di1Q8z" class="Symfony\Component\HttpFoundation\RequestMatcher\PathRequestMatcher">
+      <argument>^/materielvente/new</argument>
     </service>
-    <service id=".security.request_matcher.D5xVT_B" class="Symfony\Component\HttpFoundation\ChainRequestMatcher">
+    <service id=".security.request_matcher.o4csc_x" class="Symfony\Component\HttpFoundation\ChainRequestMatcher">
       <argument type="collection">
-        <argument type="service" id=".security.request_matcher.X1FOpdX"/>
+        <argument type="service" id=".security.request_matcher.3di1Q8z"/>
+      </argument>
+    </service>
+    <service id=".security.request_matcher.2FemP88" class="Symfony\Component\HttpFoundation\RequestMatcher\PathRequestMatcher">
+      <argument>^/materielvente/\d+$</argument>
+    </service>
+    <service id=".security.request_matcher.TTBUEfn" class="Symfony\Component\HttpFoundation\ChainRequestMatcher">
+      <argument type="collection">
+        <argument type="service" id=".security.request_matcher.2FemP88"/>
+      </argument>
+    </service>
+    <service id=".security.request_matcher.WocUlOR" class="Symfony\Component\HttpFoundation\RequestMatcher\PathRequestMatcher">
+      <argument>^/materielvente/\d+/edit</argument>
+    </service>
+    <service id=".security.request_matcher.eYoUQCh" class="Symfony\Component\HttpFoundation\ChainRequestMatcher">
+      <argument type="collection">
+        <argument type="service" id=".security.request_matcher.WocUlOR"/>
       </argument>
     </service>
     <service id="security.command.user_password_hash" class="Symfony\Component\PasswordHasher\Command\UserPasswordHashCommand">
@@ -8509,7 +8540,7 @@
         <argument key="authenticationUtils" type="service_closure" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.wuX4pxM" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.DDnhcEi" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminController::deleteUser" type="service_closure" id=".service_locator.9kKwU2t"/>
@@ -8554,6 +8585,7 @@
         <argument key="App\Controller\ParcelleProprietesController::new" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\ParcelleProprietesController::show" type="service_closure" id=".service_locator.j.H5nS2"/>
         <argument key="App\Controller\ProfileController::editProfile" type="service_closure" id=".service_locator.LNwsF6h"/>
+        <argument key="App\Controller\ProfileController::editProfileadmin" type="service_closure" id=".service_locator.LNwsF6h"/>
         <argument key="App\Controller\RegistrationController::register" type="service_closure" id=".service_locator.e_4zbH4"/>
         <argument key="App\Controller\ResetPasswordController::request" type="service_closure" id=".service_locator.EE0.cm9"/>
         <argument key="App\Controller\ResetPasswordController::reset" type="service_closure" id=".service_locator.Z9ydiC1"/>
@@ -8605,6 +8637,7 @@
         <argument key="App\Controller\ParcelleProprietesController:new" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\ParcelleProprietesController:show" type="service_closure" id=".service_locator.j.H5nS2"/>
         <argument key="App\Controller\ProfileController:editProfile" type="service_closure" id=".service_locator.LNwsF6h"/>
+        <argument key="App\Controller\ProfileController:editProfileadmin" type="service_closure" id=".service_locator.LNwsF6h"/>
         <argument key="App\Controller\RegistrationController:register" type="service_closure" id=".service_locator.e_4zbH4"/>
         <argument key="App\Controller\ResetPasswordController:request" type="service_closure" id=".service_locator.EE0.cm9"/>
         <argument key="App\Controller\ResetPasswordController:reset" type="service_closure" id=".service_locator.Z9ydiC1"/>
@@ -11161,7 +11194,7 @@
     <service id="SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface" alias="symfonycasts.reset_password.helper"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.w7.f4fT" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.wuX4pxM"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.DDnhcEi"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -11191,7 +11224,7 @@
     <service id=".service_locator.3.sg1hS" alias=".service_locator.V6favct"/>
     <service id=".service_locator.7LUKIni" alias=".service_locator.IU.QoY9"/>
     <service id=".service_locator.V6D1oJY" alias=".service_locator.e_4zbH4"/>
-    <service id=".service_locator.OXe8QI3" alias=".service_locator.wuX4pxM"/>
+    <service id=".service_locator.cCex1CA" alias=".service_locator.DDnhcEi"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
     <service id=".service_locator.ThMnrKv" alias=".service_locator.aXl0tPw"/>
     <service id=".service_locator.XtmiKbi" alias=".service_locator.MfxSDRP"/>

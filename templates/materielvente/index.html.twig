@@ -48,7 +48,11 @@
                         <td>{{ materielvente.disponibilite ? 'Yes' : 'No' }}</td>
                         <td>
                             <a href="{{ path('app_materielvente_show', {'id': materielvente.id}) }}" class="btn btn-info btn-sm">Show</a>
-                            <a href="{{ path('app_materielvente_edit', {'id': materielvente.id}) }}" class="btn btn-warning btn-sm">Edit</a>
+           {% if app.user and 'ROLE_AGRICULTEUR' in app.user.roles %}
+    <a href="{{ path('app_materielvente_edit', {'id': materielvente.id}) }}" class="btn btn-warning btn-sm">Edit</a>
+{% endif %}
+
+
                         </td>
                     </tr>
                 {% else %}

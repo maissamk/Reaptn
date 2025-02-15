@@ -143,6 +143,7 @@ class __TwigTemplate_719e29bd6de0a3e4f26feccf7a684bf6 extends Template
         // line 31
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 31, $this->source); })()), "telephone", [], "any", false, false, false, 31), "html", null, true);
         yield "</p>
+                        
                     </div>
                 </div>
             </div>
@@ -150,10 +151,6 @@ class __TwigTemplate_719e29bd6de0a3e4f26feccf7a684bf6 extends Template
 
         <!-- Boutons -->
         <div class=\"mt-5 text-center\">
-            <a href=\"";
-        // line 39
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
-        yield "\" class=\"btn btn-danger btn-lg px-5 py-2 mx-2\">Se Déconnecter</a>
             <a href=\"";
         // line 40
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_edit_profile");
@@ -191,7 +188,7 @@ class __TwigTemplate_719e29bd6de0a3e4f26feccf7a684bf6 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  159 => 40,  155 => 39,  144 => 31,  140 => 30,  136 => 29,  132 => 28,  120 => 21,  116 => 20,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  156 => 40,  144 => 31,  140 => 30,  136 => 29,  132 => 28,  120 => 21,  116 => 20,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -227,6 +224,7 @@ class __TwigTemplate_719e29bd6de0a3e4f26feccf7a684bf6 extends Template
                         <p><strong>Nom :</strong> {{ user.nom }}</p>
                         <p><strong>Email :</strong> {{ user.email }}</p>
                         <p><strong>Téléphone :</strong> {{ user.telephone }}</p>
+                        
                     </div>
                 </div>
             </div>
@@ -234,7 +232,6 @@ class __TwigTemplate_719e29bd6de0a3e4f26feccf7a684bf6 extends Template
 
         <!-- Boutons -->
         <div class=\"mt-5 text-center\">
-            <a href=\"{{ path('app_logout') }}\" class=\"btn btn-danger btn-lg px-5 py-2 mx-2\">Se Déconnecter</a>
             <a href=\"{{ path('app_edit_profile') }}\" class=\"btn btn-warning btn-lg px-5 py-2 mx-2\">Modifier le Profil</a>
         </div>
     </div>
