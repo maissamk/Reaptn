@@ -3,7 +3,13 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
-
+{% if app.user %}
+        <p>Welcome, {{ app.user.email }}</p>
+        <a href="{{ path('app_logout') }}">Logout</a>
+    {% else %}
+        <p>Welcome, Guest!</p>
+        <a href="{{ path('app_login') }}">Login</a>
+    {% endif %}
 
 
 
