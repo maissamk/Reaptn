@@ -33,6 +33,23 @@ class Materielvente
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
+
+    #[ORM\ManyToOne(targetEntity: Commande::class, inversedBy: 'materiels')]
+#[ORM\JoinColumn(nullable: true)]
+private $commande;
+
+public function getCommande(): ?Commande
+{
+    return $this->commande;
+}
+
+public function setCommande(?Commande $commande): self
+{
+    $this->commande = $commande;
+
+    return $this;
+}
+
     public function getId(): ?int
     {
         return $this->id;
