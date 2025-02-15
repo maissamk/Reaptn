@@ -178,18 +178,26 @@ class __TwigTemplate_0b9ca5c769c03c44993afc90dac20d10 extends Template
             // line 50
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materielvente_show", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "id", [], "any", false, false, false, 50)]), "html", null, true);
             yield "\" class=\"btn btn-info btn-sm\">Show</a>
-                            <a href=\"";
+           ";
             // line 51
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materielvente_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "id", [], "any", false, false, false, 51)]), "html", null, true);
-            yield "\" class=\"btn btn-warning btn-sm\">Edit</a>
+            if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 51, $this->source); })()), "user", [], "any", false, false, false, 51) && CoreExtension::inFilter("ROLE_AGRICULTEUR", CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 51, $this->source); })()), "user", [], "any", false, false, false, 51), "roles", [], "any", false, false, false, 51)))) {
+                // line 52
+                yield "    <a href=\"";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materielvente_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "id", [], "any", false, false, false, 52)]), "html", null, true);
+                yield "\" class=\"btn btn-warning btn-sm\">Edit</a>
+";
+            }
+            // line 54
+            yield "
+
                         </td>
                     </tr>
                 ";
             $context['_iterated'] = true;
         }
-        // line 54
+        // line 58
         if (!$context['_iterated']) {
-            // line 55
+            // line 59
             yield "                    <tr>
                         <td colspan=\"7\" class=\"text-center\">No records found</td>
                     </tr>
@@ -198,13 +206,13 @@ class __TwigTemplate_0b9ca5c769c03c44993afc90dac20d10 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['materielvente'], $context['_parent'], $context['_iterated']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 59
+        // line 63
         yield "            </tbody>
         </table>
 
         <div class=\"d-flex justify-content-between mt-4\">
             <a href=\"";
-        // line 63
+        // line 67
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materielvente_new");
         yield "\" class=\"btn btn-primary\">Create new</a>
         </div>
@@ -302,7 +310,7 @@ class __TwigTemplate_0b9ca5c769c03c44993afc90dac20d10 extends Template
                             <p>Phone: +0123 4567 8910</p>
                             <p>Payment Accepted</p>
                             <img src=\"";
-        // line 158
+        // line 162
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/payment.png"), "html", null, true);
         yield "\" class=\"img-fluid\" alt=\"\">
                         </div>
@@ -366,7 +374,7 @@ class __TwigTemplate_0b9ca5c769c03c44993afc90dac20d10 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  306 => 158,  208 => 63,  202 => 59,  193 => 55,  191 => 54,  183 => 51,  179 => 50,  174 => 48,  170 => 47,  166 => 46,  162 => 45,  158 => 44,  155 => 43,  149 => 41,  141 => 39,  139 => 38,  135 => 36,  130 => 35,  100 => 7,  87 => 6,  64 => 3,  41 => 1,);
+        return array (  314 => 162,  216 => 67,  210 => 63,  201 => 59,  199 => 58,  191 => 54,  185 => 52,  183 => 51,  179 => 50,  174 => 48,  170 => 47,  166 => 46,  162 => 45,  158 => 44,  155 => 43,  149 => 41,  141 => 39,  139 => 38,  135 => 36,  130 => 35,  100 => 7,  87 => 6,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -421,7 +429,11 @@ class __TwigTemplate_0b9ca5c769c03c44993afc90dac20d10 extends Template
                         <td>{{ materielvente.disponibilite ? 'Yes' : 'No' }}</td>
                         <td>
                             <a href=\"{{ path('app_materielvente_show', {'id': materielvente.id}) }}\" class=\"btn btn-info btn-sm\">Show</a>
-                            <a href=\"{{ path('app_materielvente_edit', {'id': materielvente.id}) }}\" class=\"btn btn-warning btn-sm\">Edit</a>
+           {% if app.user and 'ROLE_AGRICULTEUR' in app.user.roles %}
+    <a href=\"{{ path('app_materielvente_edit', {'id': materielvente.id}) }}\" class=\"btn btn-warning btn-sm\">Edit</a>
+{% endif %}
+
+
                         </td>
                     </tr>
                 {% else %}

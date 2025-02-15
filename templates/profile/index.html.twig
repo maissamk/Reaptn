@@ -29,6 +29,7 @@
                         <p><strong>Nom :</strong> {{ user.nom }}</p>
                         <p><strong>Email :</strong> {{ user.email }}</p>
                         <p><strong>Téléphone :</strong> {{ user.telephone }}</p>
+                        
                     </div>
                 </div>
             </div>
@@ -36,7 +37,6 @@
 
         <!-- Boutons -->
         <div class="mt-5 text-center">
-            <a href="{{ path('app_logout') }}" class="btn btn-danger btn-lg px-5 py-2 mx-2">Se Déconnecter</a>
             <a href="{{ path('app_edit_profile') }}" class="btn btn-warning btn-lg px-5 py-2 mx-2">Modifier le Profil</a>
         </div>
     </div>

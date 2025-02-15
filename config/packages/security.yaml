@@ -22,6 +22,7 @@ security:
                 check_path: app_login
                 enable_csrf: true
                 default_target_path: app_page  # Redirect to homepage or a specific route after login
+                always_use_default_target_path: true
             logout:
                 path: app_logout
                 target: app_page  # Redirect after logout
@@ -41,6 +42,7 @@ security:
                 check_path: admin_login
                 enable_csrf: true
                 default_target_path: admin_dashboard  # Redirect to the admin dashboard after login
+                always_use_default_target_path: true
             logout:
                 path: admin_logout
                 target: admin_login  # Redirect to admin login after logout
@@ -51,5 +53,7 @@ security:
                 path: /
 
     access_control:
-        - { path: ^/admin, roles: ROLE_ADMIN } # Admin access control
-        - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY } # Allow anonymous access to login
+        - { path: ^/admin, roles: ROLE_ADMIN }  # Admin access control
+        - { path: ^/materielvente/new, roles: ROLE_AGRICULTEUR }  # Allow ROLE_CLIENT and ROLE_AGRICULTEUR to view material vente pages
+        - { path: ^/materielvente/\d+$, roles: [ROLE_CLIENT, ROLE_AGRICULTEUR] }  # Allow ROLE_CLIENT and ROLE_AGRICULTEUR to view material vente pages
+        - { path: ^/materielvente/\d+/edit, roles: ROLE_AGRICULTEUR }  # Only ROLE_AGRICULTEUR can edit material vente pages

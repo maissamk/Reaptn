@@ -47,6 +47,11 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($this->urlGenerator->generate('app_admin')); // Redirect to the admin index page
         }
 
+        // if (in_array('ROLE_CLIENT', $token->getUser()->getRoles())) {
+          //  return new RedirectResponse($this->urlGenerator->generate('app_page')); // Redirect to the admin index page
+         //}
+
+
         // For regular users, redirect to the default target path (e.g., homepage)
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);

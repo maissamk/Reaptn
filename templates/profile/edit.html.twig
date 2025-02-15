@@ -3,55 +3,72 @@
 {% block title %}Modifier le Profil{% endblock %}
 
 {% block body %}
-    <div class="container mt-5">
-        <!-- En-tête de la modification du profil -->
-        <div class="row justify-content-center mb-5">
-            <div class="col-12 text-center">
-                <h1 class="display-4 text-warning">Modifier le Profil</h1>
-                <hr class="w-25 mx-auto">
-            </div>
-        </div>
+    <div class="container d-flex justify-content-center align-items-center mt-5" style="min-height: 100vh; background-color: white; padding-top: 100px;">
+        <div class="col-md-6 col-lg-5">
+            <div class="card p-4 shadow" style="background-color: #f1f1f1;">
+                <h1 class="text-center mb-4 text-warning">Modifier le Profil</h1>
 
-        <!-- Formulaire de Modification du Profil -->
-        <div class="card p-4 mt-4 shadow-lg rounded">
-            <!-- Avatar -->
-            <div class="text-center">
-                <img src="{{ asset('uploads/avatars/' ~ user.avatar) }}" class="rounded-circle mb-4" width="150" height="150" alt="Avatar Utilisateur">
-            </div>
-
-            {{ form_start(form) }}
-                <!-- Champs du Formulaire -->
-                <div class="form-group mb-3">
-                    <label for="prenom" class="form-label">Prénom</label>
-                    {{ form_widget(form.prenom, { 'attr': {'class': 'form-control'} }) }}
-                </div>
-
-                <div class="form-group mb-3">
-                    <label for="nom" class="form-label">Nom</label>
-                    {{ form_widget(form.nom, { 'attr': {'class': 'form-control'} }) }}
-                </div>
-
-                <div class="form-group mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    {{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}
-                </div>
-
-                <div class="form-group mb-3">
-                    <label for="telephone" class="form-label">Numéro de téléphone</label>
-                    {{ form_widget(form.telephone, { 'attr': {'class': 'form-control'} }) }}
-                </div>
-
-                <!-- Champ pour le téléchargement de l'avatar -->
-                <div class="form-group mb-3">
-                    <label for="avatar" class="form-label">Télécharger un Nouvel Avatar</label>
-                    <input type="file" id="avatar" name="user[avatar]" class="form-control" style="width: 350px;">
-                </div>
-
-                <!-- Bouton de Sauvegarde -->
+                <!-- Avatar -->
                 <div class="text-center">
-                    <button class="btn btn-success btn-lg w-75 mt-4">Enregistrer les Modifications</button>
+                    {% if user.avatar %}
+                        <img src="{{ asset('uploads/avatars/' ~ user.avatar) }}" class="rounded-circle mb-3" width="120" height="120" alt="Avatar Utilisateur">
+                    {% else %}
+                        <img src="{{ asset('uploads/avatars/default.png') }}" class="rounded-circle mb-3" width="120" height="120" alt="Avatar par défaut">
+                    {% endif %}
                 </div>
-            {{ form_end(form) }}
+
+                {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate', 'enctype': 'multipart/form-data'}}) }}
+
+                    {# Prénom Field #}
+                    <div class="mb-3">
+                        {{ form_label(form.prenom, 'Prénom') }}
+                        {{ form_widget(form.prenom, {'attr': {'class': 'form-control', 'placeholder': 'Entrez votre prénom'}}) }}
+                        <div class="text-danger">
+                            {{ form_errors(form.prenom) }}
+                        </div>
+                    </div>
+
+                    {# Nom Field #}
+                    <div class="mb-3">
+                        {{ form_label(form.nom, 'Nom') }}
+                        {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'placeholder': 'Entrez votre nom'}}) }}
+                        <div class="text-danger">
+                            {{ form_errors(form.nom) }}
+                        </div>
+                    </div>
+
+                    {# Email Field #}
+                    <div class="mb-3">
+                        {{ form_label(form.email, 'Adresse email') }}
+                        {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Entrez votre email'}}) }}
+                        <div class="text-danger">
+                            {{ form_errors(form.email) }}
+                        </div>
+                    </div>
+
+                    {# Numéro de Téléphone Field #}
+                    <div class="mb-3">
+                        {{ form_label(form.telephone, 'Numéro de téléphone') }}
+                        {{ form_widget(form.telephone, {'attr': {'class': 'form-control', 'placeholder': 'Entrez votre numéro de téléphone'}}) }}
+                        <div class="text-danger">
+                            {{ form_errors(form.telephone) }}
+                        </div>
+                    </div>
+
+                    {# Avatar Upload Field #}
+                    <div class="mb-3">
+                        {{ form_label(form.avatar, 'Télécharger un Nouvel Avatar') }}
+                        {{ form_widget(form.avatar, {'attr': {'class': 'form-control'}}) }}
+                        <div class="text-danger">
+                            {{ form_errors(form.avatar) }}
+                        </div>
+                    </div>
+
+                    {# Submit Button #}
+                    <button type="submit" class="btn btn-success w-100 mt-3">Enregistrer les Modifications</button>
+
+                {{ form_end(form) }}
+            </div>
         </div>
     </div>
 {% endblock %}

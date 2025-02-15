@@ -174,7 +174,6 @@ class __TwigTemplate_925f99b9d76adede44679d0b5d428ab7 extends Template
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/img/profile.jpg"), "html", null, true);
         yield "\" alt=\"user\"></div>
 \t\t\t\t\t\t\t\t\t\t<div class=\"u-text\">
-\t\t\t\t\t\t\t\t\t\t\t<h4>Hizrian</h4>
 \t\t\t\t\t\t\t\t\t\t\t<p class=\"text-muted\">hello@themekita.com</p><a href=\"profile.html\" class=\"btn btn-rounded btn-danger btn-sm\">View Profile</a></div>
 \t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t</li>
@@ -197,15 +196,30 @@ class __TwigTemplate_925f99b9d76adede44679d0b5d428ab7 extends Template
 \t\t\t\t<div class=\"scrollbar-inner sidebar-wrapper\">
 \t\t\t\t\t<div class=\"user\">
 \t\t\t\t\t\t<div class=\"photo\">
-\t\t\t\t\t\t\t<img src=\"";
-        // line 140
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/img/profile.jpg"), "html", null, true);
-        yield "\">
-\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t ";
+        // line 139
+        if (CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 139, $this->source); })()), "user", [], "any", false, false, false, 139), "avatar", [], "any", false, false, false, 139)) {
+            // line 140
+            yield "                                <img src=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/avatars/" . CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 140, $this->source); })()), "user", [], "any", false, false, false, 140), "avatar", [], "any", false, false, false, 140))), "html", null, true);
+            yield "\" class=\"rounded-circle mb-3\" width=\"150\" height=\"150\" alt=\"Avatar Utilisateur\">
+                            ";
+        } else {
+            // line 142
+            yield "                                <img src=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("uploads/avatars/default.png"), "html", null, true);
+            yield "\" class=\"rounded-circle mb-3\" width=\"150\" height=\"150\" alt=\"Avatar par défaut\">
+                            ";
+        }
+        // line 144
+        yield "\t\t\t\t\t\t</div>
 \t\t\t\t\t\t<div class=\"info\">
 \t\t\t\t\t\t\t<a class=\"\" data-toggle=\"collapse\" href=\"#collapseExample\" aria-expanded=\"true\">
 \t\t\t\t\t\t\t\t<span>
-\t\t\t\t\t\t\t\t\tHizrian
+\t\t\t\t\t\t\t\t\t";
+        // line 148
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 148, $this->source); })()), "user", [], "any", false, false, false, 148), "nom", [], "any", false, false, false, 148), "html", null, true);
+        yield "
 \t\t\t\t\t\t\t\t\t<span class=\"user-level\">Administrator</span>
 \t\t\t\t\t\t\t\t\t<span class=\"caret\"></span>
 \t\t\t\t\t\t\t\t</span>
@@ -216,12 +230,18 @@ class __TwigTemplate_925f99b9d76adede44679d0b5d428ab7 extends Template
 \t\t\t\t\t\t\t\t<ul class=\"nav\">
 \t\t\t\t\t\t\t\t\t<li>
 \t\t\t\t\t\t\t\t\t\t<a href=\"#profile\">
-\t\t\t\t\t\t\t\t\t\t\t<span class=\"link-collapse\">My Profile</span>
+\t\t\t\t\t\t\t\t\t\t\t<span class=\"link-collapse\"><a href=\"";
+        // line 159
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_profile");
+        yield "\" class=\"btn btn-rounded btn-danger btn-sm\">Mon Profile</span>
 \t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t\t\t<li>
 \t\t\t\t\t\t\t\t\t\t<a href=\"#edit\">
-\t\t\t\t\t\t\t\t\t\t\t<span class=\"link-collapse\">Edit Profile</span>
+\t\t\t\t\t\t\t\t\t\t\t<span class=\"link-collapse\"><a href=\"";
+        // line 164
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_edit_profile");
+        yield "\" class=\"btn btn-rounded btn-danger btn-sm\">Modifier le Profil</span>
 \t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t\t\t<li>
@@ -292,14 +312,14 @@ class __TwigTemplate_925f99b9d76adede44679d0b5d428ab7 extends Template
 \t\t\t\t</div>
 \t\t\t</div>
 ";
-        // line 231
+        // line 234
         yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
-        // line 755
+        // line 758
         yield "</body>
 ";
-        // line 756
+        // line 759
         yield from $this->unwrap()->yieldBlock('js', $context, $blocks);
-        // line 772
+        // line 775
         yield "</html>";
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -369,7 +389,7 @@ class __TwigTemplate_925f99b9d76adede44679d0b5d428ab7 extends Template
         yield from [];
     }
 
-    // line 231
+    // line 234
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -382,7 +402,7 @@ class __TwigTemplate_925f99b9d76adede44679d0b5d428ab7 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 232
+        // line 235
         yield "\t
 \t\t\t<div class=\"main-panel\">
 \t\t\t\t<div class=\"content\">
@@ -915,7 +935,7 @@ class __TwigTemplate_925f99b9d76adede44679d0b5d428ab7 extends Template
         yield from [];
     }
 
-    // line 756
+    // line 759
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -928,60 +948,60 @@ class __TwigTemplate_925f99b9d76adede44679d0b5d428ab7 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "js"));
 
-        // line 757
+        // line 760
         yield "<script src=\"";
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/core/jquery.3.2.1.min.js"), "html", null, true);
         yield "\"></script>
 <script src=\"";
-        // line 758
+        // line 761
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"), "html", null, true);
         yield "\"></script>
 <script src=\"";
-        // line 759
+        // line 762
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/core/popper.min.js"), "html", null, true);
         yield "\"></script>
 <script src=\"";
-        // line 760
+        // line 763
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/core/bootstrap.min.js"), "html", null, true);
         yield "\"></script>
 <script src=\"";
-        // line 761
+        // line 764
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/plugin/chartist/chartist.min.js"), "html", null, true);
         yield "\"></script>
 <script src=\"";
-        // line 762
+        // line 765
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/plugin/chartist/plugin/chartist-plugin-tooltip.min.js"), "html", null, true);
         yield "\"></script>
 <script src=\"";
-        // line 763
+        // line 766
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/plugin/bootstrap-notify/bootstrap-notify.min.js"), "html", null, true);
         yield "\"></script>
 <script src=\"";
-        // line 764
+        // line 767
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"), "html", null, true);
         yield "\"></script>
 <script src=\"";
-        // line 765
+        // line 768
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/plugin/jquery-mapael/jquery.mapael.min.js"), "html", null, true);
         yield "\"></script>
 <script src=\"";
-        // line 766
+        // line 769
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/plugin/jquery-mapael/maps/world_countries.min.js"), "html", null, true);
         yield "\"></script>
 <script src=\"";
-        // line 767
+        // line 770
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/plugin/chart-circle/circles.min.js"), "html", null, true);
         yield "\"></script>
 <script src=\"";
-        // line 768
+        // line 771
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"), "html", null, true);
         yield "\"></script>
 <script src=\"";
-        // line 769
+        // line 772
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/ready.min.js"), "html", null, true);
         yield "\"></script>
 <script src=\"";
-        // line 770
+        // line 773
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/demo.js"), "html", null, true);
         yield "\"></script>
 ";
@@ -1015,7 +1035,7 @@ class __TwigTemplate_925f99b9d76adede44679d0b5d428ab7 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  985 => 770,  981 => 769,  977 => 768,  973 => 767,  969 => 766,  965 => 765,  961 => 764,  957 => 763,  953 => 762,  949 => 761,  945 => 760,  941 => 759,  937 => 758,  932 => 757,  919 => 756,  386 => 232,  373 => 231,  360 => 11,  356 => 10,  350 => 8,  337 => 7,  314 => 5,  303 => 772,  301 => 756,  298 => 755,  296 => 231,  202 => 140,  174 => 115,  164 => 110,  65 => 13,  63 => 7,  58 => 5,  52 => 1,);
+        return array (  1005 => 773,  1001 => 772,  997 => 771,  993 => 770,  989 => 769,  985 => 768,  981 => 767,  977 => 766,  973 => 765,  969 => 764,  965 => 763,  961 => 762,  957 => 761,  952 => 760,  939 => 759,  406 => 235,  393 => 234,  380 => 11,  376 => 10,  370 => 8,  357 => 7,  334 => 5,  323 => 775,  321 => 759,  318 => 758,  316 => 234,  243 => 164,  235 => 159,  221 => 148,  215 => 144,  209 => 142,  203 => 140,  201 => 139,  174 => 115,  164 => 110,  65 => 13,  63 => 7,  58 => 5,  52 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -1136,7 +1156,6 @@ class __TwigTemplate_925f99b9d76adede44679d0b5d428ab7 extends Template
 \t\t\t\t\t\t\t\t\t<div class=\"user-box\">
 \t\t\t\t\t\t\t\t\t\t<div class=\"u-img\"><img src=\"{{asset('backoffice/img/profile.jpg')}}\" alt=\"user\"></div>
 \t\t\t\t\t\t\t\t\t\t<div class=\"u-text\">
-\t\t\t\t\t\t\t\t\t\t\t<h4>Hizrian</h4>
 \t\t\t\t\t\t\t\t\t\t\t<p class=\"text-muted\">hello@themekita.com</p><a href=\"profile.html\" class=\"btn btn-rounded btn-danger btn-sm\">View Profile</a></div>
 \t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t</li>
@@ -1159,12 +1178,16 @@ class __TwigTemplate_925f99b9d76adede44679d0b5d428ab7 extends Template
 \t\t\t\t<div class=\"scrollbar-inner sidebar-wrapper\">
 \t\t\t\t\t<div class=\"user\">
 \t\t\t\t\t\t<div class=\"photo\">
-\t\t\t\t\t\t\t<img src=\"{{asset('backoffice/img/profile.jpg')}}\">
+\t\t\t\t\t\t\t {% if app.user.avatar %}
+                                <img src=\"{{ asset('uploads/avatars/' ~ app.user.avatar) }}\" class=\"rounded-circle mb-3\" width=\"150\" height=\"150\" alt=\"Avatar Utilisateur\">
+                            {% else %}
+                                <img src=\"{{ asset('uploads/avatars/default.png') }}\" class=\"rounded-circle mb-3\" width=\"150\" height=\"150\" alt=\"Avatar par défaut\">
+                            {% endif %}
 \t\t\t\t\t\t</div>
 \t\t\t\t\t\t<div class=\"info\">
 \t\t\t\t\t\t\t<a class=\"\" data-toggle=\"collapse\" href=\"#collapseExample\" aria-expanded=\"true\">
 \t\t\t\t\t\t\t\t<span>
-\t\t\t\t\t\t\t\t\tHizrian
+\t\t\t\t\t\t\t\t\t{{app.user.nom}}
 \t\t\t\t\t\t\t\t\t<span class=\"user-level\">Administrator</span>
 \t\t\t\t\t\t\t\t\t<span class=\"caret\"></span>
 \t\t\t\t\t\t\t\t</span>
@@ -1175,12 +1198,12 @@ class __TwigTemplate_925f99b9d76adede44679d0b5d428ab7 extends Template
 \t\t\t\t\t\t\t\t<ul class=\"nav\">
 \t\t\t\t\t\t\t\t\t<li>
 \t\t\t\t\t\t\t\t\t\t<a href=\"#profile\">
-\t\t\t\t\t\t\t\t\t\t\t<span class=\"link-collapse\">My Profile</span>
+\t\t\t\t\t\t\t\t\t\t\t<span class=\"link-collapse\"><a href=\"{{ path('admin_profile') }}\" class=\"btn btn-rounded btn-danger btn-sm\">Mon Profile</span>
 \t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t\t\t<li>
 \t\t\t\t\t\t\t\t\t\t<a href=\"#edit\">
-\t\t\t\t\t\t\t\t\t\t\t<span class=\"link-collapse\">Edit Profile</span>
+\t\t\t\t\t\t\t\t\t\t\t<span class=\"link-collapse\"><a href=\"{{ path('admin_edit_profile') }}\" class=\"btn btn-rounded btn-danger btn-sm\">Modifier le Profil</span>
 \t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t\t\t<li>
