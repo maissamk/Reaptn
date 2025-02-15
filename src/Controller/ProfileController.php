@@ -24,7 +24,7 @@ class ProfileController extends AbstractController
             'user' => $user,
         ]);
     }
-    #[Route('/profile/edit', name: 'app_edit_profile')]
+    #[Route('/profile/edit_profile', name: 'app_edit_profile')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function editProfile(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {

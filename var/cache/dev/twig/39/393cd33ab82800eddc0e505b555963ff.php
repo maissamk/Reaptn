@@ -236,6 +236,6 @@ class __TwigTemplate_719e29bd6de0a3e4f26feccf7a684bf6 extends Template
         </div>
     </div>
 {% endblock %}
-", "profile/index.html.twig", "C:\\Users\\romdh\\OneDrive\\Bureau\\PI2025\\Reaptn\\templates\\profile\\index.html.twig");
+", "profile/index.html.twig", "C:\\Users\\DELL\\Downloads\\projet\\Reaptn\\templates\\profile\\index.html.twig");
     }
 }

@@ -98,225 +98,127 @@ class __TwigTemplate_2e68b67fdd7ba7d8fbd82d56ddbbc3f5 extends Template
 
         // line 6
         yield "
-<!-- Navbar Start -->
-<div class=\"container-fluid fixed-top\">
-    <div class=\"container topbar bg-primary d-none d-lg-block\">
-        <div class=\"d-flex justify-content-between\">
-            <div class=\"top-info ps-2\">
-                <small class=\"me-3\"><i class=\"fas fa-map-marker-alt me-2 text-secondary\"></i> <a href=\"#\" class=\"text-white\">123 Street, New York</a></small>
-                <small class=\"me-3\"><i class=\"fas fa-envelope me-2 text-secondary\"></i><a href=\"#\" class=\"text-white\">Email@Example.com</a></small>
-            </div>
-            <div class=\"top-link pe-2\">
-                <a href=\"#\" class=\"text-white\"><small class=\"text-white mx-2\">Privacy Policy</small>/</a>
-                <a href=\"#\" class=\"text-white\"><small class=\"text-white mx-2\">Terms of Use</small>/</a>
-                <a href=\"#\" class=\"text-white\"><small class=\"text-white ms-2\">Sales and Refunds</small></a>
-            </div>
-        </div>
-    </div>
-
-    <div class=\"container px-0\">
-        <nav class=\"navbar navbar-light bg-white navbar-expand-xl\">
-            <a href=\"";
-        // line 25
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("index.html"), "html", null, true);
-        yield "\" class=\"navbar-brand\">
-                <h1 class=\"text-primary display-6\">Fruitables</h1>
-            </a>
-            <button class=\"navbar-toggler py-2 px-3\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarCollapse\">
-                <span class=\"fa fa-bars text-primary\"></span>
-            </button>
-            <div class=\"collapse navbar-collapse bg-white\" id=\"navbarCollapse\">
-                <div class=\"navbar-nav mx-auto\">
-                    <a href=\"";
-        // line 33
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_page");
-        yield "\" class=\"nav-item nav-link active\">Home</a>
-                    <a href=\"";
-        // line 34
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_shop");
-        yield "\" class=\"nav-item nav-link\">Shop</a>
-                    <a href=\"";
-        // line 35
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_shop_detail");
-        yield "\" class=\"nav-item nav-link\">Shop Detail</a>
-                    <div class=\"nav-item dropdown\">
-                        <a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">Pages</a>
-                        <div class=\"dropdown-menu m-0 bg-secondary rounded-0\">
-                            <a href=\"";
-        // line 39
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_cart");
-        yield "\" class=\"dropdown-item\">Cart</a>
-                            <a href=\"";
-        // line 40
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_chackout");
-        yield "\" class=\"dropdown-item\">Checkout</a>
-                            <a href=\"";
-        // line 41
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_testimonial");
-        yield "\" class=\"dropdown-item\">Testimonial</a>
-                            <a href=\"";
-        // line 42
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_404");
-        yield "\" class=\"dropdown-item\">404 Page</a>
-                        </div>
-                    </div>
-                    <a href=\"";
-        // line 45
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_contact");
-        yield "\" class=\"nav-item nav-link\">Contact</a>
-                </div>
-            </div>
-        </nav>
-    </div>
-</div>
-<!-- Navbar End -->
-
+<!-- ParcelleProprietes Content -->
 <div class=\"container mt-5 pt-5\">
-        <h1 class=\"text-center\">ParcelleProprietes index</h1>
+    <h1 class=\"text-center mb-4\">ParcelleProprietes index</h1>
 
-        <table class=\"table table-striped table-hover mt-3\">
-            <thead class=\"table-dark\">
-                <tr>
-                    <th>Id</th>
-                    <th>Titre</th>
-                    <th>Description</th>
-                    <th>Prix</th>
-                    <th>Status</th>
-                    <th>Emplacement</th>
-                    <th>Taille</th>
-                    <th>Date de création</th>
-                    <th>Date de mise à jour</th>
-                    <th>Disponible</th>
-                    <th>Propriétaire</th>
-                    <th>Contact</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-            ";
-        // line 75
+    <div class=\"row\">
+        ";
+        // line 12
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["parcelle_proprietes"]) || array_key_exists("parcelle_proprietes", $context) ? $context["parcelle_proprietes"] : (function () { throw new RuntimeError('Variable "parcelle_proprietes" does not exist.', 75, $this->source); })()));
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["parcelle_proprietes"]) || array_key_exists("parcelle_proprietes", $context) ? $context["parcelle_proprietes"] : (function () { throw new RuntimeError('Variable "parcelle_proprietes" does not exist.', 12, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["parcelle_propriete"]) {
-            // line 76
-            yield "                <tr>
-                    <td>";
-            // line 77
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "id", [], "any", false, false, false, 77), "html", null, true);
-            yield "</td>
-                    <td>";
-            // line 78
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "titre", [], "any", false, false, false, 78), "html", null, true);
-            yield "</td>
-                    <td>";
-            // line 79
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "description", [], "any", false, false, false, 79), "html", null, true);
-            yield "</td>
-                    <td>";
-            // line 80
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "prix", [], "any", false, false, false, 80), "html", null, true);
-            yield " €</td>
-                    <td>";
-            // line 81
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "status", [], "any", false, false, false, 81), "html", null, true);
-            yield "</td>
-                    <td>";
-            // line 82
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "emplacement", [], "any", false, false, false, 82), "html", null, true);
-            yield "</td>
-                    <td>";
-            // line 83
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "taille", [], "any", false, false, false, 83), "html", null, true);
-            yield " m²</td>
-                    <td>";
-            // line 84
-            yield ((CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "dateCreationAnnonce", [], "any", false, false, false, 84)) ? ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "dateCreationAnnonce", [], "any", false, false, false, 84), "Y-m-d H:i:s"), "html", null, true)) : (""));
-            yield "</td>
-                    <td>";
-            // line 85
-            yield ((CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "dateMisajourAnnonce", [], "any", false, false, false, 85)) ? ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "dateMisajourAnnonce", [], "any", false, false, false, 85), "Y-m-d H:i:s"), "html", null, true)) : (""));
-            yield "</td>
-                    <td>";
-            // line 86
-            yield ((CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "estDisponible", [], "any", false, false, false, 86)) ? ("Oui") : ("Non"));
-            yield "</td>
-                    <td>";
-            // line 87
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "nomProprietaire", [], "any", false, false, false, 87), "html", null, true);
-            yield "</td>
-                    <td>";
-            // line 88
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "contactProprietaire", [], "any", false, false, false, 88), "html", null, true);
-            yield "</td>
-                    <td>
-                        <a href=\"";
-            // line 90
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_parcelle_proprietes_show", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "id", [], "any", false, false, false, 90)]), "html", null, true);
-            yield "\" class=\"btn btn-info btn-sm\">Voir</a>
-                        <a href=\"";
-            // line 91
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_parcelle_proprietes_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "id", [], "any", false, false, false, 91)]), "html", null, true);
-            yield "\" class=\"btn btn-warning btn-sm\">Modifier</a>
-                    </td>
-                </tr>
-            ";
+            // line 13
+            yield "            <div class=\"col-md-4 mb-4\">
+                <div class=\"position-relative border border-secondary rounded shadow-sm\">
+                    
+                    <!-- Image of property -->
+                    <img src=\"";
+            // line 17
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(((CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "image", [], "any", false, false, false, 17)) ? (("uploads/images/" . CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "image", [], "any", false, false, false, 17))) : ("images/default.png"))), "html", null, true);
+            yield "\" 
+                         class=\"img-fluid card-img-fixed\" alt=\"";
+            // line 18
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "titre", [], "any", false, false, false, 18), "html", null, true);
+            yield "\"
+                         loading=\"lazy\">
+
+                    <!-- Property Details -->
+                    <div class=\"p-4 border border-secondary border-top-0 rounded-bottom\">
+                        <h4>";
+            // line 23
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "titre", [], "any", false, false, false, 23), "html", null, true);
+            yield "</h4>
+
+                        <p class=\"description\">
+                            ";
+            // line 26
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::slice($this->env->getCharset(), CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "description", [], "any", false, false, false, 26), 0, 50), "html", null, true);
+            yield "<span class=\"dots\">...</span>
+                            <span class=\"more-text\" style=\"display: none;\">";
+            // line 27
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::slice($this->env->getCharset(), CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "description", [], "any", false, false, false, 27), 100, null), "html", null, true);
+            yield "</span>
+                            <a href=\"";
+            // line 28
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_parcelle_proprietes_show", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "id", [], "any", false, false, false, 28)]), "html", null, true);
+            yield "\" class=\"see-more\">plus</a>
+                        </p>
+
+                        <div class=\"d-flex justify-content-between align-items-center\">
+                            <p class=\"text-dark fs-5 fw-bold mb-0\">";
+            // line 32
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "prix", [], "any", false, false, false, 32), "html", null, true);
+            yield " DT </p>
+                            <a href=\"";
+            // line 33
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_parcelle_proprietes_show", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "id", [], "any", false, false, false, 33)]), "html", null, true);
+            yield "\" class=\"btn btn-info btn-sm\" title=\"View Property\">Voir</a>
+                        </div>
+
+                        <p class=\"text-dark fs-5 fw-bold mb-2\">";
+            // line 36
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "status", [], "any", false, false, false, 36), "html", null, true);
+            yield " : Status Actuel</p>
+                        <p class=\"text-dark fs-5 fw-bold mb-2\">";
+            // line 37
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "taille", [], "any", false, false, false, 37), "html", null, true);
+            yield " (m²)</p>
+
+                        <!-- Edit Button -->
+                        <div class=\"text-center mt-3\">
+                            <a href=\"";
+            // line 41
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_parcelle_proprietes_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "id", [], "any", false, false, false, 41)]), "html", null, true);
+            yield "\" class=\"btn btn-warning btn-sm w-100\" title=\"Edit Property\">Modifier</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        ";
             $context['_iterated'] = true;
         }
-        // line 94
+        // line 46
         if (!$context['_iterated']) {
-            // line 95
-            yield "                <tr>
-                    <td colspan=\"13\" class=\"text-center\">Aucun enregistrement trouvé</td>
-                </tr>
-            ";
+            // line 47
+            yield "            <div class=\"col-12 text-center\">
+                <p>Aucun enregistrement trouvé</p>
+            </div>
+        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['parcelle_propriete'], $context['_parent'], $context['_iterated']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 99
-        yield "            </tbody>
-        </table>
-
-        <a href=\"";
-        // line 102
+        // line 51
+        yield "
+        <div class=\"d-flex justify-content-center mt-3\">
+            <a href=\"";
+        // line 53
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_parcelle_proprietes_new");
-        yield "\" class=\"btn btn-success\">Créer une nouvelle propriété</a>
-    </div>
-
-    <!-- Footer Start -->
-<div class=\"container-fluid bg-dark text-white-50 footer pt-5 mt-5\">
-    <div class=\"container py-5\">
-        <div class=\"pb-4 mb-4\" style=\"border-bottom: 1px solid rgba(226, 175, 24, 0.5);\">
-            <div class=\"row g-4\">
-                <div class=\"col-lg-3\">
-                    <a href=\"#\">
-                        <h1 class=\"text-primary mb-0\">Fruitables</h1>
-                        <p class=\"text-secondary mb-0\">Fresh products</p>
-                    </a>
-                </div>
-                <div class=\"col-lg-6\">
-                    <div class=\"position-relative mx-auto\">
-                        <input class=\"form-control border-0 w-100 py-3 px-4 rounded-pill\" type=\"number\" placeholder=\"Your Email\">
-                        <button type=\"submit\" class=\"btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white\" style=\"top: 0; right: 0;\">Subscribe Now</button>
-                    </div>
-                </div>
-                <div class=\"col-lg-3\">
-                    <div class=\"d-flex justify-content-end pt-3\">
-                        <a class=\"btn btn-outline-secondary me-2 btn-md-square rounded-circle\" href=\"\"><i class=\"fab fa-twitter\"></i></a>
-                        <a class=\"btn btn-outline-secondary me-2 btn-md-square rounded-circle\" href=\"\"><i class=\"fab fa-facebook-f\"></i></a>
-                        <a class=\"btn btn-outline-secondary me-2 btn-md-square rounded-circle\" href=\"\"><i class=\"fab fa-youtube\"></i></a>
-                        <a class=\"btn btn-outline-secondary btn-md-square rounded-circle\" href=\"\"><i class=\"fab fa-linkedin-in\"></i></a>
-                    </div>
-                </div>
-            </div>
+        yield "\" class=\"btn btn-success me-2\" title=\"Create New Property\">
+                <i class=\"fas fa-plus-circle\"></i> Créer une nouvelle propriété
+            </a>
+            <a href=\"";
+        // line 56
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_contrat_new");
+        yield "\" class=\"btn btn-primary\" title=\"Create New Contract\">
+                <i class=\"fas fa-file-contract\"></i> Créer un contrat
+            </a>
         </div>
     </div>
 </div>
-<!-- Footer End -->
 
-<!-- Back to Top -->
-<a href=\"#\" class=\"btn btn-primary border-3 border-primary rounded-circle back-to-top\"><i class=\"fa fa-arrow-up\"></i></a>
+<style>
+.card-img-fixed {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+</style>
+
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -348,7 +250,7 @@ class __TwigTemplate_2e68b67fdd7ba7d8fbd82d56ddbbc3f5 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  283 => 102,  278 => 99,  269 => 95,  267 => 94,  259 => 91,  255 => 90,  250 => 88,  246 => 87,  242 => 86,  238 => 85,  234 => 84,  230 => 83,  226 => 82,  222 => 81,  218 => 80,  214 => 79,  210 => 78,  206 => 77,  203 => 76,  198 => 75,  165 => 45,  159 => 42,  155 => 41,  151 => 40,  147 => 39,  140 => 35,  136 => 34,  132 => 33,  121 => 25,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  204 => 56,  198 => 53,  194 => 51,  185 => 47,  183 => 46,  173 => 41,  166 => 37,  162 => 36,  156 => 33,  152 => 32,  145 => 28,  141 => 27,  137 => 26,  131 => 23,  123 => 18,  119 => 17,  113 => 13,  108 => 12,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -359,138 +261,73 @@ class __TwigTemplate_2e68b67fdd7ba7d8fbd82d56ddbbc3f5 extends Template
 
 {% block body %}
 
-<!-- Navbar Start -->
-<div class=\"container-fluid fixed-top\">
-    <div class=\"container topbar bg-primary d-none d-lg-block\">
-        <div class=\"d-flex justify-content-between\">
-            <div class=\"top-info ps-2\">
-                <small class=\"me-3\"><i class=\"fas fa-map-marker-alt me-2 text-secondary\"></i> <a href=\"#\" class=\"text-white\">123 Street, New York</a></small>
-                <small class=\"me-3\"><i class=\"fas fa-envelope me-2 text-secondary\"></i><a href=\"#\" class=\"text-white\">Email@Example.com</a></small>
-            </div>
-            <div class=\"top-link pe-2\">
-                <a href=\"#\" class=\"text-white\"><small class=\"text-white mx-2\">Privacy Policy</small>/</a>
-                <a href=\"#\" class=\"text-white\"><small class=\"text-white mx-2\">Terms of Use</small>/</a>
-                <a href=\"#\" class=\"text-white\"><small class=\"text-white ms-2\">Sales and Refunds</small></a>
-            </div>
-        </div>
-    </div>
+<!-- ParcelleProprietes Content -->
+<div class=\"container mt-5 pt-5\">
+    <h1 class=\"text-center mb-4\">ParcelleProprietes index</h1>
 
-    <div class=\"container px-0\">
-        <nav class=\"navbar navbar-light bg-white navbar-expand-xl\">
-            <a href=\"{{ asset('index.html') }}\" class=\"navbar-brand\">
-                <h1 class=\"text-primary display-6\">Fruitables</h1>
-            </a>
-            <button class=\"navbar-toggler py-2 px-3\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarCollapse\">
-                <span class=\"fa fa-bars text-primary\"></span>
-            </button>
-            <div class=\"collapse navbar-collapse bg-white\" id=\"navbarCollapse\">
-                <div class=\"navbar-nav mx-auto\">
-                    <a href=\"{{ path('app_page') }}\" class=\"nav-item nav-link active\">Home</a>
-                    <a href=\"{{ path('app_shop') }}\" class=\"nav-item nav-link\">Shop</a>
-                    <a href=\"{{ path('app_shop_detail') }}\" class=\"nav-item nav-link\">Shop Detail</a>
-                    <div class=\"nav-item dropdown\">
-                        <a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">Pages</a>
-                        <div class=\"dropdown-menu m-0 bg-secondary rounded-0\">
-                            <a href=\"{{ path('app_cart') }}\" class=\"dropdown-item\">Cart</a>
-                            <a href=\"{{ path('app_chackout') }}\" class=\"dropdown-item\">Checkout</a>
-                            <a href=\"{{ path('app_testimonial') }}\" class=\"dropdown-item\">Testimonial</a>
-                            <a href=\"{{ path('app_404') }}\" class=\"dropdown-item\">404 Page</a>
+    <div class=\"row\">
+        {% for parcelle_propriete in parcelle_proprietes %}
+            <div class=\"col-md-4 mb-4\">
+                <div class=\"position-relative border border-secondary rounded shadow-sm\">
+                    
+                    <!-- Image of property -->
+                    <img src=\"{{ asset(parcelle_propriete.image ? 'uploads/images/' ~ parcelle_propriete.image : 'images/default.png') }}\" 
+                         class=\"img-fluid card-img-fixed\" alt=\"{{ parcelle_propriete.titre }}\"
+                         loading=\"lazy\">
+
+                    <!-- Property Details -->
+                    <div class=\"p-4 border border-secondary border-top-0 rounded-bottom\">
+                        <h4>{{ parcelle_propriete.titre }}</h4>
+
+                        <p class=\"description\">
+                            {{ parcelle_propriete.description[:50] }}<span class=\"dots\">...</span>
+                            <span class=\"more-text\" style=\"display: none;\">{{ parcelle_propriete.description[100:] }}</span>
+                            <a href=\"{{ path('app_parcelle_proprietes_show', {'id': parcelle_propriete.id}) }}\" class=\"see-more\">plus</a>
+                        </p>
+
+                        <div class=\"d-flex justify-content-between align-items-center\">
+                            <p class=\"text-dark fs-5 fw-bold mb-0\">{{ parcelle_propriete.prix }} DT </p>
+                            <a href=\"{{ path('app_parcelle_proprietes_show', {'id': parcelle_propriete.id}) }}\" class=\"btn btn-info btn-sm\" title=\"View Property\">Voir</a>
+                        </div>
+
+                        <p class=\"text-dark fs-5 fw-bold mb-2\">{{ parcelle_propriete.status }} : Status Actuel</p>
+                        <p class=\"text-dark fs-5 fw-bold mb-2\">{{ parcelle_propriete.taille }} (m²)</p>
+
+                        <!-- Edit Button -->
+                        <div class=\"text-center mt-3\">
+                            <a href=\"{{ path('app_parcelle_proprietes_edit', {'id': parcelle_propriete.id}) }}\" class=\"btn btn-warning btn-sm w-100\" title=\"Edit Property\">Modifier</a>
                         </div>
                     </div>
-                    <a href=\"{{ path('app_contact') }}\" class=\"nav-item nav-link\">Contact</a>
                 </div>
             </div>
-        </nav>
-    </div>
-</div>
-<!-- Navbar End -->
-
-<div class=\"container mt-5 pt-5\">
-        <h1 class=\"text-center\">ParcelleProprietes index</h1>
-
-        <table class=\"table table-striped table-hover mt-3\">
-            <thead class=\"table-dark\">
-                <tr>
-                    <th>Id</th>
-                    <th>Titre</th>
-                    <th>Description</th>
-                    <th>Prix</th>
-                    <th>Status</th>
-                    <th>Emplacement</th>
-                    <th>Taille</th>
-                    <th>Date de création</th>
-                    <th>Date de mise à jour</th>
-                    <th>Disponible</th>
-                    <th>Propriétaire</th>
-                    <th>Contact</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for parcelle_propriete in parcelle_proprietes %}
-                <tr>
-                    <td>{{ parcelle_propriete.id }}</td>
-                    <td>{{ parcelle_propriete.titre }}</td>
-                    <td>{{ parcelle_propriete.description }}</td>
-                    <td>{{ parcelle_propriete.prix }} €</td>
-                    <td>{{ parcelle_propriete.status }}</td>
-                    <td>{{ parcelle_propriete.emplacement }}</td>
-                    <td>{{ parcelle_propriete.taille }} m²</td>
-                    <td>{{ parcelle_propriete.dateCreationAnnonce ? parcelle_propriete.dateCreationAnnonce|date('Y-m-d H:i:s') : '' }}</td>
-                    <td>{{ parcelle_propriete.dateMisajourAnnonce ? parcelle_propriete.dateMisajourAnnonce|date('Y-m-d H:i:s') : '' }}</td>
-                    <td>{{ parcelle_propriete.estDisponible ? 'Oui' : 'Non' }}</td>
-                    <td>{{ parcelle_propriete.nomProprietaire }}</td>
-                    <td>{{ parcelle_propriete.contactProprietaire }}</td>
-                    <td>
-                        <a href=\"{{ path('app_parcelle_proprietes_show', {'id': parcelle_propriete.id}) }}\" class=\"btn btn-info btn-sm\">Voir</a>
-                        <a href=\"{{ path('app_parcelle_proprietes_edit', {'id': parcelle_propriete.id}) }}\" class=\"btn btn-warning btn-sm\">Modifier</a>
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan=\"13\" class=\"text-center\">Aucun enregistrement trouvé</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-
-        <a href=\"{{ path('app_parcelle_proprietes_new') }}\" class=\"btn btn-success\">Créer une nouvelle propriété</a>
-    </div>
-
-    <!-- Footer Start -->
-<div class=\"container-fluid bg-dark text-white-50 footer pt-5 mt-5\">
-    <div class=\"container py-5\">
-        <div class=\"pb-4 mb-4\" style=\"border-bottom: 1px solid rgba(226, 175, 24, 0.5);\">
-            <div class=\"row g-4\">
-                <div class=\"col-lg-3\">
-                    <a href=\"#\">
-                        <h1 class=\"text-primary mb-0\">Fruitables</h1>
-                        <p class=\"text-secondary mb-0\">Fresh products</p>
-                    </a>
-                </div>
-                <div class=\"col-lg-6\">
-                    <div class=\"position-relative mx-auto\">
-                        <input class=\"form-control border-0 w-100 py-3 px-4 rounded-pill\" type=\"number\" placeholder=\"Your Email\">
-                        <button type=\"submit\" class=\"btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white\" style=\"top: 0; right: 0;\">Subscribe Now</button>
-                    </div>
-                </div>
-                <div class=\"col-lg-3\">
-                    <div class=\"d-flex justify-content-end pt-3\">
-                        <a class=\"btn btn-outline-secondary me-2 btn-md-square rounded-circle\" href=\"\"><i class=\"fab fa-twitter\"></i></a>
-                        <a class=\"btn btn-outline-secondary me-2 btn-md-square rounded-circle\" href=\"\"><i class=\"fab fa-facebook-f\"></i></a>
-                        <a class=\"btn btn-outline-secondary me-2 btn-md-square rounded-circle\" href=\"\"><i class=\"fab fa-youtube\"></i></a>
-                        <a class=\"btn btn-outline-secondary btn-md-square rounded-circle\" href=\"\"><i class=\"fab fa-linkedin-in\"></i></a>
-                    </div>
-                </div>
+        {% else %}
+            <div class=\"col-12 text-center\">
+                <p>Aucun enregistrement trouvé</p>
             </div>
+        {% endfor %}
+
+        <div class=\"d-flex justify-content-center mt-3\">
+            <a href=\"{{ path('app_parcelle_proprietes_new') }}\" class=\"btn btn-success me-2\" title=\"Create New Property\">
+                <i class=\"fas fa-plus-circle\"></i> Créer une nouvelle propriété
+            </a>
+            <a href=\"{{ path('app_contrat_new') }}\" class=\"btn btn-primary\" title=\"Create New Contract\">
+                <i class=\"fas fa-file-contract\"></i> Créer un contrat
+            </a>
         </div>
     </div>
 </div>
-<!-- Footer End -->
 
-<!-- Back to Top -->
-<a href=\"#\" class=\"btn btn-primary border-3 border-primary rounded-circle back-to-top\"><i class=\"fa fa-arrow-up\"></i></a>
+<style>
+.card-img-fixed {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+</style>
+
 {% endblock %}
-", "parcelle_proprietes/index.html.twig", "C:\\Users\\romdh\\OneDrive\\Bureau\\PI2025\\Reaptn\\templates\\parcelle_proprietes\\index.html.twig");
+", "parcelle_proprietes/index.html.twig", "C:\\Users\\DELL\\Downloads\\projet\\Reaptn\\templates\\parcelle_proprietes\\index.html.twig");
     }
 }

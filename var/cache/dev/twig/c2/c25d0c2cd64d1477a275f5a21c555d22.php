@@ -97,203 +97,240 @@ class __TwigTemplate_9bc008c77268ed58386c10aab0eeae0b extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        yield "<!-- Navbar Start -->
-<div class=\"container-fluid fixed-top\">
-    <div class=\"container topbar bg-primary d-none d-lg-block\">
-        <div class=\"d-flex justify-content-between\">
-            <div class=\"top-info ps-2\">
-                <small class=\"me-3\"><i class=\"fas fa-map-marker-alt me-2 text-secondary\"></i> <a href=\"#\" class=\"text-white\">123 Street, New York</a></small>
-                <small class=\"me-3\"><i class=\"fas fa-envelope me-2 text-secondary\"></i><a href=\"#\" class=\"text-white\">Email@Example.com</a></small>
-            </div>
-            <div class=\"top-link pe-2\">
-                <a href=\"#\" class=\"text-white\"><small class=\"text-white mx-2\">Privacy Policy</small>/</a>
-                <a href=\"#\" class=\"text-white\"><small class=\"text-white mx-2\">Terms of Use</small>/</a>
-                <a href=\"#\" class=\"text-white\"><small class=\"text-white ms-2\">Sales and Refunds</small></a>
-            </div>
-        </div>
-    </div>
+        yield "<div class=\"container mt-5 pt-5\">
+    <h1 class=\"text-center text-primary fw-bold mb-4\">Modifier une Parcelle ou Propriété</h1>
 
-    <div class=\"container px-0\">
-        <nav class=\"navbar navbar-light bg-white navbar-expand-xl\">
-            <a href=\"";
-        // line 24
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("index.html"), "html", null, true);
-        yield "\" class=\"navbar-brand\">
-                <h1 class=\"text-primary display-6\">Fruitables</h1>
-            </a>
-            <button class=\"navbar-toggler py-2 px-3\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarCollapse\">
-                <span class=\"fa fa-bars text-primary\"></span>
-            </button>
-            <div class=\"collapse navbar-collapse bg-white\" id=\"navbarCollapse\">
-                <div class=\"navbar-nav mx-auto\">
-                    <a href=\"";
-        // line 32
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_page");
-        yield "\" class=\"nav-item nav-link active\">Home</a>
-                    <a href=\"";
-        // line 33
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_shop");
-        yield "\" class=\"nav-item nav-link\">Shop</a>
-                    <a href=\"";
-        // line 34
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_shop_detail");
-        yield "\" class=\"nav-item nav-link\">Shop Detail</a>
-                    <div class=\"nav-item dropdown\">
-                        <a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">Pages</a>
-                        <div class=\"dropdown-menu m-0 bg-secondary rounded-0\">
-                            <a href=\"";
-        // line 38
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_cart");
-        yield "\" class=\"dropdown-item\">Cart</a>
-                            <a href=\"";
-        // line 39
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_chackout");
-        yield "\" class=\"dropdown-item\">Checkout</a>
-                            <a href=\"";
-        // line 40
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_testimonial");
-        yield "\" class=\"dropdown-item\">Testimonial</a>
-                            <a href=\"";
-        // line 41
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_404");
-        yield "\" class=\"dropdown-item\">404 Page</a>
-                        </div>
-                    </div>
-                    <a href=\"";
-        // line 44
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_contact");
-        yield "\" class=\"nav-item nav-link\">Contact</a>
-                </div>
-            </div>
-        </nav>
-    </div>
-</div>
-<!-- Navbar End -->
-
-<div class=\"container mt-5 pt-5\">
-        <h1 class=\"text-center\">Modifier une Parcelle ou Propriété</h1>
-
-        <div class=\"card p-4 mt-3\">
-            ";
-        // line 56
-        yield Twig\Extension\CoreExtension::include($this->env, $context, "parcelle_proprietes/_form.html.twig", ["button_label" => "Mettre à jour"]);
+    <div class=\"row justify-content-center\">
+        <div class=\"col-md-8 col-lg-6\">
+            <div class=\"card p-4 shadow-lg border-0\">
+                
+                ";
+        // line 13
+        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 13, $this->source); })()), 'form_start', ["attr" => ["novalidate" => "novalidate", "class" => "needs-validation"]]);
         yield "
-        </div>
 
-        <div class=\"text-center mt-3\">
-            <a href=\"";
-        // line 60
+                <!-- Affichage de l'image actuelle -->
+                <div class=\"text-center mb-4\">
+                    ";
+        // line 17
+        if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["parcelle_propriete"]) || array_key_exists("parcelle_propriete", $context) ? $context["parcelle_propriete"] : (function () { throw new RuntimeError('Variable "parcelle_propriete" does not exist.', 17, $this->source); })()), "image", [], "any", false, false, false, 17)) {
+            // line 18
+            yield "                        <img src=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/images/" . CoreExtension::getAttribute($this->env, $this->source, (isset($context["parcelle_propriete"]) || array_key_exists("parcelle_propriete", $context) ? $context["parcelle_propriete"] : (function () { throw new RuntimeError('Variable "parcelle_propriete" does not exist.', 18, $this->source); })()), "image", [], "any", false, false, false, 18))), "html", null, true);
+            yield "\" 
+                             class=\"rounded shadow-sm border\" width=\"200\" height=\"150\" 
+                             alt=\"Image de la parcelle\">
+                    ";
+        } else {
+            // line 22
+            yield "                        <img src=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("uploads/images/default.png"), "html", null, true);
+            yield "\" 
+                             class=\"rounded shadow-sm border\" width=\"200\" height=\"150\" 
+                             alt=\"Image par défaut\">
+                    ";
+        }
+        // line 26
+        yield "                </div>
+
+                <!-- Champs du formulaire avec erreurs en rouge -->
+                <div class=\"mb-3\">
+                    ";
+        // line 30
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 30, $this->source); })()), "titre", [], "any", false, false, false, 30), 'label', ["label_attr" => ["class" => "form-label fw-semibold"], "label" => "Titre"]);
+        yield "
+                    ";
+        // line 31
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 31, $this->source); })()), "titre", [], "any", false, false, false, 31), 'widget', ["attr" => ["class" => "form-control shadow-sm"]]);
+        yield "
+                    <div class=\"invalid-feedback d-block text-danger\"> ";
+        // line 32
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 32, $this->source); })()), "titre", [], "any", false, false, false, 32), 'errors');
+        yield " </div>
+                </div>
+
+                <div class=\"mb-3\">
+                    ";
+        // line 36
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 36, $this->source); })()), "description", [], "any", false, false, false, 36), 'label', ["label_attr" => ["class" => "form-label fw-semibold"], "label" => "Description"]);
+        yield "
+                    ";
+        // line 37
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 37, $this->source); })()), "description", [], "any", false, false, false, 37), 'widget', ["attr" => ["class" => "form-control shadow-sm", "rows" => "3"]]);
+        yield "
+                    <div class=\"invalid-feedback d-block text-danger\"> ";
+        // line 38
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 38, $this->source); })()), "description", [], "any", false, false, false, 38), 'errors');
+        yield " </div>
+                </div>
+
+                <div class=\"row\">
+                    <div class=\"col-md-6 mb-3\">
+                        ";
+        // line 43
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 43, $this->source); })()), "prix", [], "any", false, false, false, 43), 'label', ["label_attr" => ["class" => "form-label fw-semibold"], "label" => "Prix"]);
+        yield "
+                        ";
+        // line 44
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 44, $this->source); })()), "prix", [], "any", false, false, false, 44), 'widget', ["attr" => ["class" => "form-control shadow-sm"]]);
+        yield "
+                        <div class=\"invalid-feedback d-block text-danger\"> ";
+        // line 45
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 45, $this->source); })()), "prix", [], "any", false, false, false, 45), 'errors');
+        yield " </div>
+                    </div>
+                    <div class=\"col-md-6 mb-3\">
+                        ";
+        // line 48
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 48, $this->source); })()), "status", [], "any", false, false, false, 48), 'label', ["label_attr" => ["class" => "form-label fw-semibold"], "label" => "Status"]);
+        yield "
+                        ";
+        // line 49
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 49, $this->source); })()), "status", [], "any", false, false, false, 49), 'widget', ["attr" => ["class" => "form-select shadow-sm"]]);
+        yield "
+                        <div class=\"invalid-feedback d-block text-danger\"> ";
+        // line 50
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 50, $this->source); })()), "status", [], "any", false, false, false, 50), 'errors');
+        yield " </div>
+                    </div>
+                </div>
+
+                <div class=\"row\">
+                    <div class=\"col-md-6 mb-3\">
+                        ";
+        // line 56
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 56, $this->source); })()), "emplacement", [], "any", false, false, false, 56), 'label', ["label_attr" => ["class" => "form-label fw-semibold"], "label" => "Emplacement"]);
+        yield "
+                        ";
+        // line 57
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 57, $this->source); })()), "emplacement", [], "any", false, false, false, 57), 'widget', ["attr" => ["class" => "form-control shadow-sm"]]);
+        yield "
+                        <div class=\"invalid-feedback d-block text-danger\"> ";
+        // line 58
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 58, $this->source); })()), "emplacement", [], "any", false, false, false, 58), 'errors');
+        yield " </div>
+                    </div>
+                    <div class=\"col-md-6 mb-3\">
+                        ";
+        // line 61
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 61, $this->source); })()), "taille", [], "any", false, false, false, 61), 'label', ["label_attr" => ["class" => "form-label fw-semibold"], "label" => "Taille"]);
+        yield "
+                        ";
+        // line 62
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 62, $this->source); })()), "taille", [], "any", false, false, false, 62), 'widget', ["attr" => ["class" => "form-control shadow-sm"]]);
+        yield "
+                        <div class=\"invalid-feedback d-block text-danger\"> ";
+        // line 63
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 63, $this->source); })()), "taille", [], "any", false, false, false, 63), 'errors');
+        yield " </div>
+                    </div>
+                </div>
+
+                <div class=\"row\">
+                    <div class=\"col-md-6 mb-3\">
+                        ";
+        // line 69
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 69, $this->source); })()), "date_creation_annonce", [], "any", false, false, false, 69), 'label', ["label_attr" => ["class" => "form-label fw-semibold"], "label" => "Date de création"]);
+        yield "
+                        ";
+        // line 70
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 70, $this->source); })()), "date_creation_annonce", [], "any", false, false, false, 70), 'widget', ["attr" => ["class" => "form-control shadow-sm"]]);
+        yield "
+                        <div class=\"invalid-feedback d-block text-danger\"> ";
+        // line 71
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 71, $this->source); })()), "date_creation_annonce", [], "any", false, false, false, 71), 'errors');
+        yield " </div>
+                    </div>
+                    <div class=\"col-md-6 mb-3\">
+                        ";
+        // line 74
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 74, $this->source); })()), "date_misajour_annonce", [], "any", false, false, false, 74), 'label', ["label_attr" => ["class" => "form-label fw-semibold"], "label" => "Date de mise à jour"]);
+        yield "
+                        ";
+        // line 75
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 75, $this->source); })()), "date_misajour_annonce", [], "any", false, false, false, 75), 'widget', ["attr" => ["class" => "form-control shadow-sm"]]);
+        yield "
+                        <div class=\"invalid-feedback d-block text-danger\"> ";
+        // line 76
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 76, $this->source); })()), "date_misajour_annonce", [], "any", false, false, false, 76), 'errors');
+        yield " </div>
+                    </div>
+                </div>
+
+                <div class=\"row\">
+                    <div class=\"col-md-6 mb-3\">
+                        ";
+        // line 82
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 82, $this->source); })()), "nom_proprietaire", [], "any", false, false, false, 82), 'label', ["label_attr" => ["class" => "form-label fw-semibold"], "label" => "Nom du propriétaire"]);
+        yield "
+                        ";
+        // line 83
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 83, $this->source); })()), "nom_proprietaire", [], "any", false, false, false, 83), 'widget', ["attr" => ["class" => "form-control shadow-sm"]]);
+        yield "
+                        <div class=\"invalid-feedback d-block text-danger\"> ";
+        // line 84
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 84, $this->source); })()), "nom_proprietaire", [], "any", false, false, false, 84), 'errors');
+        yield " </div>
+                    </div>
+                    <div class=\"col-md-6 mb-3\">
+                        ";
+        // line 87
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 87, $this->source); })()), "contact_proprietaire", [], "any", false, false, false, 87), 'label', ["label_attr" => ["class" => "form-label fw-semibold"], "label" => "Contact du propriétaire"]);
+        yield "
+                        ";
+        // line 88
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 88, $this->source); })()), "contact_proprietaire", [], "any", false, false, false, 88), 'widget', ["attr" => ["class" => "form-control shadow-sm"]]);
+        yield "
+                        <div class=\"invalid-feedback d-block text-danger\"> ";
+        // line 89
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 89, $this->source); })()), "contact_proprietaire", [], "any", false, false, false, 89), 'errors');
+        yield " </div>
+                    </div>
+                </div>
+
+                <!-- Upload image -->
+                <div class=\"mb-3\">
+                    <label for=\"image\" class=\"form-label fw-semibold\">Image de la Parcelle</label>
+                    <input type=\"file\" name=\"parcelle_propriete[image]\" id=\"image\" class=\"form-control shadow-sm\">
+                    <div class=\"invalid-feedback d-block text-danger\"> ";
+        // line 97
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 97, $this->source); })()), "image", [], "any", false, false, false, 97), 'errors');
+        yield " </div>
+                </div>
+
+                <!-- Bouton de mise à jour -->
+                <div class=\"text-center mt-4\">
+                    <button type=\"submit\" class=\"btn btn-primary btn-lg shadow-sm\">
+                        <i class=\"fas fa-save me-2\"></i>Mettre à jour
+                    </button>
+                </div>
+                
+                ";
+        // line 107
+        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 107, $this->source); })()), 'form_end');
+        yield "  
+            </div>
+        </div>
+    </div>
+
+    <!-- Bouton de retour à la liste -->
+    <div class=\"text-center mt-4\">
+        <a href=\"";
+        // line 114
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_parcelle_proprietes_index");
-        yield "\" class=\"btn btn-secondary\">Retour à la liste</a>
-        </div>
+        yield "\" class=\"btn btn-secondary btn-lg shadow-sm\">
+            <i class=\"fas fa-arrow-left me-2\"></i>Retour à la liste
+        </a>
+    </div>
 
-        <div class=\"text-center mt-3\">
-            ";
-        // line 64
+    <!-- Formulaire de suppression -->
+    <div class=\"text-center mt-3\">
+        ";
+        // line 121
         yield Twig\Extension\CoreExtension::include($this->env, $context, "parcelle_proprietes/_delete_form.html.twig");
         yield "
-        </div>
     </div>
-
- <!-- Footer Start -->
-        <div class=\"container-fluid bg-dark text-white-50 footer pt-5 mt-5\">
-            <div class=\"container py-5\">
-                <div class=\"pb-4 mb-4\" style=\"border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;\">
-                    <div class=\"row g-4\">
-                        <div class=\"col-lg-3\">
-                            <a href=\"#\">
-                                <h1 class=\"text-primary mb-0\">Fruitables</h1>
-                                <p class=\"text-secondary mb-0\">Fresh products</p>
-                            </a>
-                        </div>
-                        <div class=\"col-lg-6\">
-                            <div class=\"position-relative mx-auto\">
-                                <input class=\"form-control border-0 w-100 py-3 px-4 rounded-pill\" type=\"number\" placeholder=\"Your Email\">
-                                <button type=\"submit\" class=\"btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white\" style=\"top: 0; right: 0;\">Subscribe Now</button>
-                            </div>
-                        </div>
-                        <div class=\"col-lg-3\">
-                            <div class=\"d-flex justify-content-end pt-3\">
-                                <a class=\"btn  btn-outline-secondary me-2 btn-md-square rounded-circle\" href=\"\"><i class=\"fab fa-twitter\"></i></a>
-                                <a class=\"btn btn-outline-secondary me-2 btn-md-square rounded-circle\" href=\"\"><i class=\"fab fa-facebook-f\"></i></a>
-                                <a class=\"btn btn-outline-secondary me-2 btn-md-square rounded-circle\" href=\"\"><i class=\"fab fa-youtube\"></i></a>
-                                <a class=\"btn btn-outline-secondary btn-md-square rounded-circle\" href=\"\"><i class=\"fab fa-linkedin-in\"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class=\"row g-5\">
-                    <div class=\"col-lg-3 col-md-6\">
-                        <div class=\"footer-item\">
-                            <h4 class=\"text-light mb-3\">Why People Like us!</h4>
-                            <p class=\"mb-4\">typesetting, remaining essentially unchanged. It was 
-                                popularised in the 1960s with the like Aldus PageMaker including of Lorem Ipsum.</p>
-                            <a href=\"\" class=\"btn border-secondary py-2 px-4 rounded-pill text-primary\">Read More</a>
-                        </div>
-                    </div>
-                    <div class=\"col-lg-3 col-md-6\">
-                        <div class=\"d-flex flex-column text-start footer-item\">
-                            <h4 class=\"text-light mb-3\">Shop Info</h4>
-                            <a class=\"btn-link\" href=\"\">About Us</a>
-                            <a class=\"btn-link\" href=\"\">Contact Us</a>
-                            <a class=\"btn-link\" href=\"\">Privacy Policy</a>
-                            <a class=\"btn-link\" href=\"\">Terms & Condition</a>
-                            <a class=\"btn-link\" href=\"\">Return Policy</a>
-                            <a class=\"btn-link\" href=\"\">FAQs & Help</a>
-                        </div>
-                    </div>
-                    <div class=\"col-lg-3 col-md-6\">
-                        <div class=\"d-flex flex-column text-start footer-item\">
-                            <h4 class=\"text-light mb-3\">Account</h4>
-                            <a class=\"btn-link\" href=\"\">My Account</a>
-                            <a class=\"btn-link\" href=\"\">Shop details</a>
-                            <a class=\"btn-link\" href=\"\">Shopping Cart</a>
-                            <a class=\"btn-link\" href=\"\">Wishlist</a>
-                            <a class=\"btn-link\" href=\"\">Order History</a>
-                            <a class=\"btn-link\" href=\"\">International Orders</a>
-                        </div>
-                    </div>
-                    <div class=\"col-lg-3 col-md-6\">
-                        <div class=\"footer-item\">
-                            <h4 class=\"text-light mb-3\">Contact</h4>
-                            <p>Address: 1429 Netus Rd, NY 48247</p>
-                            <p>Email: Example@gmail.com</p>
-                            <p>Phone: +0123 4567 8910</p>
-                            <p>Payment Accepted</p>
-                            <img src=\"";
-        // line 133
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/payment.png"), "html", null, true);
-        yield "\" class=\"img-fluid\" alt=\"\">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Footer End -->
-
-        <!-- Copyright Start -->
-        <div class=\"container-fluid copyright bg-dark py-4\">
-            <div class=\"container\">
-                <div class=\"row\">
-                    <div class=\"col-md-6 text-center text-md-start mb-3 mb-md-0\">
-                        <span class=\"text-light\"><a href=\"#\"><i class=\"fas fa-copyright text-light me-2\"></i>Your Site Name</a>, All right reserved.</span>
-                    </div>
-                    <div class=\"col-md-6 my-auto text-center text-md-end text-white\">
-                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                        <!--/*** you can purchase the Credit Removal License from \"https://htmlcodex.com/credit-removal\". ***/-->
-                        Designed By <a class=\"border-bottom\" href=\"https://htmlcodex.com\">HTML Codex</a> Distributed By <a class=\"border-bottom\" href=\"https://themewagon.com\">ThemeWagon</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Copyright End -->
-
-
-<!-- Back to Top -->
-        <a href=\"#\" class=\"btn btn-primary border-3 border-primary rounded-circle back-to-top\"><i class=\"fa fa-arrow-up\"></i></a>   
-
-
+</div>
 
 ";
         
@@ -326,7 +363,7 @@ class __TwigTemplate_9bc008c77268ed58386c10aab0eeae0b extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  265 => 133,  193 => 64,  186 => 60,  179 => 56,  164 => 44,  158 => 41,  154 => 40,  150 => 39,  146 => 38,  139 => 34,  135 => 33,  131 => 32,  120 => 24,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  330 => 121,  320 => 114,  310 => 107,  297 => 97,  286 => 89,  282 => 88,  278 => 87,  272 => 84,  268 => 83,  264 => 82,  255 => 76,  251 => 75,  247 => 74,  241 => 71,  237 => 70,  233 => 69,  224 => 63,  220 => 62,  216 => 61,  210 => 58,  206 => 57,  202 => 56,  193 => 50,  189 => 49,  185 => 48,  179 => 45,  175 => 44,  171 => 43,  163 => 38,  159 => 37,  155 => 36,  148 => 32,  144 => 31,  140 => 30,  134 => 26,  126 => 22,  118 => 18,  116 => 17,  109 => 13,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -336,166 +373,126 @@ class __TwigTemplate_9bc008c77268ed58386c10aab0eeae0b extends Template
 {% block title %}Modifier une Parcelle ou Propriété{% endblock %}
 
 {% block body %}
-<!-- Navbar Start -->
-<div class=\"container-fluid fixed-top\">
-    <div class=\"container topbar bg-primary d-none d-lg-block\">
-        <div class=\"d-flex justify-content-between\">
-            <div class=\"top-info ps-2\">
-                <small class=\"me-3\"><i class=\"fas fa-map-marker-alt me-2 text-secondary\"></i> <a href=\"#\" class=\"text-white\">123 Street, New York</a></small>
-                <small class=\"me-3\"><i class=\"fas fa-envelope me-2 text-secondary\"></i><a href=\"#\" class=\"text-white\">Email@Example.com</a></small>
-            </div>
-            <div class=\"top-link pe-2\">
-                <a href=\"#\" class=\"text-white\"><small class=\"text-white mx-2\">Privacy Policy</small>/</a>
-                <a href=\"#\" class=\"text-white\"><small class=\"text-white mx-2\">Terms of Use</small>/</a>
-                <a href=\"#\" class=\"text-white\"><small class=\"text-white ms-2\">Sales and Refunds</small></a>
+<div class=\"container mt-5 pt-5\">
+    <h1 class=\"text-center text-primary fw-bold mb-4\">Modifier une Parcelle ou Propriété</h1>
+
+    <div class=\"row justify-content-center\">
+        <div class=\"col-md-8 col-lg-6\">
+            <div class=\"card p-4 shadow-lg border-0\">
+                
+                {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'needs-validation'}}) }}
+
+                <!-- Affichage de l'image actuelle -->
+                <div class=\"text-center mb-4\">
+                    {% if parcelle_propriete.image %}
+                        <img src=\"{{ asset('uploads/images/' ~ parcelle_propriete.image) }}\" 
+                             class=\"rounded shadow-sm border\" width=\"200\" height=\"150\" 
+                             alt=\"Image de la parcelle\">
+                    {% else %}
+                        <img src=\"{{ asset('uploads/images/default.png') }}\" 
+                             class=\"rounded shadow-sm border\" width=\"200\" height=\"150\" 
+                             alt=\"Image par défaut\">
+                    {% endif %}
+                </div>
+
+                <!-- Champs du formulaire avec erreurs en rouge -->
+                <div class=\"mb-3\">
+                    {{ form_label(form.titre, 'Titre', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
+                    {{ form_widget(form.titre, {'attr': {'class': 'form-control shadow-sm'}}) }}
+                    <div class=\"invalid-feedback d-block text-danger\"> {{ form_errors(form.titre) }} </div>
+                </div>
+
+                <div class=\"mb-3\">
+                    {{ form_label(form.description, 'Description', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
+                    {{ form_widget(form.description, {'attr': {'class': 'form-control shadow-sm', 'rows': '3'}}) }}
+                    <div class=\"invalid-feedback d-block text-danger\"> {{ form_errors(form.description) }} </div>
+                </div>
+
+                <div class=\"row\">
+                    <div class=\"col-md-6 mb-3\">
+                        {{ form_label(form.prix, 'Prix', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
+                        {{ form_widget(form.prix, {'attr': {'class': 'form-control shadow-sm'}}) }}
+                        <div class=\"invalid-feedback d-block text-danger\"> {{ form_errors(form.prix) }} </div>
+                    </div>
+                    <div class=\"col-md-6 mb-3\">
+                        {{ form_label(form.status, 'Status', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
+                        {{ form_widget(form.status, {'attr': {'class': 'form-select shadow-sm'}}) }}
+                        <div class=\"invalid-feedback d-block text-danger\"> {{ form_errors(form.status) }} </div>
+                    </div>
+                </div>
+
+                <div class=\"row\">
+                    <div class=\"col-md-6 mb-3\">
+                        {{ form_label(form.emplacement, 'Emplacement', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
+                        {{ form_widget(form.emplacement, {'attr': {'class': 'form-control shadow-sm'}}) }}
+                        <div class=\"invalid-feedback d-block text-danger\"> {{ form_errors(form.emplacement) }} </div>
+                    </div>
+                    <div class=\"col-md-6 mb-3\">
+                        {{ form_label(form.taille, 'Taille', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
+                        {{ form_widget(form.taille, {'attr': {'class': 'form-control shadow-sm'}}) }}
+                        <div class=\"invalid-feedback d-block text-danger\"> {{ form_errors(form.taille) }} </div>
+                    </div>
+                </div>
+
+                <div class=\"row\">
+                    <div class=\"col-md-6 mb-3\">
+                        {{ form_label(form.date_creation_annonce, 'Date de création', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
+                        {{ form_widget(form.date_creation_annonce, {'attr': {'class': 'form-control shadow-sm'}}) }}
+                        <div class=\"invalid-feedback d-block text-danger\"> {{ form_errors(form.date_creation_annonce) }} </div>
+                    </div>
+                    <div class=\"col-md-6 mb-3\">
+                        {{ form_label(form.date_misajour_annonce, 'Date de mise à jour', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
+                        {{ form_widget(form.date_misajour_annonce, {'attr': {'class': 'form-control shadow-sm'}}) }}
+                        <div class=\"invalid-feedback d-block text-danger\"> {{ form_errors(form.date_misajour_annonce) }} </div>
+                    </div>
+                </div>
+
+                <div class=\"row\">
+                    <div class=\"col-md-6 mb-3\">
+                        {{ form_label(form.nom_proprietaire, 'Nom du propriétaire', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
+                        {{ form_widget(form.nom_proprietaire, {'attr': {'class': 'form-control shadow-sm'}}) }}
+                        <div class=\"invalid-feedback d-block text-danger\"> {{ form_errors(form.nom_proprietaire) }} </div>
+                    </div>
+                    <div class=\"col-md-6 mb-3\">
+                        {{ form_label(form.contact_proprietaire, 'Contact du propriétaire', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
+                        {{ form_widget(form.contact_proprietaire, {'attr': {'class': 'form-control shadow-sm'}}) }}
+                        <div class=\"invalid-feedback d-block text-danger\"> {{ form_errors(form.contact_proprietaire) }} </div>
+                    </div>
+                </div>
+
+                <!-- Upload image -->
+                <div class=\"mb-3\">
+                    <label for=\"image\" class=\"form-label fw-semibold\">Image de la Parcelle</label>
+                    <input type=\"file\" name=\"parcelle_propriete[image]\" id=\"image\" class=\"form-control shadow-sm\">
+                    <div class=\"invalid-feedback d-block text-danger\"> {{ form_errors(form.image) }} </div>
+                </div>
+
+                <!-- Bouton de mise à jour -->
+                <div class=\"text-center mt-4\">
+                    <button type=\"submit\" class=\"btn btn-primary btn-lg shadow-sm\">
+                        <i class=\"fas fa-save me-2\"></i>Mettre à jour
+                    </button>
+                </div>
+                
+                {{ form_end(form) }}  
             </div>
         </div>
     </div>
 
-    <div class=\"container px-0\">
-        <nav class=\"navbar navbar-light bg-white navbar-expand-xl\">
-            <a href=\"{{ asset('index.html') }}\" class=\"navbar-brand\">
-                <h1 class=\"text-primary display-6\">Fruitables</h1>
-            </a>
-            <button class=\"navbar-toggler py-2 px-3\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarCollapse\">
-                <span class=\"fa fa-bars text-primary\"></span>
-            </button>
-            <div class=\"collapse navbar-collapse bg-white\" id=\"navbarCollapse\">
-                <div class=\"navbar-nav mx-auto\">
-                    <a href=\"{{ path('app_page') }}\" class=\"nav-item nav-link active\">Home</a>
-                    <a href=\"{{ path('app_shop') }}\" class=\"nav-item nav-link\">Shop</a>
-                    <a href=\"{{ path('app_shop_detail') }}\" class=\"nav-item nav-link\">Shop Detail</a>
-                    <div class=\"nav-item dropdown\">
-                        <a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">Pages</a>
-                        <div class=\"dropdown-menu m-0 bg-secondary rounded-0\">
-                            <a href=\"{{ path('app_cart') }}\" class=\"dropdown-item\">Cart</a>
-                            <a href=\"{{ path('app_chackout') }}\" class=\"dropdown-item\">Checkout</a>
-                            <a href=\"{{ path('app_testimonial') }}\" class=\"dropdown-item\">Testimonial</a>
-                            <a href=\"{{ path('app_404') }}\" class=\"dropdown-item\">404 Page</a>
-                        </div>
-                    </div>
-                    <a href=\"{{ path('app_contact') }}\" class=\"nav-item nav-link\">Contact</a>
-                </div>
-            </div>
-        </nav>
+    <!-- Bouton de retour à la liste -->
+    <div class=\"text-center mt-4\">
+        <a href=\"{{ path('app_parcelle_proprietes_index') }}\" class=\"btn btn-secondary btn-lg shadow-sm\">
+            <i class=\"fas fa-arrow-left me-2\"></i>Retour à la liste
+        </a>
+    </div>
+
+    <!-- Formulaire de suppression -->
+    <div class=\"text-center mt-3\">
+        {{ include('parcelle_proprietes/_delete_form.html.twig') }}
     </div>
 </div>
-<!-- Navbar End -->
-
-<div class=\"container mt-5 pt-5\">
-        <h1 class=\"text-center\">Modifier une Parcelle ou Propriété</h1>
-
-        <div class=\"card p-4 mt-3\">
-            {{ include('parcelle_proprietes/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
-        </div>
-
-        <div class=\"text-center mt-3\">
-            <a href=\"{{ path('app_parcelle_proprietes_index') }}\" class=\"btn btn-secondary\">Retour à la liste</a>
-        </div>
-
-        <div class=\"text-center mt-3\">
-            {{ include('parcelle_proprietes/_delete_form.html.twig') }}
-        </div>
-    </div>
-
- <!-- Footer Start -->
-        <div class=\"container-fluid bg-dark text-white-50 footer pt-5 mt-5\">
-            <div class=\"container py-5\">
-                <div class=\"pb-4 mb-4\" style=\"border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;\">
-                    <div class=\"row g-4\">
-                        <div class=\"col-lg-3\">
-                            <a href=\"#\">
-                                <h1 class=\"text-primary mb-0\">Fruitables</h1>
-                                <p class=\"text-secondary mb-0\">Fresh products</p>
-                            </a>
-                        </div>
-                        <div class=\"col-lg-6\">
-                            <div class=\"position-relative mx-auto\">
-                                <input class=\"form-control border-0 w-100 py-3 px-4 rounded-pill\" type=\"number\" placeholder=\"Your Email\">
-                                <button type=\"submit\" class=\"btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white\" style=\"top: 0; right: 0;\">Subscribe Now</button>
-                            </div>
-                        </div>
-                        <div class=\"col-lg-3\">
-                            <div class=\"d-flex justify-content-end pt-3\">
-                                <a class=\"btn  btn-outline-secondary me-2 btn-md-square rounded-circle\" href=\"\"><i class=\"fab fa-twitter\"></i></a>
-                                <a class=\"btn btn-outline-secondary me-2 btn-md-square rounded-circle\" href=\"\"><i class=\"fab fa-facebook-f\"></i></a>
-                                <a class=\"btn btn-outline-secondary me-2 btn-md-square rounded-circle\" href=\"\"><i class=\"fab fa-youtube\"></i></a>
-                                <a class=\"btn btn-outline-secondary btn-md-square rounded-circle\" href=\"\"><i class=\"fab fa-linkedin-in\"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class=\"row g-5\">
-                    <div class=\"col-lg-3 col-md-6\">
-                        <div class=\"footer-item\">
-                            <h4 class=\"text-light mb-3\">Why People Like us!</h4>
-                            <p class=\"mb-4\">typesetting, remaining essentially unchanged. It was 
-                                popularised in the 1960s with the like Aldus PageMaker including of Lorem Ipsum.</p>
-                            <a href=\"\" class=\"btn border-secondary py-2 px-4 rounded-pill text-primary\">Read More</a>
-                        </div>
-                    </div>
-                    <div class=\"col-lg-3 col-md-6\">
-                        <div class=\"d-flex flex-column text-start footer-item\">
-                            <h4 class=\"text-light mb-3\">Shop Info</h4>
-                            <a class=\"btn-link\" href=\"\">About Us</a>
-                            <a class=\"btn-link\" href=\"\">Contact Us</a>
-                            <a class=\"btn-link\" href=\"\">Privacy Policy</a>
-                            <a class=\"btn-link\" href=\"\">Terms & Condition</a>
-                            <a class=\"btn-link\" href=\"\">Return Policy</a>
-                            <a class=\"btn-link\" href=\"\">FAQs & Help</a>
-                        </div>
-                    </div>
-                    <div class=\"col-lg-3 col-md-6\">
-                        <div class=\"d-flex flex-column text-start footer-item\">
-                            <h4 class=\"text-light mb-3\">Account</h4>
-                            <a class=\"btn-link\" href=\"\">My Account</a>
-                            <a class=\"btn-link\" href=\"\">Shop details</a>
-                            <a class=\"btn-link\" href=\"\">Shopping Cart</a>
-                            <a class=\"btn-link\" href=\"\">Wishlist</a>
-                            <a class=\"btn-link\" href=\"\">Order History</a>
-                            <a class=\"btn-link\" href=\"\">International Orders</a>
-                        </div>
-                    </div>
-                    <div class=\"col-lg-3 col-md-6\">
-                        <div class=\"footer-item\">
-                            <h4 class=\"text-light mb-3\">Contact</h4>
-                            <p>Address: 1429 Netus Rd, NY 48247</p>
-                            <p>Email: Example@gmail.com</p>
-                            <p>Phone: +0123 4567 8910</p>
-                            <p>Payment Accepted</p>
-                            <img src=\"{{asset('frontoffice/img/payment.png')}}\" class=\"img-fluid\" alt=\"\">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Footer End -->
-
-        <!-- Copyright Start -->
-        <div class=\"container-fluid copyright bg-dark py-4\">
-            <div class=\"container\">
-                <div class=\"row\">
-                    <div class=\"col-md-6 text-center text-md-start mb-3 mb-md-0\">
-                        <span class=\"text-light\"><a href=\"#\"><i class=\"fas fa-copyright text-light me-2\"></i>Your Site Name</a>, All right reserved.</span>
-                    </div>
-                    <div class=\"col-md-6 my-auto text-center text-md-end text-white\">
-                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                        <!--/*** you can purchase the Credit Removal License from \"https://htmlcodex.com/credit-removal\". ***/-->
-                        Designed By <a class=\"border-bottom\" href=\"https://htmlcodex.com\">HTML Codex</a> Distributed By <a class=\"border-bottom\" href=\"https://themewagon.com\">ThemeWagon</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Copyright End -->
-
-
-<!-- Back to Top -->
-        <a href=\"#\" class=\"btn btn-primary border-3 border-primary rounded-circle back-to-top\"><i class=\"fa fa-arrow-up\"></i></a>   
-
-
 
 {% endblock %}
-", "parcelle_proprietes/edit.html.twig", "C:\\Users\\romdh\\OneDrive\\Bureau\\PI2025\\Reaptn\\templates\\parcelle_proprietes\\edit.html.twig");
+", "parcelle_proprietes/edit.html.twig", "C:\\Users\\DELL\\Downloads\\projet\\Reaptn\\templates\\parcelle_proprietes\\edit.html.twig");
     }
 }
