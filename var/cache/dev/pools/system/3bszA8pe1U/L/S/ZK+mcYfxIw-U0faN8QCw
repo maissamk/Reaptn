@@ -1,0 +1,3 @@
+<?php //cf65745b0149fb76cc4207279827fee4
+
+return [PHP_INT_MAX, 'frontoffice/css/style.css'];

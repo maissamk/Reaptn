@@ -97,185 +97,172 @@ class __TwigTemplate_f6487b724c6e3f09d6eabf8417d0ce59 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        yield "<!-- Navbar Start -->
-<div class=\"container-fluid fixed-top\">
-    <div class=\"container topbar bg-primary d-none d-lg-block\">
-        <div class=\"d-flex justify-content-between\">
-            <div class=\"top-info ps-2\">
-                <small class=\"me-3\"><i class=\"fas fa-map-marker-alt me-2 text-secondary\"></i> <a href=\"#\" class=\"text-white\">123 Street, New York</a></small>
-                <small class=\"me-3\"><i class=\"fas fa-envelope me-2 text-secondary\"></i><a href=\"#\" class=\"text-white\">Email@Example.com</a></small>
-            </div>
-            <div class=\"top-link pe-2\">
-                <a href=\"#\" class=\"text-white\"><small class=\"text-white mx-2\">Privacy Policy</small>/</a>
-                <a href=\"#\" class=\"text-white\"><small class=\"text-white mx-2\">Terms of Use</small>/</a>
-                <a href=\"#\" class=\"text-white\"><small class=\"text-white ms-2\">Sales and Refunds</small></a>
-            </div>
-        </div>
-    </div>
+        yield "<!-- Contenu -->
+<div class=\"container mt-5 pt-5\">
+    <h1 class=\"text-center mb-4\" style=\"
+        margin-top: 120px;
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(45deg, #ff8c00, #ff2d55);
+        padding: 15px 30px;
+        border-radius: 10px;
+        display: inline-block;\">
+        🚜 Matériel agricole A louer 🛠️
+    </h1>
 
-    <div class=\"container px-0\">
-        <nav class=\"navbar navbar-light bg-white navbar-expand-xl\">
-            <a href=\"";
-        // line 24
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("index.html"), "html", null, true);
-        yield "\" class=\"navbar-brand\">
-                <h1 class=\"text-primary display-6\">Fruitables</h1>
-            </a>
-            <button class=\"navbar-toggler py-2 px-3\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarCollapse\">
-                <span class=\"fa fa-bars text-primary\"></span>
-            </button>
-            <div class=\"collapse navbar-collapse bg-white\" id=\"navbarCollapse\">
-                <div class=\"navbar-nav mx-auto\">
-                    <a href=\"";
-        // line 32
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_page");
-        yield "\" class=\"nav-item nav-link active\">Home</a>
-                    <a href=\"";
-        // line 33
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_shop");
-        yield "\" class=\"nav-item nav-link\">Shop</a>
-                    <a href=\"";
-        // line 34
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_shop_detail");
-        yield "\" class=\"nav-item nav-link\">Shop Detail</a>
-                    <div class=\"nav-item dropdown\">
-                        <a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">Pages</a>
-                        <div class=\"dropdown-menu m-0 bg-secondary rounded-0\">
+    <div class=\"row\">
+        ";
+        // line 22
+        $context['_parent'] = $context;
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["materiellocations"]) || array_key_exists("materiellocations", $context) ? $context["materiellocations"] : (function () { throw new RuntimeError('Variable "materiellocations" does not exist.', 22, $this->source); })()));
+        $context['_iterated'] = false;
+        $context['loop'] = [
+          'parent' => $context['_parent'],
+          'index0' => 0,
+          'index'  => 1,
+          'first'  => true,
+        ];
+        if (is_array($context['_seq']) || (is_object($context['_seq']) && $context['_seq'] instanceof \Countable)) {
+            $length = count($context['_seq']);
+            $context['loop']['revindex0'] = $length - 1;
+            $context['loop']['revindex'] = $length;
+            $context['loop']['length'] = $length;
+            $context['loop']['last'] = 1 === $length;
+        }
+        foreach ($context['_seq'] as $context["_key"] => $context["materiellocation"]) {
+            // line 23
+            yield "            <div class=\"col-md-4 mb-4\">
+                <div class=\"position-relative border border-secondary rounded shadow-sm card-container\">
+                    <!-- Badge Catégorie -->
+                    <div class=\"text-white bg-secondary px-3 py-1 rounded position-absolute\" style=\"top: 10px; left: 10px;\">
+                        Location
+                    </div>
+
+                    <!-- Image du matériel -->
+                    <img src=\"";
+            // line 31
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(((CoreExtension::getAttribute($this->env, $this->source, $context["materiellocation"], "image", [], "any", false, false, false, 31)) ? (("uploads/images/" . CoreExtension::getAttribute($this->env, $this->source, $context["materiellocation"], "image", [], "any", false, false, false, 31))) : ("images/default.png"))), "html", null, true);
+            yield "\" 
+                         class=\"img-fluid card-img-fixed\" alt=\"";
+            // line 32
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materiellocation"], "nom", [], "any", false, false, false, 32), "html", null, true);
+            yield "\"
+                         loading=\"lazy\">
+
+                    <!-- Détails du matériel -->
+                    <div class=\"p-4 border border-secondary border-top-0 rounded-bottom\">
+                        <h4>";
+            // line 37
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materiellocation"], "nom", [], "any", false, false, false, 37), "html", null, true);
+            yield "</h4>
+                        <p>";
+            // line 38
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materiellocation"], "description", [], "any", false, false, false, 38), "html", null, true);
+            yield "</p>
+
+                        <div class=\"d-flex justify-content-between align-items-center\">
+                            <p class=\"text-dark fs-5 fw-bold mb-0\">";
+            // line 41
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materiellocation"], "prix", [], "any", false, false, false, 41), "html", null, true);
+            yield " DT</p>
+                            <a href=\"#\" class=\"btn border border-secondary rounded-pill px-3 text-primary\">
+                                <i class=\"fa fa-shopping-bag me-2 text-primary\"></i> Louer maintenant
+                            </a>
+                        </div>
+
+                        <!-- Boutons \"Show\", \"Edit\" et \"Delete\" -->
+                        <div class=\"d-flex justify-content-between mt-3\">
                             <a href=\"";
-        // line 38
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_cart");
-        yield "\" class=\"dropdown-item\">Cart</a>
+            // line 49
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materiellocation_show", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["materiellocation"], "id", [], "any", false, false, false, 49)]), "html", null, true);
+            yield "\" 
+                               class=\"btn btn-info btn-sm\">Plus de détails</a>
                             <a href=\"";
-        // line 39
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_chackout");
-        yield "\" class=\"dropdown-item\">Checkout</a>
-                            <a href=\"";
-        // line 40
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_testimonial");
-        yield "\" class=\"dropdown-item\">Testimonial</a>
-                            <a href=\"";
-        // line 41
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_404");
-        yield "\" class=\"dropdown-item\">404 Page</a>
+            // line 51
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materiellocation_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["materiellocation"], "id", [], "any", false, false, false, 51)]), "html", null, true);
+            yield "\" 
+                               class=\"btn btn-warning btn-sm\">Modifier</a>
+                               ";
+            // line 53
+            yield Twig\Extension\CoreExtension::include($this->env, $context, "materiellocation/_delete_form.html.twig");
+            yield "
                         </div>
                     </div>
-                    <a href=\"";
-        // line 44
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_contact");
-        yield "\" class=\"nav-item nav-link\">Contact</a>
                 </div>
             </div>
-        </nav>
-    </div>
-</div>
-<!-- Navbar End -->
-
-<div class=\"container mt-5 pt-5\">
-    <h1 class=\"mb-4\">Create New Contract</h1>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class=\"container mt-5\">
-        <h1 class=\"text-center mb-4\">Materiel agricole A louer</h1>
-
-        <div class=\"card p-4 shadow-sm\">
-            <h4 class=\"mb-4\">Materiellocations List</h4>
-
-            <table class=\"table table-bordered\">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Nom</th>
-                        <th>Prix</th>
-                        <th>Description</th>
-                        <th>Disponibilite</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ";
-        // line 93
-        $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["materiellocations"]) || array_key_exists("materiellocations", $context) ? $context["materiellocations"] : (function () { throw new RuntimeError('Variable "materiellocations" does not exist.', 93, $this->source); })()));
-        $context['_iterated'] = false;
-        foreach ($context['_seq'] as $context["_key"] => $context["materiellocation"]) {
-            // line 94
-            yield "                        <tr>
-                            <td>";
-            // line 95
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materiellocation"], "id", [], "any", false, false, false, 95), "html", null, true);
-            yield "</td>
-                            <td>";
-            // line 96
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materiellocation"], "nom", [], "any", false, false, false, 96), "html", null, true);
-            yield "</td>
-                            <td>";
-            // line 97
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materiellocation"], "prix", [], "any", false, false, false, 97), "html", null, true);
-            yield "</td>
-                            <td>";
-            // line 98
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materiellocation"], "description", [], "any", false, false, false, 98), "html", null, true);
-            yield "</td>
-                            <td>";
-            // line 99
-            yield ((CoreExtension::getAttribute($this->env, $this->source, $context["materiellocation"], "disponibilite", [], "any", false, false, false, 99)) ? ("Yes") : ("No"));
-            yield "</td>
-                            <td>
-                                <a href=\"";
-            // line 101
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materiellocation_show", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["materiellocation"], "id", [], "any", false, false, false, 101)]), "html", null, true);
-            yield "\" class=\"btn btn-info btn-sm\">Show</a>
-                                <a href=\"";
-            // line 102
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materiellocation_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["materiellocation"], "id", [], "any", false, false, false, 102)]), "html", null, true);
-            yield "\" class=\"btn btn-warning btn-sm\">Edit</a>
-                            </td>
-                        </tr>
-                    ";
+        ";
             $context['_iterated'] = true;
+            ++$context['loop']['index0'];
+            ++$context['loop']['index'];
+            $context['loop']['first'] = false;
+            if (isset($context['loop']['revindex0'], $context['loop']['revindex'])) {
+                --$context['loop']['revindex0'];
+                --$context['loop']['revindex'];
+                $context['loop']['last'] = 0 === $context['loop']['revindex0'];
+            }
         }
-        // line 109
+        // line 62
         if (!$context['_iterated']) {
-            // line 106
-            yield "                        <tr>
-                            <td colspan=\"6\" class=\"text-center\">No records found</td>
-                        </tr>
-                    ";
+            // line 59
+            yield "            <div class=\"col-12 text-center\">
+                <p>Aucun matériel disponible pour le moment.</p>
+            </div>
+        ";
         }
         $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_key'], $context['materiellocation'], $context['_parent'], $context['_iterated']);
+        unset($context['_seq'], $context['_key'], $context['materiellocation'], $context['_parent'], $context['_iterated'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 110
-        yield "                </tbody>
-            </table>
+        // line 63
+        yield "    </div>
+</div>
 
-            <div class=\"d-flex justify-content-between mt-4\">
-                <a href=\"";
-        // line 114
+<!-- Back to Top -->
+<a href=\"#\" class=\"btn btn-primary border-3 border-primary rounded-circle back-to-top\">
+    <i class=\"fa fa-arrow-up\"></i>
+</a>
+
+<div class=\"d-flex justify-content-center mt-4\">
+    <a href=\"";
+        // line 72
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materiellocation_new");
-        yield "\" class=\"btn btn-primary\">Create new</a>
-            </div>
-        </div>
-    </div>
+        yield "\" class=\"btn btn-success\" title=\"Ajouter un nouveau matériel\">
+        <i class=\"fas fa-plus-circle\"></i> Ajouter un nouveau matériel
+    </a>
+</div>
+
+<!-- Styles pour l'effet de zoom sur l'image -->
+<style>
+    /* Conteneur de la carte */
+    .card-container {
+        overflow: hidden;
+        border-radius: 8px;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    /* Image du matériel */
+    .card-img-fixed {
+        width: 100%;
+        height: 300px; /* Hauteur uniforme */
+        object-fit: cover; /* Remplit le conteneur sans déformation */
+        transition: transform 0.3s ease-in-out; /* Animation fluide */
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+
+    /* Effet de zoom au survol */
+    .card-container:hover .card-img-fixed {
+        transform: scale(1.1);
+    }
+
+    .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9999;
+    }
+</style>
 
 ";
         
@@ -308,7 +295,7 @@ class __TwigTemplate_f6487b724c6e3f09d6eabf8417d0ce59 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  274 => 114,  268 => 110,  259 => 106,  257 => 109,  249 => 102,  245 => 101,  240 => 99,  236 => 98,  232 => 97,  228 => 96,  224 => 95,  221 => 94,  216 => 93,  164 => 44,  158 => 41,  154 => 40,  150 => 39,  146 => 38,  139 => 34,  135 => 33,  131 => 32,  120 => 24,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  229 => 72,  218 => 63,  209 => 59,  207 => 62,  189 => 53,  184 => 51,  179 => 49,  168 => 41,  162 => 38,  158 => 37,  150 => 32,  146 => 31,  136 => 23,  118 => 22,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -318,118 +305,108 @@ class __TwigTemplate_f6487b724c6e3f09d6eabf8417d0ce59 extends Template
 {% block title %}Materiel location{% endblock %}
 
 {% block body %}
-<!-- Navbar Start -->
-<div class=\"container-fluid fixed-top\">
-    <div class=\"container topbar bg-primary d-none d-lg-block\">
-        <div class=\"d-flex justify-content-between\">
-            <div class=\"top-info ps-2\">
-                <small class=\"me-3\"><i class=\"fas fa-map-marker-alt me-2 text-secondary\"></i> <a href=\"#\" class=\"text-white\">123 Street, New York</a></small>
-                <small class=\"me-3\"><i class=\"fas fa-envelope me-2 text-secondary\"></i><a href=\"#\" class=\"text-white\">Email@Example.com</a></small>
-            </div>
-            <div class=\"top-link pe-2\">
-                <a href=\"#\" class=\"text-white\"><small class=\"text-white mx-2\">Privacy Policy</small>/</a>
-                <a href=\"#\" class=\"text-white\"><small class=\"text-white mx-2\">Terms of Use</small>/</a>
-                <a href=\"#\" class=\"text-white\"><small class=\"text-white ms-2\">Sales and Refunds</small></a>
-            </div>
-        </div>
-    </div>
+<!-- Contenu -->
+<div class=\"container mt-5 pt-5\">
+    <h1 class=\"text-center mb-4\" style=\"
+        margin-top: 120px;
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(45deg, #ff8c00, #ff2d55);
+        padding: 15px 30px;
+        border-radius: 10px;
+        display: inline-block;\">
+        🚜 Matériel agricole A louer 🛠️
+    </h1>
 
-    <div class=\"container px-0\">
-        <nav class=\"navbar navbar-light bg-white navbar-expand-xl\">
-            <a href=\"{{ asset('index.html') }}\" class=\"navbar-brand\">
-                <h1 class=\"text-primary display-6\">Fruitables</h1>
-            </a>
-            <button class=\"navbar-toggler py-2 px-3\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarCollapse\">
-                <span class=\"fa fa-bars text-primary\"></span>
-            </button>
-            <div class=\"collapse navbar-collapse bg-white\" id=\"navbarCollapse\">
-                <div class=\"navbar-nav mx-auto\">
-                    <a href=\"{{ path('app_page') }}\" class=\"nav-item nav-link active\">Home</a>
-                    <a href=\"{{ path('app_shop') }}\" class=\"nav-item nav-link\">Shop</a>
-                    <a href=\"{{ path('app_shop_detail') }}\" class=\"nav-item nav-link\">Shop Detail</a>
-                    <div class=\"nav-item dropdown\">
-                        <a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">Pages</a>
-                        <div class=\"dropdown-menu m-0 bg-secondary rounded-0\">
-                            <a href=\"{{ path('app_cart') }}\" class=\"dropdown-item\">Cart</a>
-                            <a href=\"{{ path('app_chackout') }}\" class=\"dropdown-item\">Checkout</a>
-                            <a href=\"{{ path('app_testimonial') }}\" class=\"dropdown-item\">Testimonial</a>
-                            <a href=\"{{ path('app_404') }}\" class=\"dropdown-item\">404 Page</a>
+    <div class=\"row\">
+        {% for materiellocation in materiellocations %}
+            <div class=\"col-md-4 mb-4\">
+                <div class=\"position-relative border border-secondary rounded shadow-sm card-container\">
+                    <!-- Badge Catégorie -->
+                    <div class=\"text-white bg-secondary px-3 py-1 rounded position-absolute\" style=\"top: 10px; left: 10px;\">
+                        Location
+                    </div>
+
+                    <!-- Image du matériel -->
+                    <img src=\"{{ asset(materiellocation.image ? 'uploads/images/' ~ materiellocation.image : 'images/default.png') }}\" 
+                         class=\"img-fluid card-img-fixed\" alt=\"{{ materiellocation.nom }}\"
+                         loading=\"lazy\">
+
+                    <!-- Détails du matériel -->
+                    <div class=\"p-4 border border-secondary border-top-0 rounded-bottom\">
+                        <h4>{{ materiellocation.nom }}</h4>
+                        <p>{{ materiellocation.description }}</p>
+
+                        <div class=\"d-flex justify-content-between align-items-center\">
+                            <p class=\"text-dark fs-5 fw-bold mb-0\">{{ materiellocation.prix }} DT</p>
+                            <a href=\"#\" class=\"btn border border-secondary rounded-pill px-3 text-primary\">
+                                <i class=\"fa fa-shopping-bag me-2 text-primary\"></i> Louer maintenant
+                            </a>
+                        </div>
+
+                        <!-- Boutons \"Show\", \"Edit\" et \"Delete\" -->
+                        <div class=\"d-flex justify-content-between mt-3\">
+                            <a href=\"{{ path('app_materiellocation_show', {'id': materiellocation.id}) }}\" 
+                               class=\"btn btn-info btn-sm\">Plus de détails</a>
+                            <a href=\"{{ path('app_materiellocation_edit', {'id': materiellocation.id}) }}\" 
+                               class=\"btn btn-warning btn-sm\">Modifier</a>
+                               {{ include('materiellocation/_delete_form.html.twig') }}
                         </div>
                     </div>
-                    <a href=\"{{ path('app_contact') }}\" class=\"nav-item nav-link\">Contact</a>
                 </div>
             </div>
-        </nav>
+        {% else %}
+            <div class=\"col-12 text-center\">
+                <p>Aucun matériel disponible pour le moment.</p>
+            </div>
+        {% endfor %}
     </div>
 </div>
-<!-- Navbar End -->
 
-<div class=\"container mt-5 pt-5\">
-    <h1 class=\"mb-4\">Create New Contract</h1>
+<!-- Back to Top -->
+<a href=\"#\" class=\"btn btn-primary border-3 border-primary rounded-circle back-to-top\">
+    <i class=\"fa fa-arrow-up\"></i>
+</a>
 
+<div class=\"d-flex justify-content-center mt-4\">
+    <a href=\"{{ path('app_materiellocation_new') }}\" class=\"btn btn-success\" title=\"Ajouter un nouveau matériel\">
+        <i class=\"fas fa-plus-circle\"></i> Ajouter un nouveau matériel
+    </a>
+</div>
 
+<!-- Styles pour l'effet de zoom sur l'image -->
+<style>
+    /* Conteneur de la carte */
+    .card-container {
+        overflow: hidden;
+        border-radius: 8px;
+        transition: transform 0.3s ease-in-out;
+    }
 
+    /* Image du matériel */
+    .card-img-fixed {
+        width: 100%;
+        height: 300px; /* Hauteur uniforme */
+        object-fit: cover; /* Remplit le conteneur sans déformation */
+        transition: transform 0.3s ease-in-out; /* Animation fluide */
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
 
+    /* Effet de zoom au survol */
+    .card-container:hover .card-img-fixed {
+        transform: scale(1.1);
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class=\"container mt-5\">
-        <h1 class=\"text-center mb-4\">Materiel agricole A louer</h1>
-
-        <div class=\"card p-4 shadow-sm\">
-            <h4 class=\"mb-4\">Materiellocations List</h4>
-
-            <table class=\"table table-bordered\">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Nom</th>
-                        <th>Prix</th>
-                        <th>Description</th>
-                        <th>Disponibilite</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for materiellocation in materiellocations %}
-                        <tr>
-                            <td>{{ materiellocation.id }}</td>
-                            <td>{{ materiellocation.nom }}</td>
-                            <td>{{ materiellocation.prix }}</td>
-                            <td>{{ materiellocation.description }}</td>
-                            <td>{{ materiellocation.disponibilite ? 'Yes' : 'No' }}</td>
-                            <td>
-                                <a href=\"{{ path('app_materiellocation_show', {'id': materiellocation.id}) }}\" class=\"btn btn-info btn-sm\">Show</a>
-                                <a href=\"{{ path('app_materiellocation_edit', {'id': materiellocation.id}) }}\" class=\"btn btn-warning btn-sm\">Edit</a>
-                            </td>
-                        </tr>
-                    {% else %}
-                        <tr>
-                            <td colspan=\"6\" class=\"text-center\">No records found</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-
-            <div class=\"d-flex justify-content-between mt-4\">
-                <a href=\"{{ path('app_materiellocation_new') }}\" class=\"btn btn-primary\">Create new</a>
-            </div>
-        </div>
-    </div>
+    .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9999;
+    }
+</style>
 
 {% endblock %}
 ", "materiellocation/index.html.twig", "C:\\Users\\asus\\Desktop\\PI2025\\pi2025\\templates\\materiellocation\\index.html.twig");
