@@ -83,8 +83,9 @@
                         </div>
                         <!-- Refined "s'inscrire" Button -->
                         <div class="ms-auto">
-                            <a href="/{{ app.user ? 'logout' : 'login' }}" class="btn btn-warning text-white fw-bold px-4 py-2 rounded-pill">{{ app.user ? 'Logout' : 'Login' }}</a>
-                        </div>
+<a href="/{{ app.user ? 'logout' : 'login' }}" class="btn btn-warning text-white fw-bold px-4 py-2 rounded-pill">
+    {{ app.user ? 'Déconnexion' : 'Connexion' }}
+</a>                        </div>
 
                     </div>
                 </nav>
