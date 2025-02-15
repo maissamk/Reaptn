@@ -93,6 +93,9 @@
                         <td>
                             <a href="{{ path('app_materielvente_show', {'id': materielvente.id}) }}" class="btn btn-info btn-sm">Show</a>
                             <a href="{{ path('app_materielvente_edit', {'id': materielvente.id}) }}" class="btn btn-warning btn-sm">Edit</a>
+<a href="{{ path('add_to_cart', { id: materielvente.id }) }}" class="btn btn-primary">
+                        Ajouter au panier
+                    </a>
                         </td>
                     </tr>
                 {% else %}
