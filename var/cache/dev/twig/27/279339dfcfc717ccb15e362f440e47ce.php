@@ -196,14 +196,14 @@ class __TwigTemplate_c8996f17c72ccd93a28bcd9c82624363 extends Template
             <div style=\"height: 300px; width: 4px; background-color: #28a745; margin: 0 30px; border-radius: 10px;\"></div>
 
             <div class=\"col-md-6 p-3\">
-                <h1 class=\"text-center mb-4\">Login</h1>
+                <h1 class=\"text-center mb-4\">se connecter</h1>
 
                 <form method=\"post\" action=\"";
         // line 35
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
         yield "\" novalidate>
                     <div class=\"mb-3\">
-                        <label for=\"inputEmail\" class=\"form-label\">Email Address</label>
+                        <label for=\"inputEmail\" class=\"form-label\">Address Email</label>
                         <input type=\"email\" value=\"";
         // line 38
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape((isset($context["last_username"]) || array_key_exists("last_username", $context) ? $context["last_username"] : (function () { throw new RuntimeError('Variable "last_username" does not exist.', 38, $this->source); })()), "html", null, true);
@@ -224,13 +224,13 @@ class __TwigTemplate_c8996f17c72ccd93a28bcd9c82624363 extends Template
         yield "                    </div>
 
                     <div class=\"mb-3\">
-                        <label for=\"inputPassword\" class=\"form-label\">Password</label>
+                        <label for=\"inputPassword\" class=\"form-label\">Mot De Passe</label>
                         <input type=\"password\" name=\"password\" id=\"inputPassword\" class=\"form-control\" autocomplete=\"current-password\" required>
                     </div>
 
                     <div class=\"mb-3 form-check\">
                         <input type=\"checkbox\" name=\"_remember_me\" id=\"remember_me\" class=\"form-check-input\">
-                        <label class=\"form-check-label\" for=\"remember_me\">Remember me</label>  
+                        <label class=\"form-check-label\" for=\"remember_me\">Souviens-toi de moi</label>  
                         <a href=\"";
         // line 54
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_forgot_password_request");
@@ -242,14 +242,14 @@ class __TwigTemplate_c8996f17c72ccd93a28bcd9c82624363 extends Template
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken("authenticate"), "html", null, true);
         yield "\">
 
-                    <button class=\"btn btn-primary w-100\" type=\"submit\">Sign in</button>
+                    <button class=\"btn btn-primary w-100\" type=\"submit\">Se Connecter</button>
                 </form>
 
                 <div class=\"mt-3 text-center\">
                     <a href=\"";
         // line 63
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
-        yield "\">Don't have an account? Register</a> 
+        yield "\">Vous n'avez pas de compte ? Inscrivez-vous</a> 
                 </div>
             </div>
         </div>
@@ -322,11 +322,11 @@ class __TwigTemplate_c8996f17c72ccd93a28bcd9c82624363 extends Template
             <div style=\"height: 300px; width: 4px; background-color: #28a745; margin: 0 30px; border-radius: 10px;\"></div>
 
             <div class=\"col-md-6 p-3\">
-                <h1 class=\"text-center mb-4\">Login</h1>
+                <h1 class=\"text-center mb-4\">se connecter</h1>
 
                 <form method=\"post\" action=\"{{ path('app_login') }}\" novalidate>
                     <div class=\"mb-3\">
-                        <label for=\"inputEmail\" class=\"form-label\">Email Address</label>
+                        <label for=\"inputEmail\" class=\"form-label\">Address Email</label>
                         <input type=\"email\" value=\"{{ last_username }}\" name=\"email\" id=\"inputEmail\" class=\"form-control\" autocomplete=\"email\" required autofocus>
                         {% if error %}
                             <div class=\"text-danger\">
@@ -336,23 +336,23 @@ class __TwigTemplate_c8996f17c72ccd93a28bcd9c82624363 extends Template
                     </div>
 
                     <div class=\"mb-3\">
-                        <label for=\"inputPassword\" class=\"form-label\">Password</label>
+                        <label for=\"inputPassword\" class=\"form-label\">Mot De Passe</label>
                         <input type=\"password\" name=\"password\" id=\"inputPassword\" class=\"form-control\" autocomplete=\"current-password\" required>
                     </div>
 
                     <div class=\"mb-3 form-check\">
                         <input type=\"checkbox\" name=\"_remember_me\" id=\"remember_me\" class=\"form-check-input\">
-                        <label class=\"form-check-label\" for=\"remember_me\">Remember me</label>  
+                        <label class=\"form-check-label\" for=\"remember_me\">Souviens-toi de moi</label>  
                         <a href=\"{{ path('app_forgot_password_request') }}\">Mot de passe oublié ?</a>
                     </div>
 
                     <input type=\"hidden\" name=\"_csrf_token\" value=\"{{ csrf_token('authenticate') }}\">
 
-                    <button class=\"btn btn-primary w-100\" type=\"submit\">Sign in</button>
+                    <button class=\"btn btn-primary w-100\" type=\"submit\">Se Connecter</button>
                 </form>
 
                 <div class=\"mt-3 text-center\">
-                    <a href=\"{{ path('app_register') }}\">Don't have an account? Register</a> 
+                    <a href=\"{{ path('app_register') }}\">Vous n'avez pas de compte ? Inscrivez-vous</a> 
                 </div>
             </div>
         </div>
