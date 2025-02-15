@@ -1,0 +1,3 @@
+<?php //b472c2fb263843f1d4ead784470c696e
+
+return [PHP_INT_MAX, 'backoffice/assets/img/favicon.png'];

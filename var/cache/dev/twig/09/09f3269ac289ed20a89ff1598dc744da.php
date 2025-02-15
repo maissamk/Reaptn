@@ -52,7 +52,8 @@ class __TwigTemplate_ea98d75255b529ea94462441c4594ed8 extends Template
         // line 2
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken(("delete" . CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 2, $this->source); })()), "id", [], "any", false, false, false, 2))), "html", null, true);
         yield "\">
-    <button class=\"btn\">Delete</button>
+    <button class=\"btn btn-danger btn-sm\">Supprimer</button>
+    
 </form>
 ";
         
@@ -92,7 +93,8 @@ class __TwigTemplate_ea98d75255b529ea94462441c4594ed8 extends Template
     {
         return new Source("<form method=\"post\" action=\"{{ path('app_materielvente_delete', {'id': materielvente.id}) }}\" onsubmit=\"return confirm('Are you sure you want to delete this item?');\">
     <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ materielvente.id) }}\">
-    <button class=\"btn\">Delete</button>
+    <button class=\"btn btn-danger btn-sm\">Supprimer</button>
+    
 </form>
 ", "materielvente/_delete_form.html.twig", "C:\\Users\\asus\\Desktop\\PI2025\\pi2025\\templates\\materielvente\\_delete_form.html.twig");
     }

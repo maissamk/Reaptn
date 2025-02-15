@@ -73,7 +73,7 @@ class __TwigTemplate_608dc48282da6e0de4115049fb86361b extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        yield "Materielvente";
+        yield "Détails du Matériel";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -97,62 +97,116 @@ class __TwigTemplate_608dc48282da6e0de4115049fb86361b extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        yield "    <h1>Materielvente</h1>
-
-    <table class=\"table\">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>";
-        // line 12
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 12, $this->source); })()), "id", [], "any", false, false, false, 12), "html", null, true);
-        yield "</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>";
-        // line 16
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 16, $this->source); })()), "nom", [], "any", false, false, false, 16), "html", null, true);
-        yield "</td>
-            </tr>
-            <tr>
-                <th>Prix</th>
-                <td>";
+        yield "<div class=\"container\" style=\"margin-top: 180px;\">
+    <div class=\"card shadow-lg p-4 rounded\">
+        <div class=\"text-center\">
+            ";
+        // line 9
+        if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 9, $this->source); })()), "image", [], "any", false, false, false, 9)) {
+            // line 10
+            yield "                <img src=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/images/" . CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 10, $this->source); })()), "image", [], "any", false, false, false, 10))), "html", null, true);
+            yield "\" 
+                     class=\"rounded-circle border border-secondary\" 
+                     alt=\"";
+            // line 12
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 12, $this->source); })()), "nom", [], "any", false, false, false, 12), "html", null, true);
+            yield "\" 
+                     width=\"150\" height=\"150\">
+            ";
+        } else {
+            // line 15
+            yield "                <img src=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/default.png"), "html", null, true);
+            yield "\"
+                     class=\"rounded-circle border border-secondary\" 
+                     alt=\"Image par défaut\" 
+                     width=\"150\" height=\"150\">
+            ";
+        }
         // line 20
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 20, $this->source); })()), "prix", [], "any", false, false, false, 20), "html", null, true);
-        yield "</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>";
-        // line 24
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 24, $this->source); })()), "description", [], "any", false, false, false, 24), "html", null, true);
-        yield "</td>
-            </tr>
-            <tr>
-                <th>Disponibilite</th>
-                <td>";
-        // line 28
-        yield ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 28, $this->source); })()), "disponibilite", [], "any", false, false, false, 28)) ? ("Yes") : ("No"));
-        yield "</td>
-            </tr>
-        </tbody>
-    </table>
+        yield "            <h2 class=\"mt-3 text-success\">";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 20, $this->source); })()), "nom", [], "any", false, false, false, 20), "html", null, true);
+        yield "</h2>
+        </div>
 
-    <a href=\"";
-        // line 33
+        <div class=\"mt-4\">
+            <h4 class=\"text-warning text-center\">Informations sur le matériel</h4>
+            <table class=\"table table-bordered mt-3\">
+                <tbody>
+                    
+                    <tr>
+                        <th class=\"bg-light\">Nom</th>
+                        <td>";
+        // line 30
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 30, $this->source); })()), "nom", [], "any", false, false, false, 30), "html", null, true);
+        yield "</td>
+                    </tr>
+                    <tr>
+                        <th class=\"bg-light\">Prix</th>
+                        <td class=\"fw-bold text-primary\">";
+        // line 34
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 34, $this->source); })()), "prix", [], "any", false, false, false, 34), "html", null, true);
+        yield " DT</td>
+                    </tr>
+                    <tr>
+                        <th class=\"bg-light\">Description</th>
+                        <td>";
+        // line 38
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 38, $this->source); })()), "description", [], "any", false, false, false, 38), "html", null, true);
+        yield "</td>
+                    </tr>
+                    <tr>
+                        <th class=\"bg-light\">Disponibilité</th>
+                        <td>
+                            ";
+        // line 43
+        if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 43, $this->source); })()), "disponibilite", [], "any", false, false, false, 43)) {
+            // line 44
+            yield "                                <span class=\"badge bg-success\">Disponible</span>
+                            ";
+        } else {
+            // line 46
+            yield "                                <span class=\"badge bg-danger\">Non disponible</span>
+                            ";
+        }
+        // line 48
+        yield "                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class=\"d-flex justify-content-center mt-4\">
+            <a href=\"";
+        // line 55
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materielvente_index");
-        yield "\">back to list</a>
+        yield "\" class=\"btn btn-primary me-3\">
+                <i class=\"fa fa-arrow-left\"></i> Retour
+            </a>
+           
+        </div>
 
-    <a href=\"";
-        // line 35
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materielvente_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 35, $this->source); })()), "id", [], "any", false, false, false, 35)]), "html", null, true);
-        yield "\">edit</a>
+        
+    </div>
+</div>
 
-    ";
-        // line 37
-        yield Twig\Extension\CoreExtension::include($this->env, $context, "materielvente/_delete_form.html.twig");
-        yield "
+<style>
+    .card {
+        max-width: 700px;
+        margin: auto;
+        border-radius: 12px;
+    }
+
+    .table th {
+        width: 30%;
+    }
+
+    .table td {
+        width: 70%;
+    }
+</style>
+
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -184,48 +238,91 @@ class __TwigTemplate_608dc48282da6e0de4115049fb86361b extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  154 => 37,  149 => 35,  144 => 33,  136 => 28,  129 => 24,  122 => 20,  115 => 16,  108 => 12,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  183 => 55,  174 => 48,  170 => 46,  166 => 44,  164 => 43,  156 => 38,  149 => 34,  142 => 30,  128 => 20,  119 => 15,  113 => 12,  107 => 10,  105 => 9,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
     {
         return new Source("{% extends 'base.html.twig' %}
 
-{% block title %}Materielvente{% endblock %}
+{% block title %}Détails du Matériel{% endblock %}
 
 {% block body %}
-    <h1>Materielvente</h1>
+<div class=\"container\" style=\"margin-top: 180px;\">
+    <div class=\"card shadow-lg p-4 rounded\">
+        <div class=\"text-center\">
+            {% if materielvente.image %}
+                <img src=\"{{ asset('uploads/images/' ~ materielvente.image) }}\" 
+                     class=\"rounded-circle border border-secondary\" 
+                     alt=\"{{ materielvente.nom }}\" 
+                     width=\"150\" height=\"150\">
+            {% else %}
+                <img src=\"{{ asset('images/default.png') }}\"
+                     class=\"rounded-circle border border-secondary\" 
+                     alt=\"Image par défaut\" 
+                     width=\"150\" height=\"150\">
+            {% endif %}
+            <h2 class=\"mt-3 text-success\">{{ materielvente.nom }}</h2>
+        </div>
 
-    <table class=\"table\">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ materielvente.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ materielvente.nom }}</td>
-            </tr>
-            <tr>
-                <th>Prix</th>
-                <td>{{ materielvente.prix }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ materielvente.description }}</td>
-            </tr>
-            <tr>
-                <th>Disponibilite</th>
-                <td>{{ materielvente.disponibilite ? 'Yes' : 'No' }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class=\"mt-4\">
+            <h4 class=\"text-warning text-center\">Informations sur le matériel</h4>
+            <table class=\"table table-bordered mt-3\">
+                <tbody>
+                    
+                    <tr>
+                        <th class=\"bg-light\">Nom</th>
+                        <td>{{ materielvente.nom }}</td>
+                    </tr>
+                    <tr>
+                        <th class=\"bg-light\">Prix</th>
+                        <td class=\"fw-bold text-primary\">{{ materielvente.prix }} DT</td>
+                    </tr>
+                    <tr>
+                        <th class=\"bg-light\">Description</th>
+                        <td>{{ materielvente.description }}</td>
+                    </tr>
+                    <tr>
+                        <th class=\"bg-light\">Disponibilité</th>
+                        <td>
+                            {% if materielvente.disponibilite %}
+                                <span class=\"badge bg-success\">Disponible</span>
+                            {% else %}
+                                <span class=\"badge bg-danger\">Non disponible</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-    <a href=\"{{ path('app_materielvente_index') }}\">back to list</a>
+        <div class=\"d-flex justify-content-center mt-4\">
+            <a href=\"{{ path('app_materielvente_index') }}\" class=\"btn btn-primary me-3\">
+                <i class=\"fa fa-arrow-left\"></i> Retour
+            </a>
+           
+        </div>
 
-    <a href=\"{{ path('app_materielvente_edit', {'id': materielvente.id}) }}\">edit</a>
+        
+    </div>
+</div>
 
-    {{ include('materielvente/_delete_form.html.twig') }}
+<style>
+    .card {
+        max-width: 700px;
+        margin: auto;
+        border-radius: 12px;
+    }
+
+    .table th {
+        width: 30%;
+    }
+
+    .table td {
+        width: 70%;
+    }
+</style>
+
 {% endblock %}
 ", "materielvente/show.html.twig", "C:\\Users\\asus\\Desktop\\PI2025\\pi2025\\templates\\materielvente\\show.html.twig");
     }

@@ -97,22 +97,20 @@ class __TwigTemplate_01c420737080266042f33f21d19fee73 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        yield "    <h1>Edit Materielvente</h1>
+        yield " <div class=\"container mt-5 pt-5\" style=\"margin-top: 120px;\">
+    <h1>Edit Materielvente</h1>
 
     ";
-        // line 8
+        // line 9
         yield Twig\Extension\CoreExtension::include($this->env, $context, "materielvente/_form.html.twig", ["button_label" => "Update"]);
         yield "
 
     <a href=\"";
-        // line 10
+        // line 11
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materielvente_index");
         yield "\">back to list</a>
 
-    ";
-        // line 12
-        yield Twig\Extension\CoreExtension::include($this->env, $context, "materielvente/_delete_form.html.twig");
-        yield "
+    
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -144,7 +142,7 @@ class __TwigTemplate_01c420737080266042f33f21d19fee73 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  114 => 12,  109 => 10,  104 => 8,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  110 => 11,  105 => 9,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -154,13 +152,14 @@ class __TwigTemplate_01c420737080266042f33f21d19fee73 extends Template
 {% block title %}Edit Materielvente{% endblock %}
 
 {% block body %}
+ <div class=\"container mt-5 pt-5\" style=\"margin-top: 120px;\">
     <h1>Edit Materielvente</h1>
 
     {{ include('materielvente/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href=\"{{ path('app_materielvente_index') }}\">back to list</a>
 
-    {{ include('materielvente/_delete_form.html.twig') }}
+    
 {% endblock %}
 ", "materielvente/edit.html.twig", "C:\\Users\\asus\\Desktop\\PI2025\\pi2025\\templates\\materielvente\\edit.html.twig");
     }

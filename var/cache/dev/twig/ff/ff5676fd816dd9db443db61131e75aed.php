@@ -97,15 +97,16 @@ class __TwigTemplate_b47a861fa4f78db514c483d57de36031 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        yield "    <h1>Create new Materiellocation</h1>
+        yield "<div class=\"container mt-5 pt-5\">
+    <h1>Create new Materiellocation</h1>
 
     ";
-        // line 8
+        // line 9
         yield Twig\Extension\CoreExtension::include($this->env, $context, "materiellocation/_form.html.twig");
         yield "
 
     <a href=\"";
-        // line 10
+        // line 11
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materiellocation_index");
         yield "\">back to list</a>
 ";
@@ -139,7 +140,7 @@ class __TwigTemplate_b47a861fa4f78db514c483d57de36031 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  109 => 10,  104 => 8,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  110 => 11,  105 => 9,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -149,6 +150,7 @@ class __TwigTemplate_b47a861fa4f78db514c483d57de36031 extends Template
 {% block title %}New Materiellocation{% endblock %}
 
 {% block body %}
+<div class=\"container mt-5 pt-5\">
     <h1>Create new Materiellocation</h1>
 
     {{ include('materiellocation/_form.html.twig') }}
