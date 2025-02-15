@@ -1,0 +1,91 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Tous les utilisateurs{% endblock %}
+
+{% block body %}
+    <div class="container" style="margin-right: 50px;">
+        <h1 class="text-right">Tous les utilisateurs</h1>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Avatar</th>  <!-- New column for avatars -->
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Nom</th>  {# Last name #}
+                    <th>Prénom</th>  {# First name #}
+                    <th>Téléphone</th>  {# Phone #}
+                    <th>Rôles</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <!-- Display user avatar -->
+                        <td>
+                            {% if user.avatar %}
+                                <img src="{{ asset('uploads/avatars/' ~ user.avatar) }}" width="50" height="50" class="rounded-circle" alt="Avatar">
+                            {% else %}
+                                <img src="{{ asset('images/default-avatar.png') }}" width="50" height="50" class="rounded-circle" alt="Default Avatar">
+                            {% endif %}
+                        </td>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.nom }}</td>  {# Display last name #}
+                        <td>{{ user.prenom }}</td>  {# Display first name #}
+                        <td>{{ user.telephone }}</td>  {# Display phone #}
+                        <td>{{ user.roles | join(', ') }}</td>
+                        <td>
+                            <a href="{{ path('admin_user_edit', {'id': user.id}) }}">Modifier</a> |
+                            <a href="{{ path('admin_user_delete', {'id': user.id}) }}" onclick="return confirm('Êtes-vous sûr ?')">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: right;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th, .table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #f2f2f2;
+        }
+
+        .table-striped tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .container h1 {
+            margin-bottom: 20px;
+        }
+
+        .table td img {
+            border-radius: 50%;
+        }
+    </style>
+{% endblock %}
