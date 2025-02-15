@@ -352,6 +352,13 @@
     <service id="App\Entity" class="App\Entity" abstract="true">
       <tag name="container.excluded" source="in &quot;config/services.yaml&quot;"/>
     </service>
+    <service id="App\Controller\AdminController" class="App\Controller\AdminController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\AdminController"/>
+      </call>
+    </service>
     <service id="App\Controller\CommandeController" class="App\Controller\CommandeController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -523,7 +530,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.RFzGt_m"/>
+      <argument type="service" id=".service_locator.f8thm2_"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -3418,7 +3425,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.RFzGt_m"/>
+      <argument type="service" id=".service_locator.f8thm2_"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <tag name="kernel.reset" method="reset"/>
@@ -7153,6 +7160,9 @@
       <argument type="service" id="maker.file_manager"/>
       <argument type="service" id="maker.generator"/>
     </service>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CommandeController" class="App\Controller\CommandeController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CommandeController" class="App\Controller\CommandeController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\CommandeController" class="App\Controller\CommandeController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -7648,10 +7658,10 @@
         <argument key="loader" type="service_closure" id=".errored..service_locator.y4_Zrx..Symfony\Component\Config\Loader\LoaderInterface"/>
       </argument>
     </service>
-    <service id=".service_locator.RXaRRrV" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.vs9Bn8g" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="commandeRepository" type="service_closure" id="App\Repository\CommandeRepository"/>
+        <argument key="parcelleProprietesRepository" type="service_closure" id="App\Repository\ParcelleProprietesRepository"/>
       </argument>
     </service>
     <service id=".service_locator.CsMkqUa" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -7660,17 +7670,17 @@
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
-    <service id=".service_locator.TqIg1ou" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.j.H5nS2" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="commande" type="service_closure" id=".errored..service_locator.TqIg1ou.App\Entity\Commande"/>
+        <argument key="parcellePropriete" type="service_closure" id=".errored..service_locator.j.H5nS2.App\Entity\ParcelleProprietes"/>
       </argument>
     </service>
-    <service id=".service_locator.iR5i4O4" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.IU.QoY9" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="commande" type="service_closure" id=".errored..service_locator.iR5i4O4.App\Entity\Commande"/>
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="parcellePropriete" type="service_closure" id=".errored..service_locator.IU.QoY9.App\Entity\ParcelleProprietes"/>
       </argument>
     </service>
     <service id=".service_locator.0TK7yZ8" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -7689,6 +7699,25 @@
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="contrat" type="service_closure" id=".errored..service_locator.0d0FLAy.App\Entity\Contrat"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.RXaRRrV" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="commandeRepository" type="service_closure" id="App\Repository\CommandeRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.TqIg1ou" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="commande" type="service_closure" id=".errored..service_locator.TqIg1ou.App\Entity\Commande"/>
+      </argument>
+    </service>
+    <service id=".service_locator.iR5i4O4" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="commande" type="service_closure" id=".errored..service_locator.iR5i4O4.App\Entity\Commande"/>
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
@@ -7774,25 +7803,6 @@
         <argument key="offre" type="service_closure" id=".errored..service_locator.V6favct.App\Entity\Offre"/>
       </argument>
     </service>
-    <service id=".service_locator.vs9Bn8g" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="parcelleProprietesRepository" type="service_closure" id="App\Repository\ParcelleProprietesRepository"/>
-      </argument>
-    </service>
-    <service id=".service_locator.j.H5nS2" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="parcellePropriete" type="service_closure" id=".errored..service_locator.j.H5nS2.App\Entity\ParcelleProprietes"/>
-      </argument>
-    </service>
-    <service id=".service_locator.IU.QoY9" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
-        <argument key="parcellePropriete" type="service_closure" id=".errored..service_locator.IU.QoY9.App\Entity\ParcelleProprietes"/>
-      </argument>
-    </service>
     <service id=".service_locator.9QfjjfA" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7812,9 +7822,20 @@
         <argument key="utilisateur" type="service_closure" id=".errored..service_locator.5iifHkm.App\Entity\Utilisateur"/>
       </argument>
     </service>
-    <service id=".service_locator.RFzGt_m" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.f8thm2_" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Controller\AdminController::adminIndex" type="service_closure" id=".service_locator.vs9Bn8g"/>
+        <argument key="App\Controller\AdminController::admincontratIndex" type="service_closure" id=".service_locator.0TK7yZ8"/>
+        <argument key="App\Controller\AdminController::deleteBack" type="service_closure" id=".service_locator.IU.QoY9"/>
+        <argument key="App\Controller\AdminController::deleteBackconrat" type="service_closure" id=".service_locator.0d0FLAy"/>
+        <argument key="App\Controller\AdminController::editBack" type="service_closure" id=".service_locator.IU.QoY9"/>
+        <argument key="App\Controller\AdminController::editBackconrat" type="service_closure" id=".service_locator.0d0FLAy"/>
+        <argument key="App\Controller\AdminController::indexBack" type="service_closure" id=".service_locator.0TK7yZ8"/>
+        <argument key="App\Controller\AdminController::new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\AdminController::newContrat" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\AdminController::showBack" type="service_closure" id=".service_locator.j.H5nS2"/>
+        <argument key="App\Controller\AdminController::showBackconrat" type="service_closure" id=".service_locator.xpZJLkN"/>
         <argument key="App\Controller\CommandeController::delete" type="service_closure" id=".service_locator.iR5i4O4"/>
         <argument key="App\Controller\CommandeController::edit" type="service_closure" id=".service_locator.iR5i4O4"/>
         <argument key="App\Controller\CommandeController::index" type="service_closure" id=".service_locator.RXaRRrV"/>
@@ -7862,6 +7883,17 @@
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
+        <argument key="App\Controller\AdminController:adminIndex" type="service_closure" id=".service_locator.vs9Bn8g"/>
+        <argument key="App\Controller\AdminController:admincontratIndex" type="service_closure" id=".service_locator.0TK7yZ8"/>
+        <argument key="App\Controller\AdminController:deleteBack" type="service_closure" id=".service_locator.IU.QoY9"/>
+        <argument key="App\Controller\AdminController:deleteBackconrat" type="service_closure" id=".service_locator.0d0FLAy"/>
+        <argument key="App\Controller\AdminController:editBack" type="service_closure" id=".service_locator.IU.QoY9"/>
+        <argument key="App\Controller\AdminController:editBackconrat" type="service_closure" id=".service_locator.0d0FLAy"/>
+        <argument key="App\Controller\AdminController:indexBack" type="service_closure" id=".service_locator.0TK7yZ8"/>
+        <argument key="App\Controller\AdminController:new" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\AdminController:newContrat" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\AdminController:showBack" type="service_closure" id=".service_locator.j.H5nS2"/>
+        <argument key="App\Controller\AdminController:showBackconrat" type="service_closure" id=".service_locator.xpZJLkN"/>
         <argument key="App\Controller\CommandeController:delete" type="service_closure" id=".service_locator.iR5i4O4"/>
         <argument key="App\Controller\CommandeController:edit" type="service_closure" id=".service_locator.iR5i4O4"/>
         <argument key="App\Controller\CommandeController:index" type="service_closure" id=".service_locator.RXaRRrV"/>
@@ -8535,6 +8567,12 @@
         <argument key="web_link.http_header_serializer" type="service_closure" id="web_link.http_header_serializer" on-invalid="ignore"/>
       </argument>
     </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\AdminController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\AdminController"/>
+      <argument>App\Controller\AdminController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
     <service id=".service_locator.O2p6Lk7.App\Controller\CommandeController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\CommandeController"/>
       <argument>App\Controller\CommandeController</argument>
@@ -8769,6 +8807,7 @@
       <call method="allowControllers">
         <argument type="collection">
           <argument>App\Kernel</argument>
+          <argument>App\Controller\AdminController</argument>
           <argument>App\Controller\CommandeController</argument>
           <argument>App\Controller\ContratController</argument>
           <argument>App\Controller\EmployeController</argument>
@@ -8980,17 +9019,23 @@
     <service id=".errored..service_locator.y4_Zrx..Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.y4_Zrx.&quot;: it needs an instance of &quot;Symfony\Component\Config\Loader\LoaderInterface&quot; but this type has been excluded from autowiring."/>
     </service>
-    <service id=".errored..service_locator.TqIg1ou.App\Entity\Commande" class="App\Entity\Commande">
-      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.TqIg1ou&quot;: it needs an instance of &quot;App\Entity\Commande&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    <service id=".errored..service_locator.j.H5nS2.App\Entity\ParcelleProprietes" class="App\Entity\ParcelleProprietes">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.j.H5nS2&quot;: it needs an instance of &quot;App\Entity\ParcelleProprietes&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
-    <service id=".errored..service_locator.iR5i4O4.App\Entity\Commande" class="App\Entity\Commande">
-      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.iR5i4O4&quot;: it needs an instance of &quot;App\Entity\Commande&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    <service id=".errored..service_locator.IU.QoY9.App\Entity\ParcelleProprietes" class="App\Entity\ParcelleProprietes">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.IU.QoY9&quot;: it needs an instance of &quot;App\Entity\ParcelleProprietes&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
     <service id=".errored..service_locator.xpZJLkN.App\Entity\Contrat" class="App\Entity\Contrat">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.xpZJLkN&quot;: it needs an instance of &quot;App\Entity\Contrat&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
     <service id=".errored..service_locator.0d0FLAy.App\Entity\Contrat" class="App\Entity\Contrat">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.0d0FLAy&quot;: it needs an instance of &quot;App\Entity\Contrat&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.TqIg1ou.App\Entity\Commande" class="App\Entity\Commande">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.TqIg1ou&quot;: it needs an instance of &quot;App\Entity\Commande&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.iR5i4O4.App\Entity\Commande" class="App\Entity\Commande">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.iR5i4O4&quot;: it needs an instance of &quot;App\Entity\Commande&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
     <service id=".errored..service_locator.je7oNoj.App\Entity\Employe" class="App\Entity\Employe">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.je7oNoj&quot;: it needs an instance of &quot;App\Entity\Employe&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
@@ -9015,12 +9060,6 @@
     </service>
     <service id=".errored..service_locator.V6favct.App\Entity\Offre" class="App\Entity\Offre">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.V6favct&quot;: it needs an instance of &quot;App\Entity\Offre&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
-    </service>
-    <service id=".errored..service_locator.j.H5nS2.App\Entity\ParcelleProprietes" class="App\Entity\ParcelleProprietes">
-      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.j.H5nS2&quot;: it needs an instance of &quot;App\Entity\ParcelleProprietes&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
-    </service>
-    <service id=".errored..service_locator.IU.QoY9.App\Entity\ParcelleProprietes" class="App\Entity\ParcelleProprietes">
-      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.IU.QoY9&quot;: it needs an instance of &quot;App\Entity\ParcelleProprietes&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
     <service id=".errored..service_locator.8NzCy4M.App\Entity\Utilisateur" class="App\Entity\Utilisateur">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.8NzCy4M&quot;: it needs an instance of &quot;App\Entity\Utilisateur&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
@@ -10212,7 +10251,7 @@
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.w7.f4fT" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.RFzGt_m"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.f8thm2_"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -10236,12 +10275,12 @@
     <service id=".service_locator.80edgLI" alias="messenger.receiver_locator"/>
     <service id=".service_locator.h8Jkkd2" alias="messenger.retry_strategy_locator"/>
     <service id=".service_locator.bJ.4HC5" alias=".service_locator.w7.f4fT"/>
+    <service id=".service_locator.7LUKIni" alias=".service_locator.IU.QoY9"/>
     <service id=".service_locator.ccJpJqa" alias=".service_locator.qAUb40R"/>
     <service id=".service_locator.ShRxZre" alias=".service_locator.wZGs69i"/>
     <service id=".service_locator.3.sg1hS" alias=".service_locator.V6favct"/>
-    <service id=".service_locator.7LUKIni" alias=".service_locator.IU.QoY9"/>
     <service id=".service_locator.RA4wN4W" alias=".service_locator.5iifHkm"/>
-    <service id=".service_locator.7.lQhrB" alias=".service_locator.RFzGt_m"/>
+    <service id=".service_locator.NyBIkka" alias=".service_locator.f8thm2_"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
     <service id=".service_locator.qqOxIxw" alias=".service_locator.fYaK3tV"/>
     <service id=".service_locator.XtmiKbi" alias=".service_locator.MfxSDRP"/>
@@ -10267,13 +10306,16 @@
     <service id="doctrine.orm.default_metadata_driver" alias=".doctrine.orm.default_metadata_driver"/>
     <service id="security.event_dispatcher.main" alias="debug.security.event_dispatcher.main"/>
     <service id=".service_locator.gFlme_s" alias=".service_locator.y4_Zrx."/>
-    <service id=".service_locator.aNfPEkG" alias=".service_locator.RXaRRrV"/>
+    <service id=".service_locator.Jc6qzZG" alias=".service_locator.vs9Bn8g"/>
     <service id=".service_locator.9e2t_lq" alias=".service_locator.CsMkqUa"/>
-    <service id=".service_locator.QOx9IOW" alias=".service_locator.TqIg1ou"/>
-    <service id=".service_locator.rfMZyXG" alias=".service_locator.iR5i4O4"/>
+    <service id=".service_locator.i6QuGK4" alias=".service_locator.j.H5nS2"/>
+    <service id=".service_locator.rl888st" alias=".service_locator.IU.QoY9"/>
     <service id=".service_locator.8CdGlak" alias=".service_locator.0TK7yZ8"/>
     <service id=".service_locator.mTQcJzk" alias=".service_locator.xpZJLkN"/>
     <service id=".service_locator.Ak.8WV8" alias=".service_locator.0d0FLAy"/>
+    <service id=".service_locator.aNfPEkG" alias=".service_locator.RXaRRrV"/>
+    <service id=".service_locator.QOx9IOW" alias=".service_locator.TqIg1ou"/>
+    <service id=".service_locator.rfMZyXG" alias=".service_locator.iR5i4O4"/>
     <service id=".service_locator.tpHEddv" alias=".service_locator.JwMuhT7"/>
     <service id=".service_locator.1T4rAjt" alias=".service_locator.je7oNoj"/>
     <service id=".service_locator..EdiTAe" alias=".service_locator.I3mS6IL"/>
@@ -10287,9 +10329,6 @@
     <service id=".service_locator.qKPDMPG" alias=".service_locator.kjLqtAK"/>
     <service id=".service_locator.8LfxfNT" alias=".service_locator.0uzROk4"/>
     <service id=".service_locator.qFC67iW" alias=".service_locator.V6favct"/>
-    <service id=".service_locator.Jc6qzZG" alias=".service_locator.vs9Bn8g"/>
-    <service id=".service_locator.i6QuGK4" alias=".service_locator.j.H5nS2"/>
-    <service id=".service_locator.rl888st" alias=".service_locator.IU.QoY9"/>
     <service id=".service_locator.OZ5fPAC" alias=".service_locator.9QfjjfA"/>
     <service id=".service_locator.p3LtpT_" alias=".service_locator.8NzCy4M"/>
     <service id=".service_locator.korIoL3" alias=".service_locator.5iifHkm"/>
