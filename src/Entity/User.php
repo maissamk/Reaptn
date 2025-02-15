@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -56,6 +58,17 @@ private ?string $telephone = null;
 
 #[ORM\Column(nullable: true)]
 private ?string $avatar = null;
+
+/**
+ * @var Collection<int, ParcelleProprietes>
+ */
+#[ORM\OneToMany(targetEntity: ParcelleProprietes::class, mappedBy: 'user_id_parcelle')]
+private Collection $parcelleProprietes;
+
+public function __construct()
+{
+    $this->parcelleProprietes = new ArrayCollection();
+}
 
 
 
@@ -180,5 +193,35 @@ private ?string $avatar = null;
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection<int, ParcelleProprietes>
+     */
+    public function getParcelleProprietes(): Collection
+    {
+        return $this->parcelleProprietes;
+    }
+
+    public function addParcellePropriete(ParcelleProprietes $parcellePropriete): static
+    {
+        if (!$this->parcelleProprietes->contains($parcellePropriete)) {
+            $this->parcelleProprietes->add($parcellePropriete);
+            $parcellePropriete->setUserIdParcelle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParcellePropriete(ParcelleProprietes $parcellePropriete): static
+    {
+        if ($this->parcelleProprietes->removeElement($parcellePropriete)) {
+            // set the owning side to null (unless already changed)
+            if ($parcellePropriete->getUserIdParcelle() === $this) {
+                $parcellePropriete->setUserIdParcelle(null);
+            }
+        }
+
+        return $this;
     }
 }

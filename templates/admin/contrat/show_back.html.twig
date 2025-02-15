@@ -1,0 +1,45 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Détails du Contrat{% endblock %}
+
+{% block body %}
+<div class="container mt-5 pt-5" style="margin-left: 250px;">
+    <h1 class="text-center mb-4">Détails du Contrat</h1>
+
+    <div class="card p-4 shadow-sm">
+        <h4 class="mb-4">Informations du Contrat</h4>
+
+        <table class="table table-bordered">
+            <tr>
+                <th>ID</th>
+                <td>{{ contrat.id }}</td>
+            </tr>
+            <tr>
+                <th>Acheteur</th>
+                <td>{{ contrat.nomAcheteur }}</td>
+            </tr>
+            <tr>
+                <th>Vendeur</th>
+                <td>{{ contrat.nomVendeur }}</td>
+            </tr>
+            <tr>
+                <th>Date Début</th>
+                <td>{{ contrat.dateDebutContrat ? contrat.dateDebutContrat|date('Y-m-d') : 'N/A' }}</td>
+            </tr>
+            <tr>
+                <th>Date Fin</th>
+                <td>{{ contrat.datefinContrat ? contrat.datefinContrat|date('Y-m-d') : 'N/A' }}</td>
+            </tr>
+        </table>
+
+        <div class="d-flex justify-content-between mt-4">
+            <a href="{{ path('admin_contrat_edit', {'id': contrat.id}) }}" class="btn btn-warning">Modifier</a>
+            
+            <form method="post" action="{{ path('admin_contrat_delete', {'id': contrat.id}) }}" onsubmit="return confirm('Êtes-vous sûr ?');">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ contrat.id) }}">
+                <button type="submit" class="btn btn-danger">Supprimer</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

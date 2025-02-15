@@ -392,6 +392,6 @@ class __TwigTemplate_3524e6644025ce487037d4d1bca48b1d extends Template
         </div>
     </div>
 {% endblock %}
-", "registration/register.html.twig", "C:\\Users\\romdh\\OneDrive\\Bureau\\PI2025\\Reaptn\\templates\\registration\\register.html.twig");
+", "registration/register.html.twig", "C:\\Users\\DELL\\Downloads\\projet\\Reaptn\\templates\\registration\\register.html.twig");
     }
 }
