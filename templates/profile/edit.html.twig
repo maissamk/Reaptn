@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le Profil{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <!-- En-tête de la modification du profil -->
+        <div class="row justify-content-center mb-5">
+            <div class="col-12 text-center">
+                <h1 class="display-4 text-warning">Modifier le Profil</h1>
+                <hr class="w-25 mx-auto">
+            </div>
+        </div>
+
+        <!-- Formulaire de Modification du Profil -->
+        <div class="card p-4 mt-4 shadow-lg rounded">
+            <!-- Avatar -->
+            <div class="text-center">
+                <img src="{{ asset('uploads/avatars/' ~ user.avatar) }}" class="rounded-circle mb-4" width="150" height="150" alt="Avatar Utilisateur">
+            </div>
+
+            {{ form_start(form) }}
+                <!-- Champs du Formulaire -->
+                <div class="form-group mb-3">
+                    <label for="prenom" class="form-label">Prénom</label>
+                    {{ form_widget(form.prenom, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="nom" class="form-label">Nom</label>
+                    {{ form_widget(form.nom, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    {{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="telephone" class="form-label">Numéro de téléphone</label>
+                    {{ form_widget(form.telephone, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+
+                <!-- Champ pour le téléchargement de l'avatar -->
+                <div class="form-group mb-3">
+                    <label for="avatar" class="form-label">Télécharger un Nouvel Avatar</label>
+                    <input type="file" id="avatar" name="user[avatar]" class="form-control" style="width: 350px;">
+                </div>
+
+                <!-- Bouton de Sauvegarde -->
+                <div class="text-center">
+                    <button class="btn btn-success btn-lg w-75 mt-4">Enregistrer les Modifications</button>
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
