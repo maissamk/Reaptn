@@ -83,12 +83,19 @@ private Collection $materiellocations;
 #[ORM\OneToMany(targetEntity: Commande::class, mappedBy: 'user_id_commande')]
 private Collection $commandes;
 
+/**
+ * @var Collection<int, Employe>
+ */
+#[ORM\OneToMany(targetEntity: Employe::class, mappedBy: 'user_id_employe')]
+private Collection $employes;
+
 public function __construct()
 {
     $this->parcelleProprietes = new ArrayCollection();
     $this->materielventes = new ArrayCollection();
     $this->materiellocations = new ArrayCollection();
     $this->commandes = new ArrayCollection();
+    $this->employes = new ArrayCollection();
 }
 
 
@@ -330,6 +337,36 @@ public function __construct()
             // set the owning side to null (unless already changed)
             if ($commande->getUserIdCommande() === $this) {
                 $commande->setUserIdCommande(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Employe>
+     */
+    public function getEmployes(): Collection
+    {
+        return $this->employes;
+    }
+
+    public function addEmploye(Employe $employe): static
+    {
+        if (!$this->employes->contains($employe)) {
+            $this->employes->add($employe);
+            $employe->setUserIdEmploye($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEmploye(Employe $employe): static
+    {
+        if ($this->employes->removeElement($employe)) {
+            // set the owning side to null (unless already changed)
+            if ($employe->getUserIdEmploye() === $this) {
+                $employe->setUserIdEmploye(null);
             }
         }
 

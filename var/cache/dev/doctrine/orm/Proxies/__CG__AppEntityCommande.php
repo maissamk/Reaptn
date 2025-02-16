@@ -29,6 +29,7 @@ class Commande extends \App\Entity\Commande implements \Doctrine\ORM\Proxy\Inter
         "\0".parent::class."\0".'paiement' => [parent::class, 'paiement', null],
         "\0".parent::class."\0".'quantite' => [parent::class, 'quantite', null],
         "\0".parent::class."\0".'totale' => [parent::class, 'totale', null],
+        "\0".parent::class."\0".'user_id_commande' => [parent::class, 'user_id_commande', null],
         'dateCommande' => [parent::class, 'dateCommande', null],
         'id' => [parent::class, 'id', null],
         'livraison' => [parent::class, 'livraison', null],
@@ -36,6 +37,7 @@ class Commande extends \App\Entity\Commande implements \Doctrine\ORM\Proxy\Inter
         'paiement' => [parent::class, 'paiement', null],
         'quantite' => [parent::class, 'quantite', null],
         'totale' => [parent::class, 'totale', null],
+        'user_id_commande' => [parent::class, 'user_id_commande', null],
     ];
 
     public function __isInitialized(): bool

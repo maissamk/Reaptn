@@ -491,6 +491,6 @@ class __TwigTemplate_f4a0fb35ff2dee886ea327ca8fe29e02 extends Template
 <!-- Back to Top -->
 <a href=\"#\" class=\"btn btn-primary border-3 border-primary rounded-circle back-to-top\"><i class=\"fa fa-arrow-up\"></i></a>
 {% endblock %}
-", "parcelle_proprietes/index.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\parcelle_proprietes\\index.html.twig");
+", "parcelle_proprietes/index.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\parcelle_proprietes\\index.html.twig");
     }
 }

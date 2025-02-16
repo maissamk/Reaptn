@@ -1,0 +1,13 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Modifier l'Offre{% endblock %}
+
+{% block body %}
+<div class="container mt-5" style="width: 70%; margin-left: 27%; padding-top: 50px;">
+    <div class="container mt-4">
+        <h1>Modifier l'Offre</h1>
+
+        {# ✅ Include the form from the correct path #}
+        {% include 'admin/offre/_form_back.html.twig' with { 'form': form, 'button_label': 'Modifier l\'offre' } %}
+    </div>
+{% endblock %}

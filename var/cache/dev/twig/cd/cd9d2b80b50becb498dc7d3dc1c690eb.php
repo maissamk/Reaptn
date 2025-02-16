@@ -240,10 +240,7 @@ class __TwigTemplate_14456eb2a79074cceb2f979f3c2c4a7b extends Template
         // line 64
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_offre");
         yield "\" class=\"nav-item nav-link\">Offres disponibles</a>
-                            <a href=\"";
-        // line 65
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_inscriptionoffre");
-        yield "\" class=\"nav-item nav-link\">s'inscrire à un offre</a>
+                            
                             <div class=\"nav-item dropdown\">
                                 <a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">Matériel Agricole</a>
                                 <div class=\"dropdown-menu m-0 bg-secondary rounded-0\">
@@ -1713,7 +1710,7 @@ class __TwigTemplate_14456eb2a79074cceb2f979f3c2c4a7b extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  1680 => 1230,  1667 => 1229,  1649 => 1221,  1582 => 1156,  1569 => 1155,  1556 => 1149,  1550 => 1146,  1546 => 1145,  1542 => 1144,  1538 => 1143,  1534 => 1142,  1530 => 1141,  1527 => 1140,  1514 => 1139,  1501 => 1151,  1499 => 1139,  1467 => 1110,  1439 => 1085,  1411 => 1060,  1330 => 982,  1310 => 965,  1290 => 948,  1270 => 931,  1248 => 912,  1224 => 891,  1200 => 870,  1176 => 849,  1152 => 828,  1128 => 807,  1097 => 779,  1062 => 747,  1045 => 733,  1028 => 719,  1011 => 705,  994 => 691,  977 => 677,  960 => 663,  943 => 649,  917 => 626,  901 => 613,  885 => 600,  851 => 569,  832 => 553,  813 => 537,  786 => 513,  767 => 497,  740 => 473,  721 => 457,  694 => 433,  675 => 417,  648 => 393,  629 => 377,  610 => 361,  591 => 345,  572 => 329,  553 => 313,  534 => 297,  515 => 281,  392 => 161,  385 => 157,  335 => 109,  322 => 108,  303 => 99,  299 => 98,  290 => 92,  278 => 83,  273 => 81,  263 => 74,  256 => 70,  252 => 69,  245 => 65,  241 => 64,  237 => 63,  232 => 61,  228 => 60,  218 => 53,  199 => 36,  186 => 35,  173 => 29,  167 => 26,  161 => 23,  157 => 22,  145 => 12,  132 => 11,  109 => 6,  95 => 1244,  93 => 1229,  90 => 1228,  88 => 1155,  85 => 1154,  83 => 108,  80 => 107,  78 => 35,  72 => 31,  70 => 11,  62 => 6,  55 => 1,);
+        return array (  1677 => 1230,  1664 => 1229,  1646 => 1221,  1579 => 1156,  1566 => 1155,  1553 => 1149,  1547 => 1146,  1543 => 1145,  1539 => 1144,  1535 => 1143,  1531 => 1142,  1527 => 1141,  1524 => 1140,  1511 => 1139,  1498 => 1151,  1496 => 1139,  1464 => 1110,  1436 => 1085,  1408 => 1060,  1327 => 982,  1307 => 965,  1287 => 948,  1267 => 931,  1245 => 912,  1221 => 891,  1197 => 870,  1173 => 849,  1149 => 828,  1125 => 807,  1094 => 779,  1059 => 747,  1042 => 733,  1025 => 719,  1008 => 705,  991 => 691,  974 => 677,  957 => 663,  940 => 649,  914 => 626,  898 => 613,  882 => 600,  848 => 569,  829 => 553,  810 => 537,  783 => 513,  764 => 497,  737 => 473,  718 => 457,  691 => 433,  672 => 417,  645 => 393,  626 => 377,  607 => 361,  588 => 345,  569 => 329,  550 => 313,  531 => 297,  512 => 281,  389 => 161,  382 => 157,  332 => 109,  319 => 108,  300 => 99,  296 => 98,  287 => 92,  275 => 83,  270 => 81,  260 => 74,  253 => 70,  249 => 69,  241 => 64,  237 => 63,  232 => 61,  228 => 60,  218 => 53,  199 => 36,  186 => 35,  173 => 29,  167 => 26,  161 => 23,  157 => 22,  145 => 12,  132 => 11,  109 => 6,  95 => 1244,  93 => 1229,  90 => 1228,  88 => 1155,  85 => 1154,  83 => 108,  80 => 107,  78 => 35,  72 => 31,  70 => 11,  62 => 6,  55 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -1782,7 +1779,7 @@ class __TwigTemplate_14456eb2a79074cceb2f979f3c2c4a7b extends Template
 
                             <a href=\"{{path('app_shop_detail')}}\" class=\"nav-item nav-link\">Shop Detail</a>
                             <a href=\"{{path('app_offre')}}\" class=\"nav-item nav-link\">Offres disponibles</a>
-                            <a href=\"{{path('app_inscriptionoffre')}}\" class=\"nav-item nav-link\">s'inscrire à un offre</a>
+                            
                             <div class=\"nav-item dropdown\">
                                 <a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">Matériel Agricole</a>
                                 <div class=\"dropdown-menu m-0 bg-secondary rounded-0\">
@@ -2964,6 +2961,6 @@ class __TwigTemplate_14456eb2a79074cceb2f979f3c2c4a7b extends Template
 
 
 </html>
-", "base.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\base.html.twig");
+", "base.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\base.html.twig");
     }
 }

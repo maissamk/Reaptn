@@ -162,6 +162,6 @@ class __TwigTemplate_01c420737080266042f33f21d19fee73 extends Template
 
     {{ include('materielvente/_delete_form.html.twig') }}
 {% endblock %}
-", "materielvente/edit.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\materielvente\\edit.html.twig");
+", "materielvente/edit.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\materielvente\\edit.html.twig");
     }
 }
