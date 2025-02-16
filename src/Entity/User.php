@@ -77,11 +77,18 @@ private Collection $materielventes;
 #[ORM\OneToMany(targetEntity: Materiellocation::class, mappedBy: 'user_id_materiellocation')]
 private Collection $materiellocations;
 
+/**
+ * @var Collection<int, Commande>
+ */
+#[ORM\OneToMany(targetEntity: Commande::class, mappedBy: 'user_id_commande')]
+private Collection $commandes;
+
 public function __construct()
 {
     $this->parcelleProprietes = new ArrayCollection();
     $this->materielventes = new ArrayCollection();
     $this->materiellocations = new ArrayCollection();
+    $this->commandes = new ArrayCollection();
 }
 
 
@@ -293,6 +300,36 @@ public function __construct()
             // set the owning side to null (unless already changed)
             if ($materiellocation->getUserIdMateriellocation() === $this) {
                 $materiellocation->setUserIdMateriellocation(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Commande>
+     */
+    public function getCommandes(): Collection
+    {
+        return $this->commandes;
+    }
+
+    public function addCommande(Commande $commande): static
+    {
+        if (!$this->commandes->contains($commande)) {
+            $this->commandes->add($commande);
+            $commande->setUserIdCommande($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(Commande $commande): static
+    {
+        if ($this->commandes->removeElement($commande)) {
+            // set the owning side to null (unless already changed)
+            if ($commande->getUserIdCommande() === $this) {
+                $commande->setUserIdCommande(null);
             }
         }
 

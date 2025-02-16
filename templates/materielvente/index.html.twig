@@ -40,8 +40,9 @@
 
                         <div class="d-flex justify-content-between align-items-center">
                             <p class="text-dark fs-5 fw-bold mb-0">{{ materielvente.prix }} DT</p>
-                            <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary">
+                            <a href="{{ path('add_to_cart', { id: materielvente.id }) }}" class="btn border border-secondary rounded-pill px-3 text-primary">
                                 <i class="fa fa-shopping-bag me-2 text-primary"></i> Ajouter au panier
+
                             </a>
                         </div>
 
