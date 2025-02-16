@@ -1,4 +1,4 @@
-O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:70:"C:\Users\LENOVO\Desktop\PI2025\Reaptn\assets\frontoffice\css\style.css";s:10:"publicPath";s:66:"/assets/frontoffice/css/style-3ba849906d8dc82dfb813d6b62f31be6.css";s:23:"publicPathWithoutDigest";s:33:"/assets/frontoffice/css/style.css";s:15:"publicExtension";s:3:"css";s:7:"content";s:9988:"
+O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:70:"C:\Users\LENOVO\Desktop\PI2025\Reaptn\assets\frontoffice\css\style.css";s:10:"publicPath";s:66:"/assets/frontoffice/css/style-6d80af740678042607c4057f41e933cf.css";s:23:"publicPathWithoutDigest";s:33:"/assets/frontoffice/css/style.css";s:15:"publicExtension";s:3:"css";s:7:"content";s:10693:"
 /*** Spinner Start ***/
 #spinner {
     opacity: 0;
@@ -126,6 +126,8 @@ O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:70:"C:\
 .navbar {
     height: 100px;
     border-bottom: 1px solid rgba(255, 255, 255, .1);
+    
+    
 }
 
 .navbar .navbar-nav .nav-link:hover,
@@ -493,6 +495,38 @@ O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:70:"C:\
 .footer .footer-item p.mb-4 {
     line-height: 35px;
 }
+
+
+.description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Nombre de lignes visibles avant "..." */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    position: relative;
+}
+
+.see-more {
+    display: inline;
+    color: green;
+    cursor: pointer;
+    font-weight: bold;
+}
+.card-img-fixed {
+    width: 100%;
+    height: 350px; /* Hauteur uniforme */
+    object-fit: cover; /* Remplit le conteneur sans déformation */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    transition: transform 0.3s ease-in-out; /* Animation fluide */
+}
+
+.card-img-fixed:hover {
+    transform: scale(1.1); /* Zoom léger à 110% */
+}
+
+  
+
 /*** Footer End ***/
 
-";s:6:"digest";s:32:"3ba849906d8dc82dfb813d6b62f31be6";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:2:{i:0;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:73:"C:\Users\LENOVO\Desktop\PI2025\Reaptn\assets\frontoffice\img\hero-img.jpg";s:10:"publicPath";s:69:"/assets/frontoffice/img/hero-img-bd9ab201f79ae6930c20bc044eb5e451.jpg";s:23:"publicPathWithoutDigest";s:36:"/assets/frontoffice/img/hero-img.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"bd9ab201f79ae6930c20bc044eb5e451";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:28:"frontoffice/img/hero-img.jpg";}i:1;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:85:"C:\Users\LENOVO\Desktop\PI2025\Reaptn\assets\frontoffice\img\cart-page-header-img.jpg";s:10:"publicPath";s:81:"/assets/frontoffice/img/cart-page-header-img-5aea8fbd662c513c40bd2b596de4e150.jpg";s:23:"publicPathWithoutDigest";s:48:"/assets/frontoffice/img/cart-page-header-img.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"5aea8fbd662c513c40bd2b596de4e150";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:40:"frontoffice/img/cart-page-header-img.jpg";}}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:25:"frontoffice/css/style.css";}
+
+";s:6:"digest";s:32:"6d80af740678042607c4057f41e933cf";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:2:{i:0;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:73:"C:\Users\LENOVO\Desktop\PI2025\Reaptn\assets\frontoffice\img\hero-img.jpg";s:10:"publicPath";s:69:"/assets/frontoffice/img/hero-img-bd9ab201f79ae6930c20bc044eb5e451.jpg";s:23:"publicPathWithoutDigest";s:36:"/assets/frontoffice/img/hero-img.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"bd9ab201f79ae6930c20bc044eb5e451";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:28:"frontoffice/img/hero-img.jpg";}i:1;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:85:"C:\Users\LENOVO\Desktop\PI2025\Reaptn\assets\frontoffice\img\cart-page-header-img.jpg";s:10:"publicPath";s:81:"/assets/frontoffice/img/cart-page-header-img-5aea8fbd662c513c40bd2b596de4e150.jpg";s:23:"publicPathWithoutDigest";s:48:"/assets/frontoffice/img/cart-page-header-img.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"5aea8fbd662c513c40bd2b596de4e150";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:40:"frontoffice/img/cart-page-header-img.jpg";}}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:25:"frontoffice/css/style.css";}

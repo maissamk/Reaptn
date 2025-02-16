@@ -106,13 +106,14 @@
 							</ul>
 						</li>
 						<li class="nav-item dropdown">
-							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"> <img src="{{asset('backoffice/img/profile.jpg')}}" alt="user-img" width="36" class="img-circle"><span >Hizrian</span></span> </a>
+							<div class="ms-auto">
+    <a href="/{{app.user ? 'logout' : 'login' }}" class="btn btn-warning text-white fw-bold px-4 py-2 rounded-pill">{{app.user ? 'Logout' : 'Login' }}</a>
+</div>
 							<ul class="dropdown-menu dropdown-user">
 								<li>
 									<div class="user-box">
 										<div class="u-img"><img src="{{asset('backoffice/img/profile.jpg')}}" alt="user"></div>
 										<div class="u-text">
-											<h4>Hizrian</h4>
 											<p class="text-muted">hello@themekita.com</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
 										</div>
 									</li>
@@ -135,12 +136,16 @@
 				<div class="scrollbar-inner sidebar-wrapper">
 					<div class="user">
 						<div class="photo">
-							<img src="{{asset('backoffice/img/profile.jpg')}}">
+							 {% if app.user.avatar %}
+                                <img src="{{ asset('uploads/avatars/' ~ app.user.avatar) }}" class="rounded-circle mb-3" width="150" height="150" alt="Avatar Utilisateur">
+                            {% else %}
+                                <img src="{{ asset('uploads/avatars/default.png') }}" class="rounded-circle mb-3" width="150" height="150" alt="Avatar par défaut">
+                            {% endif %}
 						</div>
 						<div class="info">
 							<a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
 								<span>
-									Hizrian
+									{{app.user.nom}}
 									<span class="user-level">Administrator</span>
 									<span class="caret"></span>
 								</span>
@@ -151,12 +156,12 @@
 								<ul class="nav">
 									<li>
 										<a href="#profile">
-											<span class="link-collapse">My Profile</span>
+											<span class="link-collapse"><a href="{{ path('admin_profile') }}" class="btn btn-rounded btn-danger btn-sm">Mon Profile</span>
 										</a>
 									</li>
 									<li>
 										<a href="#edit">
-											<span class="link-collapse">Edit Profile</span>
+											<span class="link-collapse"><a href="{{ path('admin_edit_profile') }}" class="btn btn-rounded btn-danger btn-sm">Modifier le Profil</span>
 										</a>
 									</li>
 									<li>
@@ -197,6 +202,28 @@
         						<p>Gestion des employés</p>
     						</a>
 						</li>
+<li class="nav-item">
+    <a href="{{ path('admin_parcelle_proprietes_index') }}">
+
+        <i class="la la-table"></i>
+        <p>shop_parcelles</p>
+        <span class="badge badge-count">14</span>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ path('admin_contrat_index') }}">
+
+        <i class="la la-table"></i>
+        <p>inspecter_contrats</p>
+        <span class="badge badge-count">14</span>
+    </a>
+</li>
+
+
+
+
+
 						<li class="nav-item">
 							<a href="forms.html">
 								<i class="la la-keyboard-o"></i>
@@ -205,12 +232,20 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="tables.html">
+							<a href="{{path('app_tables')}}">
 								<i class="la la-th"></i>
-								<p>Tables</p>
+								<p>Matériel Agricole de Vente</p>
 								<span class="badge badge-count">6</span>
 							</a>
 						</li>
+						<li class="nav-item">
+							<a href="{{path('app_tableslocation')}}">
+								<i class="la la-th"></i>
+								<p>Matériel Agricole de Location</p>
+								<span class="badge badge-count">6</span>
+							</a>
+						</li>
+						
 						<li class="nav-item">
 							<a href="notifications.html">
 								<i class="la la-bell"></i>

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CommandeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -15,9 +17,6 @@ class Commande
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    #[Assert\NotBlank(message: "L'identifiant de la commande ne peut pas être vide.")]
-    private ?int $id_commande = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     #[Assert\NotBlank(message: "La date de commande est obligatoire.")]
@@ -36,22 +35,102 @@ class Commande
     #[Assert\Type(type: "integer", message: "La quantité doit être un nombre entier.")]
     private ?int $quantite = null;
 
+    #[ORM\OneToOne(mappedBy: 'commande', targetEntity: Livraison::class, cascade: ['persist', 'remove'])]
+    private ?Livraison $livraison = null;
+    
+    // Getter et Setter
+    public function getLivraison(): ?Livraison
+    {
+        return $this->livraison;
+    }
+    
+    public function setLivraison(Livraison $livraison): self
+    {
+        // Assurez la relation bidirectionnelle
+        if ($livraison->getCommande() !== $this) {
+            $livraison->setCommande($this);
+        }
+    
+        $this->livraison = $livraison;
+    
+        return $this;
+    }
+    
+    
+   
+
+
+    #[ORM\OneToOne(mappedBy: 'commande', targetEntity: Paiement::class, cascade: ['persist', 'remove'])]
+    private ?Paiement $paiement = null;
+    
+    // Getter et Setter pour Paiement
+    public function getPaiement(): ?Paiement
+    {
+        return $this->paiement;
+    }
+    
+    public function setPaiement(Paiement $paiement): self
+    {
+        // Permet d'assurer que l'objet Paiement est lié à la commande
+        if ($paiement->getCommande() !== $this) {
+            $paiement->setCommande($this);
+        }
+    
+        $this->paiement = $paiement;
+    
+        return $this;
+    }
+    
+
+
+    #[ORM\OneToMany(mappedBy: 'commande', targetEntity: Materielvente::class, cascade: ['persist', 'remove'])]
+private $materiels;
+
+    #[ORM\ManyToOne(inversedBy: 'commandes')]
+    private ?User $user_id_commande = null;
+
+public function __construct()
+{
+    $this->materiels = new ArrayCollection();
+}
+
+/**
+ * @return Collection<int, Materielvente>
+ */
+public function getMateriels(): Collection
+{
+    return $this->materiels;
+}
+
+public function addMateriel(Materielvente $materiel): self
+{
+    if (!$this->materiels->contains($materiel)) {
+        $this->materiels[] = $materiel;
+        $materiel->setCommande($this);
+    }
+
+    return $this;
+}
+
+public function removeMateriel(Materielvente $materiel): self
+{
+    if ($this->materiels->removeElement($materiel)) {
+        // Set the owning side to null (unless already changed)
+        if ($materiel->getCommande() === $this) {
+            $materiel->setCommande(null);
+        }
+    }
+
+    return $this;
+}
+
+    
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getIdCommande(): ?int
-    {
-        return $this->id_commande;
-    }
-
-    public function setIdCommande(int $id_commande): static
-    {
-        $this->id_commande = $id_commande;
-
-        return $this;
-    }
+   
 
     public function getDateCommande(): ?\DateTimeInterface
     {
@@ -88,4 +167,23 @@ class Commande
 
         return $this;
     }
+
+    public function getUserIdCommande(): ?User
+    {
+        return $this->user_id_commande;
+    }
+
+    public function setUserIdCommande(?User $user_id_commande): static
+    {
+        $this->user_id_commande = $user_id_commande;
+
+        return $this;
+    }
+
+   
+
+
+
+
+    
 }
