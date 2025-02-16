@@ -140,4 +140,15 @@ final class MaterielventeController extends AbstractController
 
         return $this->redirectToRoute('app_materielvente_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
+    #[Route('/materiels', name: 'materiels_list')]
+    public function showMateriels(): Response
+    {
+        $materiels = $this->getDoctrine()->getRepository(Materielvente::class)->findAll();
+        
+        return $this->render('panier/index.html.twig', [
+            'materiels' => $materiels,
+        ]);
+    }
 }
