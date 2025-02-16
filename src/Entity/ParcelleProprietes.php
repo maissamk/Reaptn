@@ -99,6 +99,16 @@ class ParcelleProprietes
     #[ORM\OneToMany(targetEntity: Contrat::class, mappedBy: 'parcelle')]
     private Collection $type_Contrat;
 
+    #[ORM\Column(length: 255)]
+    private ?string $image = null;
+
+    #[ORM\ManyToOne(inversedBy: 'parcelleProprietes')]
+    private ?user $user_id_parcelle = null;
+
+    
+
+    
+
     public function __construct()
     {
         $this->type_Contrat = new ArrayCollection();
@@ -270,4 +280,30 @@ class ParcelleProprietes
 
         return $this;
     }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): static
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getUserIdParcelle(): ?user
+    {
+        return $this->user_id_parcelle;
+    }
+
+    public function setUserIdParcelle(?user $user_id_parcelle): static
+    {
+        $this->user_id_parcelle = $user_id_parcelle;
+
+        return $this;
+    }
+
+   
 }

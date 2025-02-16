@@ -47,6 +47,9 @@ class Materielvente
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
+    #[ORM\ManyToOne(inversedBy: 'materielventes')]
+    private ?user $user_id_materielvente = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -108,6 +111,18 @@ class Materielvente
     public function setImage(string $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getUserIdMaterielvente(): ?user
+    {
+        return $this->user_id_materielvente;
+    }
+
+    public function setUserIdMaterielvente(?user $user_id_materielvente): static
+    {
+        $this->user_id_materielvente = $user_id_materielvente;
 
         return $this;
     }
