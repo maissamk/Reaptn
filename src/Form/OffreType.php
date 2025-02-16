@@ -28,10 +28,10 @@ class OffreType extends AbstractType
             ->add('statut', ChoiceType::class, [
                 'label' => 'Statut',
                 'choices' => [
-                    'Actif' => true,
-                    'Inactif' => false,
+                    'Inscriptions permises' => true,
+                    'Inscriptions blockées' => false,
                 ],
-                'expanded' => true, // Displays radio buttons instead of dropdown
+                'expanded' => false, // Displays radio buttons instead of dropdown
                 'multiple' => false,
             ])
             ->add('descr', TextType::class, [

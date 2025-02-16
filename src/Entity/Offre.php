@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\OffreRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -47,6 +49,17 @@ class Offre
         maxMessage: "Les compétences ne peuvent pas dépasser 100 caractères."
     )]
     private ?string $comp = null;
+
+    /**
+     * @var Collection<int, Employe>
+     */
+    #[ORM\OneToMany(targetEntity: Employe::class, mappedBy: 'offre', orphanRemoval: true)]
+    private Collection $employes;
+
+    public function __construct()
+    {
+        $this->employes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -116,6 +129,36 @@ class Offre
     public function setComp(?string $comp): static
     {
         $this->comp = $comp;
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Employe>
+     */
+    public function getEmployes(): Collection
+    {
+        return $this->employes;
+    }
+
+    public function addEmploye(Employe $employe): static
+    {
+        if (!$this->employes->contains($employe)) {
+            $this->employes->add($employe);
+            $employe->setOffre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEmploye(Employe $employe): static
+    {
+        if ($this->employes->removeElement($employe)) {
+            // set the owning side to null (unless already changed)
+            if ($employe->getOffre() === $this) {
+                $employe->setOffre(null);
+            }
+        }
+
         return $this;
     }
 }
