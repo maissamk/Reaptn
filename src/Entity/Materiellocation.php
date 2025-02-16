@@ -48,6 +48,9 @@ class Materiellocation
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
+    #[ORM\ManyToOne(inversedBy: 'materiellocations')]
+    private ?user $user_id_materiellocation = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -109,6 +112,18 @@ class Materiellocation
     public function setImage(string $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getUserIdMateriellocation(): ?user
+    {
+        return $this->user_id_materiellocation;
+    }
+
+    public function setUserIdMateriellocation(?user $user_id_materiellocation): static
+    {
+        $this->user_id_materiellocation = $user_id_materiellocation;
 
         return $this;
     }
