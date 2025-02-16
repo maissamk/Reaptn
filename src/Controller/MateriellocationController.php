@@ -23,24 +23,53 @@ final class MateriellocationController extends AbstractController
     }
 
     #[Route('/new', name: 'app_materiellocation_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $materiellocation = new Materiellocation();
-        $form = $this->createForm(MateriellocationType::class, $materiellocation);
-        $form->handleRequest($request);
+public function new(Request $request, EntityManagerInterface $entityManager): Response
+{
+    $materiellocation = new Materiellocation();
+    $form = $this->createForm(MateriellocationType::class, $materiellocation);
+    $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($materiellocation);
-            $entityManager->flush();
+    if ($form->isSubmitted() && $form->isValid()) {
+        /** @var UploadedFile $file */
+        $file = $form->get('image')->getData();
 
-            return $this->redirectToRoute('app_materiellocation_index', [], Response::HTTP_SEE_OTHER);
+        if ($file) {
+            $filename = md5(uniqid()) . '.' . $file->guessExtension();
+
+            try {
+                $directory = $this->getParameter('images_directory');
+
+                // Vérifie si le dossier existe, sinon le créer
+                if (!is_dir($directory) && !mkdir($directory, 0775, true) && !is_dir($directory)) {
+                    throw new \RuntimeException(sprintf('Impossible de créer le répertoire "%s"', $directory));
+                }
+
+                $file->move($directory, $filename);
+                $materiellocation->setImage($filename);
+            } catch (FileException $e) {
+                $this->addFlash('error', 'Erreur lors de l\'upload de l\'image : ' . $e->getMessage());
+                return $this->redirectToRoute('app_materiellocation_new');
+            } catch (\RuntimeException $e) {
+                $this->addFlash('error', 'Erreur lors de la création du dossier d\'images.');
+                return $this->redirectToRoute('app_materiellocation_new');
+            }
+        } else {
+            // Image par défaut si aucune image n'est envoyée
+            $materiellocation->setImage('default.jpg');
         }
 
-        return $this->render('materiellocation/new.html.twig', [
-            'materiellocation' => $materiellocation,
-            'form' => $form,
-        ]);
+        $entityManager->persist($materiellocation);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_materiellocation_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    return $this->render('materiellocation/new.html.twig', [
+        'materiellocation' => $materiellocation,
+        'form' => $form,
+    ]);
+}
+
 
     #[Route('/{id}', name: 'app_materiellocation_show', methods: ['GET'])]
     public function show(Materiellocation $materiellocation): Response
@@ -51,22 +80,49 @@ final class MateriellocationController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_materiellocation_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Materiellocation $materiellocation, EntityManagerInterface $entityManager): Response
-    {
-        $form = $this->createForm(MateriellocationType::class, $materiellocation);
-        $form->handleRequest($request);
+public function edit(Request $request, Materiellocation $materiellocation, EntityManagerInterface $entityManager): Response
+{
+    $form = $this->createForm(MateriellocationType::class, $materiellocation);
+    $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
+    if ($form->isSubmitted() && $form->isValid()) {
+        /** @var UploadedFile $file */
+        $file = $form->get('image')->getData();
 
-            return $this->redirectToRoute('app_materiellocation_index', [], Response::HTTP_SEE_OTHER);
+        if ($file) {
+            $filename = md5(uniqid()) . '.' . $file->guessExtension();
+
+            try {
+                $directory = $this->getParameter('images_directory');
+
+                // Vérifie si le dossier existe, sinon le créer
+                if (!is_dir($directory) && !mkdir($directory, 0775, true) && !is_dir($directory)) {
+                    throw new \RuntimeException(sprintf('Impossible de créer le répertoire "%s"', $directory));
+                }
+
+                // Déplace l'image dans le répertoire
+                $file->move($directory, $filename);
+                $materiellocation->setImage($filename);
+            } catch (FileException $e) {
+                $this->addFlash('error', 'Erreur lors de l\'upload de l\'image : ' . $e->getMessage());
+                return $this->redirectToRoute('app_materiellocation_edit', ['id' => $materiellocation->getId()]);
+            } catch (\RuntimeException $e) {
+                $this->addFlash('error', 'Erreur lors de la création du dossier d\'images.');
+                return $this->redirectToRoute('app_materiellocation_edit', ['id' => $materiellocation->getId()]);
+            }
         }
 
-        return $this->render('materiellocation/edit.html.twig', [
-            'materiellocation' => $materiellocation,
-            'form' => $form,
-        ]);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_materiellocation_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    return $this->render('materiellocation/edit.html.twig', [
+        'materiellocation' => $materiellocation,
+        'form' => $form->createView(),
+    ]);
+}
+
 
     #[Route('/{id}', name: 'app_materiellocation_delete', methods: ['POST'])]
     public function delete(Request $request, Materiellocation $materiellocation, EntityManagerInterface $entityManager): Response

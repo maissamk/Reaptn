@@ -14,7 +14,14 @@ class Materielvente
     #[ORM\Column]
     private ?int $id = null;
     
-    #[Assert\NotBlank(message: "veuillez entrez le nom du matériel.")]
+    #[Assert\NotBlank(message: "Veuillez entrer le nom du matériel.")]
+    #[Assert\Length(
+        min: 3,
+        max: 50,
+        minMessage: "Le nom du matériel doit contenir au moins {{ limit }} caractères.",
+        maxMessage: "Le nom du matériel ne peut pas dépasser {{ limit }} caractères."
+    )]
+    #[Assert\Regex(pattern: "/^[a-zA-ZÀ-ÿ\- ]+$/", message: "Le nom doit contenir uniquement des lettres.")]
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
@@ -22,33 +29,29 @@ class Materielvente
     #[ORM\Column]
     private ?float $prix = null;
 
-    #[Assert\NotBlank(message: "veuillez entrez une description du matériel")]
+    #[Assert\NotBlank(message: "Veuillez entrer une description du matériel.")]
+    #[Assert\Length(
+        min: 3,
+        max: 255,
+        minMessage: "La description du matériel doit contenir au moins {{ limit }} caractères.",
+        maxMessage: "La description du matériel ne peut pas dépasser {{ limit }} caractères."
+    )]
+    #[Assert\Regex(pattern: "/^[a-zA-ZÀ-ÿ\- ]+$/", message: "La description doit contenir uniquement des lettres.")]
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
     #[ORM\Column]
     private ?bool $disponibilite = null;
 
-   
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
-
     #[ORM\ManyToOne(targetEntity: Commande::class, inversedBy: 'materiels')]
-#[ORM\JoinColumn(nullable: true)]
-private $commande;
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Commande $commande = null;
 
-public function getCommande(): ?Commande
-{
-    return $this->commande;
-}
-
-public function setCommande(?Commande $commande): self
-{
-    $this->commande = $commande;
-
-    return $this;
-}
+    #[ORM\ManyToOne(inversedBy: 'materielventes')]
+    private ?User $user_id_materielvente = null;
 
     public function getId(): ?int
     {
@@ -63,7 +66,6 @@ public function setCommande(?Commande $commande): self
     public function setNom(string $nom): static
     {
         $this->nom = $nom;
-
         return $this;
     }
 
@@ -75,7 +77,6 @@ public function setCommande(?Commande $commande): self
     public function setPrix(float $prix): static
     {
         $this->prix = $prix;
-
         return $this;
     }
 
@@ -87,7 +88,6 @@ public function setCommande(?Commande $commande): self
     public function setDescription(string $description): static
     {
         $this->description = $description;
-
         return $this;
     }
 
@@ -99,7 +99,6 @@ public function setCommande(?Commande $commande): self
     public function setDisponibilite(bool $disponibilite): static
     {
         $this->disponibilite = $disponibilite;
-
         return $this;
     }
 
@@ -111,7 +110,28 @@ public function setCommande(?Commande $commande): self
     public function setImage(string $image): static
     {
         $this->image = $image;
+        return $this;
+    }
 
+    public function getCommande(): ?Commande
+    {
+        return $this->commande;
+    }
+
+    public function setCommande(?Commande $commande): static
+    {
+        $this->commande = $commande;
+        return $this;
+    }
+
+    public function getUserIdMaterielvente(): ?User
+    {
+        return $this->user_id_materielvente;
+    }
+
+    public function setUserIdMaterielvente(?User $user_id_materielvente): static
+    {
+        $this->user_id_materielvente = $user_id_materielvente;
         return $this;
     }
 }
