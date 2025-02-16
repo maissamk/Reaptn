@@ -126,6 +126,8 @@
 .navbar {
     height: 100px;
     border-bottom: 1px solid rgba(255, 255, 255, .1);
+    
+    
 }
 
 .navbar .navbar-nav .nav-link:hover,
@@ -493,13 +495,8 @@
 .footer .footer-item p.mb-4 {
     line-height: 35px;
 }
-.card-img-fixed {
-    width: 100%;
-    height: 200px; /* Hauteur uniforme */
-    object-fit: cover; /* Remplit le conteneur sans déformation */
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-}
+
+
 .description {
     display: -webkit-box;
     -webkit-line-clamp: 3; /* Nombre de lignes visibles avant "..." */
@@ -530,4 +527,5 @@
   
 
 /*** Footer End ***/
+
 

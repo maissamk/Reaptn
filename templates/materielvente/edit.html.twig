@@ -3,11 +3,12 @@
 {% block title %}Edit Materielvente{% endblock %}
 
 {% block body %}
+ <div class="container mt-5 pt-5" style="margin-top: 120px;">
     <h1>Edit Materielvente</h1>
 
     {{ include('materielvente/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('app_materielvente_index') }}">back to list</a>
 
-    {{ include('materielvente/_delete_form.html.twig') }}
+    
 {% endblock %}

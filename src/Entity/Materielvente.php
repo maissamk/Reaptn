@@ -15,6 +15,13 @@ class Materielvente
     private ?int $id = null;
     
     #[Assert\NotBlank(message: "veuillez entrez le nom du matériel.")]
+    #[Assert\Length(
+        min: 3,
+        max: 50,
+        minMessage: "Le nom du matériel doit contenir au moins {{ limit }} caractères.",
+        maxMessage: "Le nom du matériel ne peut pas dépasser {{ limit }} caractères."
+    )]
+    #[Assert\Regex(pattern: "/^[a-zA-ZÀ-ÿ\- ]+$/", message: "Le nom doit contenir uniquement des lettres.")]
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
@@ -23,6 +30,13 @@ class Materielvente
     private ?float $prix = null;
 
     #[Assert\NotBlank(message: "veuillez entrez une description du matériel")]
+    #[Assert\Length(
+        min: 3,
+        max: 50,
+        minMessage: "La description du matériel doit contenir au moins {{ limit }} caractères.",
+        maxMessage: "La description du matériel ne peut pas dépasser {{ limit }} caractères."
+    )]
+    #[Assert\Regex(pattern: "/^[a-zA-ZÀ-ÿ\- ]+$/", message: "La description doit contenir uniquement des lettres.")]
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
@@ -32,6 +46,9 @@ class Materielvente
    
     #[ORM\Column(length: 255)]
     private ?string $image = null;
+
+    #[ORM\ManyToOne(inversedBy: 'materielventes')]
+    private ?user $user_id_materielvente = null;
 
     public function getId(): ?int
     {
@@ -94,6 +111,18 @@ class Materielvente
     public function setImage(string $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getUserIdMaterielvente(): ?user
+    {
+        return $this->user_id_materielvente;
+    }
+
+    public function setUserIdMaterielvente(?user $user_id_materielvente): static
+    {
+        $this->user_id_materielvente = $user_id_materielvente;
 
         return $this;
     }
