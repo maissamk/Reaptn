@@ -65,9 +65,23 @@ private ?string $avatar = null;
 #[ORM\OneToMany(targetEntity: ParcelleProprietes::class, mappedBy: 'user_id_parcelle')]
 private Collection $parcelleProprietes;
 
+/**
+ * @var Collection<int, Materielvente>
+ */
+#[ORM\OneToMany(targetEntity: Materielvente::class, mappedBy: 'user_id_materielvente')]
+private Collection $materielventes;
+
+/**
+ * @var Collection<int, Materiellocation>
+ */
+#[ORM\OneToMany(targetEntity: Materiellocation::class, mappedBy: 'user_id_materiellocation')]
+private Collection $materiellocations;
+
 public function __construct()
 {
     $this->parcelleProprietes = new ArrayCollection();
+    $this->materielventes = new ArrayCollection();
+    $this->materiellocations = new ArrayCollection();
 }
 
 
@@ -219,6 +233,66 @@ public function __construct()
             // set the owning side to null (unless already changed)
             if ($parcellePropriete->getUserIdParcelle() === $this) {
                 $parcellePropriete->setUserIdParcelle(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Materielvente>
+     */
+    public function getMaterielventes(): Collection
+    {
+        return $this->materielventes;
+    }
+
+    public function addMaterielvente(Materielvente $materielvente): static
+    {
+        if (!$this->materielventes->contains($materielvente)) {
+            $this->materielventes->add($materielvente);
+            $materielvente->setUserIdMaterielvente($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMaterielvente(Materielvente $materielvente): static
+    {
+        if ($this->materielventes->removeElement($materielvente)) {
+            // set the owning side to null (unless already changed)
+            if ($materielvente->getUserIdMaterielvente() === $this) {
+                $materielvente->setUserIdMaterielvente(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Materiellocation>
+     */
+    public function getMateriellocations(): Collection
+    {
+        return $this->materiellocations;
+    }
+
+    public function addMateriellocation(Materiellocation $materiellocation): static
+    {
+        if (!$this->materiellocations->contains($materiellocation)) {
+            $this->materiellocations->add($materiellocation);
+            $materiellocation->setUserIdMateriellocation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMateriellocation(Materiellocation $materiellocation): static
+    {
+        if ($this->materiellocations->removeElement($materiellocation)) {
+            // set the owning side to null (unless already changed)
+            if ($materiellocation->getUserIdMateriellocation() === $this) {
+                $materiellocation->setUserIdMateriellocation(null);
             }
         }
 
