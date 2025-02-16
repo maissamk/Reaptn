@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Paiement pour la commande #{{ commande.id }}</h1>
+
+        <p>Total : {{ commande.totale }} €</p>
+
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button type="submit" class="btn btn-primary mt-3">Payer maintenant</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

@@ -55,6 +55,9 @@ final class MaterielventeController extends AbstractController
                     $this->addFlash('error', 'Erreur lors de la création du dossier d\'images.');
                     return $this->redirectToRoute('app_materielvente_new');
                 }
+            } else {
+                // Image par défaut si aucune image n'est envoyée
+                $materielvente->setImage('default.jpg');
             }
 
             $entityManager->persist($materielvente);
@@ -136,5 +139,16 @@ final class MaterielventeController extends AbstractController
         }
 
         return $this->redirectToRoute('app_materielvente_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+
+    #[Route('/materiels', name: 'materiels_list')]
+    public function showMateriels(): Response
+    {
+        $materiels = $this->getDoctrine()->getRepository(Materielvente::class)->findAll();
+        
+        return $this->render('panier/index.html.twig', [
+            'materiels' => $materiels,
+        ]);
     }
 }
