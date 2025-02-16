@@ -170,6 +170,6 @@ class __TwigTemplate_a64f72d34ebcab0558c20f8684abbb0f extends Template
         <button type=\"submit\" class=\"btn btn-primary\">Confirmer la Livraison</button>
     </form>
 {% endblock %}
-", "livraison/new.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\livraison\\new.html.twig");
+", "livraison/new.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\livraison\\new.html.twig");
     }
 }

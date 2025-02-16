@@ -71,6 +71,6 @@ class __TwigTemplate_21aadd66fade48893ef98006490e2795 extends Template
 
     public function getSourceContext(): Source
     {
-        return new Source("", "panier/afficher.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\panier\\afficher.html.twig");
+        return new Source("", "panier/afficher.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\panier\\afficher.html.twig");
     }
 }

@@ -2,11 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Employe;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 use App\Repository\MaterielventeRepository;
@@ -40,6 +41,13 @@ final class AdminController extends AbstractController
             'controller_name' => 'AdminController',
         ]);
     }
+    #[Route('/admin/offre', name: 'admin_offre_index')]
+    public function offreIndex(): Response
+    {
+        return $this->render('admin/offre/index_back.html.twig');
+    }
+    
+
     
    //Matériel de vente partie Admin
     #[Route('/admin/tables', name: 'app_tables')]
@@ -495,7 +503,7 @@ public function newContrat(Request $request, EntityManagerInterface $entityManag
 
 
 
-    #[Route('/{id}/edit', name: 'admin_contrat_edit', methods: ['GET', 'POST'])]
+    #[Route('admin/{id}/edit', name: 'admin_contrat_edit', methods: ['GET', 'POST'])]
     public function editBackconrat(Request $request, Contrat $contrat, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(ContratType::class, $contrat);

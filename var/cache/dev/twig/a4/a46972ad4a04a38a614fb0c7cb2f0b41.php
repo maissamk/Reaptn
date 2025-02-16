@@ -227,6 +227,6 @@ class __TwigTemplate_8669dd04e764ca78a89c1e2b240e8b44 extends Template
 
     {{ include('materiellocation/_delete_form.html.twig') }}
 {% endblock %}
-", "materiellocation/show.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\materiellocation\\show.html.twig");
+", "materiellocation/show.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\materiellocation\\show.html.twig");
     }
 }

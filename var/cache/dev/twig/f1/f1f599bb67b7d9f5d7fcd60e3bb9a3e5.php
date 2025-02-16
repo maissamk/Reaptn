@@ -45,7 +45,7 @@ class __TwigTemplate_db3e2039a0b0b3fe2d8f7041c865d3d7 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "offre/_form.html.twig"));
 
         // line 1
-        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 1, $this->source); })()), 'form_start');
+        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 1, $this->source); })()), 'form_start', ["attr" => ["novalidate" => "novalidate"]]);
         yield "
 
 ";
@@ -125,7 +125,7 @@ class __TwigTemplate_db3e2039a0b0b3fe2d8f7041c865d3d7 extends Template
 
     public function getSourceContext(): Source
     {
-        return new Source("{{ form_start(form) }}
+        return new Source("{{ form_start(form, { 'attr': { 'novalidate': 'novalidate' } }) }}
 
 {% for field in form %}
     {% if field.vars.name != '_token' %} {# Avoid rendering _token twice #}
@@ -140,6 +140,6 @@ class __TwigTemplate_db3e2039a0b0b3fe2d8f7041c865d3d7 extends Template
 <button class=\"btn btn-primary\">{{ button_label|default('Enregistrer') }}</button>
 
 {{ form_end(form) }}
-", "offre/_form.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\offre\\_form.html.twig");
+", "offre/_form.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\offre\\_form.html.twig");
     }
 }
