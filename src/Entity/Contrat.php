@@ -20,6 +20,7 @@ class Contrat
     private ?ParcelleProprietes $parcelle = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Assert\NotNull(message: "La date de début du contrat ne doit pas être vide.")]
     #[Assert\Type("\DateTimeInterface", message: "La date de début doit être une date valide.")]
     private ?\DateTimeInterface $dateDebut_contrat = null;
 
@@ -48,7 +49,14 @@ class Contrat
     )]
     private ?string $nom_Vendeur = null;
 
+
+
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "Le champs informations contart ne peut pas etre vide.")]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: "Ce champs ne doit pas dépasser {{ limit }} caractères."
+    )]
     private ?string $information_Contrat = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]

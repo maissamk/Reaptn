@@ -26,9 +26,18 @@ class ContratType extends AbstractType
             'required' => true,        // Make sure this field is required
             'empty_data' => (new \DateTime()),
             ])
-            ->add('nom_Acheteur')
-            ->add('nom_Vendeur')
-            ->add('information_Contrat')
+            ->add('nom_Acheteur', null, [
+                'required' => true,
+                'empty_data' => '',
+            ])
+            ->add('nom_Vendeur', null, [
+                'required' => true,
+                'empty_data' => '',
+            ])
+            ->add('information_Contrat', null, [
+                'required' => true,
+                'empty_data' => '',
+            ])
             ->add('datecreation_contrat', DateTimeType::class, [
                 'widget' => 'single_text', // This will render it as a single input field
                 'required' => true,        // Make sure this field is required

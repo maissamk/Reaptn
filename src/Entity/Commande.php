@@ -86,6 +86,9 @@ class Commande
     #[ORM\OneToMany(mappedBy: 'commande', targetEntity: Materielvente::class, cascade: ['persist', 'remove'])]
 private $materiels;
 
+    #[ORM\ManyToOne(inversedBy: 'commandes')]
+    private ?User $user_id_commande = null;
+
 public function __construct()
 {
     $this->materiels = new ArrayCollection();
@@ -161,6 +164,18 @@ public function removeMateriel(Materielvente $materiel): self
     public function setQuantite(int $quantite): static
     {
         $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    public function getUserIdCommande(): ?User
+    {
+        return $this->user_id_commande;
+    }
+
+    public function setUserIdCommande(?User $user_id_commande): static
+    {
+        $this->user_id_commande = $user_id_commande;
 
         return $this;
     }

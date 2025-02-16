@@ -55,6 +55,9 @@ final class MaterielventeController extends AbstractController
                     $this->addFlash('error', 'Erreur lors de la création du dossier d\'images.');
                     return $this->redirectToRoute('app_materielvente_new');
                 }
+            } else {
+                // Image par défaut si aucune image n'est envoyée
+                $materielvente->setImage('default.jpg');
             }
 
             $entityManager->persist($materielvente);
