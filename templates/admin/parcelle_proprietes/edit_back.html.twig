@@ -1,0 +1,106 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Modifier une Parcelle ou Propriété{% endblock %}
+
+{% block body %}
+<div class="container mt-5" style="width: 70%; margin-left: 27%; padding-top: 50px;">
+
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg">
+            <div class="container mt-5 pt-5">
+                <div class="card-header bg-primary text-white text-center">
+                
+                    <h2>Modifier une Parcelle ou Propriété</h2>
+                </div>
+                <div class="card-body">
+                    {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+
+                    <div class="mb-3">
+                        {{ form_label(form.titre, 'Titre', {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.titre, {'attr': {'class': 'form-control'}}) }}
+                        <div class="invalid-feedback d-block text-danger">{{ form_errors(form.titre) }}</div>
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(form.description, 'Description', {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+                        <div class="invalid-feedback d-block text-danger">{{ form_errors(form.description) }}</div>
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(form.prix, 'Prix', {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.prix, {'attr': {'class': 'form-control'}}) }}
+                        <div class="invalid-feedback d-block text-danger">{{ form_errors(form.prix) }}</div>
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(form.status, 'Statut', {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.status, {'attr': {'class': 'form-select'}}) }}
+                        <div class="invalid-feedback d-block text-danger">{{ form_errors(form.status) }}</div>
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(form.emplacement, 'emplacement', {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.emplacement, {'attr': {'class': 'form-control'}}) }}
+                        <div class="invalid-feedback d-block text-danger">{{ form_errors(form.emplacement) }}</div>
+                    </div>
+                     <div class="mb-3">
+                        {{ form_label(form.taille, 'Taille', {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.taille, {'attr': {'class': 'form-control'}}) }}
+                        <div class="invalid-feedback d-block text-danger">{{ form_errors(form.taille) }}</div>
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(form.nom_proprietaire, 'Nom Propriétaire', {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.nom_proprietaire, {'attr': {'class': 'form-control'}}) }}
+                        <div class="invalid-feedback d-block text-danger">{{ form_errors(form.nom_proprietaire) }}</div>
+                    </div>
+                     <div class="mb-3">
+                        {{ form_label(form.contact_proprietaire, 'Contact Propriétaire', {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.contact_proprietaire, {'attr': {'class': 'form-control'}}) }}
+                        <div class="invalid-feedback d-block text-danger">{{ form_errors(form.contact_proprietaire) }}</div>
+                    </div>
+<div class="mb-3">
+    {{ form_label(form.date_creation_annonce, 'Date de création de l\'annonce', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.date_creation_annonce, {'attr': {'class': 'form-control'}}) }}
+    <div class="invalid-feedback d-block text-danger">
+        {{ form_errors(form.date_creation_annonce) }}
+    </div>
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.date_misajour_annonce, 'Date de Mis a jour Annonce', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.date_misajour_annonce, {'attr': {'class': 'form-control'}}) }}
+    <div class="invalid-feedback d-block text-danger">
+        {{ form_errors(form.date_misajour_annonce) }}
+    </div>
+</div>
+                    <div class="mb-3">
+                        {{ form_label(form.estDisponible, 'Disponible', {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.estDisponible, {'attr': {'class': 'form-control'}}) }}
+                        <div class="invalid-feedback d-block text-danger">{{ form_errors(form.estDisponible) }}</div>
+                    </div>
+                  
+
+
+
+
+                    <div class="mb-3">
+                        {{ form_label(form.image, 'Image', {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
+                        <div class="invalid-feedback d-block text-danger">{{ form_errors(form.image) }}</div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+                        <a href="{{ path('app_parcelle_proprietes_index') }}" class="btn btn-secondary">Retour</a>
+                    </div>
+
+
+
+
+
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

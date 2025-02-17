@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Matériels{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1>Liste des Matériels</h1>
+
+<a href="{{ path('app_materiel_new', {'type': 'vente'}) }}">Ajouter un matériel à vendre</a>
+<a href="{{ path('app_materiel_new', {'type': 'location'}) }}">Ajouter un matériel à louer</a>
+
+<h2>À Vendre</h2>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Prix</th>
+        <th>Disponibilité</th>
+    </tr>
+    {% for materiel in ventes %}
+        <tr>
+            <td>{{ materiel.nom }}</td>
+            <td>{{ materiel.prix }} €</td>
+            <td>{{ materiel.disponibilite ? 'Disponible' : 'Indisponible' }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<h2>À Louer</h2>
+<table>
+    <tr>
+        <th>Nom</th>
+        <th>Prix/Jour</th>
+        <th>Disponibilité</th>
+    </tr>
+    {% for materiel in locations %}
+        <tr>
+            <td>{{ materiel.nom }}</td>
+            <td>{{ materiel.prix }} €/jour</td>
+            <td>{{ materiel.disponibilite ? 'Disponible' : 'Indisponible' }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+</div>
+{% endblock %}

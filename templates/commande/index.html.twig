@@ -1,0 +1,208 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Liste des commandes{% endblock %}
+
+{% block body %}
+<div class="container mt-5 pt-5" style="margin-left: 250px;">
+
+        <div class="table-container">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Date de commande</th>
+                        <th>Total</th>
+                        <th>Quantité</th>
+                        <th>Paiement</th>
+                        <th>Livraison</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for commande in commandes %}
+                        {% if commande.paiement or commande.livraison %}
+                            <tr>
+                                <td>{{ commande.id }}</td>
+                                <td>{{ commande.dateCommande|date('d/m/Y H:i') }}</td>
+                                <td>{{ commande.totale }} DT</td>
+                                <td>{{ commande.quantite }}</td>
+
+                                <!-- Paiement Section -->
+                                <td>
+                                    {% if commande.paiement %}
+                                        <div class="payment-card">
+                                            <div>
+                                                <strong>Méthode:</strong> {{ commande.paiement.methodePaiement }}<br>
+                                                <small>Date: {{ commande.paiement.datePaiement|date('d/m/Y') }}</small>
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        <div class="payment-card not-paid">
+                                            <h5>Non payé</h5>
+                                        </div>
+                                    {% endif %}
+                                </td>
+
+                                <!-- Livraison Section -->
+                                <td>
+                                    {% if commande.livraison %}
+                                        <div class="delivery-card">
+                                            <div>
+                                                <strong>Status:</strong> {{ commande.livraison.status }}<br>
+                                                <strong>Adresse:</strong> {{ commande.livraison.adresse }}<br>
+                                                <small>Date: {{ commande.livraison.dateLiv|date('d/m/Y') }}</small>
+                                                <form action="{{ path('livraison_update_status', {'id': commande.livraison.id}) }}" method="POST">
+                                                    <select name="status" class="status-dropdown">
+                                                        <option value="Validation en cours" {% if commande.livraison.status == 'Validation en cours' %}selected{% endif %}>Validation en cours</option>
+                                                        <option value="En préparation" {% if commande.livraison.status == 'En préparation' %}selected{% endif %}>En préparation</option>
+                                                        <option value="Expédiée" {% if commande.livraison.status == 'Expédiée' %}selected{% endif %}>Expédiée</option>
+                                                        <option value="Livrée" {% if commande.livraison.status == 'Livrée' %}selected{% endif %}>Livrée</option>
+                                                    </select>
+                                                    <button type="submit" class="btn-update">Mettre à jour</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        <div class="delivery-card not-shipped">
+                                            <h5>Non livrée</h5>
+                                        </div>
+                                    {% endif %}
+                                </td>
+
+                                <!-- Actions -->
+                                <td>
+    {% if commande.livraison and commande.livraison.status == 'Livrée' %}
+        <form action="{{ path('commande_delete', {'id': commande.id}) }}" method="POST">
+            <button type="submit" class="btn-delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette commande ?')">Supprimer</button>
+        </form>
+    {% else %}
+        <button class="btn-delete" disabled>Suppression interdite</button>
+    {% endif %}
+</td>
+
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+          
+
+        </div>
+    </div>
+
+    <style>
+        /* Global styles */
+    /* Global styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    color: #495057;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;  /* Centrer le contenu horizontalement */
+    align-items: center;      /* Centrer le contenu verticalement */
+    height: 100vh;            /* Prendre toute la hauteur de la fenêtre */
+}
+
+/* Table container and layout */
+.table-container {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%; /* S'assurer que la table utilise toute la largeur possible dans .container */
+    overflow-x: auto; /* Pour gérer les grandes tables */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Payment and Delivery card */
+.payment-card, .delivery-card {
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+    background-color: #f1f1f1;
+    margin-bottom: 15px;
+}
+
+.payment-card h5, .delivery-card h5 {
+    color: #007bff;
+}
+
+.payment-card.not-paid, .delivery-card.not-shipped {
+    background-color: #ffe6e6;
+}
+
+.payment-card h5, .delivery-card h5 {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.payment-card small, .delivery-card small {
+    color: #6c757d;
+    font-size: 0.9em;
+}
+
+/* Buttons */
+.btn-update, .btn-delete {
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-update {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-update:hover {
+    background-color: #218838;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}
+
+/* Status Dropdown */
+.status-dropdown {
+    padding: 8px;
+    font-size: 0.9em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+    </style>
+{% endblock %}

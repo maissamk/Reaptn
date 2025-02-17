@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Contrat{% endblock %}
+
+{% block body %}
+
+ <div class="container mt-5 pt-5">
+<div class="container mt-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg p-4">
+                <h1 class="text-center text-primary fw-bold mb-4">
+               
+                    <i class="fas fa-file-signature"></i> Créer un Nouveau Contrat
+                </h1>
+
+                <div class="card-body">
+                    {{ include('contrat/_form.html.twig') }}
+
+                    <div class="text-center mt-4">
+                        <a href="{{ path('app_contrat_index') }}" class="btn btn-secondary btn-lg">
+                            <i class="fas fa-arrow-left"></i> Retour à la liste
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        border-radius: 12px;
+        transition: transform 0.3s ease-in-out;
+    }
+    .card:hover {
+        transform: scale(1.02);
+    }
+    .btn-lg {
+        transition: all 0.3s ease-in-out;
+    }
+    .btn-lg:hover {
+        transform: scale(1.05);
+    }
+</style>
+
+{% endblock %}
