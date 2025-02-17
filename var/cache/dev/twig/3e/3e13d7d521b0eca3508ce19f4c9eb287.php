@@ -197,6 +197,6 @@ class __TwigTemplate_0ed83102cfc8dbeaed5e1e5f32d935c2 extends Template
     </div>
 
     
-{% endblock %}", "offre/edit.html.twig", "C:\\Users\\takou\\OneDrive\\Desktop\\Reaptn\\templates\\offre\\edit.html.twig");
+{% endblock %}", "offre/edit.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\offre\\edit.html.twig");
     }
 }

@@ -1920,6 +1920,6 @@ class __TwigTemplate_ed94b3cc1a6a3e964b77d4f7770df79e extends Template
 <script src=\"{{asset('backoffice/js/ready.min.js')}}\"></script>
 <script src=\"{{asset('backoffice/js/demo.js')}}\"></script>
 {% endblock %}
-</html>", "base_back.html.twig", "C:\\Users\\takou\\OneDrive\\Desktop\\Reaptn\\templates\\base_back.html.twig");
+</html>", "base_back.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\base_back.html.twig");
     }
 }

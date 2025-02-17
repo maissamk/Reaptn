@@ -224,6 +224,6 @@ class __TwigTemplate_75e47952590860cd3dd9a8ab6f806520 extends Template
     </div>
 </div>
 <!-- Footer End -->
-", "temp/partials/_footer.html.twig", "C:\\Users\\takou\\OneDrive\\Desktop\\Reaptn\\templates\\temp\\partials\\_footer.html.twig");
+", "temp/partials/_footer.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\temp\\partials\\_footer.html.twig");
     }
 }

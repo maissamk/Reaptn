@@ -119,6 +119,6 @@ class CommandeController extends AbstractController
         ]);
     }
 }
-", "commande/confirmation.html.twig", "C:\\Users\\takou\\OneDrive\\Desktop\\Reaptn\\templates\\commande\\confirmation.html.twig");
+", "commande/confirmation.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\commande\\confirmation.html.twig");
     }
 }

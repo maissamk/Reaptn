@@ -598,6 +598,6 @@ document.addEventListener(\"DOMContentLoaded\", function () {
 
 
 {% endblock %}
-", "paiement/index.html.twig", "C:\\Users\\takou\\OneDrive\\Desktop\\Reaptn\\templates\\paiement\\index.html.twig");
+", "paiement/index.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\paiement\\index.html.twig");
     }
 }

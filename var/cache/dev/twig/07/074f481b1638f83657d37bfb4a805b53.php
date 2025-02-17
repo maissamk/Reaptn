@@ -96,6 +96,6 @@ class __TwigTemplate_b047f00678e1b5f687fc2aa4b47c2823 extends Template
     <button class=\"btn btn-danger btn-sm\">Supprimer</button>
     
 </form>
-", "admin/materielagricole/delete.html.twig", "C:\\Users\\takou\\OneDrive\\Desktop\\Reaptn\\templates\\admin\\materielagricole\\delete.html.twig");
+", "admin/materielagricole/delete.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\admin\\materielagricole\\delete.html.twig");
     }
 }

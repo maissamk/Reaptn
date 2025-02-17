@@ -124,7 +124,7 @@ class AdminController extends AbstractController
 
 
 
-    #[Route('/{id}/edit', name: 'admin_materielvente_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit1', name: 'admin_materielvente_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Materielvente $materielvente, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(Materielvente2Type::class, $materielvente);

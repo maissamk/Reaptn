@@ -392,6 +392,6 @@ class __TwigTemplate_94ef6b0d255baa979240a74d5db697c3 extends Template
         </div>
     </div>
 {% endblock %}
-", "registration/register.html.twig", "C:\\Users\\takou\\OneDrive\\Desktop\\Reaptn\\templates\\registration\\register.html.twig");
+", "registration/register.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\registration\\register.html.twig");
     }
 }

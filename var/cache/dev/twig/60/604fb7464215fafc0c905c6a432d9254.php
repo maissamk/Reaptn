@@ -303,6 +303,6 @@ class __TwigTemplate_0f4e4efd3f1913743c1f4b283780ec9c extends Template
 </style>
 
 {% endblock %}
-", "contrat/index.html.twig", "C:\\Users\\takou\\OneDrive\\Desktop\\Reaptn\\templates\\contrat\\index.html.twig");
+", "contrat/index.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\contrat\\index.html.twig");
     }
 }

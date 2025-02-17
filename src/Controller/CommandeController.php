@@ -141,6 +141,7 @@ final class CommandeController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+    
     #[Route('/commande/{id}/delete', name: 'commande_delete')]
     public function delete(Commande $commande): Response
     {

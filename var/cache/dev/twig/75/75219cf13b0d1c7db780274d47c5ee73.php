@@ -219,6 +219,6 @@ class __TwigTemplate_f56641f36878aea68c1ab58da8fa012f extends Template
     {{ include('temp/sections/_facts.html.twig', ignore_missing = true) }}
     {{ include('temp/sections/_features.html.twig', ignore_missing = true) }}
 {% endblock %}
-", "temp/index.html.twig", "C:\\Users\\takou\\OneDrive\\Desktop\\Reaptn\\templates\\temp\\index.html.twig");
+", "temp/index.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\temp\\index.html.twig");
     }
 }
