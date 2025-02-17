@@ -8,6 +8,8 @@ use App\Entity\Product;
 use App\Entity\ProductType;
 use App\Entity\Stock;
 use App\Form\OrderType;
+use App\Entity\Offre;
+use App\Entity\Categories;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -19,20 +21,20 @@ use Symfony\Component\Routing\Attribute\Route;
 class PageController extends AbstractController
 {
     #[Route('/', name: 'app_temp_index')]
-    public function index(): Response
+    public function index1(): Response
     {
         return $this->render('temp/index.html.twig');
     }
 
-    #[Route('/temp/shop', name: 'app_temp_shop')]
-    public function shop(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        return $this->render('temp/shop.html.twig', [
-            'categories' => $formattedCategories,
-            'products' => $formattedProducts,
-            'productTypes' => $categories // Add this for the filter dropdown
-        ]);
-    }
+    // #[Route('/temp/shop', name: 'app_temp_shop')]
+    // // #public function shop(Request $request, EntityManagerInterface $entityManager): Response
+    // // {
+    // //     return $this->render('temp/shop.html.twig', [
+    // //         'categories' => $formattedCategories,
+    // //         'products' => $formattedProducts,
+    // //         'productTypes' => $categories // Add this for the filter dropdown
+    // //     ]);
+    // // }
 
     #[Route('/shop/{id}', name: 'app_temp_shop_detail')]
     public function shopDetail(int $id, EntityManagerInterface $entityManager): Response
@@ -84,124 +86,124 @@ class PageController extends AbstractController
         ]);
     }
 
-    #[Route('/cart/add/{id}', name: 'app_cart_add')]
-    public function addToCart(int $id, Request $request, SessionInterface $session, EntityManagerInterface $entityManager): Response
-    {
-        $cart = $session->get('cart', []);
-        $quantity = $request->query->get('quantity', 1);
+    // #[Route('/cart/add/{id}', name: 'app_cart_add1')]
+    // public function addToCart(int $id, Request $request, SessionInterface $session, EntityManagerInterface $entityManager): Response
+    // {
+    //     $cart = $session->get('cart', []);
+    //     $quantity = $request->query->get('quantity', 1);
 
-        // Check if product exists
-        $product = $entityManager->getRepository(Product::class)->find($id);
-        if (!$product) {
-            $this->addFlash('error', 'Product not found');
-            return $this->redirectToRoute('app_temp_cart');
-        }
+    //     // Check if product exists
+    //     $product = $entityManager->getRepository(Product::class)->find($id);
+    //     if (!$product) {
+    //         $this->addFlash('error', 'Product not found');
+    //         return $this->redirectToRoute('app_temp_cart');
+    //     }
 
-        // Add or update quantity
-        if (isset($cart[$id])) {
-            $cart[$id] += $quantity;
-        } else {
-            $cart[$id] = $quantity;
-        }
+    //     // Add or update quantity
+    //     if (isset($cart[$id])) {
+    //         $cart[$id] += $quantity;
+    //     } else {
+    //         $cart[$id] = $quantity;
+    //     }
 
-        $session->set('cart', $cart);
-        $this->addFlash('success', 'Product added to cart');
+    //     $session->set('cart', $cart);
+    //     $this->addFlash('success', 'Product added to cart');
 
-        return $this->redirectToRoute('app_temp_cart');
-    }
+    //     return $this->redirectToRoute('app_temp_cart');
+    // }
 
-    #[Route('/cart/remove/{id}', name: 'app_cart_remove')]
-    public function removeFromCart(int $id, SessionInterface $session): Response
-    {
-        $cart = $session->get('cart', []);
+//    #[Route('/cart/remove/{id}', name: 'app_cart_remove')]
+//      public function removeFromCart(int $id, SessionInterface $session): Response
+//     {
+//         $cart = $session->get('cart', []);
 
-        if (isset($cart[$id])) {
-            unset($cart[$id]);
-            $session->set('cart', $cart);
-        }
+//         if (isset($cart[$id])) {
+//             unset($cart[$id]);
+//             $session->set('cart', $cart);
+//         }
 
-        return $this->redirectToRoute('app_temp_cart');
-    }
+//         return $this->redirectToRoute('app_temp_cart');
+//     }
 
-    #[Route('/cart/update/{id}', name: 'app_cart_update', methods: ['POST'])]
-    public function updateCart(int $id, Request $request, SessionInterface $session, EntityManagerInterface $entityManager): JsonResponse
-    {
-        $cart = $session->get('cart', []);
-        $quantity = (int) $request->query->get('quantity', 1);
+    // #[Route('/cart/update/{id}', name: 'app_cart_update', methods: ['POST'])]
+    // public function updateCart(int $id, Request $request, SessionInterface $session, EntityManagerInterface $entityManager): JsonResponse
+    // {
+    //     $cart = $session->get('cart', []);
+    //     $quantity = (int) $request->query->get('quantity', 1);
 
-        if ($quantity < 1) {
-            $quantity = 1;
-        }
+    //     if ($quantity < 1) {
+    //         $quantity = 1;
+    //     }
 
-        // Check if product exists
-        $product = $entityManager->getRepository(Product::class)->find($id);
-        if (!$product) {
-            return new JsonResponse(['success' => false, 'message' => 'Product not found'], 404);
-        }
+    //     // Check if product exists
+    //     $product = $entityManager->getRepository(Product::class)->find($id);
+    //     if (!$product) {
+    //         return new JsonResponse(['success' => false, 'message' => 'Product not found'], 404);
+    //     }
 
-        $cart[$id] = $quantity;
-        $session->set('cart', $cart);
+    //     $cart[$id] = $quantity;
+    //     $session->set('cart', $cart);
 
-        return new JsonResponse(['success' => true]);
-    }
+    //     return new JsonResponse(['success' => true]);
+    // }
 
-    #[Route('/checkout', name: 'app_temp_checkout')]
-    public function checkout(Request $request, SessionInterface $session, EntityManagerInterface $entityManager): Response
-    {
-        $cart = $session->get('cart', []);
-        if (empty($cart)) {
-            $this->addFlash('error', 'Your cart is empty');
-            return $this->redirectToRoute('app_temp_cart');
-        }
+    // #[Route('/checkout', name: 'app_temp_checkout')]
+    // public function checkout(Request $request, SessionInterface $session, EntityManagerInterface $entityManager): Response
+    // {
+    //     $cart = $session->get('cart', []);
+    //     if (empty($cart)) {
+    //         $this->addFlash('error', 'Your cart is empty');
+    //         return $this->redirectToRoute('app_temp_cart');
+    //     }
 
-        // Calculate cart totals
-        $cartItems = [];
-        $total = 0;
-        foreach ($cart as $id => $quantity) {
-            $product = $entityManager->getRepository(Product::class)->find($id);
-            if ($product) {
-                $cartItems[] = [
-                    'product' => $product,
-                    'quantity' => $quantity
-                ];
-                $total += $product->getPrice() * $quantity;
-            }
-        }
+    //     // Calculate cart totals
+    //     $cartItems = [];
+    //     $total = 0;
+    //     foreach ($cart as $id => $quantity) {
+    //         $product = $entityManager->getRepository(Product::class)->find($id);
+    //         if ($product) {
+    //             $cartItems[] = [
+    //                 'product' => $product,
+    //                 'quantity' => $quantity
+    //             ];
+    //             $total += $product->getPrice() * $quantity;
+    //         }
+    //     }
 
-        $order = new Order();
-        $form = $this->createForm(OrderType::class, $order);
-        $form->handleRequest($request);
+        // $order = new Order();
+        // $form = $this->createForm(OrderType::class, $order);
+        // $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            // Set the order total
-            $order->setTotal($total);
+        // if ($form->isSubmitted() && $form->isValid()) {
+        //     // Set the order total
+        //     $order->setTotal($total);
             
-            // Add order items
-            foreach ($cartItems as $item) {
-                $orderItem = new OrderItem();
-                $orderItem->setProduct($item['product']);
-                $orderItem->setQuantity($item['quantity']);
-                $orderItem->setPrice($item['product']->getPrice());
-                $order->addItem($orderItem);
-            }
+        //     // Add order items
+        //     foreach ($cartItems as $item) {
+        //         $orderItem = new OrderItem();
+        //         $orderItem->setProduct($item['product']);
+        //         $orderItem->setQuantity($item['quantity']);
+        //         $orderItem->setPrice($item['product']->getPrice());
+        //         $order->addItem($orderItem);
+        //     }
 
-            // Persist the order
-            $entityManager->persist($order);
-            $entityManager->flush();
+        //     // Persist the order
+        //     $entityManager->persist($order);
+        //     $entityManager->flush();
 
-            // Clear the cart
-            $session->remove('cart');
+        //     // Clear the cart
+        //     $session->remove('cart');
             
-            $this->addFlash('success', 'Order placed successfully! Thank you for your purchase.');
-            return $this->redirectToRoute('app_temp_shop');
-        }
+        //     $this->addFlash('success', 'Order placed successfully! Thank you for your purchase.');
+        //     return $this->redirectToRoute('app_temp_shop');
+        // }
 
-        return $this->render('temp/checkout.html.twig', [
-            'cartItems' => $cartItems,
-            'total' => $total,
-            'form' => $form->createView()
-        ]);
-    }
+    //     return $this->render('temp/checkout.html.twig', [
+    //         'cartItems' => $cartItems,
+    //         'total' => $total,
+    //         'form' => $form->createView()
+    //     ]);
+    // }
 
     #[Route('/testimonial', name: 'app_testimonial')]
     public function testimonial(): Response
@@ -442,5 +444,19 @@ class PageController extends AbstractController
             'winter' => 'fa-snowflake',
             default => 'fa-seedling'
         };
+    }
+    #[Route('/offre', name: 'app_offre')]
+    public function offre(): Response
+    {
+        return $this->render('offre/index.html.twig', [
+            'controller_name' => 'PageController',
+        ]);
+    }
+    #[Route('/page', name: 'app_page')]
+    public function index(): Response
+    {
+        return $this->render('page/index.html.twig', [
+            'controller_name' => 'PageController',
+        ]);
     }
 }

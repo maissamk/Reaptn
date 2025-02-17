@@ -74,7 +74,8 @@ class __TwigTemplate_2ca0f1906b83607c815f672d3592ede2 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        yield "Product Detail - Fruitables";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 3, $this->source); })()), "name", [], "any", false, false, false, 3), "html", null, true);
+        yield " - Fruitables";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -100,7 +101,7 @@ class __TwigTemplate_2ca0f1906b83607c815f672d3592ede2 extends Template
         // line 6
         yield "    <!-- Single Page Header start -->
     <div class=\"container-fluid page-header py-5\">
-        <h1 class=\"text-center text-white display-6\">Product Detail</h1>
+        <h1 class=\"text-center text-white display-6\">Shop Detail</h1>
         <ol class=\"breadcrumb justify-content-center mb-0\">
             <li class=\"breadcrumb-item\"><a href=\"";
         // line 10
@@ -109,8 +110,8 @@ class __TwigTemplate_2ca0f1906b83607c815f672d3592ede2 extends Template
             <li class=\"breadcrumb-item\"><a href=\"";
         // line 11
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_temp_shop");
-        yield "\">Products</a></li>
-            <li class=\"breadcrumb-item active text-white\">Product Detail</li>
+        yield "\">Shop</a></li>
+            <li class=\"breadcrumb-item active text-white\">Shop Detail</li>
         </ol>
     </div>
     <!-- Single Page Header End -->
@@ -423,23 +424,23 @@ document.addEventListener('DOMContentLoaded', function() {
      */
     public function getDebugInfo(): array
     {
-        return array (  390 => 179,  365 => 156,  352 => 155,  332 => 144,  318 => 136,  314 => 135,  309 => 133,  303 => 130,  298 => 127,  294 => 126,  281 => 115,  271 => 111,  267 => 109,  256 => 107,  252 => 106,  247 => 104,  242 => 102,  237 => 100,  234 => 99,  230 => 98,  219 => 90,  208 => 82,  196 => 73,  176 => 56,  158 => 41,  147 => 33,  143 => 32,  139 => 31,  129 => 26,  111 => 11,  107 => 10,  101 => 6,  88 => 5,  65 => 3,  42 => 1,);
+        return array (  391 => 179,  366 => 156,  353 => 155,  333 => 144,  319 => 136,  315 => 135,  310 => 133,  304 => 130,  299 => 127,  295 => 126,  282 => 115,  272 => 111,  268 => 109,  257 => 107,  253 => 106,  248 => 104,  243 => 102,  238 => 100,  235 => 99,  231 => 98,  220 => 90,  209 => 82,  197 => 73,  177 => 56,  159 => 41,  148 => 33,  144 => 32,  140 => 31,  130 => 26,  112 => 11,  108 => 10,  102 => 6,  89 => 5,  65 => 3,  42 => 1,);
     }
 
     public function getSourceContext(): Source
     {
         return new Source("{% extends 'temp/base.html.twig' %}
 
-{% block title %}Product Detail - Fruitables{% endblock %}
+{% block title %}{{ product.name }} - Fruitables{% endblock %}
 
 {% block content %}
     <!-- Single Page Header start -->
     <div class=\"container-fluid page-header py-5\">
-        <h1 class=\"text-center text-white display-6\">Product Detail</h1>
+        <h1 class=\"text-center text-white display-6\">Shop Detail</h1>
         <ol class=\"breadcrumb justify-content-center mb-0\">
             <li class=\"breadcrumb-item\"><a href=\"{{ path('app_temp_index') }}\">Home</a></li>
-            <li class=\"breadcrumb-item\"><a href=\"{{ path('app_temp_shop') }}\">Products</a></li>
-            <li class=\"breadcrumb-item active text-white\">Product Detail</li>
+            <li class=\"breadcrumb-item\"><a href=\"{{ path('app_temp_shop') }}\">Shop</a></li>
+            <li class=\"breadcrumb-item active text-white\">Shop Detail</li>
         </ol>
     </div>
     <!-- Single Page Header End -->
@@ -611,6 +612,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 {% endblock %}
-", "temp/shop-detail.html.twig", "C:\\Users\\takou\\Reaptn\\PiDevReaptn-main\\templates\\temp\\shop-detail.html.twig");
+", "temp/shop-detail.html.twig", "C:\\Users\\ghayt\\PiDevReaptn\\templates\\temp\\shop-detail.html.twig");
     }
 }

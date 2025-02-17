@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ParcelleProprietes index{% endblock %}
+
+{% block body %}
+
+<!-- ParcelleProprietes Content -->
+<div class="container mt-5 pt-5">
+    <h1 class="text-center mb-4">ParcelleProprietes index</h1>
+
+    <div class="row">
+        {% for parcelle_propriete in parcelle_proprietes %}
+            <div class="col-md-4 mb-4">
+                <div class="position-relative border border-secondary rounded shadow-sm">
+                    
+                    <!-- Image of property -->
+                    <img src="{{ asset(parcelle_propriete.image ? 'uploads/images/' ~ parcelle_propriete.image : 'images/default.png') }}" 
+                         class="img-fluid card-img-fixed" alt="{{ parcelle_propriete.titre }}"
+                         loading="lazy">
+
+                    <!-- Property Details -->
+                    <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                        <h4>{{ parcelle_propriete.titre }}</h4>
+
+                        <p class="description">
+                            {{ parcelle_propriete.description[:50] }}<span class="dots">...</span>
+                            <span class="more-text" style="display: none;">{{ parcelle_propriete.description[100:] }}</span>
+                            <a href="{{ path('app_parcelle_proprietes_show', {'id': parcelle_propriete.id}) }}" class="see-more">plus</a>
+                        </p>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="text-dark fs-5 fw-bold mb-0">{{ parcelle_propriete.prix }} DT </p>
+                            <a href="{{ path('app_parcelle_proprietes_show', {'id': parcelle_propriete.id}) }}" class="btn btn-info btn-sm" title="View Property">Voir</a>
+                        </div>
+
+                        <p class="text-dark fs-5 fw-bold mb-2">{{ parcelle_propriete.status }} : Status Actuel</p>
+                        <p class="text-dark fs-5 fw-bold mb-2">{{ parcelle_propriete.taille }} (m²)</p>
+
+                        <!-- Edit Button -->
+                        <div class="text-center mt-3">
+                            <a href="{{ path('app_parcelle_proprietes_edit', {'id': parcelle_propriete.id}) }}" class="btn btn-warning btn-sm w-100" title="Edit Property">Modifier</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="col-12 text-center">
+                <p>Aucun enregistrement trouvé</p>
+            </div>
+        {% endfor %}
+
+        <div class="d-flex justify-content-center mt-3">
+            <a href="{{ path('app_parcelle_proprietes_new') }}" class="btn btn-success me-2" title="Create New Property">
+                <i class="fas fa-plus-circle"></i> Créer une nouvelle propriété
+            </a>
+            <a href="{{ path('app_contrat_new') }}" class="btn btn-primary" title="Create New Contract">
+                <i class="fas fa-file-contract"></i> Créer un contrat
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+.card-img-fixed {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+</style>
+
+{% endblock %}

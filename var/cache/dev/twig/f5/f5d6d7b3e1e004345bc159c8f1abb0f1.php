@@ -243,7 +243,7 @@ class __TwigTemplate_0f41fe41cfbe15ac38e155c2b626cc9c extends Template
                         <a href=\"";
             // line 97
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_temp_shop");
-            yield "\" class=\"btn border border-secondary rounded-pill px-4 py-3 text-primary\">Continue to Products</a>
+            yield "\" class=\"btn border border-secondary rounded-pill px-4 py-3 text-primary\">Continue Shopping</a>
                         <a href=\"";
             // line 98
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_temp_checkout");
@@ -439,7 +439,7 @@ document.addEventListener('DOMContentLoaded', function() {
             {% if items|length > 0 %}
                 <div class=\"row g-4 justify-content-end\">
                     <div class=\"col-8 text-end\">
-                        <a href=\"{{ path('app_temp_shop') }}\" class=\"btn border border-secondary rounded-pill px-4 py-3 text-primary\">Continue to Products</a>
+                        <a href=\"{{ path('app_temp_shop') }}\" class=\"btn border border-secondary rounded-pill px-4 py-3 text-primary\">Continue Shopping</a>
                         <a href=\"{{ path('app_temp_checkout') }}\" class=\"btn border border-secondary rounded-pill px-4 py-3 text-primary\">Proceed to Checkout</a>
                     </div>
                 </div>
@@ -478,6 +478,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 {% endblock %}
-", "temp/cart.html.twig", "C:\\Users\\takou\\Reaptn\\PiDevReaptn-main\\templates\\temp\\cart.html.twig");
+", "temp/cart.html.twig", "C:\\Users\\ghayt\\PiDevReaptn\\templates\\temp\\cart.html.twig");
     }
 }
