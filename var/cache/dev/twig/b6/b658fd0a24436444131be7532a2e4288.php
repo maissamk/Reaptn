@@ -328,6 +328,6 @@ class __TwigTemplate_97b1728258c793effa47d35905554756 extends Template
 </style>
 
 {% endblock %}
-", "parcelle_proprietes/index.html.twig", "C:\\Users\\takou\\OneDrive\\Desktop\\Reaptn\\templates\\parcelle_proprietes\\index.html.twig");
+", "parcelle_proprietes/index.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\parcelle_proprietes\\index.html.twig");
     }
 }

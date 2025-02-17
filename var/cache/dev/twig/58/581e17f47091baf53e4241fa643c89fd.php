@@ -339,6 +339,6 @@ class __TwigTemplate_ad9d60e23b744b47a93b46f8cbe85065 extends Template
             {{ include('offre/_delete_form.html.twig') }}
         </div>
     </div>
-{% endblock %}", "offre/show.html.twig", "C:\\Users\\takou\\OneDrive\\Desktop\\Reaptn\\templates\\offre\\show.html.twig");
+{% endblock %}", "offre/show.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\offre\\show.html.twig");
     }
 }

@@ -394,6 +394,6 @@ class __TwigTemplate_5971ee1816de4c995623a35c85b3bd14 extends Template
     </div>
     <!-- Products List End-->
 {% endblock %}
-", "temp/shop.html.twig", "C:\\Users\\takou\\OneDrive\\Desktop\\Reaptn\\templates\\temp\\shop.html.twig");
+", "temp/shop.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\temp\\shop.html.twig");
     }
 }

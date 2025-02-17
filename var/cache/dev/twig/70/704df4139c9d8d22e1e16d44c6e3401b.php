@@ -156,6 +156,6 @@ class __TwigTemplate_bed8e978a287627a591897a08b5cfbe4 extends Template
         {% include 'admin/offre/_form_back.html.twig' with { 'form': form, 'button_label': 'Modifier l\\'offre' } %}
     </div>
 {% endblock %}
-", "admin/offre/edit_back.html.twig", "C:\\Users\\takou\\OneDrive\\Desktop\\Reaptn\\templates\\admin\\offre\\edit_back.html.twig");
+", "admin/offre/edit_back.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\admin\\offre\\edit_back.html.twig");
     }
 }

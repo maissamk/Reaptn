@@ -478,6 +478,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 {% endblock %}
-", "temp/cart.html.twig", "C:\\Users\\takou\\OneDrive\\Desktop\\Reaptn\\templates\\temp\\cart.html.twig");
+", "temp/cart.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\temp\\cart.html.twig");
     }
 }

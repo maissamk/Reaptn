@@ -309,6 +309,6 @@ class __TwigTemplate_2c8b04bf29044ad51d6e0c460135b882 extends Template
         </div>
     </div>
 {% endblock %}
-", "temp/admin/products.html.twig", "C:\\Users\\takou\\OneDrive\\Desktop\\Reaptn\\templates\\temp\\admin\\products.html.twig");
+", "temp/admin/products.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\temp\\admin\\products.html.twig");
     }
 }
