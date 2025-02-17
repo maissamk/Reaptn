@@ -512,6 +512,6 @@ class __TwigTemplate_59ffb0afdf9ff48e81d201ac6c067fe6 extends Template
 
 
 {% endblock %}
-", "page/buyland.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\page\\buyland.html.twig");
+", "page/buyland.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\page\\buyland.html.twig");
     }
 }

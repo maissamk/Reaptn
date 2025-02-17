@@ -253,14 +253,20 @@ class __TwigTemplate_3091fe3a6d406946fc4af04bcf338277 extends Template
             // line 95
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materielvente_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "id", [], "any", false, false, false, 95)]), "html", null, true);
             yield "\" class=\"btn btn-warning btn-sm\">Edit</a>
+<a href=\"";
+            // line 96
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_to_cart", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "id", [], "any", false, false, false, 96)]), "html", null, true);
+            yield "\" class=\"btn btn-primary\">
+                        Ajouter au panier
+                    </a>
                         </td>
                     </tr>
                 ";
             $context['_iterated'] = true;
         }
-        // line 102
+        // line 105
         if (!$context['_iterated']) {
-            // line 99
+            // line 102
             yield "                    <tr>
                         <td colspan=\"7\" class=\"text-center\">No records found</td>
                     </tr>
@@ -269,13 +275,13 @@ class __TwigTemplate_3091fe3a6d406946fc4af04bcf338277 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['materielvente'], $context['_parent'], $context['_iterated']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 103
+        // line 106
         yield "            </tbody>
         </table>
 
         <div class=\"d-flex justify-content-between mt-4\">
             <a href=\"";
-        // line 107
+        // line 110
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materielvente_new");
         yield "\" class=\"btn btn-primary\">Create new</a>
         </div>
@@ -373,7 +379,7 @@ class __TwigTemplate_3091fe3a6d406946fc4af04bcf338277 extends Template
                             <p>Phone: +0123 4567 8910</p>
                             <p>Payment Accepted</p>
                             <img src=\"";
-        // line 202
+        // line 205
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontoffice/img/payment.png"), "html", null, true);
         yield "\" class=\"img-fluid\" alt=\"\">
                         </div>
@@ -437,7 +443,7 @@ class __TwigTemplate_3091fe3a6d406946fc4af04bcf338277 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  377 => 202,  279 => 107,  273 => 103,  264 => 99,  262 => 102,  254 => 95,  250 => 94,  245 => 92,  241 => 91,  237 => 90,  233 => 89,  229 => 88,  226 => 87,  220 => 85,  212 => 83,  210 => 82,  206 => 80,  201 => 79,  164 => 45,  158 => 42,  154 => 41,  150 => 40,  146 => 39,  139 => 35,  135 => 34,  131 => 33,  120 => 25,  100 => 7,  87 => 6,  64 => 3,  41 => 1,);
+        return array (  383 => 205,  285 => 110,  279 => 106,  270 => 102,  268 => 105,  258 => 96,  254 => 95,  250 => 94,  245 => 92,  241 => 91,  237 => 90,  233 => 89,  229 => 88,  226 => 87,  220 => 85,  212 => 83,  210 => 82,  206 => 80,  201 => 79,  164 => 45,  158 => 42,  154 => 41,  150 => 40,  146 => 39,  139 => 35,  135 => 34,  131 => 33,  120 => 25,  100 => 7,  87 => 6,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -537,6 +543,9 @@ class __TwigTemplate_3091fe3a6d406946fc4af04bcf338277 extends Template
                         <td>
                             <a href=\"{{ path('app_materielvente_show', {'id': materielvente.id}) }}\" class=\"btn btn-info btn-sm\">Show</a>
                             <a href=\"{{ path('app_materielvente_edit', {'id': materielvente.id}) }}\" class=\"btn btn-warning btn-sm\">Edit</a>
+<a href=\"{{ path('add_to_cart', { id: materielvente.id }) }}\" class=\"btn btn-primary\">
+                        Ajouter au panier
+                    </a>
                         </td>
                     </tr>
                 {% else %}
@@ -675,6 +684,6 @@ class __TwigTemplate_3091fe3a6d406946fc4af04bcf338277 extends Template
 
 
 {% endblock %}
-", "materielvente/index.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\materielvente\\index.html.twig");
+", "materielvente/index.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\materielvente\\index.html.twig");
     }
 }

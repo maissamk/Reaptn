@@ -96,6 +96,6 @@ class __TwigTemplate_16dd8d74c2bb632aca8ec0a3f0bdf30c extends Template
     <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ commande.id) }}\">
     <button class=\"btn btn-danger btn-sm\">Supprimer</button>
 </form>
-", "commande/_delete_form.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\commande\\_delete_form.html.twig");
+", "commande/_delete_form.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\commande\\_delete_form.html.twig");
     }
 }

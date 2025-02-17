@@ -244,26 +244,6 @@ class __TwigTemplate_8fa76fe79a44ee114ca14c217c896612 extends Template
 \t\t\t\t\t\t\t\t<span class=\"badge badge-count\">14</span>
 \t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t</li>
-                        <li class=\"nav-item\">
-\t\t\t\t\t\t\t<a href=\"";
-        // line 187
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_offre_index");
-        yield "\">
-
-\t\t\t\t\t\t\t\t<i class=\"la la-table\"></i>
-\t\t\t\t\t\t\t\t<p>Gestion des offres</p>
-\t\t\t\t\t\t\t\t<span class=\"badge badge-count\">14</span>
-\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t</li>
-\t\t\t\t\t\t<li class=\"nav-item\">
-    \t\t\t\t\t\t<a href=\"";
-        // line 195
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_employe_index");
-        yield "\">
-        \t\t\t\t\t\t<i class=\"la la-users\"></i>
-        \t\t\t\t\t\t<p>Gestion des employés</p>
-    \t\t\t\t\t\t</a>
-\t\t\t\t\t\t</li>
 \t\t\t\t\t\t<li class=\"nav-item\">
 \t\t\t\t\t\t\t<a href=\"forms.html\">
 \t\t\t\t\t\t\t\t<i class=\"la la-keyboard-o\"></i>
@@ -308,14 +288,14 @@ class __TwigTemplate_8fa76fe79a44ee114ca14c217c896612 extends Template
 \t\t\t\t</div>
 \t\t\t</div>
 ";
-        // line 243
+        // line 229
         yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
-        // line 767
+        // line 753
         yield "</body>
 ";
-        // line 768
+        // line 754
         yield from $this->unwrap()->yieldBlock('js', $context, $blocks);
-        // line 784
+        // line 770
         yield "</html>";
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -385,7 +365,7 @@ class __TwigTemplate_8fa76fe79a44ee114ca14c217c896612 extends Template
         yield from [];
     }
 
-    // line 243
+    // line 229
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -398,7 +378,7 @@ class __TwigTemplate_8fa76fe79a44ee114ca14c217c896612 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 244
+        // line 230
         yield "\t
 \t\t\t<div class=\"main-panel\">
 \t\t\t\t<div class=\"content\">
@@ -931,7 +911,7 @@ class __TwigTemplate_8fa76fe79a44ee114ca14c217c896612 extends Template
         yield from [];
     }
 
-    // line 768
+    // line 754
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -944,60 +924,60 @@ class __TwigTemplate_8fa76fe79a44ee114ca14c217c896612 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "js"));
 
-        // line 769
+        // line 755
         yield "<script src=\"";
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/core/jquery.3.2.1.min.js"), "html", null, true);
         yield "\"></script>
 <script src=\"";
-        // line 770
+        // line 756
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"), "html", null, true);
         yield "\"></script>
 <script src=\"";
-        // line 771
+        // line 757
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/core/popper.min.js"), "html", null, true);
         yield "\"></script>
 <script src=\"";
-        // line 772
+        // line 758
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/core/bootstrap.min.js"), "html", null, true);
         yield "\"></script>
 <script src=\"";
-        // line 773
+        // line 759
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/plugin/chartist/chartist.min.js"), "html", null, true);
         yield "\"></script>
 <script src=\"";
-        // line 774
+        // line 760
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/plugin/chartist/plugin/chartist-plugin-tooltip.min.js"), "html", null, true);
         yield "\"></script>
 <script src=\"";
-        // line 775
+        // line 761
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/plugin/bootstrap-notify/bootstrap-notify.min.js"), "html", null, true);
         yield "\"></script>
 <script src=\"";
-        // line 776
+        // line 762
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"), "html", null, true);
         yield "\"></script>
 <script src=\"";
-        // line 777
+        // line 763
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/plugin/jquery-mapael/jquery.mapael.min.js"), "html", null, true);
         yield "\"></script>
 <script src=\"";
-        // line 778
+        // line 764
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/plugin/jquery-mapael/maps/world_countries.min.js"), "html", null, true);
         yield "\"></script>
 <script src=\"";
-        // line 779
+        // line 765
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/plugin/chart-circle/circles.min.js"), "html", null, true);
         yield "\"></script>
 <script src=\"";
-        // line 780
+        // line 766
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"), "html", null, true);
         yield "\"></script>
 <script src=\"";
-        // line 781
+        // line 767
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/ready.min.js"), "html", null, true);
         yield "\"></script>
 <script src=\"";
-        // line 782
+        // line 768
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backoffice/js/demo.js"), "html", null, true);
         yield "\"></script>
 ";
@@ -1031,7 +1011,7 @@ class __TwigTemplate_8fa76fe79a44ee114ca14c217c896612 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  1001 => 782,  997 => 781,  993 => 780,  989 => 779,  985 => 778,  981 => 777,  977 => 776,  973 => 775,  969 => 774,  965 => 773,  961 => 772,  957 => 771,  953 => 770,  948 => 769,  935 => 768,  402 => 244,  389 => 243,  376 => 11,  372 => 10,  366 => 8,  353 => 7,  330 => 5,  319 => 784,  317 => 768,  314 => 767,  312 => 243,  261 => 195,  250 => 187,  198 => 138,  170 => 113,  163 => 109,  65 => 13,  63 => 7,  58 => 5,  52 => 1,);
+        return array (  981 => 768,  977 => 767,  973 => 766,  969 => 765,  965 => 764,  961 => 763,  957 => 762,  953 => 761,  949 => 760,  945 => 759,  941 => 758,  937 => 757,  933 => 756,  928 => 755,  915 => 754,  382 => 230,  369 => 229,  356 => 11,  352 => 10,  346 => 8,  333 => 7,  310 => 5,  299 => 770,  297 => 754,  294 => 753,  292 => 229,  198 => 138,  170 => 113,  163 => 109,  65 => 13,  63 => 7,  58 => 5,  52 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -1220,20 +1200,6 @@ class __TwigTemplate_8fa76fe79a44ee114ca14c217c896612 extends Template
 \t\t\t\t\t\t\t\t<p>Components</p>
 \t\t\t\t\t\t\t\t<span class=\"badge badge-count\">14</span>
 \t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t</li>
-                        <li class=\"nav-item\">
-\t\t\t\t\t\t\t<a href=\"{{ path('admin_offre_index') }}\">
-
-\t\t\t\t\t\t\t\t<i class=\"la la-table\"></i>
-\t\t\t\t\t\t\t\t<p>Gestion des offres</p>
-\t\t\t\t\t\t\t\t<span class=\"badge badge-count\">14</span>
-\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t</li>
-\t\t\t\t\t\t<li class=\"nav-item\">
-    \t\t\t\t\t\t<a href=\"{{ path('admin_employe_index') }}\">
-        \t\t\t\t\t\t<i class=\"la la-users\"></i>
-        \t\t\t\t\t\t<p>Gestion des employés</p>
-    \t\t\t\t\t\t</a>
 \t\t\t\t\t\t</li>
 \t\t\t\t\t\t<li class=\"nav-item\">
 \t\t\t\t\t\t\t<a href=\"forms.html\">
@@ -1819,6 +1785,6 @@ class __TwigTemplate_8fa76fe79a44ee114ca14c217c896612 extends Template
 <script src=\"{{asset('backoffice/js/ready.min.js')}}\"></script>
 <script src=\"{{asset('backoffice/js/demo.js')}}\"></script>
 {% endblock %}
-</html>", "base_back.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\base_back.html.twig");
+</html>", "base_back.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\base_back.html.twig");
     }
 }

@@ -620,6 +620,6 @@ class __TwigTemplate_98ccdc79c48aa213a5a7d7de593908bc extends Template
 
 
 {% endblock %}
-", "parcelle_proprietes/show.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\parcelle_proprietes\\show.html.twig");
+", "parcelle_proprietes/show.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\parcelle_proprietes\\show.html.twig");
     }
 }

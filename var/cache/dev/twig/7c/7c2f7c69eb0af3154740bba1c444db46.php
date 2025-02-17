@@ -140,6 +140,6 @@ class __TwigTemplate_ef30fae7f2a6810b73f9ae013c2853c6 extends Template
 <button class=\"btn btn-primary\">{{ button_label|default('Enregistrer') }}</button>
 
 {{ form_end(form) }}
-", "offre/_form.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\offre\\_form.html.twig");
+", "offre/_form.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\offre\\_form.html.twig");
     }
 }
