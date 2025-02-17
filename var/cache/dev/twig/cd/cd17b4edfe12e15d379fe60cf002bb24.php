@@ -172,6 +172,6 @@ class __TwigTemplate_376742d765b0377c4d66366cf9bf8f26 extends Template
     <a href=\"{{ path('app_offre_index') }}\">back to list</a>
 
 
-{% endblock %}", "offre/new.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\offre\\new.html.twig");
+{% endblock %}", "offre/new.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\offre\\new.html.twig");
     }
 }

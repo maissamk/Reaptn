@@ -162,6 +162,6 @@ class __TwigTemplate_226d9a916e3b7b2eb91269ab0284352d extends Template
 
     {{ include('paiement/_delete_form.html.twig') }}
 {% endblock %}
-", "paiement/edit.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\paiement\\edit.html.twig");
+", "paiement/edit.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\paiement\\edit.html.twig");
     }
 }

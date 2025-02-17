@@ -189,6 +189,6 @@ class __TwigTemplate_b6cdc92a28cba10bcfff52f82a69f592 extends Template
         </div>
     </div>
 {% endblock %}
-", "admin/offre/new_back.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\admin\\offre\\new_back.html.twig");
+", "admin/offre/new_back.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\admin\\offre\\new_back.html.twig");
     }
 }

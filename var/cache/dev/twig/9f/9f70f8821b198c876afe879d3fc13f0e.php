@@ -94,6 +94,6 @@ class __TwigTemplate_efed7ef2e0ded8564e173df6eca45f2c extends Template
     <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ materielvente.id) }}\">
     <button class=\"btn btn-danger btn-sm\">Supprimer</button>
     
-</form>", "admin/materielagricole/supprimer.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\admin\\materielagricole\\supprimer.html.twig");
+</form>", "admin/materielagricole/supprimer.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\admin\\materielagricole\\supprimer.html.twig");
     }
 }

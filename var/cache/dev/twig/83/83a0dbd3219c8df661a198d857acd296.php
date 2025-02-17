@@ -191,6 +191,6 @@ class __TwigTemplate_e69d5a26c2409ba7bd783010e8bcc949 extends Template
         <a href=\"{{ path('admin_offre_index') }}\" class=\"btn btn-secondary\">Retour</a>
     </div>
 {% endblock %}
-", "admin/offre/show_back.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\admin\\offre\\show_back.html.twig");
+", "admin/offre/show_back.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\admin\\offre\\show_back.html.twig");
     }
 }

@@ -167,6 +167,6 @@ class __TwigTemplate_72c8f66efe9a5d5ca36fb3c00c919dc3 extends Template
 {% endblock %}
 
 
-", "parcelle_proprietes/new.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\parcelle_proprietes\\new.html.twig");
+", "parcelle_proprietes/new.html.twig", "C:\\Users\\hassa\\OneDrive\\Bureau\\PI\\Reaptn\\templates\\parcelle_proprietes\\new.html.twig");
     }
 }
