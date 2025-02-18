@@ -1,0 +1,90 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Liste des commandes{% endblock %}
+
+{% block body %}
+<div class="row justify-content-center">
+    <div class="container mt-5 pt-5" style="width: 70%; margin-left: 27%; margin-top: 50px;">
+        <h1>Liste des commandes</h1>
+
+        <table class="table table-bordered mt-3">
+            <thead class="table-dark">
+                <tr>
+                    <th class="text-white">ID</th>
+                    <th class="text-white">Date de commande</th>
+                    <th class="text-white">Total</th>
+                    <th class="text-white">Quantité</th>
+                    <th class="text-white">Paiement</th>
+                    <th class="text-white">Livraison</th>
+                    <th class="text-white">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for commande in commandes %}
+                    {% if commande.paiement or commande.livraison %}
+                        <tr>
+                            <td>{{ commande.id }}</td>
+                            <td>{{ commande.dateCommande|date('d/m/Y H:i') }}</td>
+                            <td>{{ commande.totale }} DT</td>
+                            <td>{{ commande.quantite }}</td>
+
+                            <!-- Paiement Section -->
+                            <td>
+                                {% if commande.paiement %}
+                                    <div class="payment-card">
+                                        <div>
+                                            <strong>Méthode:</strong> {{ commande.paiement.methodePaiement }}<br>
+                                            <small>Date: {{ commande.paiement.datePaiement|date('d/m/Y') }}</small>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <div class="payment-card not-paid">
+                                        <h5>Non payé</h5>
+                                    </div>
+                                {% endif %}
+                            </td>
+
+                            <!-- Livraison Section -->
+                            <td>
+                                {% if commande.livraison %}
+                                    <div class="delivery-card">
+                                        <div>
+                                            <strong>Status:</strong> {{ commande.livraison.status }}<br>
+                                            <strong>Adresse:</strong> {{ commande.livraison.adresse }}<br>
+                                            <small>Date: {{ commande.livraison.dateLiv|date('d/m/Y') }}</small>
+                                            <form action="{{ path('livraison_update_status', {'id': commande.livraison.id}) }}" method="POST">
+                                                <select name="status" class="status-dropdown">
+                                                    <option value="Validation en cours" {% if commande.livraison.status == 'Validation en cours' %}selected{% endif %}>Validation en cours</option>
+                                                    <option value="En préparation" {% if commande.livraison.status == 'En préparation' %}selected{% endif %}>En préparation</option>
+                                                    <option value="Expédiée" {% if commande.livraison.status == 'Expédiée' %}selected{% endif %}>Expédiée</option>
+                                                    <option value="Livrée" {% if commande.livraison.status == 'Livrée' %}selected{% endif %}>Livrée</option>
+                                                </select>
+                                                <button type="submit" class="btn btn-warning btn-sm">Mettre à jour</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <div class="delivery-card not-shipped">
+                                        <h5>Non livrée</h5>
+                                    </div>
+                                {% endif %}
+                            </td>
+
+                            <!-- Actions -->
+                            <td>
+                                {% if commande.livraison and commande.livraison.status == 'Livrée' %}
+                                    <form action="{{ path('commande_delete', {'id': commande.id}) }}" method="POST">
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette commande ?')">Supprimer</button>
+                                    </form>
+                                {% else %}
+                                    <button class="btn btn-danger" disabled>Suppression interdite</button>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Offre{% endblock %}
+
+{% block body %}
+    <div class="pt-5">
+        <div class="container mt-5 pt-5">
+            <h1>Details D'Offre </h1>
+
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>ID</th>
+                        <td>{{ offre.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>ID A</th>
+                        <td>{{ offre.ida }}</td>
+                    </tr>
+                    <tr>
+                        <th>ID E</th>
+                        <td>{{ offre.ide }}</td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td>{{ offre.statut ? 'Active' : 'Inactive' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ offre.descr }}</td>
+                    </tr>
+                    <tr>
+                        <th>Title</th>
+                        <td>{{ offre.titre }}</td>
+                    </tr>
+                    <tr>
+                        <th>Competence</th>
+                        <td>{{ offre.comp }}</td>
+                    </tr>
+                </tbody>
+            </table>
+<div class="d-flex justify-content-center mt-4">
+            <a href="{{ path('app_offre_index') }}" class="btn btn-primary me-3">
+                <i class="fa fa-arrow-left"></i> Retour
+            </a>
+           
+        </div>
+
+            
+            <!-- Employees List -->
+            <h3>Employés inscrits:</h3>
+            <ul>
+                {% for employe in offre.employes %}
+                    <li>
+                        User ID: {{ employe.userIdentifier }} - Competence: {{ employe.comp }}
+                    </li>
+                {% else %}
+                    <li>Aucun Employés Inscrits.</li>
+                {% endfor %}
+            </ul>
+
+            <hr>
+
+            <!-- Subscription Form -->
+            {% if  is_granted('ROLE_CLIENT') %}
+            <h3>Entrez vos détails</h3>
+            <form action="{{ path('app_employe_new', {'id': offre.id}) }}" method="POST">
+                <div class="mb-3">
+                    <label for="employeId" class="form-label">Enter Your ID:</label>
+                    <input type="number" id="employeId" name="employeId" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="comp" class="form-label">Entrez votre Competence:</label>
+                    <input type="text" id="comp" name="comp" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-success">Joindre cette offre</button>
+            </form>
+
+            <hr>
+            {% endif %}
+            <!-- Delete Offer Form -->
+            {% if  is_granted('ROLE_AGRICULTEUR') %}
+            {{ include('offre/_delete_form.html.twig') }}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
