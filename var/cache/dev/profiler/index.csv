@@ -3008,6 +3008,7 @@ ff7f44,127.0.0.1,GET,https://127.0.0.1:8000/lib/lightbox/css/lightbox.min.css,17
 ce04b6,127.0.0.1,GET,https://127.0.0.1:8000/lib/lightbox/css/lightbox.min.css,1739853720,,404,request
 ecc602,127.0.0.1,GET,https://127.0.0.1:8000/lib/owlcarousel/assets/owl.carousel.min.css,1739853721,59e6ef,404,request
 59e6ef,127.0.0.1,GET,https://127.0.0.1:8000/lib/owlcarousel/assets/owl.carousel.min.css,1739853721,,404,request
+<<<<<<< HEAD
 6b843e,127.0.0.1,GET,https://127.0.0.1:8000/,1739854378,,404,request
 0c1002,127.0.0.1,GET,https://127.0.0.1:8000/lib/lightbox/css/lightbox.min.css,1739854380,9918c4,404,request
 9918c4,127.0.0.1,GET,https://127.0.0.1:8000/lib/lightbox/css/lightbox.min.css,1739854380,,404,request
@@ -3914,3 +3915,5 @@ d91658,127.0.0.1,GET,https://127.0.0.1:8000/admin/admin/backoffice/img/profile2.
 c7e950,127.0.0.1,GET,https://127.0.0.1:8000/admin/admin/backoffice/img/profile2.jpg,1739870764,,404,request
 678887,127.0.0.1,GET,https://127.0.0.1:8000/images/default-avatar.png,1739870765,313d37,404,request
 313d37,127.0.0.1,GET,https://127.0.0.1:8000/images/default-avatar.png,1739870765,,404,request
+=======
+>>>>>>> integrationval
