@@ -173,21 +173,18 @@
 							</div>
 						</div>
 					</div>
-					<ul class="nav">
-						<li class="nav-item active">
-							<a href="index.html">
-								<i class="la la-dashboard"></i>
-								<p>Dashboard</p>
-								<span class="badge badge-count">5</span>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="components.html">
+					
+
+<div class="container mt-4 pt-2">
+<ul class="nav">
+						 <li class="nav-item">
+							<a href="{{ path('admin_users') }}">
 								<i class="la la-table"></i>
-								<p>Components</p>
+								<p>Liste des Utilisateur</p>
 								<span class="badge badge-count">14</span>
 							</a>
 						</li>
+						
                         <li class="nav-item">
 							<a href="{{ path('admin_offre_index') }}">
 
@@ -206,7 +203,7 @@
     <a href="{{ path('admin_parcelle_proprietes_index') }}">
 
         <i class="la la-table"></i>
-        <p>shop_parcelles</p>
+        <p>Gestion des parcelles</p>
         <span class="badge badge-count">14</span>
     </a>
 </li>
@@ -215,22 +212,10 @@
     <a href="{{ path('admin_contrat_index') }}">
 
         <i class="la la-table"></i>
-        <p>inspecter_contrats</p>
+        <p>Gestion des contrats</p>
         <span class="badge badge-count">14</span>
     </a>
-</li>
-
-
-
-
-
-						<li class="nav-item">
-							<a href="forms.html">
-								<i class="la la-keyboard-o"></i>
-								<p>Forms</p>
-								<span class="badge badge-count">50</span>
-							</a>
-						</li>
+</li>			
 						<li class="nav-item">
 							<a href="{{path('app_tables')}}">
 								<i class="la la-th"></i>
@@ -247,23 +232,11 @@
 						</li>
 						
 						<li class="nav-item">
-							<a href="notifications.html">
-								<i class="la la-bell"></i>
-								<p>Notifications</p>
-								<span class="badge badge-success">3</span>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="typography.html">
-								<i class="la la-font"></i>
-								<p>Typography</p>
-								<span class="badge badge-danger">25</span>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="icons.html">
-								<i class="la la-fonticons"></i>
-								<p>Icons</p>
+							<a href="{{ path('app_commande_index') }}">
+
+								<i class="la la-table"></i>
+								<p>Gestion des commandes</p>
+								<span class="badge badge-count">14</span>
 							</a>
 						</li>
 						<li class="nav-item update-pro">
@@ -273,6 +246,7 @@
 							</button>
 						</li>
 					</ul>
+					</div>
 				</div>
 			</div>
 {% block body %}
