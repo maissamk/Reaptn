@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Materiellocation{% endblock %}
+
+{% block body %}
+<div class="container mt-5 pt-5">
+    <h1>Create new Materiellocation</h1>
+
+    {{ include('materiellocation/_form.html.twig') }}
+
+    <a href="{{ path('app_materiellocation_index') }}"class="btn btn-primary me-3"><i class="fa fa-arrow-left"></i>Retour</a>
+{% endblock %}

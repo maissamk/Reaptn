@@ -148,4 +148,22 @@
     });
 
 })(jQuery);
+document.querySelectorAll('.see-more').forEach(link => {
+    link.addEventListener('click', function (event) {
+        event.preventDefault();
+        const desc = this.parentElement;
+        const dots = desc.querySelector('.dots');
+        const moreText = desc.querySelector('.more-text');
+
+        if (moreText.style.display === "none" || moreText.style.display === "") {
+            moreText.style.display = "inline";
+            dots.style.display = "none";
+            this.textContent = "moins";
+        } else {
+            moreText.style.display = "none";
+            dots.style.display = "inline";
+            this.textContent = "plus";
+        }
+    });
+});
 

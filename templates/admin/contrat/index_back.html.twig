@@ -1,0 +1,60 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Liste des Contrats{% endblock %}
+
+{% block body %}
+<div class="row justify-content-center"><div class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 100vh; margin-left: 260px; ">
+    <h1 class="text-center text-primary fw-bold">
+        <i class="fas fa-file-contract"></i> Liste des Contrats
+    </h1>
+
+    
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark text-center">
+            <tr>
+                <th class="text-white">ID</th>
+                <th class="text-white">Acheteur</th>
+                <th class="text-white">Vendeur</th>
+                <th class="text-white">Date Début</th>
+                <th class="text-white">Date Fin</th>
+                <th class="text-white">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contrat in contrats %}
+                <tr>
+                    <td>{{ contrat.id }}</td>
+                    <td>{{ contrat.nomAcheteur }}</td>
+                    <td>{{ contrat.nomVendeur }}</td>
+                    <td>{{ contrat.dateDebutContrat ? contrat.dateDebutContrat|date('d/m/Y') : '-' }}</td>
+                    <td>{{ contrat.datefinContrat ? contrat.datefinContrat|date('d/m/Y') : '-' }}</td>
+                    <td class="text-center">
+                        <a href="{{ path('admin_contrat_show', {'id': contrat.id}) }}" class="btn btn-info btn-sm">voir
+                            <i class="fas fa-eye"></i>
+                        </a>
+                        <a href="{{ path('admin_contrat_edit', {'id': contrat.id}) }}" class="btn btn-warning btn-sm">Modifier
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <form method="post" action="{{ path('admin_contrat_delete', {'id': contrat.id}) }}" style="display:inline;" onsubmit="return confirm('Voulez-vous vraiment supprimer ce contrat ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ contrat.id) }}">
+                            <button class="btn btn-danger btn-sm" type="submit">
+                                <i class="fas fa-trash-alt"></i> Supprimer
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6" class="text-center text-danger">Aucun contrat trouvé.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+<div class="text-end mb-3">
+        <a href="{{ path('admin_contrat_new') }}" class="btn btn-success">
+            <i class="fas fa-plus-circle"></i> Ajouter un Contrat
+        </a>
+    </div>
+</div>
+{% endblock %}
