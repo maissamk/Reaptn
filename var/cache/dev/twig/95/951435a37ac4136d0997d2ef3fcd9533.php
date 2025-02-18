@@ -99,7 +99,11 @@ class __TwigTemplate_b9b4b7ca9beb6c48ae80388ddca8cfa5 extends Template
         // line 6
         yield "    <div class=\"pt-5\">
         <div class=\"container mt-5 pt-5\">
+<<<<<<< HEAD
             <h1>Details D'Offre </h1>
+=======
+            <h1>Details Offre </h1>
+>>>>>>> integrationval
 
             <table class=\"table\">
                 <tbody>
@@ -281,7 +285,11 @@ class __TwigTemplate_b9b4b7ca9beb6c48ae80388ddca8cfa5 extends Template
 {% block body %}
     <div class=\"pt-5\">
         <div class=\"container mt-5 pt-5\">
+<<<<<<< HEAD
             <h1>Details D'Offre </h1>
+=======
+            <h1>Details Offre </h1>
+>>>>>>> integrationval
 
             <table class=\"table\">
                 <tbody>
@@ -360,6 +368,10 @@ class __TwigTemplate_b9b4b7ca9beb6c48ae80388ddca8cfa5 extends Template
             {% endif %}
         </div>
     </div>
+<<<<<<< HEAD
 {% endblock %}", "offre/show.html.twig", "C:\\Games\\Reaptn\\templates\\offre\\show.html.twig");
+=======
+{% endblock %}", "offre/show.html.twig", "C:\\Users\\romdh\\OneDrive\\Bureau\\PI2025\\Reaptn\\templates\\offre\\show.html.twig");
+>>>>>>> integrationval
     }
 }
