@@ -66,6 +66,9 @@ final class ParcelleProprietesController extends AbstractController
                         'error_message' => 'Une erreur est survenue lors de l\'enregistrement de l\'image.',
                     ]);
                 }
+            }else {
+                // Image par défaut si aucune image n'est envoyée
+                $parcellePropriete->setImage('default.jpg');
             }
             $entityManager->persist($parcellePropriete);
             $entityManager->flush();
