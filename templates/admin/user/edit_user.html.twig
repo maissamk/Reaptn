@@ -3,44 +3,59 @@
 {% block title %}Modifier l'Utilisateur{% endblock %}
 
 {% block body %}
-    <div class="container" style="margin-right: 50px;">
-        <h1 class="text-right">Modifier l'Utilisateur</h1>
+    <div class="container mt-5 pt-5" style="margin-left: 250px;">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h2>Modifier l'Utilisateur</h2>
+                    </div>
+                    <div class="card-body">
+                        {{ form_start(form) }}
+                            <!-- Champs du Formulaire -->
+                            <div class="form-group mb-3">
+                                <label for="prenom" class="form-label">Prénom</label>
+                                {{ form_widget(form.prenom, { 'attr': {'class': 'form-control'} }) }}
+                            </div>
 
-        <!-- Formulaire de Modification de l'Utilisateur -->
-        <div class="card p-4 mt-4 shadow-lg rounded">
-            {{ form_start(form) }}
-                <!-- Champs du Formulaire -->
-                <div class="form-group mb-3">
-                    <label for="prenom" class="form-label">Prénom</label>
-                    {{ form_widget(form.prenom, { 'attr': {'class': 'form-control'} }) }}
-                </div>
+                            <div class="form-group mb-3">
+                                <label for="nom" class="form-label">Nom</label>
+                                {{ form_widget(form.nom, { 'attr': {'class': 'form-control'} }) }}
+                            </div>
 
-                <div class="form-group mb-3">
-                    <label for="nom" class="form-label">Nom</label>
-                    {{ form_widget(form.nom, { 'attr': {'class': 'form-control'} }) }}
-                </div>
+                            <div class="form-group mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                {{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}
+                            </div>
 
-                <div class="form-group mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    {{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}
-                </div>
+                            <div class="form-group mb-3">
+                                <label for="telephone" class="form-label">Numéro de téléphone</label>
+                                {{ form_widget(form.telephone, { 'attr': {'class': 'form-control'} }) }}
+                            </div>
 
-                <div class="form-group mb-3">
-                    <label for="telephone" class="form-label">Numéro de téléphone</label>
-                    {{ form_widget(form.telephone, { 'attr': {'class': 'form-control'} }) }}
-                </div>
-
-                <!-- Avatar Upload Section -->
-                <div class="form-group mb-4">
+                            <!-- Avatar Upload Section -->
+                           <div class="form-group mb-4">
                     <label for="avatar" class="form-label">Télécharger un Nouvel Avatar</label>
                     {{ form_widget(form.avatar, { 'attr': {'class': 'form-control-file', 'style': 'width: 350px; margin-top: 10px;'} }) }}
                 </div>
-
-                <!-- Bouton de Sauvegarde -->
-                <div class="text-center">
-                    <button class="btn btn-success btn-lg w-75 mt-4">Enregistrer les Modifications</button>
+  <div class="form-group mb-4">
+                        <label for="status" class="form-label">Changer le status</label>
+                        {{ form_widget(form.status, { 'attr': {'class': 'form-control-file'} }) }}
+                    </div>
+                            <!-- Bouton de Sauvegarde -->
+                            <div class="text-center mt-4">
+                                <button class="btn btn-success btn-lg w-75">Enregistrer les Modifications</button>
+                            </div>
+                        {{ form_end(form) }}
+                    </div>
                 </div>
-            {{ form_end(form) }}
+
+                <div class="text-center mt-4">
+                    <a href="{{ path('admin_users') }}" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left"></i> Retour à la liste des utilisateurs
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
@@ -51,7 +66,6 @@
             width: 80%;
             margin: 0 auto;
             padding: 20px;
-            text-align: right;
         }
 
         .form-group {
@@ -89,8 +103,11 @@
             border: 1px solid #ddd;
         }
 
-        .card .text-center {
-            margin-bottom: 20px;
+        .card-header {
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
         }
 
         .card-body {
@@ -99,6 +116,10 @@
 
         .container h1 {
             margin-bottom: 20px;
+        }
+
+        .text-center {
+            margin-top: 20px;
         }
     </style>
 {% endblock %}

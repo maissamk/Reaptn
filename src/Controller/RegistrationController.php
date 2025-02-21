@@ -33,6 +33,9 @@ class RegistrationController extends AbstractController
             if ($role) {
                 $user->setRoles([$role]);
             }
+            if (!$user->getAvatar()) {
+                $user->setAvatar('defaultavatar.png');
+            }
     
             // Persist the user entity to the database
             $entityManager->persist($user);

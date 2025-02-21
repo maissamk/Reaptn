@@ -89,6 +89,9 @@ private Collection $commandes;
 #[ORM\OneToMany(targetEntity: Employe::class, mappedBy: 'user_id_employe')]
 private Collection $employes;
 
+#[ORM\Column(length: 20)]
+private ?string $status = 'inactive';
+
 public function __construct()
 {
     $this->parcelleProprietes = new ArrayCollection();
@@ -96,6 +99,7 @@ public function __construct()
     $this->materiellocations = new ArrayCollection();
     $this->commandes = new ArrayCollection();
     $this->employes = new ArrayCollection();
+    //$this->status = 'active';
 }
 
 
@@ -369,6 +373,18 @@ public function __construct()
                 $employe->setUserIdEmploye(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): static
+    {
+        $this->status = $status;
 
         return $this;
     }

@@ -261,8 +261,45 @@ class AdminController extends AbstractController
 public function editlocation(Request $request, Materiellocation $materiellocation, EntityManagerInterface $entityManager): Response
 {
     $form = $this->createForm(MateriellocationType::class, $materiellocation);
-}
+    $form->handleRequest($request);
 
+    if ($form->isSubmitted() && $form->isValid()) {
+        /** @var UploadedFile $file */
+        $file = $form->get('image')->getData();
+
+        if ($file) {
+            $filename = md5(uniqid()) . '.' . $file->guessExtension();
+
+            try {
+                $directory = $this->getParameter('images_directory');
+
+                // Vérifie si le dossier existe, sinon le créer
+                if (!is_dir($directory) && !mkdir($directory, 0775, true) && !is_dir($directory)) {
+                    throw new \RuntimeException(sprintf('Impossible de créer le répertoire "%s"', $directory));
+                }
+
+                // Déplace l'image dans le répertoire
+                $file->move($directory, $filename);
+                $materiellocation->setImage($filename);
+            } catch (FileException $e) {
+                $this->addFlash('error', 'Erreur lors de l\'upload de l\'image : ' . $e->getMessage());
+                return $this->redirectToRoute('admin_materiellocation_edit', ['id' => $materiellocation->getId()]);
+            } catch (\RuntimeException $e) {
+                $this->addFlash('error', 'Erreur lors de la création du dossier d\'images.');
+                return $this->redirectToRoute('admin_materiellocation_edit', ['id' => $materiellocation->getId()]);
+            }
+        }
+
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_tableslocation', [], Response::HTTP_SEE_OTHER);
+    }
+
+    return $this->render('admin/materiellocation/modifier.html.twig', [
+        'materiellocation' => $materiellocation,
+        'form' => $form->createView(),
+    ]);
+}
 #[Route('/{id}/supprimer', name: 'admin_materiellocation_delete', methods: ['POST'])]
     public function deletelocation(Request $request, Materiellocation $materiellocation, EntityManagerInterface $entityManager): Response
     {
@@ -342,6 +379,9 @@ public function new(Request $request, EntityManagerInterface $entityManager): Re
                 $this->addFlash('error', 'Error creating the images directory.');
                 return $this->redirectToRoute('admin_parcelle_proprietes_new');
             }
+        }else {
+            // Image par défaut si aucune image n'est envoyée
+            $parcellePropriete->setImage('default.jpg');
         }
 
         // Persist the entity and save to the database
@@ -589,7 +629,9 @@ public function newContrat(Request $request, EntityManagerInterface $entityManag
                     $this->addFlash('error', 'Failed to upload the avatar.');
                 }
             }
-
+            // Save changes (including status)
+        $em->persist($user);
+        $em->flush();
             // Save the updated user data
             $em->flush();
             $this->addFlash('success', 'User updated successfully!');
