@@ -247,10 +247,48 @@ final class AdminController extends AbstractController
 
 
     #[Route('/{id}/modifier', name: 'admin_materiellocation_edit', methods: ['GET', 'POST'])]
-public function editlocation(Request $request, Materiellocation $materiellocation, EntityManagerInterface $entityManager): Response
-{
-    $form = $this->createForm(MateriellocationType::class, $materiellocation);
-}
+    public function editlocation(Request $request, Materiellocation $materiellocation, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(MateriellocationType::class, $materiellocation);
+        $form->handleRequest($request);
+    
+        if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $file */
+            $file = $form->get('image')->getData();
+    
+            if ($file) {
+                $filename = md5(uniqid()) . '.' . $file->guessExtension();
+    
+                try {
+                    $directory = $this->getParameter('images_directory');
+    
+                    // Vérifie si le dossier existe, sinon le créer
+                    if (!is_dir($directory) && !mkdir($directory, 0775, true) && !is_dir($directory)) {
+                        throw new \RuntimeException(sprintf('Impossible de créer le répertoire "%s"', $directory));
+                    }
+    
+                    // Déplace l'image dans le répertoire
+                    $file->move($directory, $filename);
+                    $materiellocation->setImage($filename);
+                } catch (FileException $e) {
+                    $this->addFlash('error', 'Erreur lors de l\'upload de l\'image : ' . $e->getMessage());
+                    return $this->redirectToRoute('admin_materiellocation_edit', ['id' => $materiellocation->getId()]);
+                } catch (\RuntimeException $e) {
+                    $this->addFlash('error', 'Erreur lors de la création du dossier d\'images.');
+                    return $this->redirectToRoute('admin_materiellocation_edit', ['id' => $materiellocation->getId()]);
+                }
+            }
+    
+            $entityManager->flush();
+    
+            return $this->redirectToRoute('app_tableslocation', [], Response::HTTP_SEE_OTHER);
+        }
+    
+        return $this->render('admin/materiellocation/modifier.html.twig', [
+            'materiellocation' => $materiellocation,
+            'form' => $form->createView(),
+        ]);
+    }
 
 #[Route('/{id}/supprimer', name: 'admin_materiellocation_delete', methods: ['POST'])]
     public function deletelocation(Request $request, Materiellocation $materiellocation, EntityManagerInterface $entityManager): Response
@@ -503,7 +541,7 @@ public function newContrat(Request $request, EntityManagerInterface $entityManag
 
 
 
-    #[Route('admin/{id}/edit', name: 'admin_contrat_edit', methods: ['GET', 'POST'])]
+    #[Route('admin/{id}/edit1', name: 'admin_contrat_edit', methods: ['GET', 'POST'])]
     public function editBackconrat(Request $request, Contrat $contrat, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(ContratType::class, $contrat);

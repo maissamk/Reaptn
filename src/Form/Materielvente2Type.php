@@ -31,7 +31,9 @@ class Materielvente2Type extends AbstractType
                         'mimeTypes' => ['image/jpeg', 'image/png'],
                         'mimeTypesMessage' => 'Please upload a valid image (JPEG or PNG).',
                     ])
+                    
                 ],
+                
             ]);
     }
 

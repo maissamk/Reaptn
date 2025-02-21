@@ -53,6 +53,8 @@ class Materielvente
     #[ORM\ManyToOne(inversedBy: 'materielventes')]
     private ?User $user_id_materielvente = null;
 
+    
+
     public function getId(): ?int
     {
         return $this->id;
@@ -134,4 +136,6 @@ class Materielvente
         $this->user_id_materielvente = $user_id_materielvente;
         return $this;
     }
+
+    
 }
