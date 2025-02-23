@@ -28,9 +28,6 @@ class Employe
     #[ORM\JoinColumn(nullable: false)]
     private ?Offre $offre = null;
 
-    #[ORM\ManyToOne(inversedBy: 'employes')]
-    private ?user $user_id_employe = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -66,18 +63,6 @@ class Employe
     public function setOffre(?Offre $offre): static
     {
         $this->offre = $offre;
-        return $this;
-    }
-
-    public function getUserIdEmploye(): ?user
-    {
-        return $this->user_id_employe;
-    }
-
-    public function setUserIdEmploye(?user $user_id_employe): static
-    {
-        $this->user_id_employe = $user_id_employe;
-
         return $this;
     }
 }

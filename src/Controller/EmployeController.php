@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Bundle\SecurityBundle\Security;
 
 #[Route('/employe')]
 final class EmployeController extends AbstractController
@@ -26,40 +27,44 @@ final class EmployeController extends AbstractController
     }
 
     #[Route('/new/{id}', name: 'app_employe_new', methods: ['POST'])]
-    public function new(Request $request, int $id, EntityManagerInterface $entityManager): Response
-    {
-        $offre = $entityManager->getRepository(Offre::class)->find($id);
-        if (!$offre) {
-            throw $this->createNotFoundException('Offer not found.');
-        }
+public function new(Request $request, int $id, EntityManagerInterface $entityManager, Security $security): Response
+{
+    $offre = $entityManager->getRepository(Offre::class)->find($id);
+    if (!$offre) {
+        throw $this->createNotFoundException('Offer not found.');
+    }
 
-        $userId = $request->request->get('employeId');
-        $competence = $request->request->get('comp');
-        if (!$userId) {
-            $this->addFlash('error', 'Please enter a valid ID.');
-            return $this->redirectToRoute('app_offre_show', ['id' => $id]);
-        }
-
-        // Check if this user is already subscribed
-        $existingEmploye = $entityManager->getRepository(Employe::class)
-            ->findOneBy(['userIdentifier' => $userId, 'offre' => $offre]);
-        if ($existingEmploye) {
-            $this->addFlash('error', 'You are already subscribed to this offer.');
-            return $this->redirectToRoute('app_offre_show', ['id' => $id]);
-        }
-
-        // Create new employee record
-        $employe = new Employe();
-        $employe->setUserIdentifier($userId);
-        $employe->setComp($competence);
-        // Set competence
-        $employe->setOffre($offre);
-        $entityManager->persist($employe);
-        $entityManager->flush();
-
-        $this->addFlash('success', 'You have successfully subscribed to this offer!');
+    // Get the logged-in user's ID
+    $user = $security->getUser();
+    if (!$user) {
+        $this->addFlash('error', 'You must be logged in to subscribe.');
         return $this->redirectToRoute('app_offre_show', ['id' => $id]);
     }
+    $userId = $user->getId(); // Only change here
+
+    $competence = $request->request->get('comp');
+
+    // Check if this user is already subscribed
+    $existingEmploye = $entityManager->getRepository(Employe::class)
+        ->findOneBy(['userIdentifier' => $userId, 'offre' => $offre]);
+
+    if ($existingEmploye) {
+        $this->addFlash('error', 'You are already subscribed to this offer.');
+        return $this->redirectToRoute('app_offre_show', ['id' => $id]);
+    }
+
+    // Create new employee record
+    $employe = new Employe();
+    $employe->setUserIdentifier($userId);
+    $employe->setComp($competence);
+    $employe->setOffre($offre);
+
+    $entityManager->persist($employe);
+    $entityManager->flush();
+
+    $this->addFlash('success', 'You have successfully subscribed to this offer!');
+    return $this->redirectToRoute('app_offre_show', ['id' => $id]);
+}
 
     #[Route('/{id}', name: 'app_employe_show', methods: ['GET'])]
     public function show(Employe $employe): Response

@@ -19,34 +19,62 @@ class Offre
     #[ORM\Column]
     #[Assert\NotBlank(message: "L'identifiant A est obligatoire.")]
     #[Assert\Positive(message: "L'identifiant A doit être un nombre positif.")]
+    #[Assert\Type(type: 'integer', message: "L'identifiant A doit être un entier.")]
+    #[Assert\Regex(
+        pattern: "/^\d+$/",
+        message: "L'identifiant A ne doit contenir que des chiffres."
+    )]
     private ?int $ida = null;
 
     #[ORM\Column(nullable: true)]
     #[Assert\PositiveOrZero(message: "L'identifiant E doit être un nombre positif ou zéro.")]
+    #[Assert\Type(type: 'integer', message: "L'identifiant E doit être un entier.")]
+    #[Assert\Regex(
+        pattern: "/^\d*$/",
+        message: "L'identifiant E ne doit contenir que des chiffres."
+    )]
     private ?int $ide = null;
 
     #[ORM\Column(options: ["default" => false])]
+    #[Assert\NotNull(message: "Le statut est obligatoire.")]
     private ?bool $statut = false;
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Assert\Length(
         max: 255,
-        maxMessage: "La description ne peut pas dépasser 255 caractères."
+        maxMessage: "La description ne peut pas dépasser {{ limit }} caractères."
+    )]
+    #[Assert\Type(type: 'string', message: "La description doit être une chaîne de caractères.")]
+    #[Assert\Regex(
+        pattern: "/^[a-zA-Z0-9\s\-\.,!?()]*$/",
+        message: "La description ne doit pas contenir de caractères spéciaux interdits (*, %, $, etc.)."
     )]
     private ?string $descr = null;
 
     #[ORM\Column(length: 100)]
     #[Assert\NotBlank(message: "Le titre est obligatoire.")]
     #[Assert\Length(
+        min: 5,
+        minMessage: "Le titre doit contenir au moins {{ limit }} caractères.",
         max: 100,
-        maxMessage: "Le titre ne peut pas dépasser 100 caractères."
+        maxMessage: "Le titre ne peut pas dépasser {{ limit }} caractères."
+    )]
+    #[Assert\Type(type: 'string', message: "Le titre doit être une chaîne de caractères.")]
+    #[Assert\Regex(
+        pattern: "/^[a-zA-Z0-9\s\-\.,!?()]*$/",
+        message: "Le titre ne doit pas contenir de caractères spéciaux interdits (*, %, $, etc.)."
     )]
     private ?string $titre = null;
 
     #[ORM\Column(length: 100, nullable: true)]
     #[Assert\Length(
         max: 100,
-        maxMessage: "Les compétences ne peuvent pas dépasser 100 caractères."
+        maxMessage: "Les compétences ne peuvent pas dépasser {{ limit }} caractères."
+    )]
+    #[Assert\Type(type: 'string', message: "Les compétences doivent être une chaîne de caractères.")]
+    #[Assert\Regex(
+        pattern: "/^[a-zA-Z0-9\s\-\.,!?()]*$/",
+        message: "Les compétences ne doivent pas contenir de caractères spéciaux interdits (*, %, $, etc.)."
     )]
     private ?string $comp = null;
 
@@ -153,7 +181,6 @@ class Offre
     public function removeEmploye(Employe $employe): static
     {
         if ($this->employes->removeElement($employe)) {
-            // set the owning side to null (unless already changed)
             if ($employe->getOffre() === $this) {
                 $employe->setOffre(null);
             }

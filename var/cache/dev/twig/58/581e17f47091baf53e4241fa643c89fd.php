@@ -178,7 +178,7 @@ class __TwigTemplate_ad9d60e23b744b47a93b46f8cbe85065 extends Template
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["employe"], "userIdentifier", [], "any", false, false, false, 52), "html", null, true);
             yield " - Competence: ";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["employe"], "comp", [], "any", false, false, false, 52), "html", null, true);
-            yield "
+            yield " - 
                     </li>
                 ";
             $context['_iterated'] = true;
@@ -310,7 +310,7 @@ class __TwigTemplate_ad9d60e23b744b47a93b46f8cbe85065 extends Template
             <ul>
                 {% for employe in offre.employes %}
                     <li>
-                        User ID: {{ employe.userIdentifier }} - Competence: {{ employe.comp }}
+                        User ID: {{ employe.userIdentifier }} - Competence: {{ employe.comp }} - 
                     </li>
                 {% else %}
                     <li>No employees subscribed yet.</li>
