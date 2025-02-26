@@ -48,4 +48,15 @@ class SecurityController extends AbstractController
     {
         // Symfony will handle this
     }
+    #[Route(path: '/login/google/callback', name: 'google_redirect')]
+    public function googleRedirect(): RedirectResponse
+    {
+        // The OAuth2 client bundle handles the OAuth process
+        // Once the user successfully logs in with Google, this route will be called
+
+        // You can fetch the OAuth user info here if needed, and handle login logic
+        // Redirect to a different page after successful login (e.g., profile page)
+        return $this->redirectToRoute('profile'); // Change this route to your desired target
+    }
+    
 }

@@ -1,3 +1,21 @@
+oauth_google_connect:
+    path: /connect/google
+    controller: KnpU\OAuth2ClientBundle\Controller\ConnectController::connectAction
+    defaults:
+        client: google
+
+oauth_google_check:
+    path: /connect/google/check
+    controller: KnpU\OAuth2ClientBundle\Controller\ConnectController::checkAction
+    
+connect:
+    path: /connect
+    controller: HWI\Bundle\OAuthBundle\Controller\ConnectController::connectAction
+
+connect_check:
+    path: /connect/check
+    controller: HWI\Bundle\OAuthBundle\Controller\ConnectController::checkAction
+
 controllers:
     resource:
         path: ../src/Controller/

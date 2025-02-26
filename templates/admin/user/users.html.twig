@@ -3,10 +3,49 @@
 {% block title %}Tous les utilisateurs{% endblock %}
 
 {% block body %}
-<div class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 100vh; margin-left: 260px; padding-top: 80px;">
+<div class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 100vh; margin-left: 400px; padding-top: 80px;">
     <h1 class="text-center text-light bg-primary p-3 rounded" style="width: 100%;">👥 Tous les utilisateurs</h1>
 
-    <div class="table-responsive mt-4" style="width: 100%; overflow-x: hidden;">
+    <!-- Search Form Section -->
+    <form id="searchForm" class="mb-4 d-flex justify-content-center align-items-center flex-wrap" method="get" style="gap: 30px;margin-left: -100;margin-left: -130px;">
+        
+        <!-- Search Input Field -->
+        <div class="mb-3">
+            <input type="text" id="searchInput" name="search" class="form-control w-100 w-md-25" placeholder="Rechercher par email, nom..." value="{{ app.request.get('search') }}">
+        </div>
+
+        <!-- Role Selection Dropdown -->
+        <div class="mb-3">
+            <select name="role" id="roleSelect" class="form-control form-select w-100 w-md-25">
+                <option value="">Tous les rôles</option>
+                <option value="ROLE_ADMIN" {% if app.request.get('role') == 'ROLE_ADMIN' %}selected{% endif %}>Admin</option>
+                <option value="ROLE_CLIENT" {% if app.request.get('role') == 'ROLE_CLIENT' %}selected{% endif %}>Client</option>
+                <option value="ROLE_AGRICULTEUR" {% if app.request.get('role') == 'ROLE_AGRICULTEUR' %}selected{% endif %}>Agriculteur</option>
+            </select>
+        </div>
+
+        <!-- Status Selection Dropdown -->
+        <div class="mb-3">
+            <select name="status" id="statusSelect" class="form-control  form-select w-100 w-md-25">
+                <option value="">Tous les statuts</option>
+                <option value="active" {% if app.request.get('status') == 'active' %}selected{% endif %}>Actif</option>
+                <option value="inactive" {% if app.request.get('status') == 'inactive' %}selected{% endif %}>Inactif</option>
+                <option value="blocked" {% if app.request.get('status') == 'blocked' %}selected{% endif %}>Bloqué</option>
+            </select>
+        </div>
+
+        <!-- Search and Clear Buttons -->
+        <div class="mb-3 ml-9">
+            <button type="submit" class="btn btn-primary">🔍 Rechercher</button>
+            <a href="{{ path('admin_users') }}" id="clearSearchBtn" class="btn btn-secondary">🔄 Clear Recherche</a>
+            <!-- Button to Download PDF -->
+            <a href="{{ path('admin_users_pdf') }}" class="btn btn-success">📥PDF</a>
+        </div>
+        
+    </form>
+
+    <!-- Table Section -->
+    <div class="table-responsive mt-4 w-100" style="overflow-x: hidden;">
         <table class="table table-striped table-bordered">
             <thead class="table-dark">
                 <tr>
@@ -21,7 +60,7 @@
                     <th class="text-white">Actions</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="userTableBody">
                 {% for user in users %}
                     <tr>
                         <td class="text-center">
@@ -61,52 +100,41 @@
             </tbody>
         </table>
     </div>
-
 </div>
-
-{% endblock %}
-
-{% block stylesheets %}
-    <style>
-        .table th, .table td {
-            padding: 12px;
-            text-align: center;
-            vertical-align: middle;
-            border: 1px solid #ddd;
-        }
-
-        .table th {
-            background-color: #f2f2f2;
-        }
-
-        .table-striped tbody tr:nth-child(odd) {
-            background-color: #f9f9f9;
-        }
-
-        .table td img {
-            border-radius: 50%;
-        }
-
-        .d-flex a {
-            margin-right: 10px;
-        }
-
-        .badge {
-            padding: 5px 10px;
-            font-size: 14px;
-        }
-
-        .table-responsive {
-            width: 100%; /* Full width to avoid horizontal scrolling */
-            overflow-x: hidden; /* Remove horizontal scrollbar */
-        }
-
-        .mt-4 {
-            margin-top: 30px; /* Space between the table and other content */
-        }
-    </style>
 {% endblock %}
 
 {% block javascripts %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script>
+    document.getElementById("searchForm").addEventListener("submit", function(event) {
+        let searchValue = document.getElementById("searchInput").value;
+        let roleValue = document.getElementById("roleSelect").value;
+        let statusValue = document.getElementById("statusSelect").value;
+
+        let url = new URL(window.location.href);
+        let params = new URLSearchParams(url.search);
+
+        if (searchValue) {
+            params.set('search', searchValue);
+        } else {
+            params.delete('search');
+        }
+
+        if (roleValue) {
+            params.set('role', roleValue);
+        } else {
+            params.delete('role');
+        }
+
+        if (statusValue) {
+            params.set('status', statusValue);
+        } else {
+            params.delete('status');
+        }
+
+        url.search = params.toString();
+
+        window.location.href = url.toString(); // Navigate to the updated URL with filters
+        event.preventDefault(); // Prevent form submission if necessary
+    });
+</script>
 {% endblock %}

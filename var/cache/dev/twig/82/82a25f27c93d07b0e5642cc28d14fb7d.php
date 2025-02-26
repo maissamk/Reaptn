@@ -251,6 +251,8 @@ class __TwigTemplate_460e56bfea0e816cda903784489ba742 extends Template
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
         yield "\">Vous n'avez pas de compte ? Inscrivez-vous</a> 
                 </div>
+                
+                
             </div>
         </div>
     </div>
@@ -354,6 +356,8 @@ class __TwigTemplate_460e56bfea0e816cda903784489ba742 extends Template
                 <div class=\"mt-3 text-center\">
                     <a href=\"{{ path('app_register') }}\">Vous n'avez pas de compte ? Inscrivez-vous</a> 
                 </div>
+                
+                
             </div>
         </div>
     </div>

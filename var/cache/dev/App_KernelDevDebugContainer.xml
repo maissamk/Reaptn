@@ -27,6 +27,8 @@
       <parameter key="MakerBundle">Symfony\Bundle\MakerBundle\MakerBundle</parameter>
       <parameter key="KnpPaginatorBundle">Knp\Bundle\PaginatorBundle\KnpPaginatorBundle</parameter>
       <parameter key="SymfonyCastsResetPasswordBundle">SymfonyCasts\Bundle\ResetPassword\SymfonyCastsResetPasswordBundle</parameter>
+      <parameter key="KnpSnappyBundle">Knp\Bundle\SnappyBundle\KnpSnappyBundle</parameter>
+      <parameter key="KnpUOAuth2ClientBundle">KnpU\OAuth2ClientBundle\KnpUOAuth2ClientBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -84,6 +86,14 @@
       <parameter key="SymfonyCastsResetPasswordBundle" type="collection">
         <parameter key="path">C:\Games\Reaptn\vendor\symfonycasts\reset-password-bundle\src</parameter>
         <parameter key="namespace">SymfonyCasts\Bundle\ResetPassword</parameter>
+      </parameter>
+      <parameter key="KnpSnappyBundle" type="collection">
+        <parameter key="path">C:/Games/Reaptn/vendor/knplabs/knp-snappy-bundle/src</parameter>
+        <parameter key="namespace">Knp\Bundle\SnappyBundle</parameter>
+      </parameter>
+      <parameter key="KnpUOAuth2ClientBundle" type="collection">
+        <parameter key="path">C:\Games\Reaptn\vendor\knpuniversity\oauth2-client-bundle\src</parameter>
+        <parameter key="namespace">KnpU\OAuth2ClientBundle</parameter>
       </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
@@ -268,6 +278,12 @@
     <parameter key="knp_paginator.page_limit">null</parameter>
     <parameter key="knp_paginator.page_name">page</parameter>
     <parameter key="knp_paginator.remove_first_page_param">false</parameter>
+    <parameter key="knp_snappy.pdf.binary">"C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe"</parameter>
+    <parameter key="knp_snappy.pdf.options" type="collection"/>
+    <parameter key="knp_snappy.pdf.env" type="collection"/>
+    <parameter key="knp_snappy.image.binary">%env(WKHTMLTOIMAGE_PATH)%</parameter>
+    <parameter key="knp_snappy.image.options" type="collection"/>
+    <parameter key="knp_snappy.image.env" type="collection"/>
     <parameter key="data_collector.templates" type="collection">
       <parameter key="data_collector.request" type="collection">
         <parameter>request</parameter>
@@ -502,6 +518,13 @@
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\SecurityController"/>
       </call>
     </service>
+    <service id="App\Controller\UserAdminController" class="App\Controller\UserAdminController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\UserAdminController"/>
+      </call>
+    </service>
     <service id="App\EventListener\CheckUserStatusListener" class="App\EventListener\CheckUserStatusListener" autowire="true" autoconfigure="true">
       <tag name="kernel.event_listener" event="security.interactive_login" method="onSecurityInteractiveLogin"/>
       <argument type="service" id="security.helper"/>
@@ -511,6 +534,10 @@
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
       <argument type="service" id="monolog.logger"/>
       <argument type="service" id="security.helper"/>
+    </service>
+    <service id="App\EventListener\OAuthSuccessListener" class="App\EventListener\OAuthSuccessListener" autowire="true" autoconfigure="true">
+      <tag name="kernel.event_listener" event="hwi_oauth.on_auth_success" method="onOAuthSuccess"/>
+      <argument type="service" id="router.default"/>
     </service>
     <service id="App\EventSubscriber\LoginSubscriber" class="App\EventSubscriber\LoginSubscriber" autowire="true" autoconfigure="true">
       <tag name="kernel.event_subscriber"/>
@@ -654,6 +681,16 @@
       <argument type="service" id="router.default"/>
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
     </service>
+    <service id="App\Security\OAuthSuccessHandler" class="App\Security\OAuthSuccessHandler" autowire="true" autoconfigure="true">
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+    </service>
+    <service id="knpu.oauth2.client.google" class="KnpU\OAuth2ClientBundle\Client\OAuth2Client" autowire="true" autoconfigure="true">
+      <argument type="service" id="knpu.oauth2.client_registry"/>
+      <argument>%env(OAUTH_GOOGLE_CLIENT_ID)%</argument>
+      <argument>%env(OAUTH_GOOGLE_CLIENT_SECRET)%</argument>
+      <argument>%env(OAUTH_GOOGLE_REDIRECT_URI)%</argument>
+    </service>
     <service id="argument_metadata_factory" class="Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory"/>
     <service id="argument_resolver.backed_enum_resolver" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver">
       <tag priority="100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver">controller.argument_value_resolver</tag>
@@ -681,7 +718,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.GvyKCEF"/>
+      <argument type="service" id=".service_locator.47aO.Oj"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -2203,6 +2240,11 @@
       </call>
       <factory class="Symfony\Component\HttpClient\HttpClient" method="create"/>
     </service>
+    <service id="psr18.http_client" class="Symfony\Component\HttpClient\Psr18Client">
+      <argument type="service" id=".debug.http_client"/>
+      <argument>null</argument>
+      <argument>null</argument>
+    </service>
     <service id="http_client.abstract_retry_strategy" class="Symfony\Component\HttpClient\Retry\GenericRetryStrategy" abstract="true">
       <argument type="abstract">http codes</argument>
       <argument type="abstract">delay ms</argument>
@@ -2723,6 +2765,8 @@
           <argument>C:\Games\Reaptn\vendor\symfony\security-bundle/translations</argument>
           <argument>C:\Games\Reaptn\vendor\symfony\monolog-bundle/translations</argument>
           <argument>C:\Games\Reaptn\vendor\symfony\maker-bundle/translations</argument>
+          <argument>C:/Games/Reaptn/vendor/knplabs/knp-snappy-bundle/src/translations</argument>
+          <argument>C:\Games\Reaptn\vendor\knpuniversity\oauth2-client-bundle\src/translations</argument>
         </argument>
         <argument key="cache_vary" type="collection">
           <argument key="scanned_directories" type="collection">
@@ -2744,6 +2788,8 @@
             <argument>C:\Games\Reaptn\vendor\symfony\security-bundle/translations</argument>
             <argument>C:\Games\Reaptn\vendor\symfony\monolog-bundle/translations</argument>
             <argument>C:\Games\Reaptn\vendor\symfony\maker-bundle/translations</argument>
+            <argument>C:/Games/Reaptn/vendor/knplabs/knp-snappy-bundle/src/translations</argument>
+            <argument>C:\Games\Reaptn\vendor\knpuniversity\oauth2-client-bundle\src/translations</argument>
           </argument>
         </argument>
       </argument>
@@ -3096,6 +3142,14 @@
         <argument type="collection">
           <argument type="service_closure" id="App\EventListener\CheckUserStatusListener"/>
           <argument>onSecurityInteractiveLogin</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>hwi_oauth.on_auth_success</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="App\EventListener\OAuthSuccessListener"/>
+          <argument>onOAuthSuccess</argument>
         </argument>
         <argument>0</argument>
       </call>
@@ -3761,7 +3815,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.GvyKCEF"/>
+      <argument type="service" id=".service_locator.47aO.Oj"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <tag name="kernel.reset" method="reset"/>
@@ -8216,6 +8270,45 @@
       <argument>3600</argument>
       <argument>3600</argument>
     </service>
+    <service id="knp_snappy.pdf" class="Knp\Snappy\Pdf" public="true">
+      <tag name="monolog.logger" channel="snappy"/>
+      <argument>"C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe"</argument>
+      <argument type="collection"/>
+      <argument type="collection"/>
+      <call method="setLogger">
+        <argument type="service" id="monolog.logger.snappy" on-invalid="ignore"/>
+      </call>
+    </service>
+    <service id="knp_snappy.image" class="Knp\Snappy\Image" public="true">
+      <tag name="monolog.logger" channel="snappy"/>
+      <argument>%env(WKHTMLTOIMAGE_PATH)%</argument>
+      <argument type="collection"/>
+      <argument type="collection"/>
+      <call method="setLogger">
+        <argument type="service" id="monolog.logger.snappy" on-invalid="ignore"/>
+      </call>
+    </service>
+    <service id="knpu.oauth2.provider_factory" class="KnpU\OAuth2ClientBundle\DependencyInjection\ProviderFactory">
+      <argument type="service" id="router.default"/>
+    </service>
+    <service id="knpu.oauth2.registry" class="KnpU\OAuth2ClientBundle\Client\ClientRegistry" public="true">
+      <argument type="service" id="service_container"/>
+      <argument type="collection">
+        <argument key="google">knpu.oauth2.client.google</argument>
+      </argument>
+    </service>
+    <service id="knpu.oauth2.user_provider" class="KnpU\OAuth2ClientBundle\Security\User\OAuthUserProvider"/>
+    <service id="knpu.oauth2.provider.google" class="League\OAuth2\Client\Provider\Google">
+      <argument>League\OAuth2\Client\Provider\Google</argument>
+      <argument type="collection">
+        <argument key="clientId">%env(OAUTH_GOOGLE_CLIENT_ID)%</argument>
+        <argument key="clientSecret">%env(OAUTH_GOOGLE_CLIENT_SECRET)%</argument>
+      </argument>
+      <argument>oauth_google_check</argument>
+      <argument type="collection"/>
+      <argument type="collection"/>
+      <factory service="knpu.oauth2.provider_factory" method="createProvider"/>
+    </service>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -8267,6 +8360,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\UserAdminController" class="App\Controller\UserAdminController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\UserAdminController" class="App\Controller\UserAdminController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\UserAdminController" class="App\Controller\UserAdminController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\EventDispatcher\EventSubscriberInterface.0.App\EventListener\LogoutListener" class="App\EventListener\LogoutListener" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\EventListener\LogoutListener" class="App\EventListener\LogoutListener" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\EventDispatcher\EventSubscriberInterface.0.App\EventSubscriber\LoginSubscriber" class="App\EventSubscriber\LoginSubscriber" autowire="true" abstract="true"/>
@@ -8852,19 +8948,6 @@
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
-    <service id=".service_locator.9kKwU2t" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="em" type="service_closure" id="doctrine.orm.default_entity_manager"/>
-      </argument>
-    </service>
-    <service id=".service_locator.P3uOD4s" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="em" type="service_closure" id="doctrine.orm.default_entity_manager"/>
-        <argument key="slugger" type="service_closure" id="slugger"/>
-      </argument>
-    </service>
     <service id=".service_locator.LNwsF6h" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -8948,6 +9031,12 @@
         <argument key="livraison" type="service_closure" id=".errored..service_locator.XA7Hpe0.App\Entity\Livraison"/>
       </argument>
     </service>
+    <service id=".service_locator.9kKwU2t" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="em" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
     <service id=".service_locator.52Vt23p" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -9022,7 +9111,28 @@
         <argument key="authenticationUtils" type="service_closure" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.GvyKCEF" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.djBiB42" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="em" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.P3uOD4s" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="em" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="slugger" type="service_closure" id="slugger"/>
+      </argument>
+    </service>
+    <service id=".service_locator.m5PcCSp" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="em" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="pdf" type="service_closure" id="knp_snappy.pdf"/>
+      </argument>
+    </service>
+    <service id=".service_locator.47aO.Oj" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminController::adminIndex" type="service_closure" id=".service_locator.vs9Bn8g"/>
@@ -9035,7 +9145,6 @@
         <argument key="App\Controller\AdminController::deleteProduct" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\AdminController::deleteProductType" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\AdminController::deleteStock" type="service_closure" id=".service_locator.CsMkqUa"/>
-        <argument key="App\Controller\AdminController::deleteUser" type="service_closure" id=".service_locator.9kKwU2t"/>
         <argument key="App\Controller\AdminController::deletelocation" type="service_closure" id=".service_locator.qAUb40R"/>
         <argument key="App\Controller\AdminController::edit" type="service_closure" id=".service_locator.wZGs69i"/>
         <argument key="App\Controller\AdminController::editBack" type="service_closure" id=".service_locator.IU.QoY9"/>
@@ -9043,11 +9152,9 @@
         <argument key="App\Controller\AdminController::editProduct" type="service_closure" id=".service_locator.LNwsF6h"/>
         <argument key="App\Controller\AdminController::editProductType" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\AdminController::editStock" type="service_closure" id=".service_locator.CsMkqUa"/>
-        <argument key="App\Controller\AdminController::editUser" type="service_closure" id=".service_locator.P3uOD4s"/>
         <argument key="App\Controller\AdminController::editlocation" type="service_closure" id=".service_locator.qAUb40R"/>
         <argument key="App\Controller\AdminController::indexBack" type="service_closure" id=".service_locator.0TK7yZ8"/>
         <argument key="App\Controller\AdminController::indexproduit" type="service_closure" id=".service_locator.CsMkqUa"/>
-        <argument key="App\Controller\AdminController::listUsers" type="service_closure" id=".service_locator.9kKwU2t"/>
         <argument key="App\Controller\AdminController::new" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\AdminController::newContrat" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\AdminController::newProduct" type="service_closure" id=".service_locator.LNwsF6h"/>
@@ -9141,6 +9248,10 @@
         <argument key="App\Controller\ResetPasswordController::reset" type="service_closure" id=".service_locator.Z9ydiC1"/>
         <argument key="App\Controller\SecurityController::adminLogin" type="service_closure" id=".service_locator.rSTd.nA"/>
         <argument key="App\Controller\SecurityController::login" type="service_closure" id=".service_locator.rSTd.nA"/>
+        <argument key="App\Controller\UserAdminController::deleteUser" type="service_closure" id=".service_locator.9kKwU2t"/>
+        <argument key="App\Controller\UserAdminController::downloadPdf" type="service_closure" id=".service_locator.m5PcCSp"/>
+        <argument key="App\Controller\UserAdminController::editUser" type="service_closure" id=".service_locator.P3uOD4s"/>
+        <argument key="App\Controller\UserAdminController::listUsers" type="service_closure" id=".service_locator.djBiB42"/>
         <argument key="App\Kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
@@ -9155,7 +9266,6 @@
         <argument key="App\Controller\AdminController:deleteProduct" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\AdminController:deleteProductType" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\AdminController:deleteStock" type="service_closure" id=".service_locator.CsMkqUa"/>
-        <argument key="App\Controller\AdminController:deleteUser" type="service_closure" id=".service_locator.9kKwU2t"/>
         <argument key="App\Controller\AdminController:deletelocation" type="service_closure" id=".service_locator.qAUb40R"/>
         <argument key="App\Controller\AdminController:edit" type="service_closure" id=".service_locator.wZGs69i"/>
         <argument key="App\Controller\AdminController:editBack" type="service_closure" id=".service_locator.IU.QoY9"/>
@@ -9163,11 +9273,9 @@
         <argument key="App\Controller\AdminController:editProduct" type="service_closure" id=".service_locator.LNwsF6h"/>
         <argument key="App\Controller\AdminController:editProductType" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\AdminController:editStock" type="service_closure" id=".service_locator.CsMkqUa"/>
-        <argument key="App\Controller\AdminController:editUser" type="service_closure" id=".service_locator.P3uOD4s"/>
         <argument key="App\Controller\AdminController:editlocation" type="service_closure" id=".service_locator.qAUb40R"/>
         <argument key="App\Controller\AdminController:indexBack" type="service_closure" id=".service_locator.0TK7yZ8"/>
         <argument key="App\Controller\AdminController:indexproduit" type="service_closure" id=".service_locator.CsMkqUa"/>
-        <argument key="App\Controller\AdminController:listUsers" type="service_closure" id=".service_locator.9kKwU2t"/>
         <argument key="App\Controller\AdminController:new" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\AdminController:newContrat" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\AdminController:newProduct" type="service_closure" id=".service_locator.LNwsF6h"/>
@@ -9261,6 +9369,10 @@
         <argument key="App\Controller\ResetPasswordController:reset" type="service_closure" id=".service_locator.Z9ydiC1"/>
         <argument key="App\Controller\SecurityController:adminLogin" type="service_closure" id=".service_locator.rSTd.nA"/>
         <argument key="App\Controller\SecurityController:login" type="service_closure" id=".service_locator.rSTd.nA"/>
+        <argument key="App\Controller\UserAdminController:deleteUser" type="service_closure" id=".service_locator.9kKwU2t"/>
+        <argument key="App\Controller\UserAdminController:downloadPdf" type="service_closure" id=".service_locator.m5PcCSp"/>
+        <argument key="App\Controller\UserAdminController:editUser" type="service_closure" id=".service_locator.P3uOD4s"/>
+        <argument key="App\Controller\UserAdminController:listUsers" type="service_closure" id=".service_locator.djBiB42"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
       </argument>
@@ -9785,6 +9897,16 @@
       </call>
       <configurator service="debug.debug_logger_configurator" method="pushDebugLogger"/>
     </service>
+    <service id="monolog.logger.snappy" class="Monolog\Logger">
+      <argument>snappy</argument>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.console"/>
+      </call>
+      <call method="pushHandler">
+        <argument type="service" id="monolog.handler.main"/>
+      </call>
+      <configurator service="debug.debug_logger_configurator" method="pushDebugLogger"/>
+    </service>
     <service id="monolog.logger.deprecation" class="Monolog\Logger" public="true">
       <argument>deprecation</argument>
       <call method="pushHandler">
@@ -10250,6 +10372,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.O2p6Lk7" method="withContext"/>
     </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\UserAdminController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\UserAdminController"/>
+      <argument>App\Controller\UserAdminController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
     <service id=".service_locator.fuYM_Z." class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -10449,6 +10577,7 @@
           <argument>App\Controller\RegistrationController</argument>
           <argument>App\Controller\ResetPasswordController</argument>
           <argument>App\Controller\SecurityController</argument>
+          <argument>App\Controller\UserAdminController</argument>
           <argument>Doctrine\Bundle\DoctrineBundle\Controller\ProfilerController</argument>
         </argument>
       </call>
@@ -11771,6 +11900,7 @@
     <service id="asset_mapper.http_client" alias=".debug.http_client"/>
     <service id="Symfony\Component\AssetMapper\ImportMap\ImportMapManager" alias="asset_mapper.importmap.manager"/>
     <service id="Symfony\Contracts\HttpClient\HttpClientInterface" alias=".debug.http_client"/>
+    <service id="Psr\Http\Client\ClientInterface" alias="psr18.http_client"/>
     <service id="mailer" alias="mailer.mailer"/>
     <service id="Symfony\Component\Mailer\MailerInterface" alias="mailer.mailer"/>
     <service id="Symfony\Component\Mailer\Transport\TransportInterface" alias="mailer.default_transport"/>
@@ -11905,9 +12035,14 @@
     <service id="Knp\Component\Pager\PaginatorInterface" alias="knp_paginator"/>
     <service id="Knp\Component\Pager\ArgumentAccess\ArgumentAccessInterface" alias="Knp\Component\Pager\ArgumentAccess\RequestArgumentAccess"/>
     <service id="SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface" alias="symfonycasts.reset_password.helper"/>
+    <service id="Knp\Snappy\Pdf" alias="knp_snappy.pdf"/>
+    <service id="Knp\Snappy\Image" alias="knp_snappy.image"/>
+    <service id="KnpU\OAuth2ClientBundle\Client\ClientRegistry" alias="knpu.oauth2.registry"/>
+    <service id="oauth2.registry" alias="knpu.oauth2.registry" public="true"/>
+    <service id="KnpU\OAuth2ClientBundle\Client\Provider\GoogleClient" alias="knpu.oauth2.client.google"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.w7.f4fT" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.GvyKCEF"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.47aO.Oj"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -11927,6 +12062,7 @@
     <service id="Psr\Log\LoggerInterface $doctrineLogger" alias="monolog.logger.doctrine"/>
     <service id="Psr\Log\LoggerInterface $debugLogger" alias="monolog.logger.debug"/>
     <service id="Psr\Log\LoggerInterface $securityLogger" alias="monolog.logger.security"/>
+    <service id="Psr\Log\LoggerInterface $snappyLogger" alias="monolog.logger.snappy"/>
     <service id="Psr\Log\LoggerInterface $deprecationLogger" alias="monolog.logger.deprecation"/>
     <service id=".service_locator.80edgLI" alias="messenger.receiver_locator"/>
     <service id=".service_locator.h8Jkkd2" alias="messenger.retry_strategy_locator"/>
@@ -11940,7 +12076,8 @@
     <service id=".service_locator.3.sg1hS" alias=".service_locator.V6favct"/>
     <service id=".service_locator.66Dh_nl" alias=".service_locator.OZJWVTB"/>
     <service id=".service_locator.V6D1oJY" alias=".service_locator.e_4zbH4"/>
-    <service id=".service_locator.g.Oqy1x" alias=".service_locator.GvyKCEF"/>
+    <service id=".service_locator.WW2Kq9d" alias=".service_locator.m5PcCSp"/>
+    <service id=".service_locator.9XgskJs" alias=".service_locator.47aO.Oj"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
     <service id=".service_locator.nh.9sqv" alias=".service_locator.iOh.ad9"/>
     <service id=".service_locator.XtmiKbi" alias=".service_locator.MfxSDRP"/>
@@ -11981,8 +12118,6 @@
     <service id=".service_locator.8CdGlak" alias=".service_locator.0TK7yZ8"/>
     <service id=".service_locator.mTQcJzk" alias=".service_locator.xpZJLkN"/>
     <service id=".service_locator.Ak.8WV8" alias=".service_locator.0d0FLAy"/>
-    <service id=".service_locator.gaTSUXr" alias=".service_locator.9kKwU2t"/>
-    <service id=".service_locator._frJunc" alias=".service_locator.P3uOD4s"/>
     <service id=".service_locator.lUJI3Z8" alias=".service_locator.LNwsF6h"/>
     <service id=".service_locator.BvvBT9K" alias=".service_locator.4n4ylFv"/>
     <service id=".service_locator.qDoK7Nx" alias=".service_locator.ruxHxcA"/>
@@ -11996,6 +12131,7 @@
     <service id=".service_locator.hCLIJ7E" alias=".service_locator.gxkSA7l"/>
     <service id=".service_locator..Id11mC" alias=".service_locator.W.TDhCz"/>
     <service id=".service_locator.JkEDQ.J" alias=".service_locator.XA7Hpe0"/>
+    <service id=".service_locator.gaTSUXr" alias=".service_locator.9kKwU2t"/>
     <service id=".service_locator.p_yAWZC" alias=".service_locator.52Vt23p"/>
     <service id=".service_locator.qKPDMPG" alias=".service_locator.kjLqtAK"/>
     <service id=".service_locator.8LfxfNT" alias=".service_locator.0uzROk4"/>
@@ -12007,6 +12143,9 @@
     <service id=".service_locator.ostNlSn" alias=".service_locator.EE0.cm9"/>
     <service id=".service_locator.uPguXMt" alias=".service_locator.Z9ydiC1"/>
     <service id=".service_locator.7NIAq8D" alias=".service_locator.rSTd.nA"/>
+    <service id=".service_locator.mYUNP96" alias=".service_locator.djBiB42"/>
+    <service id=".service_locator._frJunc" alias=".service_locator.P3uOD4s"/>
+    <service id=".service_locator.tWrCAkC" alias=".service_locator.m5PcCSp"/>
     <service id=".service_locator.Q1z.f9O" alias=".service_locator.O2p6Lk7"/>
     <service id=".service_locator.dGUCsbe" alias=".service_locator.oR77BOj"/>
     <service id=".service_locator.FeLY1aP" alias=".service_locator.OFsXjhj"/>
