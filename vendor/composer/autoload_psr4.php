@@ -103,6 +103,7 @@ return array(
     'Knp\\Bundle\\SnappyBundle\\' => array($vendorDir . '/knplabs/knp-snappy-bundle/src'),
     'Knp\\Bundle\\PaginatorBundle\\' => array($vendorDir . '/knplabs/knp-paginator-bundle/src'),
     'KnpU\\OAuth2ClientBundle\\' => array($vendorDir . '/knpuniversity/oauth2-client-bundle/src'),
+    'HWI\\Bundle\\OAuthBundle\\' => array($vendorDir . '/hwi/oauth-bundle/src'),
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
     'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),
     'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),

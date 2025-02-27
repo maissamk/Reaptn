@@ -36,14 +36,11 @@ class LogoutListener implements EventSubscriberInterface
     {
         $this->logger->info('Logout event triggered');
 
-        // Access the user from the security context
         $user = $this->security->getUser();
 
         if ($user instanceof User) {
-            // Set the user's status to 'inactive'
             $user->setStatus('inactive');
 
-            // Persist the changes to the database
             $this->entityManager->persist($user);
             $this->entityManager->flush();
         }

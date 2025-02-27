@@ -48,7 +48,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
     {
         
         $user = $token->getUser();
-
+        $user->incrementLoginAttempts(); // Increment login attempts
         // if ($user) {
         //     $user->setStatus('active'); // ✅ Set status to "active"
         //     $this->entityManager->persist($user);

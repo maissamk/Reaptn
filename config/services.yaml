@@ -53,9 +53,12 @@ services:
             - '%env(OAUTH_GOOGLE_CLIENT_ID)%'
             - '%env(OAUTH_GOOGLE_CLIENT_SECRET)%'
             - '%env(OAUTH_GOOGLE_REDIRECT_URI)%'
-    App\EventListener\OAuthSuccessListener:
-        tags:
-            - { name: 'kernel.event_listener', event: 'hwi_oauth.on_auth_success', method: 'onOAuthSuccess' }
+    
+    App\Service\UserStatisticsService:
+        public: true
+    
+    
+    
     
 
 

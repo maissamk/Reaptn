@@ -26,7 +26,9 @@ security:
             logout:
                 path: app_logout
                 target: app_page  # Redirect after logout
-            custom_authenticator: App\Security\LoginFormAuthenticator
+            custom_authenticator:
+                - App\Security\LoginFormAuthenticator
+                - App\Security\GoogleAuthenticator
             remember_me:
                 secret: '%kernel.secret%'
                 lifetime: 604800

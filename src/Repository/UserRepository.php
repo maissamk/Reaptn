@@ -58,6 +58,26 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         // Execute the query and return the results
         return $qb->getQuery()->getResult();
     }
+    
+    public function countUsersByRole(): array
+{
+    $roles = ['ROLE_ADMIN', 'ROLE_CLIENT', 'ROLE_AGRICULTEUR']; // List of known roles
+    $results = [];
+
+    foreach ($roles as $role) {
+        $count = $this->createQueryBuilder('u')
+            ->select('COUNT(u.id) as user_count')
+            ->where('u.roles LIKE :role')
+            ->setParameter('role', '%"' . $role . '"%')
+            ->getQuery()
+            ->getSingleScalarResult();
+
+        $results[] = ['role' => $role, 'user_count' => $count];
+    }
+
+    return $results;
+}
+
 
     //    /**
     //     * @return User[] Returns an array of User objects

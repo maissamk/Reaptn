@@ -4,6 +4,9 @@
 
 return [
     '_preview_error' => [['code', '_format'], ['_controller' => 'error_controller::preview', '_format' => 'html'], ['code' => '\\d+'], [['variable', '.', '[^/]++', '_format', true], ['variable', '/', '\\d+', 'code', true], ['text', '/_error']], [], [], []],
+    'hwi_oauth_service_redirect' => [['service'], ['_controller' => ['HWI\\Bundle\\OAuthBundle\\Controller\\RedirectToServiceController', 'redirectToServiceAction']], [], [['variable', '/', '[^/]++', 'service', true], ['text', '/connect']], [], [], []],
+    'hwi_oauth_connect_service' => [['service'], ['_controller' => ['HWI\\Bundle\\OAuthBundle\\Controller\\Connect\\ConnectController', 'connectServiceAction']], [], [['variable', '/', '[^/]++', 'service', true], ['text', '/connect/service']], [], [], []],
+    'hwi_oauth_connect_registration' => [['key'], ['_controller' => ['HWI\\Bundle\\OAuthBundle\\Controller\\Connect\\RegisterController', 'registrationAction']], [], [['variable', '/', '[^/]++', 'key', true], ['text', '/connect/registration']], [], [], []],
     '_wdt' => [['token'], ['_controller' => 'web_profiler.controller.profiler::toolbarAction'], [], [['variable', '/', '[^/]++', 'token', true], ['text', '/_wdt']], [], [], []],
     '_profiler_home' => [[], ['_controller' => 'web_profiler.controller.profiler::homeAction'], [], [['text', '/_profiler/']], [], [], []],
     '_profiler_search' => [[], ['_controller' => 'web_profiler.controller.profiler::searchAction'], [], [['text', '/_profiler/search']], [], [], []],
@@ -17,10 +20,8 @@ return [
     '_profiler_router' => [['token'], ['_controller' => 'web_profiler.controller.router::panelAction'], [], [['text', '/router'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
     '_profiler_exception' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::body'], [], [['text', '/exception'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
-    'oauth_google_connect' => [[], ['client' => 'google', '_controller' => 'KnpU\\OAuth2ClientBundle\\Controller\\ConnectController::connectAction'], [], [['text', '/connect/google']], [], [], []],
-    'oauth_google_check' => [[], ['_controller' => 'KnpU\\OAuth2ClientBundle\\Controller\\ConnectController::checkAction'], [], [['text', '/connect/google/check']], [], [], []],
-    'connect' => [[], ['_controller' => 'HWI\\Bundle\\OAuthBundle\\Controller\\ConnectController::connectAction'], [], [['text', '/connect']], [], [], []],
-    'connect_check' => [[], ['_controller' => 'HWI\\Bundle\\OAuthBundle\\Controller\\ConnectController::checkAction'], [], [['text', '/connect/check']], [], [], []],
+    'oauth_google_connect' => [[], ['_controller' => 'HWI\\Bundle\\OAuthBundle\\Controller\\ConnectController::connectAction'], [], [['text', '/connect/google']], [], [], []],
+    'oauth_google_check' => [[], ['_controller' => 'HWI\\Bundle\\OAuthBundle\\Controller\\ConnectController::checkAction'], [], [['text', '/connect/google/check']], [], [], []],
     'app_admin' => [[], ['_controller' => 'App\\Controller\\AdminController::index'], [], [['text', '/admin/admin']], [], [], []],
     'app_tables' => [[], ['_controller' => 'App\\Controller\\AdminController::tablesIndex'], [], [['text', '/admin/admin/tables']], [], [], []],
     'admin_materielvente_new' => [[], ['_controller' => 'App\\Controller\\AdminController::newmv'], [], [['text', '/admin/admin/materielvente/new']], [], [], []],
@@ -147,6 +148,8 @@ return [
     'admin_user_edit' => [['id'], ['_controller' => 'App\\Controller\\UserAdminController::editUser'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/user/edit']], [], [], []],
     'admin_user_delete' => [['id'], ['_controller' => 'App\\Controller\\UserAdminController::deleteUser'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/user/delete']], [], [], []],
     'admin_users_pdf' => [[], ['_controller' => 'App\\Controller\\UserAdminController::downloadPdf'], [], [['text', '/admin/users/pdf']], [], [], []],
+    'admin_statistics' => [[], ['_controller' => 'App\\Controller\\UserAdminController::statistics'], [], [['text', '/admin/user/statistics']], [], [], []],
+    'admin_LoginStats' => [[], ['_controller' => 'App\\Controller\\UserAdminController::showLoginStats'], [], [['text', '/admin/user/LoginStats']], [], [], []],
     'App\Controller\AdminController::index' => [[], ['_controller' => 'App\\Controller\\AdminController::index'], [], [['text', '/admin/admin']], [], [], []],
     'App\Controller\AdminController::offreIndex' => [[], ['_controller' => 'App\\Controller\\OffreController::indexBack'], [], [['text', '/offre/admin/offre']], [], [], []],
     'App\Controller\AdminController::tablesIndex' => [[], ['_controller' => 'App\\Controller\\AdminController::tablesIndex'], [], [['text', '/admin/admin/tables']], [], [], []],
@@ -278,4 +281,6 @@ return [
     'App\Controller\UserAdminController::editUser' => [['id'], ['_controller' => 'App\\Controller\\UserAdminController::editUser'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/user/edit']], [], [], []],
     'App\Controller\UserAdminController::deleteUser' => [['id'], ['_controller' => 'App\\Controller\\UserAdminController::deleteUser'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/user/delete']], [], [], []],
     'App\Controller\UserAdminController::downloadPdf' => [[], ['_controller' => 'App\\Controller\\UserAdminController::downloadPdf'], [], [['text', '/admin/users/pdf']], [], [], []],
+    'App\Controller\UserAdminController::statistics' => [[], ['_controller' => 'App\\Controller\\UserAdminController::statistics'], [], [['text', '/admin/user/statistics']], [], [], []],
+    'App\Controller\UserAdminController::showLoginStats' => [[], ['_controller' => 'App\\Controller\\UserAdminController::showLoginStats'], [], [['text', '/admin/user/LoginStats']], [], [], []],
 ];

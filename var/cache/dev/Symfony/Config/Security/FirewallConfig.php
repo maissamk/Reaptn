@@ -5,7 +5,6 @@ namespace Symfony\Config\Security;
 require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'LogoutConfig.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'SwitchUserConfig.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'LoginThrottlingConfig.php';
-require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'OauthConfig.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'X509Config.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'RemoteUserConfig.php';
 require_once __DIR__.\DIRECTORY_SEPARATOR.'FirewallConfig'.\DIRECTORY_SEPARATOR.'LoginLinkConfig.php';
@@ -44,7 +43,6 @@ class FirewallConfig
     private $requiredBadges;
     private $customAuthenticators;
     private $loginThrottling;
-    private $oauth;
     private $x509;
     private $remoteUser;
     private $loginLink;
@@ -304,18 +302,6 @@ class FirewallConfig
         return $this->loginThrottling;
     }
     
-    public function oauth(array $value = []): \Symfony\Config\Security\FirewallConfig\OauthConfig
-    {
-        if (null === $this->oauth) {
-            $this->_usedProperties['oauth'] = true;
-            $this->oauth = new \Symfony\Config\Security\FirewallConfig\OauthConfig($value);
-        } elseif (0 < \func_num_args()) {
-            throw new InvalidConfigurationException('The node created by "oauth()" has already been initialized. You cannot pass values the second time you call oauth().');
-        }
-    
-        return $this->oauth;
-    }
-    
     public function x509(array $value = []): \Symfony\Config\Security\FirewallConfig\X509Config
     {
         if (null === $this->x509) {
@@ -558,12 +544,6 @@ class FirewallConfig
             unset($value['login_throttling']);
         }
     
-        if (array_key_exists('oauth', $value)) {
-            $this->_usedProperties['oauth'] = true;
-            $this->oauth = new \Symfony\Config\Security\FirewallConfig\OauthConfig($value['oauth']);
-            unset($value['oauth']);
-        }
-    
         if (array_key_exists('x509', $value)) {
             $this->_usedProperties['x509'] = true;
             $this->x509 = new \Symfony\Config\Security\FirewallConfig\X509Config($value['x509']);
@@ -691,9 +671,6 @@ class FirewallConfig
         }
         if (isset($this->_usedProperties['loginThrottling'])) {
             $output['login_throttling'] = $this->loginThrottling->toArray();
-        }
-        if (isset($this->_usedProperties['oauth'])) {
-            $output['oauth'] = $this->oauth->toArray();
         }
         if (isset($this->_usedProperties['x509'])) {
             $output['x509'] = $this->x509->toArray();

@@ -92,6 +92,9 @@ private Collection $employes;
 #[ORM\Column(length: 20)]
 private ?string $status = 'inactive';
 
+#[ORM\Column(nullable: true)]
+private ?int $loginAttempts = null;
+
 public function __construct()
 {
     $this->parcelleProprietes = new ArrayCollection();
@@ -388,4 +391,22 @@ public function __construct()
 
         return $this;
     }
+
+    public function getLoginAttempts(): ?int
+    {
+        return $this->loginAttempts;
+    }
+
+    public function setLoginAttempts(?int $loginAttempts): static
+    {
+        $this->loginAttempts = $loginAttempts;
+
+        return $this;
+    }
+    public function incrementLoginAttempts(): static
+{
+    $this->loginAttempts = $this->loginAttempts ? $this->loginAttempts + 1 : 1;
+
+    return $this;
+}
 }
