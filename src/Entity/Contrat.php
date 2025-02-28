@@ -62,6 +62,9 @@ class Contrat
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $datecreation_contrat = null;
 
+    #[ORM\ManyToOne(inversedBy: 'contrats')]
+    private ?user $user_id_contrat = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -147,6 +150,18 @@ class Contrat
     public function setDatecreationContrat(\DateTimeInterface $datecreation_contrat): static
     {
         $this->datecreation_contrat = $datecreation_contrat;
+
+        return $this;
+    }
+
+    public function getUserIdContrat(): ?user
+    {
+        return $this->user_id_contrat;
+    }
+
+    public function setUserIdContrat(?user $user_id_contrat): static
+    {
+        $this->user_id_contrat = $user_id_contrat;
 
         return $this;
     }

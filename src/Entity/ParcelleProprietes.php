@@ -105,6 +105,10 @@ class ParcelleProprietes
     #[ORM\ManyToOne(inversedBy: 'parcelleProprietes')]
     private ?user $user_id_parcelle = null;
 
+   
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Le type de terrain est obligatoire')]
+    private ?string $type_terrain = null;
     
 
     
@@ -304,6 +308,21 @@ class ParcelleProprietes
 
         return $this;
     }
+
+    public function getTypeTerrain(): ?string
+    {
+        return $this->type_terrain;
+    }
+    
+    public function setTypeTerrain(string $type_terrain): static
+    {
+        $this->type_terrain = $type_terrain;
+    
+        return $this;
+    }
+    
+
+   
 
    
 }

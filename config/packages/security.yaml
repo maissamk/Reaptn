@@ -57,3 +57,16 @@ security:
         - { path: ^/materielvente/new, roles: ROLE_AGRICULTEUR }  # Allow ROLE_CLIENT and ROLE_AGRICULTEUR to view material vente pages
         - { path: ^/materielvente/\d+$, roles: [ROLE_CLIENT, ROLE_AGRICULTEUR] }  # Allow ROLE_CLIENT and ROLE_AGRICULTEUR to view material vente pages
         - { path: ^/materielvente/\d+/edit, roles: ROLE_AGRICULTEUR }  # Only ROLE_AGRICULTEUR can edit material vente pages
+        - { path: ^/parcelle/proprietes/new, roles: ROLE_AGRICULTEUR }
+        - { path: ^/parcelle/proprietes/\d+/edit, roles: ROLE_AGRICULTEUR }  # Allow ROLE_CLIENT and ROLE_AGRICULTEUR to view material vente pages
+        - { path: ^/parcelle/proprietes/\d+$, roles: [ROLE_CLIENT, ROLE_AGRICULTEUR] }  # Allow ROLE_CLIENT and ROLE_AGRICULTEUR to view material vente pages
+        - { path: ^/offre/new, roles: ROLE_AGRICULTEUR }  # Allow  ROLE_AGRICULTEUR to pages
+        - { path: ^/offre/new/\d+/edit, roles: ROLE_AGRICULTEUR } 
+        - { path: ^/offre/new/\d+$, roles: [ROLE_CLIENT, ROLE_AGRICULTEUR] }
+
+
+        
+
+
+
+

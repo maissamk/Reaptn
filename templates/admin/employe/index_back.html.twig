@@ -1,0 +1,40 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Employees List{% endblock %}
+
+{% block body %}
+<div class="container mt-5" style="width: 70%; margin-left: 27%; padding-top: 50px;">
+
+     <h1>Liste des Employés</h1>
+    
+
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th class="text-white">ID</th>
+                <th class="text-white">User Identifier</th>
+                <th class="text-white">Competence</th>
+                <th class="text-white">Offer</th>
+                <th class="text-white">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employe in employes %}
+                <tr>
+                    <td>{{ employe.id }}</td>
+                    <td>{{ employe.userIdentifier }}</td>
+                    <td>{{ employe.comp }}</td>
+                    <td>{{ employe.offre.titre }}</td>
+                    <td>
+                        <a href="{{ path('admin_employe_show', {'id': employe.id}) }}" class="btn btn-info">Détails</a>
+                        <a href="{{ path('admin_employe_edit', {'id': employe.id}) }}" class="btn btn-warning">Modifier</a>
+                        <form method="post" action="{{ path('admin_employe_delete', {'id': employe.id}) }}" style="display:inline;">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ employe.id) }}">
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Details des employés{% endblock %}
+
+{% block body %}
+<div class="container mt-5" style="width: 70%; margin-left: 27%; padding-top: 20px;">
+
+    <h1>Details des employés</h1>
+
+    <p><strong>ID:</strong> {{ employe.id }}</p>
+    <p><strong>User ID:</strong> {{ employe.userIdentifier }}</p>
+    <p><strong>Competence:</strong> {{ employe.comp }}</p>
+    <p><strong>Offer:</strong> {{ employe.offre.titre }}</p>
+
+    <a href="{{ path('admin_employe_index') }}" class="btn btn-secondary">Back to List</a>
+    <a href="{{ path('admin_employe_edit', {'id': employe.id}) }}" class="btn btn-warning">Edit</a>
+{% endblock %}

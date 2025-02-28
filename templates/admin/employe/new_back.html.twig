@@ -1,0 +1,16 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Create New Employee{% endblock %}
+
+{% block body %}
+<div class="container mt-5" style="width: 70%; margin-left: 27%; padding-top: 20px;">
+    <h1>Create New Employee</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.userIdentifier) }}
+        {{ form_row(form.comp) }}
+        {{ form_row(form.offre) }} <!-- The dropdown for selecting the offer ID -->
+        <button class="btn btn-primary">Create</button>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

@@ -11,6 +11,8 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class ParcelleProprietesType extends AbstractType
 {
@@ -35,10 +37,13 @@ class ParcelleProprietesType extends AbstractType
                 'expanded' => false,  // Menu déroulant
                 'multiple' => false,  // Un seul choix possible
             ])
-            ->add('emplacement', null, [
-                'required' => true,
-                'empty_data' => '',
-            ])
+           ->add('emplacement', TextType::class, [
+            'required' => true, // ou false selon votre logique
+            'attr' => [
+                'id' => 'autocomplete',
+                'placeholder' => 'Entrez un emplacement ou sélectionnez sur la carte'
+            ]
+        ])
             ->add('taille', null, [
                 'required' => true,
                 'empty_data' => '0',  // Définit une valeur par défaut
@@ -64,6 +69,17 @@ class ParcelleProprietesType extends AbstractType
             ->add('contact_proprietaire', null, [
                 'required' => true,
                 'empty_data' => '',
+            ])
+            ->add('type_terrain', ChoiceType::class, [
+                'choices' => [
+                    'Agricole' => 'agricole',
+                    'Constructible' => 'constructible',
+                    'Forêt' => 'foret',
+                    'Industriel' => 'industriel',
+                ],
+                'placeholder' => 'Sélectionnez un type de terrain', // Optionnel
+                'label' => 'Type de terrain',
+                'required' => true,
             ])
             ->add('image', FileType::class, [
                 'label' => 'Image de la parcelle',

@@ -65,9 +65,44 @@ private ?string $avatar = null;
 #[ORM\OneToMany(targetEntity: ParcelleProprietes::class, mappedBy: 'user_id_parcelle')]
 private Collection $parcelleProprietes;
 
+/**
+ * @var Collection<int, Materielvente>
+ */
+#[ORM\OneToMany(targetEntity: Materielvente::class, mappedBy: 'user_id_materielvente')]
+private Collection $materielventes;
+
+/**
+ * @var Collection<int, Materiellocation>
+ */
+#[ORM\OneToMany(targetEntity: Materiellocation::class, mappedBy: 'user_id_materiellocation')]
+private Collection $materiellocations;
+
+/**
+ * @var Collection<int, Commande>
+ */
+#[ORM\OneToMany(targetEntity: Commande::class, mappedBy: 'user_id_commande')]
+private Collection $commandes;
+
+/**
+ * @var Collection<int, Employe>
+ */
+#[ORM\OneToMany(targetEntity: Employe::class, mappedBy: 'user_id_employe')]
+private Collection $employes;
+
+/**
+ * @var Collection<int, Contrat>
+ */
+#[ORM\OneToMany(targetEntity: Contrat::class, mappedBy: 'user_id_contrat')]
+private Collection $contrats;
+
 public function __construct()
 {
     $this->parcelleProprietes = new ArrayCollection();
+    $this->materielventes = new ArrayCollection();
+    $this->materiellocations = new ArrayCollection();
+    $this->commandes = new ArrayCollection();
+    $this->employes = new ArrayCollection();
+    $this->contrats = new ArrayCollection();
 }
 
 
@@ -219,6 +254,156 @@ public function __construct()
             // set the owning side to null (unless already changed)
             if ($parcellePropriete->getUserIdParcelle() === $this) {
                 $parcellePropriete->setUserIdParcelle(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Materielvente>
+     */
+    public function getMaterielventes(): Collection
+    {
+        return $this->materielventes;
+    }
+
+    public function addMaterielvente(Materielvente $materielvente): static
+    {
+        if (!$this->materielventes->contains($materielvente)) {
+            $this->materielventes->add($materielvente);
+            $materielvente->setUserIdMaterielvente($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMaterielvente(Materielvente $materielvente): static
+    {
+        if ($this->materielventes->removeElement($materielvente)) {
+            // set the owning side to null (unless already changed)
+            if ($materielvente->getUserIdMaterielvente() === $this) {
+                $materielvente->setUserIdMaterielvente(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Materiellocation>
+     */
+    public function getMateriellocations(): Collection
+    {
+        return $this->materiellocations;
+    }
+
+    public function addMateriellocation(Materiellocation $materiellocation): static
+    {
+        if (!$this->materiellocations->contains($materiellocation)) {
+            $this->materiellocations->add($materiellocation);
+            $materiellocation->setUserIdMateriellocation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMateriellocation(Materiellocation $materiellocation): static
+    {
+        if ($this->materiellocations->removeElement($materiellocation)) {
+            // set the owning side to null (unless already changed)
+            if ($materiellocation->getUserIdMateriellocation() === $this) {
+                $materiellocation->setUserIdMateriellocation(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Commande>
+     */
+    public function getCommandes(): Collection
+    {
+        return $this->commandes;
+    }
+
+    public function addCommande(Commande $commande): static
+    {
+        if (!$this->commandes->contains($commande)) {
+            $this->commandes->add($commande);
+            $commande->setUserIdCommande($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(Commande $commande): static
+    {
+        if ($this->commandes->removeElement($commande)) {
+            // set the owning side to null (unless already changed)
+            if ($commande->getUserIdCommande() === $this) {
+                $commande->setUserIdCommande(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Employe>
+     */
+    public function getEmployes(): Collection
+    {
+        return $this->employes;
+    }
+
+    public function addEmploye(Employe $employe): static
+    {
+        if (!$this->employes->contains($employe)) {
+            $this->employes->add($employe);
+            $employe->setUserIdEmploye($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEmploye(Employe $employe): static
+    {
+        if ($this->employes->removeElement($employe)) {
+            // set the owning side to null (unless already changed)
+            if ($employe->getUserIdEmploye() === $this) {
+                $employe->setUserIdEmploye(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Contrat>
+     */
+    public function getContrats(): Collection
+    {
+        return $this->contrats;
+    }
+
+    public function addContrat(Contrat $contrat): static
+    {
+        if (!$this->contrats->contains($contrat)) {
+            $this->contrats->add($contrat);
+            $contrat->setUserIdContrat($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContrat(Contrat $contrat): static
+    {
+        if ($this->contrats->removeElement($contrat)) {
+            // set the owning side to null (unless already changed)
+            if ($contrat->getUserIdContrat() === $this) {
+                $contrat->setUserIdContrat(null);
             }
         }
 

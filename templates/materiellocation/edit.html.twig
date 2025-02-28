@@ -3,11 +3,12 @@
 {% block title %}Edit Materiellocation{% endblock %}
 
 {% block body %}
+ <div class="container mt-5 pt-5" style="margin-top: 120px;">
     <h1>Edit Materiellocation</h1>
 
     {{ include('materiellocation/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_materiellocation_index') }}">back to list</a>
+    <a href="{{ path('app_materiellocation_index') }}"class="btn btn-primary me-3"><i class="fa fa-arrow-left"></i>Retour</a>
 
-    {{ include('materiellocation/_delete_form.html.twig') }}
+    
 {% endblock %}

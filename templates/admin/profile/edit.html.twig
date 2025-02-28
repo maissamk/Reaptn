@@ -1,70 +1,123 @@
 {% extends 'base_back.html.twig' %}
 
-{% block title %}Modifier le Profil{% endblock %}
+{% block title %}Modifier l'Utilisateur{% endblock %}
 
 {% block body %}
-    <div class="container" style="margin-right: 50px;">
-                <h1 class="text-center mb-4 text-warning">Modifier le Profil</h1>
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="col-md-8">
+            <h1 class="text-center mb-4">Modifier l'Utilisateur</h1>
 
-                <!-- Avatar -->
-                <div class="text-center">
-                    {% if user.avatar %}
-                        <img src="{{ asset('uploads/avatars/' ~ user.avatar) }}" class="rounded-circle mb-3" width="120" height="120" alt="Avatar Utilisateur">
+            <!-- Formulaire de Modification de l'Utilisateur -->
+            <div class="card p-4 shadow rounded">
+                <div class="text-center mb-4">
+                    <!-- Affichage de l'avatar actuel -->
+                    {% if form.vars.value.avatar is not empty %}
+                        <img src="{{ asset('uploads/avatars/' ~ form.vars.value.avatar) }}" 
+                             alt="Avatar actuel" 
+                             class="rounded-circle img-thumbnail avatar-preview">
                     {% else %}
-                        <img src="{{ asset('uploads/avatars/default.png') }}" class="rounded-circle mb-3" width="120" height="120" alt="Avatar par défaut">
+                        <img src="{{ asset('uploads/avatars/default.png') }}" 
+                             alt="Avatar par défaut" 
+                             class="rounded-circle img-thumbnail avatar-preview">
                     {% endif %}
                 </div>
 
-                {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate', 'enctype': 'multipart/form-data'}}) }}
-
-                    {# Prénom Field #}
-                    <div class="mb-3">
-                        {{ form_label(form.prenom, 'Prénom') }}
-                        {{ form_widget(form.prenom, {'attr': {'class': 'form-control', 'placeholder': 'Entrez votre prénom'}}) }}
-                        <div class="text-danger">
-                            {{ form_errors(form.prenom) }}
-                        </div>
+                {{ form_start(form) }}
+                    <div class="form-group mb-3">
+                        <label for="prenom" class="form-label">Prénom</label>
+                        {{ form_widget(form.prenom, { 'attr': {'class': 'form-control'} }) }}
                     </div>
 
-                    {# Nom Field #}
-                    <div class="mb-3">
-                        {{ form_label(form.nom, 'Nom') }}
-                        {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'placeholder': 'Entrez votre nom'}}) }}
-                        <div class="text-danger">
-                            {{ form_errors(form.nom) }}
-                        </div>
+                    <div class="form-group mb-3">
+                        <label for="nom" class="form-label">Nom</label>
+                        {{ form_widget(form.nom, { 'attr': {'class': 'form-control'} }) }}
                     </div>
 
-                    {# Email Field #}
-                    <div class="mb-3">
-                        {{ form_label(form.email, 'Adresse email') }}
-                        {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Entrez votre email'}}) }}
-                        <div class="text-danger">
-                            {{ form_errors(form.email) }}
-                        </div>
+                    <div class="form-group mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        {{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}
                     </div>
 
-                    {# Numéro de Téléphone Field #}
-                    <div class="mb-3">
-                        {{ form_label(form.telephone, 'Numéro de téléphone') }}
-                        {{ form_widget(form.telephone, {'attr': {'class': 'form-control', 'placeholder': 'Entrez votre numéro de téléphone'}}) }}
-                        <div class="text-danger">
-                            {{ form_errors(form.telephone) }}
-                        </div>
+                    <div class="form-group mb-3">
+                        <label for="telephone" class="form-label">Numéro de téléphone</label>
+                        {{ form_widget(form.telephone, { 'attr': {'class': 'form-control'} }) }}
                     </div>
 
-                    {# Avatar Upload Field #}
-                    <div class="mb-3">
-                        {{ form_label(form.avatar, 'Télécharger un Nouvel Avatar') }}
-                        {{ form_widget(form.avatar, {'attr': {'class': 'form-control'}}) }}
-                        <div class="text-danger">
-                            {{ form_errors(form.avatar) }}
-                        </div>
+                    <!-- Avatar Upload Section -->
+                    <div class="form-group mb-4">
+                        <label for="avatar" class="form-label">Changer l'Avatar</label>
+                        {{ form_widget(form.avatar, { 'attr': {'class': 'form-control-file'} }) }}
                     </div>
 
-                    {# Submit Button #}
-                    <button type="submit" class="btn btn-success w-100 mt-3">Enregistrer les Modifications</button>
-
+                    <!-- Bouton de Sauvegarde -->
+                    <div class="text-center">
+                        <button class="btn btn-success btn-lg w-75 mt-4">Enregistrer les Modifications</button>
+                    </div>
                 {{ form_end(form) }}
+            </div>
+        </div>
     </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border: none;
+        }
+
+        .avatar-preview {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border: 3px solid #ddd;
+            padding: 5px;
+            background: #fff;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .form-control {
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        .form-control:focus {
+            border-color: #28a745;
+            box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+        }
+
+        .btn {
+            padding: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border: none;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+    </style>
 {% endblock %}

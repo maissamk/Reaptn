@@ -8,56 +8,113 @@
 <div class="container mt-5 pt-5">
     <h1 class="text-center mb-4">ParcelleProprietes index</h1>
 
+    <!-- Barre de recherche -->
+    
+<form method="GET" action="{{ path('app_parcelle_proprietes_index') }}" class="mb-3 text-center">
+    <input type="text" name="search" placeholder="Rechercher par titre ou description..." value="{{ app.request.query.get('search') }}" class="search-bar">
+    <button type="submit">🔍</button>
+</form>
+
+
+    <!-- Bouton pour afficher/masquer les filtres avancés -->
+    <button id="toggle-filters" class="btn btn-secondary mb-3">Filtres avancés</button>
+
+    <!-- Filtres avancés -->
+   <div id="filters" class="filters-container hidden">
+    {{ form_start(form, { 'method': 'GET' }) }}
+    <div>
+        {{ form_label(form.type_terrain) }}
+        {{ form_widget(form.type_terrain, { 'attr': {'value': app.request.query.get('type_terrain')} }) }}
+    </div>
+    <div>
+        {{ form_label(form.emplacement) }}
+        {{ form_widget(form.emplacement, { 'attr': {'value': app.request.query.get('emplacement')} }) }}
+    </div>
+    <div>
+        <label for="priceRange">Prix:</label>
+        <input type="number" name="prixMin" placeholder="Prix min" value="{{ app.request.query.get('prixMin') }}">
+        <input type="number" name="prixMax" placeholder="Prix max" value="{{ app.request.query.get('prixMax') }}">
+    </div>
+    <button type="submit" class="btn btn-primary">Appliquer les filtres</button>
+    {{ form_end(form) }}
+</div>
+
+
     <div class="row">
-        {% for parcelle_propriete in parcelle_proprietes %}
-            <div class="col-md-4 mb-4">
-                <div class="position-relative border border-secondary rounded shadow-sm">
-                    
-                    <!-- Image of property -->
-                    <img src="{{ asset(parcelle_propriete.image ? 'uploads/images/' ~ parcelle_propriete.image : 'images/default.png') }}" 
-                         class="img-fluid card-img-fixed" alt="{{ parcelle_propriete.titre }}"
-                         loading="lazy">
+       {% for parcelle_propriete in parcelle_proprietes %}
+        <div class="col-md-4 mb-4">
+            <div class="position-relative border border-secondary rounded shadow-sm">
+                {% if parcelle_propriete in recentes %}
+                    <span class="badge bg-danger text-white position-absolute top-0 start-0 m-2">Nouveau</span>
+                {% endif %}
 
-                    <!-- Property Details -->
-                    <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                        <h4>{{ parcelle_propriete.titre }}</h4>
+                <img src="{{ asset(parcelle_propriete.image ? 'uploads/images/' ~ parcelle_propriete.image : 'images/default.png') }}" 
+                     class="img-fluid card-img-fixed" alt="{{ parcelle_propriete.titre }}"
+                     loading="lazy">
 
-                        <p class="description">
-                            {{ parcelle_propriete.description[:50] }}<span class="dots">...</span>
-                            <span class="more-text" style="display: none;">{{ parcelle_propriete.description[100:] }}</span>
-                            <a href="{{ path('app_parcelle_proprietes_show', {'id': parcelle_propriete.id}) }}" class="see-more">plus</a>
-                        </p>
+                <div class="terrain-type-band" style="background-color: {{ 
+                    parcelle_propriete.typeTerrain == 'agricole' ? '#8BC34A' : 
+                    parcelle_propriete.typeTerrain == 'constructible' ? '#FFC107' : 
+                    parcelle_propriete.typeTerrain == 'foret' ? '#4CAF50' : 
+                    parcelle_propriete.typeTerrain == 'industriel' ? '#F44336' : '#9E9E9E' }}">
+                    <p class="text-center text-white fw-bold mb-0">{{ parcelle_propriete.typeTerrain | capitalize }}</p>
+                </div>
 
-                        <div class="d-flex justify-content-between align-items-center">
-                            <p class="text-dark fs-5 fw-bold mb-0">{{ parcelle_propriete.prix }} DT </p>
-                            <a href="{{ path('app_parcelle_proprietes_show', {'id': parcelle_propriete.id}) }}" class="btn btn-info btn-sm" title="View Property">Voir</a>
-                        </div>
+                <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                    <h4>
+                        <a href="{{ path('app_parcelle_proprietes_show', {'id': parcelle_propriete.id}) }}" class="text-decoration-none text-dark">
+                            {{ parcelle_propriete.titre }}
+                        </a>
+                    </h4>
+                    <p class="description">
+                        {{ parcelle_propriete.description[:50] }}<span class="dots">...</span>
+                        <span class="more-text" style="display: none;">{{ parcelle_propriete.description[100:] }}</span>
+                        <a href="{{ path('app_parcelle_proprietes_show', {'id': parcelle_propriete.id}) }}" class="see-more">plus</a>
+                    </p>
+                    <p class="text-dark fs-5 fw-bold mb-0">{{ parcelle_propriete.prix }} DT </p>
+                    <p class="text-dark fs-5 fw-bold mb-2">{{ parcelle_propriete.status }} : Status Actuel</p>
+                    <p class="text-dark fs-5 fw-bold mb-2">{{ parcelle_propriete.taille }} (m²)</p>
 
-                        <p class="text-dark fs-5 fw-bold mb-2">{{ parcelle_propriete.status }} : Status Actuel</p>
-                        <p class="text-dark fs-5 fw-bold mb-2">{{ parcelle_propriete.taille }} (m²)</p>
+<a href="{{ path('parcelles_par_type', {'type_terrain': parcelle_propriete.typeTerrain}) }}" 
+   class="btn btn-info btn-sm text-white mt-2">
+    <i class="fas fa-list"></i> Afficher similaires
+</a>
 
-                        <!-- Edit Button -->
+
+
+
+
+                    {% if is_granted('ROLE_AGRICULTEUR') %}
                         <div class="text-center mt-3">
-                            <a href="{{ path('app_parcelle_proprietes_edit', {'id': parcelle_propriete.id}) }}" class="btn btn-warning btn-sm w-100" title="Edit Property">Modifier</a>
+                            <a href="{{ path('app_parcelle_proprietes_edit', {'id': parcelle_propriete.id}) }}" class="btn btn-warning btn-sm text-white"><i class="fas fa-edit"></i> Modifier</a>
+                            
+
+
+
+
+
+                            
+                            <div class="text-center mt-3">
+                                {{ include('parcelle_proprietes/_delete_form.html.twig') }}
+                            </div>
                         </div>
-                    </div>
+                    {% endif %}
                 </div>
             </div>
+        </div>
         {% else %}
             <div class="col-12 text-center">
                 <p>Aucun enregistrement trouvé</p>
             </div>
         {% endfor %}
-
-        <div class="d-flex justify-content-center mt-3">
-            <a href="{{ path('app_parcelle_proprietes_new') }}" class="btn btn-success me-2" title="Create New Property">
-                <i class="fas fa-plus-circle"></i> Créer une nouvelle propriété
-            </a>
-            <a href="{{ path('app_contrat_new') }}" class="btn btn-primary" title="Create New Contract">
-                <i class="fas fa-file-contract"></i> Créer un contrat
-            </a>
-        </div>
     </div>
+
+    {% if is_granted('ROLE_AGRICULTEUR') %}
+        <div class="d-flex justify-content-center mt-3">
+            <a href="{{ path('app_parcelle_proprietes_new') }}" class="btn btn-success me-2"><i class="fas fa-plus-circle"></i> Créer une nouvelle Annonce</a>
+            <a href="{{ path('app_contrat_index') }}" class="btn btn-success me-2"><i class="fas fa-file-contract"></i> Créer un contrat</a>
+        </div>
+    {% endif %}
 </div>
 
 <style>
@@ -68,6 +125,101 @@
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 }
+
+.terrain-type-band {
+    width: 100%;
+    padding: 12px 0;
+    margin-top: -10px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    font-size: 1rem;
+}
+
+.badge {
+    font-size: 0.8em;
+    padding: 0.4em 0.6em;
+    border-radius: 0.5em;
+}
+
+h4 a {
+    text-decoration: none;
+    transition: color 0.3s, border-bottom 0.3s;
+    border-bottom: 2px solid transparent;
+}
+
+h4 a:hover {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+}
+
+.hidden {
+    display: none;
+}
+
+
+
+
+.search-bar {
+    width: 60%;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+#toggle-filters {
+    background-color: #f04f4f;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.filters-container {
+    display: none;
+    margin-top: 10px;
+    padding: 15px;
+    border: 1px solid #ddd;
+}
+
+.hidden {
+    display: none;
+}
+
 </style>
+
+<script>
+document.getElementById('toggle-filters').addEventListener('click', function() {
+    let filtersDiv = document.getElementById('filters');
+    if (filtersDiv.style.display === "none" || filtersDiv.style.display === "") {
+        filtersDiv.style.display = "block";
+    } else {
+        filtersDiv.style.display = "none";
+    }
+});
+
+
+.btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+.btn-info:hover {
+    background-color: #138496;
+    border-color: #117a8b;
+}
+
+
+
+.btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+.btn-info:hover {
+    background-color: #138496;
+    border-color: #117a8b;
+}
+
+</script>
+
 
 {% endblock %}
