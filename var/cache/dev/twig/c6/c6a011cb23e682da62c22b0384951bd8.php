@@ -103,16 +103,16 @@ class __TwigTemplate_dc5e0f8d93aeadfe97ca37e1ce0022cf extends Template
     </h1>
     <div class=\"card p-4 shadow-sm\">
         <table class=\"table table-bordered\">
-            <thead>
+            <thead class=\"table-dark\">
                 <tr>
-                    <th>Image</th>
-                    <th>ID</th>
-                    <th>Titre</th>
-                    <th>Description</th>
-                    <th>Prix</th>
-                    <th>Statut</th>
-                    <th>Propriétaire</th>
-                    <th>Actions</th>
+                    <th class=\"text-white\">Image</th>
+                    <th class=\"text-white\">ID</th>
+                    <th class=\"text-white\">Titre</th>
+                    <th class=\"text-white\">Description</th>
+                    <th class=\"text-white\">Prix</th>
+                    <th class=\"text-white\">Statut</th>
+                    <th class=\"text-white\">Propriétaire</th>
+                    <th class=\"text-white\">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -216,20 +216,13 @@ class __TwigTemplate_dc5e0f8d93aeadfe97ca37e1ce0022cf extends Template
         </table>
     </div>
     <div class=\"d-flex justify-content-center\">
-
-
- 
         <div class=\"d-flex justify-content-between mt-4\">
             <a href=\"";
-        // line 70
+        // line 67
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_parcelle_proprietes_new");
-        yield "\" class=\"btn btn-primary\">Ajouter </a>
+        yield "\" class=\"btn btn-primary\">Ajouter</a>
         </div>
-        
-
-        
-    </a>
-</div>
+    </div>
 </div>
 ";
         
@@ -262,7 +255,7 @@ class __TwigTemplate_dc5e0f8d93aeadfe97ca37e1ce0022cf extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  225 => 70,  215 => 62,  206 => 58,  204 => 57,  191 => 49,  187 => 48,  181 => 45,  175 => 42,  169 => 39,  165 => 38,  161 => 37,  157 => 36,  153 => 35,  149 => 34,  146 => 33,  140 => 31,  132 => 29,  130 => 28,  126 => 26,  121 => 25,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  222 => 67,  215 => 62,  206 => 58,  204 => 57,  191 => 49,  187 => 48,  181 => 45,  175 => 42,  169 => 39,  165 => 38,  161 => 37,  157 => 36,  153 => 35,  149 => 34,  146 => 33,  140 => 31,  132 => 29,  130 => 28,  126 => 26,  121 => 25,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -278,16 +271,16 @@ class __TwigTemplate_dc5e0f8d93aeadfe97ca37e1ce0022cf extends Template
     </h1>
     <div class=\"card p-4 shadow-sm\">
         <table class=\"table table-bordered\">
-            <thead>
+            <thead class=\"table-dark\">
                 <tr>
-                    <th>Image</th>
-                    <th>ID</th>
-                    <th>Titre</th>
-                    <th>Description</th>
-                    <th>Prix</th>
-                    <th>Statut</th>
-                    <th>Propriétaire</th>
-                    <th>Actions</th>
+                    <th class=\"text-white\">Image</th>
+                    <th class=\"text-white\">ID</th>
+                    <th class=\"text-white\">Titre</th>
+                    <th class=\"text-white\">Description</th>
+                    <th class=\"text-white\">Prix</th>
+                    <th class=\"text-white\">Statut</th>
+                    <th class=\"text-white\">Propriétaire</th>
+                    <th class=\"text-white\">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -332,17 +325,10 @@ class __TwigTemplate_dc5e0f8d93aeadfe97ca37e1ce0022cf extends Template
         </table>
     </div>
     <div class=\"d-flex justify-content-center\">
-
-
- 
         <div class=\"d-flex justify-content-between mt-4\">
-            <a href=\"{{ path('admin_parcelle_proprietes_new') }}\" class=\"btn btn-primary\">Ajouter </a>
+            <a href=\"{{ path('admin_parcelle_proprietes_new') }}\" class=\"btn btn-primary\">Ajouter</a>
         </div>
-        
-
-        
-    </a>
-</div>
+    </div>
 </div>
 {% endblock %}
 ", "admin/parcelle_proprietes/index_back.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\admin\\parcelle_proprietes\\index_back.html.twig");

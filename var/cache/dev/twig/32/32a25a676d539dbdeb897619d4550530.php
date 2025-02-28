@@ -97,295 +97,177 @@ class __TwigTemplate_cccc0955c91f7e22fbb7de979bb315ad extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        yield "<div class=\"container mt-5 pt-5\" style=\"margin-left: 250px;\">
+        yield "<div class=\"row justify-content-center\">
+    <div class=\"container mt-5 pt-5\" style=\"width: 70%; margin-left: 27%; margin-top: 50px;\">
+        <h1>Liste des commandes</h1>
 
-        <div class=\"table-container\">
-            <table class=\"table table-hover\">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Date de commande</th>
-                        <th>Total</th>
-                        <th>Quantité</th>
-                        <th>Paiement</th>
-                        <th>Livraison</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ";
-        // line 22
+        <table class=\"table table-bordered mt-3\">
+            <thead class=\"table-dark\">
+                <tr>
+                    <th class=\"text-white\">ID</th>
+                    <th class=\"text-white\">Date de commande</th>
+                    <th class=\"text-white\">Total</th>
+                    <th class=\"text-white\">Quantité</th>
+                    <th class=\"text-white\">Paiement</th>
+                    <th class=\"text-white\">Livraison</th>
+                    <th class=\"text-white\">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                ";
+        // line 23
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["commandes"]) || array_key_exists("commandes", $context) ? $context["commandes"] : (function () { throw new RuntimeError('Variable "commandes" does not exist.', 22, $this->source); })()));
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["commandes"]) || array_key_exists("commandes", $context) ? $context["commandes"] : (function () { throw new RuntimeError('Variable "commandes" does not exist.', 23, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["commande"]) {
-            // line 23
-            yield "                        ";
-            if ((CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "paiement", [], "any", false, false, false, 23) || CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "livraison", [], "any", false, false, false, 23))) {
-                // line 24
-                yield "                            <tr>
-                                <td>";
+            // line 24
+            yield "                    ";
+            if ((CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "paiement", [], "any", false, false, false, 24) || CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "livraison", [], "any", false, false, false, 24))) {
                 // line 25
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "id", [], "any", false, false, false, 25), "html", null, true);
-                yield "</td>
-                                <td>";
+                yield "                        <tr>
+                            <td>";
                 // line 26
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "dateCommande", [], "any", false, false, false, 26), "d/m/Y H:i"), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "id", [], "any", false, false, false, 26), "html", null, true);
                 yield "</td>
-                                <td>";
+                            <td>";
                 // line 27
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "totale", [], "any", false, false, false, 27), "html", null, true);
-                yield " DT</td>
-                                <td>";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "dateCommande", [], "any", false, false, false, 27), "d/m/Y H:i"), "html", null, true);
+                yield "</td>
+                            <td>";
                 // line 28
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "quantite", [], "any", false, false, false, 28), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "totale", [], "any", false, false, false, 28), "html", null, true);
+                yield " DT</td>
+                            <td>";
+                // line 29
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "quantite", [], "any", false, false, false, 29), "html", null, true);
                 yield "</td>
 
-                                <!-- Paiement Section -->
-                                <td>
-                                    ";
-                // line 32
-                if (CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "paiement", [], "any", false, false, false, 32)) {
-                    // line 33
-                    yield "                                        <div class=\"payment-card\">
-                                            <div>
-                                                <strong>Méthode:</strong> ";
-                    // line 35
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "paiement", [], "any", false, false, false, 35), "methodePaiement", [], "any", false, false, false, 35), "html", null, true);
-                    yield "<br>
-                                                <small>Date: ";
+                            <!-- Paiement Section -->
+                            <td>
+                                ";
+                // line 33
+                if (CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "paiement", [], "any", false, false, false, 33)) {
+                    // line 34
+                    yield "                                    <div class=\"payment-card\">
+                                        <div>
+                                            <strong>Méthode:</strong> ";
                     // line 36
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "paiement", [], "any", false, false, false, 36), "datePaiement", [], "any", false, false, false, 36), "d/m/Y"), "html", null, true);
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "paiement", [], "any", false, false, false, 36), "methodePaiement", [], "any", false, false, false, 36), "html", null, true);
+                    yield "<br>
+                                            <small>Date: ";
+                    // line 37
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "paiement", [], "any", false, false, false, 37), "datePaiement", [], "any", false, false, false, 37), "d/m/Y"), "html", null, true);
                     yield "</small>
-                                            </div>
                                         </div>
-                                    ";
+                                    </div>
+                                ";
                 } else {
-                    // line 40
-                    yield "                                        <div class=\"payment-card not-paid\">
-                                            <h5>Non payé</h5>
-                                        </div>
-                                    ";
+                    // line 41
+                    yield "                                    <div class=\"payment-card not-paid\">
+                                        <h5>Non payé</h5>
+                                    </div>
+                                ";
                 }
-                // line 44
-                yield "                                </td>
+                // line 45
+                yield "                            </td>
 
-                                <!-- Livraison Section -->
-                                <td>
-                                    ";
-                // line 48
-                if (CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "livraison", [], "any", false, false, false, 48)) {
-                    // line 49
-                    yield "                                        <div class=\"delivery-card\">
-                                            <div>
-                                                <strong>Status:</strong> ";
-                    // line 51
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "livraison", [], "any", false, false, false, 51), "status", [], "any", false, false, false, 51), "html", null, true);
-                    yield "<br>
-                                                <strong>Adresse:</strong> ";
+                            <!-- Livraison Section -->
+                            <td>
+                                ";
+                // line 49
+                if (CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "livraison", [], "any", false, false, false, 49)) {
+                    // line 50
+                    yield "                                    <div class=\"delivery-card\">
+                                        <div>
+                                            <strong>Status:</strong> ";
                     // line 52
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "livraison", [], "any", false, false, false, 52), "adresse", [], "any", false, false, false, 52), "html", null, true);
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "livraison", [], "any", false, false, false, 52), "status", [], "any", false, false, false, 52), "html", null, true);
                     yield "<br>
-                                                <small>Date: ";
+                                            <strong>Adresse:</strong> ";
                     // line 53
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "livraison", [], "any", false, false, false, 53), "dateLiv", [], "any", false, false, false, 53), "d/m/Y"), "html", null, true);
-                    yield "</small>
-                                                <form action=\"";
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "livraison", [], "any", false, false, false, 53), "adresse", [], "any", false, false, false, 53), "html", null, true);
+                    yield "<br>
+                                            <small>Date: ";
                     // line 54
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("livraison_update_status", ["id" => CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "livraison", [], "any", false, false, false, 54), "id", [], "any", false, false, false, 54)]), "html", null, true);
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "livraison", [], "any", false, false, false, 54), "dateLiv", [], "any", false, false, false, 54), "d/m/Y"), "html", null, true);
+                    yield "</small>
+                                            <form action=\"";
+                    // line 55
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("livraison_update_status", ["id" => CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "livraison", [], "any", false, false, false, 55), "id", [], "any", false, false, false, 55)]), "html", null, true);
                     yield "\" method=\"POST\">
-                                                    <select name=\"status\" class=\"status-dropdown\">
-                                                        <option value=\"Validation en cours\" ";
-                    // line 56
-                    if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "livraison", [], "any", false, false, false, 56), "status", [], "any", false, false, false, 56) == "Validation en cours")) {
+                                                <select name=\"status\" class=\"status-dropdown\">
+                                                    <option value=\"Validation en cours\" ";
+                    // line 57
+                    if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "livraison", [], "any", false, false, false, 57), "status", [], "any", false, false, false, 57) == "Validation en cours")) {
                         yield "selected";
                     }
                     yield ">Validation en cours</option>
-                                                        <option value=\"En préparation\" ";
-                    // line 57
-                    if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "livraison", [], "any", false, false, false, 57), "status", [], "any", false, false, false, 57) == "En préparation")) {
+                                                    <option value=\"En préparation\" ";
+                    // line 58
+                    if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "livraison", [], "any", false, false, false, 58), "status", [], "any", false, false, false, 58) == "En préparation")) {
                         yield "selected";
                     }
                     yield ">En préparation</option>
-                                                        <option value=\"Expédiée\" ";
-                    // line 58
-                    if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "livraison", [], "any", false, false, false, 58), "status", [], "any", false, false, false, 58) == "Expédiée")) {
+                                                    <option value=\"Expédiée\" ";
+                    // line 59
+                    if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "livraison", [], "any", false, false, false, 59), "status", [], "any", false, false, false, 59) == "Expédiée")) {
                         yield "selected";
                     }
                     yield ">Expédiée</option>
-                                                        <option value=\"Livrée\" ";
-                    // line 59
-                    if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "livraison", [], "any", false, false, false, 59), "status", [], "any", false, false, false, 59) == "Livrée")) {
+                                                    <option value=\"Livrée\" ";
+                    // line 60
+                    if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "livraison", [], "any", false, false, false, 60), "status", [], "any", false, false, false, 60) == "Livrée")) {
                         yield "selected";
                     }
                     yield ">Livrée</option>
-                                                    </select>
-                                                    <button type=\"submit\" class=\"btn-update\">Mettre à jour</button>
-                                                </form>
-                                            </div>
+                                                </select>
+                                                <button type=\"submit\" class=\"btn btn-warning btn-sm\">Mettre à jour</button>
+                                            </form>
                                         </div>
-                                    ";
+                                    </div>
+                                ";
                 } else {
-                    // line 66
-                    yield "                                        <div class=\"delivery-card not-shipped\">
-                                            <h5>Non livrée</h5>
-                                        </div>
-                                    ";
+                    // line 67
+                    yield "                                    <div class=\"delivery-card not-shipped\">
+                                        <h5>Non livrée</h5>
+                                    </div>
+                                ";
                 }
-                // line 70
-                yield "                                </td>
+                // line 71
+                yield "                            </td>
 
-                                <!-- Actions -->
-                                <td>
-    ";
-                // line 74
-                if ((CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "livraison", [], "any", false, false, false, 74) && (CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "livraison", [], "any", false, false, false, 74), "status", [], "any", false, false, false, 74) == "Livrée"))) {
-                    // line 75
-                    yield "        <form action=\"";
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("commande_delete", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "id", [], "any", false, false, false, 75)]), "html", null, true);
+                            <!-- Actions -->
+                            <td>
+                                ";
+                // line 75
+                if ((CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "livraison", [], "any", false, false, false, 75) && (CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "livraison", [], "any", false, false, false, 75), "status", [], "any", false, false, false, 75) == "Livrée"))) {
+                    // line 76
+                    yield "                                    <form action=\"";
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("commande_delete", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["commande"], "id", [], "any", false, false, false, 76)]), "html", null, true);
                     yield "\" method=\"POST\">
-            <button type=\"submit\" class=\"btn-delete\" onclick=\"return confirm('Êtes-vous sûr de vouloir supprimer cette commande ?')\">Supprimer</button>
-        </form>
-    ";
+                                        <button type=\"submit\" class=\"btn btn-danger\" onclick=\"return confirm('Êtes-vous sûr de vouloir supprimer cette commande ?')\">Supprimer</button>
+                                    </form>
+                                ";
                 } else {
-                    // line 79
-                    yield "        <button class=\"btn-delete\" disabled>Suppression interdite</button>
-    ";
+                    // line 80
+                    yield "                                    <button class=\"btn btn-danger\" disabled>Suppression interdite</button>
+                                ";
                 }
-                // line 81
-                yield "</td>
-
-                            </tr>
-                        ";
+                // line 82
+                yield "                            </td>
+                        </tr>
+                    ";
             }
             // line 85
-            yield "                    ";
+            yield "                ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['commande'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 86
-        yield "                </tbody>
-            </table>
-          
-
-        </div>
+        yield "            </tbody>
+        </table>
     </div>
-
-    <style>
-        /* Global styles */
-    /* Global styles */
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f8f9fa;
-    color: #495057;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;  /* Centrer le contenu horizontalement */
-    align-items: center;      /* Centrer le contenu verticalement */
-    height: 100vh;            /* Prendre toute la hauteur de la fenêtre */
-}
-
-/* Table container and layout */
-.table-container {
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%; /* S'assurer que la table utilise toute la largeur possible dans .container */
-    overflow-x: auto; /* Pour gérer les grandes tables */
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th, td {
-    padding: 15px;
-    text-align: left;
-}
-
-th {
-    background-color: #007bff;
-    color: white;
-    font-weight: bold;
-}
-
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-tr:hover {
-    background-color: #f1f1f1;
-}
-
-/* Payment and Delivery card */
-.payment-card, .delivery-card {
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-    background-color: #f1f1f1;
-    margin-bottom: 15px;
-}
-
-.payment-card h5, .delivery-card h5 {
-    color: #007bff;
-}
-
-.payment-card.not-paid, .delivery-card.not-shipped {
-    background-color: #ffe6e6;
-}
-
-.payment-card h5, .delivery-card h5 {
-    font-size: 1.2em;
-    font-weight: bold;
-}
-
-.payment-card small, .delivery-card small {
-    color: #6c757d;
-    font-size: 0.9em;
-}
-
-/* Buttons */
-.btn-update, .btn-delete {
-    padding: 8px 15px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-}
-
-.btn-update {
-    background-color: #28a745;
-    color: white;
-}
-
-.btn-update:hover {
-    background-color: #218838;
-}
-
-.btn-delete {
-    background-color: #dc3545;
-    color: white;
-}
-
-.btn-delete:hover {
-    background-color: #c82333;
-}
-
-/* Status Dropdown */
-.status-dropdown {
-    padding: 8px;
-    font-size: 0.9em;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-top: 10px;
-}
-
-    </style>
+</div>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -417,7 +299,7 @@ tr:hover {
      */
     public function getDebugInfo(): array
     {
-        return array (  267 => 86,  261 => 85,  255 => 81,  251 => 79,  243 => 75,  241 => 74,  235 => 70,  229 => 66,  217 => 59,  211 => 58,  205 => 57,  199 => 56,  194 => 54,  190 => 53,  186 => 52,  182 => 51,  178 => 49,  176 => 48,  170 => 44,  164 => 40,  157 => 36,  153 => 35,  149 => 33,  147 => 32,  140 => 28,  136 => 27,  132 => 26,  128 => 25,  125 => 24,  122 => 23,  118 => 22,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  267 => 86,  261 => 85,  256 => 82,  252 => 80,  244 => 76,  242 => 75,  236 => 71,  230 => 67,  218 => 60,  212 => 59,  206 => 58,  200 => 57,  195 => 55,  191 => 54,  187 => 53,  183 => 52,  179 => 50,  177 => 49,  171 => 45,  165 => 41,  158 => 37,  154 => 36,  150 => 34,  148 => 33,  141 => 29,  137 => 28,  133 => 27,  129 => 26,  126 => 25,  123 => 24,  119 => 23,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -427,208 +309,90 @@ tr:hover {
 {% block title %}Liste des commandes{% endblock %}
 
 {% block body %}
-<div class=\"container mt-5 pt-5\" style=\"margin-left: 250px;\">
+<div class=\"row justify-content-center\">
+    <div class=\"container mt-5 pt-5\" style=\"width: 70%; margin-left: 27%; margin-top: 50px;\">
+        <h1>Liste des commandes</h1>
 
-        <div class=\"table-container\">
-            <table class=\"table table-hover\">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Date de commande</th>
-                        <th>Total</th>
-                        <th>Quantité</th>
-                        <th>Paiement</th>
-                        <th>Livraison</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for commande in commandes %}
-                        {% if commande.paiement or commande.livraison %}
-                            <tr>
-                                <td>{{ commande.id }}</td>
-                                <td>{{ commande.dateCommande|date('d/m/Y H:i') }}</td>
-                                <td>{{ commande.totale }} DT</td>
-                                <td>{{ commande.quantite }}</td>
+        <table class=\"table table-bordered mt-3\">
+            <thead class=\"table-dark\">
+                <tr>
+                    <th class=\"text-white\">ID</th>
+                    <th class=\"text-white\">Date de commande</th>
+                    <th class=\"text-white\">Total</th>
+                    <th class=\"text-white\">Quantité</th>
+                    <th class=\"text-white\">Paiement</th>
+                    <th class=\"text-white\">Livraison</th>
+                    <th class=\"text-white\">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for commande in commandes %}
+                    {% if commande.paiement or commande.livraison %}
+                        <tr>
+                            <td>{{ commande.id }}</td>
+                            <td>{{ commande.dateCommande|date('d/m/Y H:i') }}</td>
+                            <td>{{ commande.totale }} DT</td>
+                            <td>{{ commande.quantite }}</td>
 
-                                <!-- Paiement Section -->
-                                <td>
-                                    {% if commande.paiement %}
-                                        <div class=\"payment-card\">
-                                            <div>
-                                                <strong>Méthode:</strong> {{ commande.paiement.methodePaiement }}<br>
-                                                <small>Date: {{ commande.paiement.datePaiement|date('d/m/Y') }}</small>
-                                            </div>
+                            <!-- Paiement Section -->
+                            <td>
+                                {% if commande.paiement %}
+                                    <div class=\"payment-card\">
+                                        <div>
+                                            <strong>Méthode:</strong> {{ commande.paiement.methodePaiement }}<br>
+                                            <small>Date: {{ commande.paiement.datePaiement|date('d/m/Y') }}</small>
                                         </div>
-                                    {% else %}
-                                        <div class=\"payment-card not-paid\">
-                                            <h5>Non payé</h5>
+                                    </div>
+                                {% else %}
+                                    <div class=\"payment-card not-paid\">
+                                        <h5>Non payé</h5>
+                                    </div>
+                                {% endif %}
+                            </td>
+
+                            <!-- Livraison Section -->
+                            <td>
+                                {% if commande.livraison %}
+                                    <div class=\"delivery-card\">
+                                        <div>
+                                            <strong>Status:</strong> {{ commande.livraison.status }}<br>
+                                            <strong>Adresse:</strong> {{ commande.livraison.adresse }}<br>
+                                            <small>Date: {{ commande.livraison.dateLiv|date('d/m/Y') }}</small>
+                                            <form action=\"{{ path('livraison_update_status', {'id': commande.livraison.id}) }}\" method=\"POST\">
+                                                <select name=\"status\" class=\"status-dropdown\">
+                                                    <option value=\"Validation en cours\" {% if commande.livraison.status == 'Validation en cours' %}selected{% endif %}>Validation en cours</option>
+                                                    <option value=\"En préparation\" {% if commande.livraison.status == 'En préparation' %}selected{% endif %}>En préparation</option>
+                                                    <option value=\"Expédiée\" {% if commande.livraison.status == 'Expédiée' %}selected{% endif %}>Expédiée</option>
+                                                    <option value=\"Livrée\" {% if commande.livraison.status == 'Livrée' %}selected{% endif %}>Livrée</option>
+                                                </select>
+                                                <button type=\"submit\" class=\"btn btn-warning btn-sm\">Mettre à jour</button>
+                                            </form>
                                         </div>
-                                    {% endif %}
-                                </td>
+                                    </div>
+                                {% else %}
+                                    <div class=\"delivery-card not-shipped\">
+                                        <h5>Non livrée</h5>
+                                    </div>
+                                {% endif %}
+                            </td>
 
-                                <!-- Livraison Section -->
-                                <td>
-                                    {% if commande.livraison %}
-                                        <div class=\"delivery-card\">
-                                            <div>
-                                                <strong>Status:</strong> {{ commande.livraison.status }}<br>
-                                                <strong>Adresse:</strong> {{ commande.livraison.adresse }}<br>
-                                                <small>Date: {{ commande.livraison.dateLiv|date('d/m/Y') }}</small>
-                                                <form action=\"{{ path('livraison_update_status', {'id': commande.livraison.id}) }}\" method=\"POST\">
-                                                    <select name=\"status\" class=\"status-dropdown\">
-                                                        <option value=\"Validation en cours\" {% if commande.livraison.status == 'Validation en cours' %}selected{% endif %}>Validation en cours</option>
-                                                        <option value=\"En préparation\" {% if commande.livraison.status == 'En préparation' %}selected{% endif %}>En préparation</option>
-                                                        <option value=\"Expédiée\" {% if commande.livraison.status == 'Expédiée' %}selected{% endif %}>Expédiée</option>
-                                                        <option value=\"Livrée\" {% if commande.livraison.status == 'Livrée' %}selected{% endif %}>Livrée</option>
-                                                    </select>
-                                                    <button type=\"submit\" class=\"btn-update\">Mettre à jour</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    {% else %}
-                                        <div class=\"delivery-card not-shipped\">
-                                            <h5>Non livrée</h5>
-                                        </div>
-                                    {% endif %}
-                                </td>
-
-                                <!-- Actions -->
-                                <td>
-    {% if commande.livraison and commande.livraison.status == 'Livrée' %}
-        <form action=\"{{ path('commande_delete', {'id': commande.id}) }}\" method=\"POST\">
-            <button type=\"submit\" class=\"btn-delete\" onclick=\"return confirm('Êtes-vous sûr de vouloir supprimer cette commande ?')\">Supprimer</button>
-        </form>
-    {% else %}
-        <button class=\"btn-delete\" disabled>Suppression interdite</button>
-    {% endif %}
-</td>
-
-                            </tr>
-                        {% endif %}
-                    {% endfor %}
-                </tbody>
-            </table>
-          
-
-        </div>
+                            <!-- Actions -->
+                            <td>
+                                {% if commande.livraison and commande.livraison.status == 'Livrée' %}
+                                    <form action=\"{{ path('commande_delete', {'id': commande.id}) }}\" method=\"POST\">
+                                        <button type=\"submit\" class=\"btn btn-danger\" onclick=\"return confirm('Êtes-vous sûr de vouloir supprimer cette commande ?')\">Supprimer</button>
+                                    </form>
+                                {% else %}
+                                    <button class=\"btn btn-danger\" disabled>Suppression interdite</button>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
-
-    <style>
-        /* Global styles */
-    /* Global styles */
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f8f9fa;
-    color: #495057;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;  /* Centrer le contenu horizontalement */
-    align-items: center;      /* Centrer le contenu verticalement */
-    height: 100vh;            /* Prendre toute la hauteur de la fenêtre */
-}
-
-/* Table container and layout */
-.table-container {
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%; /* S'assurer que la table utilise toute la largeur possible dans .container */
-    overflow-x: auto; /* Pour gérer les grandes tables */
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th, td {
-    padding: 15px;
-    text-align: left;
-}
-
-th {
-    background-color: #007bff;
-    color: white;
-    font-weight: bold;
-}
-
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-tr:hover {
-    background-color: #f1f1f1;
-}
-
-/* Payment and Delivery card */
-.payment-card, .delivery-card {
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-    background-color: #f1f1f1;
-    margin-bottom: 15px;
-}
-
-.payment-card h5, .delivery-card h5 {
-    color: #007bff;
-}
-
-.payment-card.not-paid, .delivery-card.not-shipped {
-    background-color: #ffe6e6;
-}
-
-.payment-card h5, .delivery-card h5 {
-    font-size: 1.2em;
-    font-weight: bold;
-}
-
-.payment-card small, .delivery-card small {
-    color: #6c757d;
-    font-size: 0.9em;
-}
-
-/* Buttons */
-.btn-update, .btn-delete {
-    padding: 8px 15px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-}
-
-.btn-update {
-    background-color: #28a745;
-    color: white;
-}
-
-.btn-update:hover {
-    background-color: #218838;
-}
-
-.btn-delete {
-    background-color: #dc3545;
-    color: white;
-}
-
-.btn-delete:hover {
-    background-color: #c82333;
-}
-
-/* Status Dropdown */
-.status-dropdown {
-    padding: 8px;
-    font-size: 0.9em;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-top: 10px;
-}
-
-    </style>
+</div>
 {% endblock %}
 ", "commande/index.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\commande\\index.html.twig");
     }

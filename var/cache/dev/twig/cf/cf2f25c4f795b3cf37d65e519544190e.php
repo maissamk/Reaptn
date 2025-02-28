@@ -52,7 +52,7 @@ class __TwigTemplate_269be6c92130ef14703873639da6c33e extends Template
         // line 2
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken(("delete" . CoreExtension::getAttribute($this->env, $this->source, (isset($context["parcelle_propriete"]) || array_key_exists("parcelle_propriete", $context) ? $context["parcelle_propriete"] : (function () { throw new RuntimeError('Variable "parcelle_propriete" does not exist.', 2, $this->source); })()), "id", [], "any", false, false, false, 2))), "html", null, true);
         yield "\">
-    <button class=\"btn\">Delete</button>
+    <button class=\"btn btn-danger btn-sm \"><i class=\"fa fa-trash\"></i>Supprimer</button>
 </form>
 ";
         
@@ -92,7 +92,7 @@ class __TwigTemplate_269be6c92130ef14703873639da6c33e extends Template
     {
         return new Source("<form method=\"post\" action=\"{{ path('app_parcelle_proprietes_delete', {'id': parcelle_propriete.id}) }}\" onsubmit=\"return confirm('Are you sure you want to delete this item?');\">
     <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ parcelle_propriete.id) }}\">
-    <button class=\"btn\">Delete</button>
+    <button class=\"btn btn-danger btn-sm \"><i class=\"fa fa-trash\"></i>Supprimer</button>
 </form>
 ", "parcelle_proprietes/_delete_form.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\parcelle_proprietes\\_delete_form.html.twig");
     }

@@ -97,30 +97,33 @@ class __TwigTemplate_0ed83102cfc8dbeaed5e1e5f32d935c2 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        yield "    
-        <h1 class=\"text-center\">Edit Offre</h1>
-        <div class=\"row justify-content-center\">
-            <div class=\"col-lg-8\">
-                <table class=\"table table-bordered mt-4\">
+        yield "<div class=\"container mt-5 pt-5\">  ";
+        // line 7
+        yield "    <h1 class=\"text-center mb-4\">Edit Offre</h1>
+    <div class=\"row justify-content-center\">
+        <div class=\"col-lg-8\">
+            <div class=\"card shadow p-4\">  ";
+        // line 11
+        yield "                <table class=\"table table-bordered\">
                     <tbody>
                         <tr>
                             <td class=\"fw-bold text-end\" style=\"width: 30%;\">Edit Form:</td>
                             <td>";
-        // line 14
+        // line 15
         yield Twig\Extension\CoreExtension::include($this->env, $context, "offre/_form.html.twig", ["button_label" => "Update"]);
         yield "</td>
                         </tr>
                         <tr>
-                            <td class=\"fw-bold text-end\">Back to List:</td>
+                            <td class=\"fw-bold text-end\">Retour a la Liste:</td>
                             <td><a href=\"";
-        // line 18
+        // line 19
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_offre_index");
-        yield "\" class=\"btn btn-secondary\">Back</a></td>
+        yield "\" class=\"btn btn-primary me-3\"><i class=\"fa fa-arrow-left\"></i> Retour</a></td>
                         </tr>
                         <tr>
-                            <td class=\"fw-bold text-end\">Delete Offer:</td>
+                            <td class=\"fw-bold text-end\">Supprimer Offer:</td>
                             <td>";
-        // line 22
+        // line 23
         yield Twig\Extension\CoreExtension::include($this->env, $context, "offre/_delete_form.html.twig");
         yield "</td>
                         </tr>
@@ -129,8 +132,7 @@ class __TwigTemplate_0ed83102cfc8dbeaed5e1e5f32d935c2 extends Template
             </div>
         </div>
     </div>
-
-    
+</div>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -162,7 +164,7 @@ class __TwigTemplate_0ed83102cfc8dbeaed5e1e5f32d935c2 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  124 => 22,  117 => 18,  110 => 14,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  127 => 23,  120 => 19,  113 => 15,  107 => 11,  102 => 7,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -172,22 +174,23 @@ class __TwigTemplate_0ed83102cfc8dbeaed5e1e5f32d935c2 extends Template
 {% block title %}Edit Offre{% endblock %}
 
 {% block body %}
-    
-        <h1 class=\"text-center\">Edit Offre</h1>
-        <div class=\"row justify-content-center\">
-            <div class=\"col-lg-8\">
-                <table class=\"table table-bordered mt-4\">
+<div class=\"container mt-5 pt-5\">  {# Adds space so navbar doesn't hide content #}
+    <h1 class=\"text-center mb-4\">Edit Offre</h1>
+    <div class=\"row justify-content-center\">
+        <div class=\"col-lg-8\">
+            <div class=\"card shadow p-4\">  {# Adds a card with shadow for a clean look #}
+                <table class=\"table table-bordered\">
                     <tbody>
                         <tr>
                             <td class=\"fw-bold text-end\" style=\"width: 30%;\">Edit Form:</td>
                             <td>{{ include('offre/_form.html.twig', {'button_label': 'Update'}) }}</td>
                         </tr>
                         <tr>
-                            <td class=\"fw-bold text-end\">Back to List:</td>
-                            <td><a href=\"{{ path('app_offre_index') }}\" class=\"btn btn-secondary\">Back</a></td>
+                            <td class=\"fw-bold text-end\">Retour a la Liste:</td>
+                            <td><a href=\"{{ path('app_offre_index') }}\" class=\"btn btn-primary me-3\"><i class=\"fa fa-arrow-left\"></i> Retour</a></td>
                         </tr>
                         <tr>
-                            <td class=\"fw-bold text-end\">Delete Offer:</td>
+                            <td class=\"fw-bold text-end\">Supprimer Offer:</td>
                             <td>{{ include('offre/_delete_form.html.twig') }}</td>
                         </tr>
                     </tbody>
@@ -195,8 +198,8 @@ class __TwigTemplate_0ed83102cfc8dbeaed5e1e5f32d935c2 extends Template
             </div>
         </div>
     </div>
-
-    
-{% endblock %}", "offre/edit.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\offre\\edit.html.twig");
+</div>
+{% endblock %}
+", "offre/edit.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\offre\\edit.html.twig");
     }
 }

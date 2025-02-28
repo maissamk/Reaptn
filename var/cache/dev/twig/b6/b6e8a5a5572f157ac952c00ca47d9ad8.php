@@ -52,7 +52,7 @@ class __TwigTemplate_7612d9b2b450e07f1ca10b5931fa1708 extends Template
         // line 2
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken(("delete" . CoreExtension::getAttribute($this->env, $this->source, (isset($context["materiellocation"]) || array_key_exists("materiellocation", $context) ? $context["materiellocation"] : (function () { throw new RuntimeError('Variable "materiellocation" does not exist.', 2, $this->source); })()), "id", [], "any", false, false, false, 2))), "html", null, true);
         yield "\">
-    <button class=\"btn btn-danger btn-sm\">Supprimer</button>
+    <button class=\"btn btn-danger btn-sm \"><i class=\"fa fa-trash\"></i>Supprimer</button>
 </form>
 ";
         
@@ -92,7 +92,7 @@ class __TwigTemplate_7612d9b2b450e07f1ca10b5931fa1708 extends Template
     {
         return new Source("<form method=\"post\" action=\"{{ path('app_materiellocation_delete', {'id': materiellocation.id}) }}\" onsubmit=\"return confirm('Are you sure you want to delete this item?');\">
     <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ materiellocation.id) }}\">
-    <button class=\"btn btn-danger btn-sm\">Supprimer</button>
+    <button class=\"btn btn-danger btn-sm \"><i class=\"fa fa-trash\"></i>Supprimer</button>
 </form>
 ", "materiellocation/_delete_form.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\materiellocation\\_delete_form.html.twig");
     }

@@ -108,7 +108,7 @@ class __TwigTemplate_94dd7211842b78390f99a99778f86a72 extends Template
     <a href=\"";
         // line 11
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materiellocation_index");
-        yield "\">back to list</a>
+        yield "\"class=\"btn btn-primary me-3\"><i class=\"fa fa-arrow-left\"></i>Retour</a>
 
     
 ";
@@ -157,7 +157,7 @@ class __TwigTemplate_94dd7211842b78390f99a99778f86a72 extends Template
 
     {{ include('materiellocation/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href=\"{{ path('app_materiellocation_index') }}\">back to list</a>
+    <a href=\"{{ path('app_materiellocation_index') }}\"class=\"btn btn-primary me-3\"><i class=\"fa fa-arrow-left\"></i>Retour</a>
 
     
 {% endblock %}

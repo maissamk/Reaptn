@@ -108,7 +108,7 @@ class __TwigTemplate_0196a8e04b1e18143bb5a76e923ff0a9 extends Template
     <a href=\"";
         // line 11
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materielvente_index");
-        yield "\">back to list</a>
+        yield "\" class=\"btn btn-primary me-3\"><i class=\"fa fa-arrow-left\"></i>  Retour</a>
 
     
 ";
@@ -157,7 +157,7 @@ class __TwigTemplate_0196a8e04b1e18143bb5a76e923ff0a9 extends Template
 
     {{ include('materielvente/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href=\"{{ path('app_materielvente_index') }}\">back to list</a>
+    <a href=\"{{ path('app_materielvente_index') }}\" class=\"btn btn-primary me-3\"><i class=\"fa fa-arrow-left\"></i>  Retour</a>
 
     
 {% endblock %}

@@ -211,20 +211,27 @@ class __TwigTemplate_e06ae838294e902e3595dddaac273291 extends Template
             <a href=\"";
         // line 73
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_parcelle_proprietes_index");
-        yield "\" class=\"btn btn-secondary me-2\">
+        yield "\" class=\"btn btn-primary me-3\">
                 <i class=\"fas fa-arrow-left\"></i> Retour à la liste
             </a>
-            <a href=\"";
+            ";
         // line 76
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_parcelle_proprietes_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["parcelle_propriete"]) || array_key_exists("parcelle_propriete", $context) ? $context["parcelle_propriete"] : (function () { throw new RuntimeError('Variable "parcelle_propriete" does not exist.', 76, $this->source); })()), "id", [], "any", false, false, false, 76)]), "html", null, true);
-        yield "\" class=\"btn btn-warning me-2\">
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_AGRICULTEUR")) {
+            // line 77
+            yield "            <a href=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_parcelle_proprietes_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["parcelle_propriete"]) || array_key_exists("parcelle_propriete", $context) ? $context["parcelle_propriete"] : (function () { throw new RuntimeError('Variable "parcelle_propriete" does not exist.', 77, $this->source); })()), "id", [], "any", false, false, false, 77)]), "html", null, true);
+            yield "\" class=\"btn btn-warning me-2\">
                 <i class=\"fas fa-edit\"></i> Modifier
             </a>
+            
             ";
-        // line 79
-        yield Twig\Extension\CoreExtension::include($this->env, $context, "parcelle_proprietes/_delete_form.html.twig");
-        yield "
-        </div>
+            // line 81
+            yield Twig\Extension\CoreExtension::include($this->env, $context, "parcelle_proprietes/_delete_form.html.twig");
+            yield "
+            ";
+        }
+        // line 83
+        yield "        </div>
     </div>
 </div>
 
@@ -275,7 +282,7 @@ class __TwigTemplate_e06ae838294e902e3595dddaac273291 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  225 => 79,  219 => 76,  213 => 73,  202 => 65,  195 => 61,  189 => 57,  185 => 55,  181 => 53,  179 => 52,  171 => 47,  164 => 43,  157 => 39,  150 => 35,  143 => 31,  136 => 27,  129 => 23,  119 => 16,  113 => 13,  108 => 11,  101 => 6,  88 => 5,  64 => 3,  41 => 1,);
+        return array (  234 => 83,  229 => 81,  221 => 77,  219 => 76,  213 => 73,  202 => 65,  195 => 61,  189 => 57,  185 => 55,  181 => 53,  179 => 52,  171 => 47,  164 => 43,  157 => 39,  150 => 35,  143 => 31,  136 => 27,  129 => 23,  119 => 16,  113 => 13,  108 => 11,  101 => 6,  88 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -352,13 +359,16 @@ class __TwigTemplate_e06ae838294e902e3595dddaac273291 extends Template
 
         <!-- Boutons d'action -->
         <div class=\"card-footer text-center\">
-            <a href=\"{{ path('app_parcelle_proprietes_index') }}\" class=\"btn btn-secondary me-2\">
+            <a href=\"{{ path('app_parcelle_proprietes_index') }}\" class=\"btn btn-primary me-3\">
                 <i class=\"fas fa-arrow-left\"></i> Retour à la liste
             </a>
+            {% if  is_granted('ROLE_AGRICULTEUR') %}
             <a href=\"{{ path('app_parcelle_proprietes_edit', {'id': parcelle_propriete.id}) }}\" class=\"btn btn-warning me-2\">
                 <i class=\"fas fa-edit\"></i> Modifier
             </a>
+            
             {{ include('parcelle_proprietes/_delete_form.html.twig') }}
+            {% endif %}
         </div>
     </div>
 </div>

@@ -98,65 +98,80 @@ class __TwigTemplate_75787d45fc258b97c85c70169dd12211 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        yield "    <div class=\"container\" style=\"margin-right: 50px;\">
-        <h1 class=\"text-right\">Modifier l'Utilisateur</h1>
-
-        <!-- Formulaire de Modification de l'Utilisateur -->
-        <div class=\"card p-4 mt-4 shadow-lg rounded\">
-            ";
-        // line 11
-        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 11, $this->source); })()), 'form_start');
+        yield "    <div class=\"container mt-5 pt-5\" style=\"margin-left: 250px;\">
+        <div class=\"row justify-content-center\">
+            <div class=\"col-md-8\">
+                <div class=\"card shadow-lg\">
+                    <div class=\"card-header bg-primary text-white text-center\">
+                        <h2>Modifier l'Utilisateur</h2>
+                    </div>
+                    <div class=\"card-body\">
+                        ";
+        // line 14
+        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 14, $this->source); })()), 'form_start');
         yield "
-                <!-- Champs du Formulaire -->
-                <div class=\"form-group mb-3\">
-                    <label for=\"prenom\" class=\"form-label\">Prénom</label>
-                    ";
-        // line 15
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 15, $this->source); })()), "prenom", [], "any", false, false, false, 15), 'widget', ["attr" => ["class" => "form-control"]]);
+                            <!-- Champs du Formulaire -->
+                            <div class=\"form-group mb-3\">
+                                <label for=\"prenom\" class=\"form-label\">Prénom</label>
+                                ";
+        // line 18
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 18, $this->source); })()), "prenom", [], "any", false, false, false, 18), 'widget', ["attr" => ["class" => "form-control"]]);
         yield "
-                </div>
+                            </div>
 
-                <div class=\"form-group mb-3\">
-                    <label for=\"nom\" class=\"form-label\">Nom</label>
-                    ";
-        // line 20
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 20, $this->source); })()), "nom", [], "any", false, false, false, 20), 'widget', ["attr" => ["class" => "form-control"]]);
+                            <div class=\"form-group mb-3\">
+                                <label for=\"nom\" class=\"form-label\">Nom</label>
+                                ";
+        // line 23
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 23, $this->source); })()), "nom", [], "any", false, false, false, 23), 'widget', ["attr" => ["class" => "form-control"]]);
         yield "
-                </div>
+                            </div>
 
-                <div class=\"form-group mb-3\">
-                    <label for=\"email\" class=\"form-label\">Email</label>
-                    ";
-        // line 25
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 25, $this->source); })()), "email", [], "any", false, false, false, 25), 'widget', ["attr" => ["class" => "form-control"]]);
+                            <div class=\"form-group mb-3\">
+                                <label for=\"email\" class=\"form-label\">Email</label>
+                                ";
+        // line 28
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 28, $this->source); })()), "email", [], "any", false, false, false, 28), 'widget', ["attr" => ["class" => "form-control"]]);
         yield "
-                </div>
+                            </div>
 
-                <div class=\"form-group mb-3\">
-                    <label for=\"telephone\" class=\"form-label\">Numéro de téléphone</label>
-                    ";
-        // line 30
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 30, $this->source); })()), "telephone", [], "any", false, false, false, 30), 'widget', ["attr" => ["class" => "form-control"]]);
+                            <div class=\"form-group mb-3\">
+                                <label for=\"telephone\" class=\"form-label\">Numéro de téléphone</label>
+                                ";
+        // line 33
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 33, $this->source); })()), "telephone", [], "any", false, false, false, 33), 'widget', ["attr" => ["class" => "form-control"]]);
         yield "
-                </div>
+                            </div>
 
-                <!-- Avatar Upload Section -->
-                <div class=\"form-group mb-4\">
+                            <!-- Avatar Upload Section -->
+                           <div class=\"form-group mb-4\">
                     <label for=\"avatar\" class=\"form-label\">Télécharger un Nouvel Avatar</label>
                     ";
-        // line 36
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 36, $this->source); })()), "avatar", [], "any", false, false, false, 36), 'widget', ["attr" => ["class" => "form-control-file", "style" => "width: 350px; margin-top: 10px;"]]);
+        // line 39
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 39, $this->source); })()), "avatar", [], "any", false, false, false, 39), 'widget', ["attr" => ["class" => "form-control-file", "style" => "width: 350px; margin-top: 10px;"]]);
         yield "
                 </div>
 
-                <!-- Bouton de Sauvegarde -->
-                <div class=\"text-center\">
-                    <button class=\"btn btn-success btn-lg w-75 mt-4\">Enregistrer les Modifications</button>
-                </div>
-            ";
-        // line 43
-        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 43, $this->source); })()), 'form_end');
+                            <!-- Bouton de Sauvegarde -->
+                            <div class=\"text-center mt-4\">
+                                <button class=\"btn btn-success btn-lg w-75\">Enregistrer les Modifications</button>
+                            </div>
+                        ";
+        // line 46
+        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 46, $this->source); })()), 'form_end');
         yield "
+                    </div>
+                </div>
+
+                <div class=\"text-center mt-4\">
+                    <a href=\"";
+        // line 51
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_users");
+        yield "\" class=\"btn btn-outline-secondary\">
+                        <i class=\"fas fa-arrow-left\"></i> Retour à la liste des utilisateurs
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 ";
@@ -169,7 +184,7 @@ class __TwigTemplate_75787d45fc258b97c85c70169dd12211 extends Template
         yield from [];
     }
 
-    // line 48
+    // line 60
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -182,13 +197,12 @@ class __TwigTemplate_75787d45fc258b97c85c70169dd12211 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
-        // line 49
+        // line 61
         yield "    <style>
         .container {
             width: 80%;
             margin: 0 auto;
             padding: 20px;
-            text-align: right;
         }
 
         .form-group {
@@ -226,8 +240,11 @@ class __TwigTemplate_75787d45fc258b97c85c70169dd12211 extends Template
             border: 1px solid #ddd;
         }
 
-        .card .text-center {
-            margin-bottom: 20px;
+        .card-header {
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
         }
 
         .card-body {
@@ -236,6 +253,10 @@ class __TwigTemplate_75787d45fc258b97c85c70169dd12211 extends Template
 
         .container h1 {
             margin-bottom: 20px;
+        }
+
+        .text-center {
+            margin-top: 20px;
         }
     </style>
 ";
@@ -269,7 +290,7 @@ class __TwigTemplate_75787d45fc258b97c85c70169dd12211 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  186 => 49,  173 => 48,  158 => 43,  148 => 36,  139 => 30,  131 => 25,  123 => 20,  115 => 15,  108 => 11,  101 => 6,  88 => 5,  65 => 3,  42 => 1,);
+        return array (  201 => 61,  188 => 60,  169 => 51,  161 => 46,  151 => 39,  142 => 33,  134 => 28,  126 => 23,  118 => 18,  111 => 14,  101 => 6,  88 => 5,  65 => 3,  42 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -279,44 +300,56 @@ class __TwigTemplate_75787d45fc258b97c85c70169dd12211 extends Template
 {% block title %}Modifier l'Utilisateur{% endblock %}
 
 {% block body %}
-    <div class=\"container\" style=\"margin-right: 50px;\">
-        <h1 class=\"text-right\">Modifier l'Utilisateur</h1>
+    <div class=\"container mt-5 pt-5\" style=\"margin-left: 250px;\">
+        <div class=\"row justify-content-center\">
+            <div class=\"col-md-8\">
+                <div class=\"card shadow-lg\">
+                    <div class=\"card-header bg-primary text-white text-center\">
+                        <h2>Modifier l'Utilisateur</h2>
+                    </div>
+                    <div class=\"card-body\">
+                        {{ form_start(form) }}
+                            <!-- Champs du Formulaire -->
+                            <div class=\"form-group mb-3\">
+                                <label for=\"prenom\" class=\"form-label\">Prénom</label>
+                                {{ form_widget(form.prenom, { 'attr': {'class': 'form-control'} }) }}
+                            </div>
 
-        <!-- Formulaire de Modification de l'Utilisateur -->
-        <div class=\"card p-4 mt-4 shadow-lg rounded\">
-            {{ form_start(form) }}
-                <!-- Champs du Formulaire -->
-                <div class=\"form-group mb-3\">
-                    <label for=\"prenom\" class=\"form-label\">Prénom</label>
-                    {{ form_widget(form.prenom, { 'attr': {'class': 'form-control'} }) }}
-                </div>
+                            <div class=\"form-group mb-3\">
+                                <label for=\"nom\" class=\"form-label\">Nom</label>
+                                {{ form_widget(form.nom, { 'attr': {'class': 'form-control'} }) }}
+                            </div>
 
-                <div class=\"form-group mb-3\">
-                    <label for=\"nom\" class=\"form-label\">Nom</label>
-                    {{ form_widget(form.nom, { 'attr': {'class': 'form-control'} }) }}
-                </div>
+                            <div class=\"form-group mb-3\">
+                                <label for=\"email\" class=\"form-label\">Email</label>
+                                {{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}
+                            </div>
 
-                <div class=\"form-group mb-3\">
-                    <label for=\"email\" class=\"form-label\">Email</label>
-                    {{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}
-                </div>
+                            <div class=\"form-group mb-3\">
+                                <label for=\"telephone\" class=\"form-label\">Numéro de téléphone</label>
+                                {{ form_widget(form.telephone, { 'attr': {'class': 'form-control'} }) }}
+                            </div>
 
-                <div class=\"form-group mb-3\">
-                    <label for=\"telephone\" class=\"form-label\">Numéro de téléphone</label>
-                    {{ form_widget(form.telephone, { 'attr': {'class': 'form-control'} }) }}
-                </div>
-
-                <!-- Avatar Upload Section -->
-                <div class=\"form-group mb-4\">
+                            <!-- Avatar Upload Section -->
+                           <div class=\"form-group mb-4\">
                     <label for=\"avatar\" class=\"form-label\">Télécharger un Nouvel Avatar</label>
                     {{ form_widget(form.avatar, { 'attr': {'class': 'form-control-file', 'style': 'width: 350px; margin-top: 10px;'} }) }}
                 </div>
 
-                <!-- Bouton de Sauvegarde -->
-                <div class=\"text-center\">
-                    <button class=\"btn btn-success btn-lg w-75 mt-4\">Enregistrer les Modifications</button>
+                            <!-- Bouton de Sauvegarde -->
+                            <div class=\"text-center mt-4\">
+                                <button class=\"btn btn-success btn-lg w-75\">Enregistrer les Modifications</button>
+                            </div>
+                        {{ form_end(form) }}
+                    </div>
                 </div>
-            {{ form_end(form) }}
+
+                <div class=\"text-center mt-4\">
+                    <a href=\"{{ path('admin_users') }}\" class=\"btn btn-outline-secondary\">
+                        <i class=\"fas fa-arrow-left\"></i> Retour à la liste des utilisateurs
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
@@ -327,7 +360,6 @@ class __TwigTemplate_75787d45fc258b97c85c70169dd12211 extends Template
             width: 80%;
             margin: 0 auto;
             padding: 20px;
-            text-align: right;
         }
 
         .form-group {
@@ -365,8 +397,11 @@ class __TwigTemplate_75787d45fc258b97c85c70169dd12211 extends Template
             border: 1px solid #ddd;
         }
 
-        .card .text-center {
-            margin-bottom: 20px;
+        .card-header {
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
         }
 
         .card-body {
@@ -375,6 +410,10 @@ class __TwigTemplate_75787d45fc258b97c85c70169dd12211 extends Template
 
         .container h1 {
             margin-bottom: 20px;
+        }
+
+        .text-center {
+            margin-top: 20px;
         }
     </style>
 {% endblock %}

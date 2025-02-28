@@ -312,17 +312,17 @@ class __TwigTemplate_e5fe74e02694a385e3e6221ab4cf6969 extends Template
             </div>
         </div>
     </div>
-
-    <!-- Bouton de retour à la liste -->
-    <div class=\"text-center mt-4\">
-        <a href=\"";
-        // line 114
+<!--back-->
+<div class=\"d-flex justify-content-center mt-4\">
+            <a href=\"";
+        // line 113
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_parcelle_proprietes_index");
-        yield "\" class=\"btn btn-secondary btn-lg shadow-sm\">
-            <i class=\"fas fa-arrow-left me-2\"></i>Retour à la liste
-        </a>
-    </div>
-
+        yield "\" class=\"btn btn-primary me-3\">
+                <i class=\"fa fa-arrow-left\"></i> Retour
+            </a>
+           
+        </div>
+   
     <!-- Formulaire de suppression -->
     <div class=\"text-center mt-3\">
         ";
@@ -363,7 +363,7 @@ class __TwigTemplate_e5fe74e02694a385e3e6221ab4cf6969 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  330 => 121,  320 => 114,  310 => 107,  297 => 97,  286 => 89,  282 => 88,  278 => 87,  272 => 84,  268 => 83,  264 => 82,  255 => 76,  251 => 75,  247 => 74,  241 => 71,  237 => 70,  233 => 69,  224 => 63,  220 => 62,  216 => 61,  210 => 58,  206 => 57,  202 => 56,  193 => 50,  189 => 49,  185 => 48,  179 => 45,  175 => 44,  171 => 43,  163 => 38,  159 => 37,  155 => 36,  148 => 32,  144 => 31,  140 => 30,  134 => 26,  126 => 22,  118 => 18,  116 => 17,  109 => 13,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  330 => 121,  319 => 113,  310 => 107,  297 => 97,  286 => 89,  282 => 88,  278 => 87,  272 => 84,  268 => 83,  264 => 82,  255 => 76,  251 => 75,  247 => 74,  241 => 71,  237 => 70,  233 => 69,  224 => 63,  220 => 62,  216 => 61,  210 => 58,  206 => 57,  202 => 56,  193 => 50,  189 => 49,  185 => 48,  179 => 45,  175 => 44,  171 => 43,  163 => 38,  159 => 37,  155 => 36,  148 => 32,  144 => 31,  140 => 30,  134 => 26,  126 => 22,  118 => 18,  116 => 17,  109 => 13,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -478,14 +478,14 @@ class __TwigTemplate_e5fe74e02694a385e3e6221ab4cf6969 extends Template
             </div>
         </div>
     </div>
-
-    <!-- Bouton de retour à la liste -->
-    <div class=\"text-center mt-4\">
-        <a href=\"{{ path('app_parcelle_proprietes_index') }}\" class=\"btn btn-secondary btn-lg shadow-sm\">
-            <i class=\"fas fa-arrow-left me-2\"></i>Retour à la liste
-        </a>
-    </div>
-
+<!--back-->
+<div class=\"d-flex justify-content-center mt-4\">
+            <a href=\"{{ path('app_parcelle_proprietes_index') }}\" class=\"btn btn-primary me-3\">
+                <i class=\"fa fa-arrow-left\"></i> Retour
+            </a>
+           
+        </div>
+   
     <!-- Formulaire de suppression -->
     <div class=\"text-center mt-3\">
         {{ include('parcelle_proprietes/_delete_form.html.twig') }}

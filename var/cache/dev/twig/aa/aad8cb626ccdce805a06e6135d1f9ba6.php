@@ -167,28 +167,48 @@ class __TwigTemplate_bf0baee9cd4f415019708fe9a85c348e extends Template
             // line 41
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materiellocation"], "prix", [], "any", false, false, false, 41), "html", null, true);
             yield " DT</p>
-                            <a href=\"#\" class=\"btn border border-secondary rounded-pill px-3 text-primary\">
+                            ";
+            // line 42
+            if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 42, $this->source); })()), "user", [], "any", false, false, false, 42)) {
+                // line 43
+                yield "                            <a href=\"#\" class=\"btn border border-secondary rounded-pill px-3 text-primary\">
                                 <i class=\"fa fa-shopping-bag me-2 text-primary\"></i> Louer maintenant
                             </a>
-                        </div>
+                            ";
+            }
+            // line 47
+            yield "                        </div>
 
                         <!-- Boutons \"Show\", \"Edit\" et \"Delete\" -->
-                        <div class=\"d-flex justify-content-between mt-3\">
-                            <a href=\"";
-            // line 49
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materiellocation_show", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["materiellocation"], "id", [], "any", false, false, false, 49)]), "html", null, true);
-            yield "\" 
-                               class=\"btn btn-info btn-sm\">Plus de détails</a>
-                            <a href=\"";
+<div class=\"d-flex flex-wrap gap-3 mt-3\">  
+    <a href=\"";
             // line 51
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materiellocation_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["materiellocation"], "id", [], "any", false, false, false, 51)]), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materiellocation_show", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["materiellocation"], "id", [], "any", false, false, false, 51)]), "html", null, true);
             yield "\" 
-                               class=\"btn btn-warning btn-sm\">Modifier</a>
-                               ";
-            // line 53
-            yield Twig\Extension\CoreExtension::include($this->env, $context, "materiellocation/_delete_form.html.twig");
-            yield "
-                        </div>
+       class=\"btn btn-info btn-sm text-white\">
+       <i class=\"fas fa-eye\"></i> Plus de détails
+    </a>
+
+    ";
+            // line 56
+            if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_AGRICULTEUR")) {
+                // line 57
+                yield "        <a href=\"";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materiellocation_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["materiellocation"], "id", [], "any", false, false, false, 57)]), "html", null, true);
+                yield "\" 
+           class=\"btn btn-warning btn-sm text-white\">
+           <i class=\"fas fa-edit\"></i> Modifier
+        </a>
+
+        ";
+                // line 62
+                yield Twig\Extension\CoreExtension::include($this->env, $context, "materiellocation/_delete_form.html.twig");
+                yield "
+    ";
+            }
+            // line 64
+            yield "</div>
+
                     </div>
                 </div>
             </div>
@@ -203,9 +223,9 @@ class __TwigTemplate_bf0baee9cd4f415019708fe9a85c348e extends Template
                 $context['loop']['last'] = 0 === $context['loop']['revindex0'];
             }
         }
-        // line 58
+        // line 69
         if (!$context['_iterated']) {
-            // line 59
+            // line 70
             yield "            <div class=\"col-12 text-center\">
                 <p>Aucun matériel disponible pour le moment.</p>
             </div>
@@ -214,7 +234,7 @@ class __TwigTemplate_bf0baee9cd4f415019708fe9a85c348e extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['materiellocation'], $context['_parent'], $context['_iterated'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 63
+        // line 74
         yield "    </div>
 </div>
 
@@ -222,16 +242,22 @@ class __TwigTemplate_bf0baee9cd4f415019708fe9a85c348e extends Template
 <a href=\"#\" class=\"btn btn-primary border-3 border-primary rounded-circle back-to-top\">
     <i class=\"fa fa-arrow-up\"></i>
 </a>
-
-<div class=\"d-flex justify-content-center mt-4\">
+";
+        // line 81
+        if (CoreExtension::inFilter("ROLE_AGRICULTEUR", CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 81, $this->source); })()), "user", [], "any", false, false, false, 81), "roles", [], "any", false, false, false, 81))) {
+            // line 82
+            yield "<div class=\"d-flex justify-content-center mt-4\">
     <a href=\"";
-        // line 72
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materiellocation_new");
-        yield "\" class=\"btn btn-success\" title=\"Ajouter un nouveau matériel\">
+            // line 83
+            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materiellocation_new");
+            yield "\" class=\"btn btn-success\" title=\"Ajouter un nouveau matériel\">
         <i class=\"fas fa-plus-circle\"></i> Ajouter un nouveau matériel
     </a>
 </div>
-
+";
+        }
+        // line 88
+        yield "
 <!-- Styles pour l'effet de zoom sur l'image -->
 <style>
     /* Conteneur de la carte */
@@ -295,7 +321,7 @@ class __TwigTemplate_bf0baee9cd4f415019708fe9a85c348e extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  229 => 72,  218 => 63,  209 => 59,  207 => 58,  189 => 53,  184 => 51,  179 => 49,  168 => 41,  162 => 38,  158 => 37,  150 => 32,  146 => 31,  136 => 23,  118 => 22,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  260 => 88,  252 => 83,  249 => 82,  247 => 81,  238 => 74,  229 => 70,  227 => 69,  210 => 64,  205 => 62,  196 => 57,  194 => 56,  186 => 51,  180 => 47,  174 => 43,  172 => 42,  168 => 41,  162 => 38,  158 => 37,  150 => 32,  146 => 31,  136 => 23,  118 => 22,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -341,19 +367,30 @@ class __TwigTemplate_bf0baee9cd4f415019708fe9a85c348e extends Template
 
                         <div class=\"d-flex justify-content-between align-items-center\">
                             <p class=\"text-dark fs-5 fw-bold mb-0\">{{ materiellocation.prix }} DT</p>
+                            {% if  app.user %}
                             <a href=\"#\" class=\"btn border border-secondary rounded-pill px-3 text-primary\">
                                 <i class=\"fa fa-shopping-bag me-2 text-primary\"></i> Louer maintenant
                             </a>
+                            {% endif %}
                         </div>
 
                         <!-- Boutons \"Show\", \"Edit\" et \"Delete\" -->
-                        <div class=\"d-flex justify-content-between mt-3\">
-                            <a href=\"{{ path('app_materiellocation_show', {'id': materiellocation.id}) }}\" 
-                               class=\"btn btn-info btn-sm\">Plus de détails</a>
-                            <a href=\"{{ path('app_materiellocation_edit', {'id': materiellocation.id}) }}\" 
-                               class=\"btn btn-warning btn-sm\">Modifier</a>
-                               {{ include('materiellocation/_delete_form.html.twig') }}
-                        </div>
+<div class=\"d-flex flex-wrap gap-3 mt-3\">  
+    <a href=\"{{ path('app_materiellocation_show', {'id': materiellocation.id}) }}\" 
+       class=\"btn btn-info btn-sm text-white\">
+       <i class=\"fas fa-eye\"></i> Plus de détails
+    </a>
+
+    {% if is_granted('ROLE_AGRICULTEUR') %}
+        <a href=\"{{ path('app_materiellocation_edit', {'id': materiellocation.id}) }}\" 
+           class=\"btn btn-warning btn-sm text-white\">
+           <i class=\"fas fa-edit\"></i> Modifier
+        </a>
+
+        {{ include('materiellocation/_delete_form.html.twig') }}
+    {% endif %}
+</div>
+
                     </div>
                 </div>
             </div>
@@ -369,12 +406,13 @@ class __TwigTemplate_bf0baee9cd4f415019708fe9a85c348e extends Template
 <a href=\"#\" class=\"btn btn-primary border-3 border-primary rounded-circle back-to-top\">
     <i class=\"fa fa-arrow-up\"></i>
 </a>
-
+{% if 'ROLE_AGRICULTEUR' in app.user.roles %}
 <div class=\"d-flex justify-content-center mt-4\">
     <a href=\"{{ path('app_materiellocation_new') }}\" class=\"btn btn-success\" title=\"Ajouter un nouveau matériel\">
         <i class=\"fas fa-plus-circle\"></i> Ajouter un nouveau matériel
     </a>
 </div>
+{% endif %}
 
 <!-- Styles pour l'effet de zoom sur l'image -->
 <style>

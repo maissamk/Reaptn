@@ -225,13 +225,20 @@ class __TwigTemplate_9f4d71831697773db4f5ce1b1a800f7b extends Template
                     ";
         // line 68
         yield "                    <button type=\"submit\" class=\"btn btn-success w-100 mt-3\">Enregistrer les Modifications</button>
+                      
 
                 ";
-        // line 70
-        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 70, $this->source); })()), 'form_end');
+        // line 71
+        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 71, $this->source); })()), 'form_end');
         yield "
+                
             </div>
+            <a href=\"";
+        // line 74
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_profile");
+        yield "\" class=\"btn btn-primary me-3\"><i class=\"fa fa-arrow-left\"></i>  Retour</a>
         </div>
+        
     </div>
 ";
         
@@ -264,7 +271,7 @@ class __TwigTemplate_9f4d71831697773db4f5ce1b1a800f7b extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  231 => 70,  227 => 68,  220 => 63,  215 => 61,  211 => 60,  208 => 59,  201 => 54,  196 => 52,  192 => 51,  189 => 50,  182 => 45,  177 => 43,  173 => 42,  170 => 41,  163 => 36,  158 => 34,  154 => 33,  151 => 32,  144 => 27,  139 => 25,  135 => 24,  132 => 23,  127 => 20,  123 => 18,  117 => 16,  111 => 14,  109 => 13,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  238 => 74,  232 => 71,  227 => 68,  220 => 63,  215 => 61,  211 => 60,  208 => 59,  201 => 54,  196 => 52,  192 => 51,  189 => 50,  182 => 45,  177 => 43,  173 => 42,  170 => 41,  163 => 36,  158 => 34,  154 => 33,  151 => 32,  144 => 27,  139 => 25,  135 => 24,  132 => 23,  127 => 20,  123 => 18,  117 => 16,  111 => 14,  109 => 13,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -337,10 +344,14 @@ class __TwigTemplate_9f4d71831697773db4f5ce1b1a800f7b extends Template
 
                     {# Submit Button #}
                     <button type=\"submit\" class=\"btn btn-success w-100 mt-3\">Enregistrer les Modifications</button>
+                      
 
                 {{ form_end(form) }}
+                
             </div>
+            <a href=\"{{ path('app_profile') }}\" class=\"btn btn-primary me-3\"><i class=\"fa fa-arrow-left\"></i>  Retour</a>
         </div>
+        
     </div>
 {% endblock %}
 ", "profile/edit.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\profile\\edit.html.twig");

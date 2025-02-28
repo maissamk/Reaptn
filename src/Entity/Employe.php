@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\EmployeRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -15,7 +16,7 @@ class Employe
     private ?int $id = null;
 
     #[ORM\Column(type: 'integer', nullable: false)]
-    #[Assert\NotBlank(message: "User Identifier cannot be blank.")]
+    
     #[Assert\Type(type: "integer", message: "User Identifier must be a number.")]
     private ?int $userIdentifier = null;
 
@@ -27,6 +28,23 @@ class Employe
     #[ORM\ManyToOne(inversedBy: 'employes')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Offre $offre = null;
+
+    #[ORM\Column(type: 'array', nullable: true)]
+    private ?array $dispo = []; 
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $conf = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $date_join = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $suggested = false;
+
+    public function __construct()
+    {
+    $this->date_join = new \DateTime(); // ✅ Sets default to the current date/time
+    }
 
     public function getId(): ?int
     {
@@ -64,5 +82,50 @@ class Employe
     {
         $this->offre = $offre;
         return $this;
+    }
+
+    public function getDispo(): ?array
+    {
+        return $this->dispo;
+    }
+
+    public function setDispo(?array $dispo): static
+    {
+        $this->dispo = $dispo;
+        return $this;
+    }
+
+    public function isConf(): ?bool
+    {
+        return $this->conf;
+    }
+
+    public function setConf(bool $conf): self
+    {
+        $this->conf = $conf;
+        return $this;
+    }
+
+    public function getDateJoin(): ?\DateTimeInterface
+    {
+        return $this->date_join;
+    }
+
+    public function setDateJoin(?\DateTimeInterface $date_join): self
+    {
+        $this->date_join = $date_join;
+
+        return $this;
+    }
+
+    public function setSuggested(bool $suggested): self
+    {
+        $this->suggested = $suggested;
+        return $this;
+    }
+
+    public function getSuggested(): bool
+    {
+        return $this->suggested ?? false;  
     }
 }

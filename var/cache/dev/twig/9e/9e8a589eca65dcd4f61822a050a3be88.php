@@ -105,12 +105,12 @@ class __TwigTemplate_4429c7b2dca9b88bec8cd02987dee051 extends Template
         yield "\" class=\"btn btn-success\">Ajouter une offre</a>
 
         <table class=\"table table-bordered mt-3\">
-            <thead>
+            <thead class=\"table-dark\">
                 <tr>
-                    <th>Titre</th>
-                    <th>Description</th>
-                    <th>Statut</th>
-                    <th>Actions</th>
+                    <th class=\"text-white\">Titre</th>
+                    <th class=\"text-white\">Description</th>
+                    <th class=\"text-white\">Statut</th>
+                    <th class=\"text-white\">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -219,12 +219,12 @@ class __TwigTemplate_4429c7b2dca9b88bec8cd02987dee051 extends Template
         <a href=\"{{ path('admin_offre_new') }}\" class=\"btn btn-success\">Ajouter une offre</a>
 
         <table class=\"table table-bordered mt-3\">
-            <thead>
+            <thead class=\"table-dark\">
                 <tr>
-                    <th>Titre</th>
-                    <th>Description</th>
-                    <th>Statut</th>
-                    <th>Actions</th>
+                    <th class=\"text-white\">Titre</th>
+                    <th class=\"text-white\">Description</th>
+                    <th class=\"text-white\">Statut</th>
+                    <th class=\"text-white\">Actions</th>
                 </tr>
             </thead>
             <tbody>

@@ -151,37 +151,44 @@ class __TwigTemplate_97b1728258c793effa47d35905554756 extends Template
             // line 32
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "prix", [], "any", false, false, false, 32), "html", null, true);
             yield " DT </p>
-                            <a href=\"";
-            // line 33
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_parcelle_proprietes_show", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "id", [], "any", false, false, false, 33)]), "html", null, true);
-            yield "\" class=\"btn btn-info btn-sm\" title=\"View Property\">Voir</a>
                         </div>
 
                         <p class=\"text-dark fs-5 fw-bold mb-2\">";
-            // line 36
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "status", [], "any", false, false, false, 36), "html", null, true);
+            // line 35
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "status", [], "any", false, false, false, 35), "html", null, true);
             yield " : Status Actuel</p>
                         <p class=\"text-dark fs-5 fw-bold mb-2\">";
-            // line 37
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "taille", [], "any", false, false, false, 37), "html", null, true);
+            // line 36
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "taille", [], "any", false, false, false, 36), "html", null, true);
             yield " (m²)</p>
 
                         <!-- Edit Button -->
-                        <div class=\"text-center mt-3\">
-                            <a href=\"";
-            // line 41
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_parcelle_proprietes_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "id", [], "any", false, false, false, 41)]), "html", null, true);
-            yield "\" class=\"btn btn-warning btn-sm w-100\" title=\"Edit Property\">Modifier</a>
-                        </div>
-                    </div>
+                        ";
+            // line 39
+            if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_AGRICULTEUR")) {
+                // line 40
+                yield "    <div class=\"text-center mt-3\">
+        <a href=\"";
+                // line 41
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_parcelle_proprietes_show", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "id", [], "any", false, false, false, 41)]), "html", null, true);
+                yield "\"  class=\"btn btn-info btn-sm text-white\" title=\"View Property\"><i class=\"fas fa-eye\"></i>Voir</a>
+        <a href=\"";
+                // line 42
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_parcelle_proprietes_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["parcelle_propriete"], "id", [], "any", false, false, false, 42)]), "html", null, true);
+                yield "\" class=\"btn btn-warning btn-sm text-white\" title=\"Edit Property\"><i class=\"fas fa-edit\"></i> Modifier</a>
+    </div>
+";
+            }
+            // line 45
+            yield "                    </div>
                 </div>
             </div>
         ";
             $context['_iterated'] = true;
         }
-        // line 46
+        // line 48
         if (!$context['_iterated']) {
-            // line 47
+            // line 49
             yield "            <div class=\"col-12 text-center\">
                 <p>Aucun enregistrement trouvé</p>
             </div>
@@ -190,23 +197,27 @@ class __TwigTemplate_97b1728258c793effa47d35905554756 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['parcelle_propriete'], $context['_parent'], $context['_iterated']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 51
-        yield "
-        <div class=\"d-flex justify-content-center mt-3\">
-            <a href=\"";
         // line 53
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_parcelle_proprietes_new");
-        yield "\" class=\"btn btn-success me-2\" title=\"Create New Property\">
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_AGRICULTEUR")) {
+            // line 54
+            yield "        <div class=\"d-flex justify-content-center mt-3\">
+            <a href=\"";
+            // line 55
+            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_parcelle_proprietes_new");
+            yield "\" class=\"btn btn-success me-2\" title=\"Create New Property\">
                 <i class=\"fas fa-plus-circle\"></i> Créer une nouvelle propriété
             </a>
             <a href=\"";
-        // line 56
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_contrat_new");
-        yield "\" class=\"btn btn-primary\" title=\"Create New Contract\">
+            // line 58
+            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_contrat_index");
+            yield "\" class=\"btn btn-success me-2\" title=\"Create New Contract\">
                 <i class=\"fas fa-file-contract\"></i> Créer un contrat
             </a>
         </div>
-    </div>
+        ";
+        }
+        // line 63
+        yield "    </div>
 </div>
 
 <style>
@@ -250,7 +261,7 @@ class __TwigTemplate_97b1728258c793effa47d35905554756 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  204 => 56,  198 => 53,  194 => 51,  185 => 47,  183 => 46,  173 => 41,  166 => 37,  162 => 36,  156 => 33,  152 => 32,  145 => 28,  141 => 27,  137 => 26,  131 => 23,  123 => 18,  119 => 17,  113 => 13,  108 => 12,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  220 => 63,  212 => 58,  206 => 55,  203 => 54,  201 => 53,  192 => 49,  190 => 48,  183 => 45,  177 => 42,  173 => 41,  170 => 40,  168 => 39,  162 => 36,  158 => 35,  152 => 32,  145 => 28,  141 => 27,  137 => 26,  131 => 23,  123 => 18,  119 => 17,  113 => 13,  108 => 12,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -287,16 +298,18 @@ class __TwigTemplate_97b1728258c793effa47d35905554756 extends Template
 
                         <div class=\"d-flex justify-content-between align-items-center\">
                             <p class=\"text-dark fs-5 fw-bold mb-0\">{{ parcelle_propriete.prix }} DT </p>
-                            <a href=\"{{ path('app_parcelle_proprietes_show', {'id': parcelle_propriete.id}) }}\" class=\"btn btn-info btn-sm\" title=\"View Property\">Voir</a>
                         </div>
 
                         <p class=\"text-dark fs-5 fw-bold mb-2\">{{ parcelle_propriete.status }} : Status Actuel</p>
                         <p class=\"text-dark fs-5 fw-bold mb-2\">{{ parcelle_propriete.taille }} (m²)</p>
 
                         <!-- Edit Button -->
-                        <div class=\"text-center mt-3\">
-                            <a href=\"{{ path('app_parcelle_proprietes_edit', {'id': parcelle_propriete.id}) }}\" class=\"btn btn-warning btn-sm w-100\" title=\"Edit Property\">Modifier</a>
-                        </div>
+                        {% if  is_granted('ROLE_AGRICULTEUR') %}
+    <div class=\"text-center mt-3\">
+        <a href=\"{{ path('app_parcelle_proprietes_show', {'id': parcelle_propriete.id}) }}\"  class=\"btn btn-info btn-sm text-white\" title=\"View Property\"><i class=\"fas fa-eye\"></i>Voir</a>
+        <a href=\"{{ path('app_parcelle_proprietes_edit', {'id': parcelle_propriete.id}) }}\" class=\"btn btn-warning btn-sm text-white\" title=\"Edit Property\"><i class=\"fas fa-edit\"></i> Modifier</a>
+    </div>
+{% endif %}
                     </div>
                 </div>
             </div>
@@ -305,15 +318,16 @@ class __TwigTemplate_97b1728258c793effa47d35905554756 extends Template
                 <p>Aucun enregistrement trouvé</p>
             </div>
         {% endfor %}
-
+{% if  is_granted('ROLE_AGRICULTEUR') %}
         <div class=\"d-flex justify-content-center mt-3\">
             <a href=\"{{ path('app_parcelle_proprietes_new') }}\" class=\"btn btn-success me-2\" title=\"Create New Property\">
                 <i class=\"fas fa-plus-circle\"></i> Créer une nouvelle propriété
             </a>
-            <a href=\"{{ path('app_contrat_new') }}\" class=\"btn btn-primary\" title=\"Create New Contract\">
+            <a href=\"{{ path('app_contrat_index') }}\" class=\"btn btn-success me-2\" title=\"Create New Contract\">
                 <i class=\"fas fa-file-contract\"></i> Créer un contrat
             </a>
         </div>
+        {% endif %}
     </div>
 </div>
 

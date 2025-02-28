@@ -103,13 +103,13 @@ class __TwigTemplate_edebeceae20c859816b8873f5500203f extends Template
     
 
     <table class=\"table\">
-        <thead>
+        <thead class=\"table-dark\">
             <tr>
-                <th>ID</th>
-                <th>User Identifier</th>
-                <th>Competence</th>
-                <th>Offer</th>
-                <th>Actions</th>
+                <th class=\"text-white\">ID</th>
+                <th class=\"text-white\">User Identifier</th>
+                <th class=\"text-white\">Competence</th>
+                <th class=\"text-white\">Offer</th>
+                <th class=\"text-white\">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -212,13 +212,13 @@ class __TwigTemplate_edebeceae20c859816b8873f5500203f extends Template
     
 
     <table class=\"table\">
-        <thead>
+        <thead class=\"table-dark\">
             <tr>
-                <th>ID</th>
-                <th>User Identifier</th>
-                <th>Competence</th>
-                <th>Offer</th>
-                <th>Actions</th>
+                <th class=\"text-white\">ID</th>
+                <th class=\"text-white\">User Identifier</th>
+                <th class=\"text-white\">Competence</th>
+                <th class=\"text-white\">Offer</th>
+                <th class=\"text-white\">Actions</th>
             </tr>
         </thead>
         <tbody>

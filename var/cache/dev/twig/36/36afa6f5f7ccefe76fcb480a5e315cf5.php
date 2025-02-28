@@ -113,24 +113,27 @@ class __TwigTemplate_4abd1906c06944c4321fcfc3fd3ad4d6 extends Template
         yield Twig\Extension\CoreExtension::include($this->env, $context, "contrat/_form.html.twig", ["button_label" => "Update"]);
         yield "
     </div>
-
-    <div class=\"text-center mt-3\">
-        <a href=\"";
-        // line 18
+<div class=\"d-flex justify-content-center mt-4\">
+            <a href=\"";
+        // line 17
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_contrat_index");
-        yield "\" class=\"btn btn-secondary\">Back to List</a>
-    </div>
+        yield "\" class=\"btn btn-primary me-3\">
+                <i class=\"fa fa-arrow-left\"></i> Retour
+            </a>
+           
+        </div>
 
+    
     <div class=\"text-center mt-3\">
         ";
-        // line 22
+        // line 25
         yield Twig\Extension\CoreExtension::include($this->env, $context, "contrat/_delete_form.html.twig");
         yield "
     </div>
 </div>
 ";
-        // line 25
-        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 25, $this->source); })()), 'form_end');
+        // line 28
+        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 28, $this->source); })()), 'form_end');
         yield " 
      
 ";
@@ -164,7 +167,7 @@ class __TwigTemplate_4abd1906c06944c4321fcfc3fd3ad4d6 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  133 => 25,  127 => 22,  120 => 18,  113 => 14,  107 => 11,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  136 => 28,  130 => 25,  119 => 17,  113 => 14,  107 => 11,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -184,11 +187,14 @@ class __TwigTemplate_4abd1906c06944c4321fcfc3fd3ad4d6 extends Template
     <div class=\"card p-4 mt-3\">
         {{ include('contrat/_form.html.twig', {'button_label': 'Update'}) }}
     </div>
+<div class=\"d-flex justify-content-center mt-4\">
+            <a href=\"{{ path('app_contrat_index') }}\" class=\"btn btn-primary me-3\">
+                <i class=\"fa fa-arrow-left\"></i> Retour
+            </a>
+           
+        </div>
 
-    <div class=\"text-center mt-3\">
-        <a href=\"{{ path('app_contrat_index') }}\" class=\"btn btn-secondary\">Back to List</a>
-    </div>
-
+    
     <div class=\"text-center mt-3\">
         {{ include('contrat/_delete_form.html.twig') }}
     </div>

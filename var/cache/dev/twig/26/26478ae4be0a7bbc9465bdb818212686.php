@@ -104,12 +104,12 @@ class __TwigTemplate_1455865987e9598a8a046a1c78aa2c1a extends Template
         <table class=\"table table-striped table-bordered\">
             <thead class=\"table-dark\">
                 <tr>
-                    <th>Image</th>
-                    <th>Nom</th>
-                    <th>Prix (DT/jour)</th>
-                    <th>Description</th>
-                    <th>Disponibilité</th>
-                    <th>Actions</th>
+                    <th class=\"text-white\">Image</th>
+                    <th class=\"text-white\">Nom</th>
+                    <th class=\"text-white\">Prix (DT/jour)</th>
+                    <th class=\"text-white\">Description</th>
+                    <th class=\"text-white\">Disponibilité</th>
+                    <th class=\"text-white\">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -290,12 +290,12 @@ class __TwigTemplate_1455865987e9598a8a046a1c78aa2c1a extends Template
         <table class=\"table table-striped table-bordered\">
             <thead class=\"table-dark\">
                 <tr>
-                    <th>Image</th>
-                    <th>Nom</th>
-                    <th>Prix (DT/jour)</th>
-                    <th>Description</th>
-                    <th>Disponibilité</th>
-                    <th>Actions</th>
+                    <th class=\"text-white\">Image</th>
+                    <th class=\"text-white\">Nom</th>
+                    <th class=\"text-white\">Prix (DT/jour)</th>
+                    <th class=\"text-white\">Description</th>
+                    <th class=\"text-white\">Disponibilité</th>
+                    <th class=\"text-white\">Actions</th>
                 </tr>
             </thead>
             <tbody>

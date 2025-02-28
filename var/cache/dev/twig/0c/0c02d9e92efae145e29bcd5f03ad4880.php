@@ -127,6 +127,7 @@ class __TwigTemplate_b6cdc92a28cba10bcfff52f82a69f592 extends Template
             </div>
         </div>
     </div>
+</div>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -188,7 +189,7 @@ class __TwigTemplate_b6cdc92a28cba10bcfff52f82a69f592 extends Template
             </div>
         </div>
     </div>
-{% endblock %}
-", "admin/offre/new_back.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\admin\\offre\\new_back.html.twig");
+</div>
+{% endblock %}", "admin/offre/new_back.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\admin\\offre\\new_back.html.twig");
     }
 }

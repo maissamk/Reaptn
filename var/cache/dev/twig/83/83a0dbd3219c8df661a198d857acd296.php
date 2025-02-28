@@ -97,44 +97,99 @@ class __TwigTemplate_e69d5a26c2409ba7bd783010e8bcc949 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        yield "    <div class=\"container mt-5\" style=\"width: 70%; margin-left: 27%; padding-top: 50px;\">
-        <h1>Détails de l'Offre</h1>
-
-        <p><strong>Titre :</strong> ";
-        // line 9
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["offre"]) || array_key_exists("offre", $context) ? $context["offre"] : (function () { throw new RuntimeError('Variable "offre" does not exist.', 9, $this->source); })()), "titre", [], "any", false, false, false, 9), "html", null, true);
-        yield "</p>
-        <p><strong>Description :</strong> ";
-        // line 10
-        yield ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["offre"]) || array_key_exists("offre", $context) ? $context["offre"] : (function () { throw new RuntimeError('Variable "offre" does not exist.', 10, $this->source); })()), "descr", [], "any", false, false, false, 10)) ? ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["offre"]) || array_key_exists("offre", $context) ? $context["offre"] : (function () { throw new RuntimeError('Variable "offre" does not exist.', 10, $this->source); })()), "descr", [], "any", false, false, false, 10), "html", null, true)) : ("Aucune description"));
-        yield "</p>
-        <p><strong>Statut :</strong> ";
-        // line 11
-        yield ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["offre"]) || array_key_exists("offre", $context) ? $context["offre"] : (function () { throw new RuntimeError('Variable "offre" does not exist.', 11, $this->source); })()), "statut", [], "any", false, false, false, 11)) ? ("Active") : ("Inactive"));
-        yield "</p>
-        <p><strong>Compétences :</strong> ";
-        // line 12
-        yield ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["offre"]) || array_key_exists("offre", $context) ? $context["offre"] : (function () { throw new RuntimeError('Variable "offre" does not exist.', 12, $this->source); })()), "comp", [], "any", false, false, false, 12)) ? ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["offre"]) || array_key_exists("offre", $context) ? $context["offre"] : (function () { throw new RuntimeError('Variable "offre" does not exist.', 12, $this->source); })()), "comp", [], "any", false, false, false, 12), "html", null, true)) : ("Aucune compétence"));
-        yield "</p>
-        <p><strong>Identifiant A :</strong> ";
+        yield "<div class=\"container d-flex justify-content-center align-items-center\" style=\"min-height: 100vh;\">
+    <div class=\"card shadow-sm p-4 rounded\" style=\"max-width: 600px; width: 100%;\">
+        <h2 class=\"text-primary text-center\">Détails de l'Offre</h2>
+        <table class=\"table table-hover\">
+            <tbody>
+                <tr>
+                    <th>Titre</th>
+                    <td>";
         // line 13
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["offre"]) || array_key_exists("offre", $context) ? $context["offre"] : (function () { throw new RuntimeError('Variable "offre" does not exist.', 13, $this->source); })()), "ida", [], "any", false, false, false, 13), "html", null, true);
-        yield "</p>
-        <p><strong>Identifiant E :</strong> ";
-        // line 14
-        yield ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["offre"]) || array_key_exists("offre", $context) ? $context["offre"] : (function () { throw new RuntimeError('Variable "offre" does not exist.', 14, $this->source); })()), "ide", [], "any", false, false, false, 14)) ? ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["offre"]) || array_key_exists("offre", $context) ? $context["offre"] : (function () { throw new RuntimeError('Variable "offre" does not exist.', 14, $this->source); })()), "ide", [], "any", false, false, false, 14), "html", null, true)) : ("Non défini"));
-        yield "</p>
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["offre"]) || array_key_exists("offre", $context) ? $context["offre"] : (function () { throw new RuntimeError('Variable "offre" does not exist.', 13, $this->source); })()), "titre", [], "any", false, false, false, 13), "html", null, true);
+        yield "</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>";
+        // line 17
+        yield ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["offre"]) || array_key_exists("offre", $context) ? $context["offre"] : (function () { throw new RuntimeError('Variable "offre" does not exist.', 17, $this->source); })()), "descr", [], "any", false, false, false, 17)) ? ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["offre"]) || array_key_exists("offre", $context) ? $context["offre"] : (function () { throw new RuntimeError('Variable "offre" does not exist.', 17, $this->source); })()), "descr", [], "any", false, false, false, 17), "html", null, true)) : ("Aucune description"));
+        yield "</td>
+                </tr>
+                <tr>
+                    <th>Statut</th>
+                    <td>
+                        <span class=\"badge ";
+        // line 22
+        if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["offre"]) || array_key_exists("offre", $context) ? $context["offre"] : (function () { throw new RuntimeError('Variable "offre" does not exist.', 22, $this->source); })()), "statut", [], "any", false, false, false, 22)) {
+            yield "bg-success";
+        } else {
+            yield "bg-danger";
+        }
+        yield "\">
+                            ";
+        // line 23
+        if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["offre"]) || array_key_exists("offre", $context) ? $context["offre"] : (function () { throw new RuntimeError('Variable "offre" does not exist.', 23, $this->source); })()), "statut", [], "any", false, false, false, 23)) {
+            yield " Active ";
+        } else {
+            yield " Inactive ";
+        }
+        // line 24
+        yield "                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Compétences</th>
+                    <td>";
+        // line 29
+        yield ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["offre"]) || array_key_exists("offre", $context) ? $context["offre"] : (function () { throw new RuntimeError('Variable "offre" does not exist.', 29, $this->source); })()), "comp", [], "any", false, false, false, 29)) ? ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["offre"]) || array_key_exists("offre", $context) ? $context["offre"] : (function () { throw new RuntimeError('Variable "offre" does not exist.', 29, $this->source); })()), "comp", [], "any", false, false, false, 29), "html", null, true)) : ("Aucune compétence"));
+        yield "</td>
+                </tr>
+                <tr>
+                    <th>Identifiant A</th>
+                    <td>";
+        // line 33
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["offre"]) || array_key_exists("offre", $context) ? $context["offre"] : (function () { throw new RuntimeError('Variable "offre" does not exist.', 33, $this->source); })()), "ida", [], "any", false, false, false, 33), "html", null, true);
+        yield "</td>
+                </tr>
+                <tr>
+                    <th>Identifiant E</th>
+                    <td>";
+        // line 37
+        yield ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["offre"]) || array_key_exists("offre", $context) ? $context["offre"] : (function () { throw new RuntimeError('Variable "offre" does not exist.', 37, $this->source); })()), "ide", [], "any", false, false, false, 37)) ? ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["offre"]) || array_key_exists("offre", $context) ? $context["offre"] : (function () { throw new RuntimeError('Variable "offre" does not exist.', 37, $this->source); })()), "ide", [], "any", false, false, false, 37), "html", null, true)) : ("Non défini"));
+        yield "</td>
+                </tr>
+            </tbody>
+        </table>
 
-        <a href=\"";
-        // line 16
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_offre_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["offre"]) || array_key_exists("offre", $context) ? $context["offre"] : (function () { throw new RuntimeError('Variable "offre" does not exist.', 16, $this->source); })()), "id", [], "any", false, false, false, 16)]), "html", null, true);
-        yield "\" class=\"btn btn-warning\">Modifier</a>
-        ";
-        // line 18
-        yield "        <a href=\"";
+        <div class=\"d-flex justify-content-between mt-4\">
+            <a href=\"";
+        // line 43
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_offre_index");
-        yield "\" class=\"btn btn-secondary\">Retour</a>
+        yield "\" class=\"btn btn-success\" style=\"background-color: #8CC63F; border: none;\">
+                <i class=\"fas fa-arrow-left\"></i> Retour
+            </a>
+            <a href=\"";
+        // line 46
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_offre_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["offre"]) || array_key_exists("offre", $context) ? $context["offre"] : (function () { throw new RuntimeError('Variable "offre" does not exist.', 46, $this->source); })()), "id", [], "any", false, false, false, 46)]), "html", null, true);
+        yield "\" class=\"btn btn-warning\">
+                <i class=\"fas fa-edit\"></i> Modifier
+            </a>
+        </div>
     </div>
+</div>
+
+<style>
+    .table th {
+        width: 30%;
+        background-color: #f8f9fa;
+    }
+
+    .btn-success {
+        font-weight: bold;
+        color: white;
+    }
+</style>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -166,7 +221,7 @@ class __TwigTemplate_e69d5a26c2409ba7bd783010e8bcc949 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  134 => 18,  130 => 16,  125 => 14,  121 => 13,  117 => 12,  113 => 11,  109 => 10,  105 => 9,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  174 => 46,  168 => 43,  159 => 37,  152 => 33,  145 => 29,  138 => 24,  132 => 23,  124 => 22,  116 => 17,  109 => 13,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -176,21 +231,64 @@ class __TwigTemplate_e69d5a26c2409ba7bd783010e8bcc949 extends Template
 {% block title %}Détails de l'Offre{% endblock %}
 
 {% block body %}
-    <div class=\"container mt-5\" style=\"width: 70%; margin-left: 27%; padding-top: 50px;\">
-        <h1>Détails de l'Offre</h1>
+<div class=\"container d-flex justify-content-center align-items-center\" style=\"min-height: 100vh;\">
+    <div class=\"card shadow-sm p-4 rounded\" style=\"max-width: 600px; width: 100%;\">
+        <h2 class=\"text-primary text-center\">Détails de l'Offre</h2>
+        <table class=\"table table-hover\">
+            <tbody>
+                <tr>
+                    <th>Titre</th>
+                    <td>{{ offre.titre }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ offre.descr ? offre.descr : 'Aucune description' }}</td>
+                </tr>
+                <tr>
+                    <th>Statut</th>
+                    <td>
+                        <span class=\"badge {% if offre.statut %}bg-success{% else %}bg-danger{% endif %}\">
+                            {% if offre.statut %} Active {% else %} Inactive {% endif %}
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Compétences</th>
+                    <td>{{ offre.comp ? offre.comp : 'Aucune compétence' }}</td>
+                </tr>
+                <tr>
+                    <th>Identifiant A</th>
+                    <td>{{ offre.ida }}</td>
+                </tr>
+                <tr>
+                    <th>Identifiant E</th>
+                    <td>{{ offre.ide ? offre.ide : 'Non défini' }}</td>
+                </tr>
+            </tbody>
+        </table>
 
-        <p><strong>Titre :</strong> {{ offre.titre }}</p>
-        <p><strong>Description :</strong> {{ offre.descr ? offre.descr : 'Aucune description' }}</p>
-        <p><strong>Statut :</strong> {{ offre.statut ? 'Active' : 'Inactive' }}</p>
-        <p><strong>Compétences :</strong> {{ offre.comp ? offre.comp : 'Aucune compétence' }}</p>
-        <p><strong>Identifiant A :</strong> {{ offre.ida }}</p>
-        <p><strong>Identifiant E :</strong> {{ offre.ide ? offre.ide : 'Non défini' }}</p>
-
-        <a href=\"{{ path('admin_offre_edit', {id: offre.id}) }}\" class=\"btn btn-warning\">Modifier</a>
-        {#{% include 'admin/_delete_back.html.twig' with { 'delete_path': 'admin_offre_delete' } %}#}
-        <a href=\"{{ path('admin_offre_index') }}\" class=\"btn btn-secondary\">Retour</a>
+        <div class=\"d-flex justify-content-between mt-4\">
+            <a href=\"{{ path('admin_offre_index') }}\" class=\"btn btn-success\" style=\"background-color: #8CC63F; border: none;\">
+                <i class=\"fas fa-arrow-left\"></i> Retour
+            </a>
+            <a href=\"{{ path('admin_offre_edit', {id: offre.id}) }}\" class=\"btn btn-warning\">
+                <i class=\"fas fa-edit\"></i> Modifier
+            </a>
+        </div>
     </div>
-{% endblock %}
-", "admin/offre/show_back.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\admin\\offre\\show_back.html.twig");
+</div>
+
+<style>
+    .table th {
+        width: 30%;
+        background-color: #f8f9fa;
+    }
+
+    .btn-success {
+        font-weight: bold;
+        color: white;
+    }
+</style>
+{% endblock %}", "admin/offre/show_back.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\admin\\offre\\show_back.html.twig");
     }
 }

@@ -98,97 +98,98 @@ class __TwigTemplate_25d1dae5ddbe8245f2558a8d5cadc2b5 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        yield "    <div class=\"container\" style=\"margin-right: 50px;\">
+        yield "    <div class=\"container\">
         <h1 class=\"text-right\">Tous les utilisateurs</h1>
 
-        <table class=\"table table-bordered table-striped\">
-            <thead>
-                <tr>
-                    <th>Avatar</th>  <!-- New column for avatars -->
-                    <th>ID</th>
-                    <th>Email</th>
-                    <th>Nom</th>  ";
-        // line 16
-        yield "                    <th>Prénom</th>  ";
-        // line 17
-        yield "                    <th>Téléphone</th>  ";
-        // line 18
-        yield "                    <th>Rôles</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                ";
-        // line 23
+        <div class=\"row justify-content-end\"> <!-- Push content to the right -->
+            <div class=\"col-lg-10 col-md-12\"> <!-- Adjust width to avoid touching sidebar -->
+                <table class=\"table table-bordered table-striped\">
+                    <thead>
+                        <tr>
+                            <th>Avatar</th>
+                            <th>ID</th>
+                            <th>Email</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Téléphone</th>
+                            <th>Rôles</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ";
+        // line 25
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["users"]) || array_key_exists("users", $context) ? $context["users"] : (function () { throw new RuntimeError('Variable "users" does not exist.', 23, $this->source); })()));
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["users"]) || array_key_exists("users", $context) ? $context["users"] : (function () { throw new RuntimeError('Variable "users" does not exist.', 25, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["user"]) {
-            // line 24
-            yield "                    <tr>
-                        <!-- Display user avatar -->
-                        <td>
-                            ";
-            // line 27
-            if (CoreExtension::getAttribute($this->env, $this->source, $context["user"], "avatar", [], "any", false, false, false, 27)) {
-                // line 28
-                yield "                                <img src=\"";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/avatars/" . CoreExtension::getAttribute($this->env, $this->source, $context["user"], "avatar", [], "any", false, false, false, 28))), "html", null, true);
+            // line 26
+            yield "                            <tr>
+                                <td>
+                                    ";
+            // line 28
+            if (CoreExtension::getAttribute($this->env, $this->source, $context["user"], "avatar", [], "any", false, false, false, 28)) {
+                // line 29
+                yield "                                        <img src=\"";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/avatars/" . CoreExtension::getAttribute($this->env, $this->source, $context["user"], "avatar", [], "any", false, false, false, 29))), "html", null, true);
                 yield "\" width=\"50\" height=\"50\" class=\"rounded-circle\" alt=\"Avatar\">
-                            ";
+                                    ";
             } else {
-                // line 30
-                yield "                                <img src=\"";
+                // line 31
+                yield "                                        <img src=\"";
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/default-avatar.png"), "html", null, true);
                 yield "\" width=\"50\" height=\"50\" class=\"rounded-circle\" alt=\"Default Avatar\">
-                            ";
+                                    ";
             }
-            // line 32
-            yield "                        </td>
-                        <td>";
             // line 33
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 33), "html", null, true);
-            yield "</td>
-                        <td>";
+            yield "                                </td>
+                                <td>";
             // line 34
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "email", [], "any", false, false, false, 34), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 34), "html", null, true);
             yield "</td>
-                        <td>";
+                                <td>";
             // line 35
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "nom", [], "any", false, false, false, 35), "html", null, true);
-            yield "</td>  ";
-            // line 36
-            yield "                        <td>";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "prenom", [], "any", false, false, false, 36), "html", null, true);
-            yield "</td>  ";
-            // line 37
-            yield "                        <td>";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "telephone", [], "any", false, false, false, 37), "html", null, true);
-            yield "</td>  ";
-            // line 38
-            yield "                        <td>";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::join(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "roles", [], "any", false, false, false, 38), ", "), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "email", [], "any", false, false, false, 35), "html", null, true);
             yield "</td>
-                        <td>
-                            <a href=\"";
-            // line 40
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_user_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 40)]), "html", null, true);
-            yield "\">Modifier</a> |
-                            <a href=\"";
-            // line 41
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_user_delete", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 41)]), "html", null, true);
-            yield "\" onclick=\"return confirm('Êtes-vous sûr ?')\">Supprimer</a>
-                        </td>
-                    </tr>
-                ";
+                                <td>";
+            // line 36
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "nom", [], "any", false, false, false, 36), "html", null, true);
+            yield "</td>
+                                <td>";
+            // line 37
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "prenom", [], "any", false, false, false, 37), "html", null, true);
+            yield "</td>
+                                <td>";
+            // line 38
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "telephone", [], "any", false, false, false, 38), "html", null, true);
+            yield "</td>
+                                <td>";
+            // line 39
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::join(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "roles", [], "any", false, false, false, 39), ", "), "html", null, true);
+            yield "</td>
+                                <td>
+                                    <div class=\"d-flex\">
+                                        <a href=\"";
+            // line 42
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_user_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 42)]), "html", null, true);
+            yield "\" class=\"btn btn-warning btn-sm mr-2\">Modifier</a>
+                                        <a href=\"";
+            // line 43
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_user_delete", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 43)]), "html", null, true);
+            yield "\" class=\"btn btn-danger btn-sm\" onclick=\"return confirm('Êtes-vous sûr ?')\">Supprimer</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['user'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 45
-        yield "            </tbody>
-        </table>
+        // line 48
+        yield "                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -199,7 +200,7 @@ class __TwigTemplate_25d1dae5ddbe8245f2558a8d5cadc2b5 extends Template
         yield from [];
     }
 
-    // line 51
+    // line 55
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -212,18 +213,10 @@ class __TwigTemplate_25d1dae5ddbe8245f2558a8d5cadc2b5 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
-        // line 52
+        // line 56
         yield "    <style>
         .container {
-            width: 80%;
-            margin: 0 auto;
             padding: 20px;
-            text-align: right;
-        }
-
-        .table {
-            width: 100%;
-            border-collapse: collapse;
         }
 
         .table th, .table td {
@@ -240,16 +233,16 @@ class __TwigTemplate_25d1dae5ddbe8245f2558a8d5cadc2b5 extends Template
             background-color: #f9f9f9;
         }
 
-        .text-right {
-            text-align: right;
-        }
-
         .container h1 {
             margin-bottom: 20px;
         }
 
         .table td img {
             border-radius: 50%;
+        }
+
+        .d-flex a {
+            margin-right: 10px; /* Optional, in case you need more space between the buttons */
         }
     </style>
 ";
@@ -283,7 +276,7 @@ class __TwigTemplate_25d1dae5ddbe8245f2558a8d5cadc2b5 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  216 => 52,  203 => 51,  188 => 45,  178 => 41,  174 => 40,  168 => 38,  164 => 37,  160 => 36,  157 => 35,  153 => 34,  149 => 33,  146 => 32,  140 => 30,  134 => 28,  132 => 27,  127 => 24,  123 => 23,  116 => 18,  114 => 17,  112 => 16,  101 => 6,  88 => 5,  65 => 3,  42 => 1,);
+        return array (  217 => 56,  204 => 55,  188 => 48,  177 => 43,  173 => 42,  167 => 39,  163 => 38,  159 => 37,  155 => 36,  151 => 35,  147 => 34,  144 => 33,  138 => 31,  132 => 29,  130 => 28,  126 => 26,  122 => 25,  101 => 6,  88 => 5,  65 => 3,  42 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -293,63 +286,59 @@ class __TwigTemplate_25d1dae5ddbe8245f2558a8d5cadc2b5 extends Template
 {% block title %}Tous les utilisateurs{% endblock %}
 
 {% block body %}
-    <div class=\"container\" style=\"margin-right: 50px;\">
+    <div class=\"container\">
         <h1 class=\"text-right\">Tous les utilisateurs</h1>
 
-        <table class=\"table table-bordered table-striped\">
-            <thead>
-                <tr>
-                    <th>Avatar</th>  <!-- New column for avatars -->
-                    <th>ID</th>
-                    <th>Email</th>
-                    <th>Nom</th>  {# Last name #}
-                    <th>Prénom</th>  {# First name #}
-                    <th>Téléphone</th>  {# Phone #}
-                    <th>Rôles</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for user in users %}
-                    <tr>
-                        <!-- Display user avatar -->
-                        <td>
-                            {% if user.avatar %}
-                                <img src=\"{{ asset('uploads/avatars/' ~ user.avatar) }}\" width=\"50\" height=\"50\" class=\"rounded-circle\" alt=\"Avatar\">
-                            {% else %}
-                                <img src=\"{{ asset('images/default-avatar.png') }}\" width=\"50\" height=\"50\" class=\"rounded-circle\" alt=\"Default Avatar\">
-                            {% endif %}
-                        </td>
-                        <td>{{ user.id }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>{{ user.nom }}</td>  {# Display last name #}
-                        <td>{{ user.prenom }}</td>  {# Display first name #}
-                        <td>{{ user.telephone }}</td>  {# Display phone #}
-                        <td>{{ user.roles | join(', ') }}</td>
-                        <td>
-                            <a href=\"{{ path('admin_user_edit', {'id': user.id}) }}\">Modifier</a> |
-                            <a href=\"{{ path('admin_user_delete', {'id': user.id}) }}\" onclick=\"return confirm('Êtes-vous sûr ?')\">Supprimer</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class=\"row justify-content-end\"> <!-- Push content to the right -->
+            <div class=\"col-lg-10 col-md-12\"> <!-- Adjust width to avoid touching sidebar -->
+                <table class=\"table table-bordered table-striped\">
+                    <thead>
+                        <tr>
+                            <th>Avatar</th>
+                            <th>ID</th>
+                            <th>Email</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Téléphone</th>
+                            <th>Rôles</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <td>
+                                    {% if user.avatar %}
+                                        <img src=\"{{ asset('uploads/avatars/' ~ user.avatar) }}\" width=\"50\" height=\"50\" class=\"rounded-circle\" alt=\"Avatar\">
+                                    {% else %}
+                                        <img src=\"{{ asset('images/default-avatar.png') }}\" width=\"50\" height=\"50\" class=\"rounded-circle\" alt=\"Default Avatar\">
+                                    {% endif %}
+                                </td>
+                                <td>{{ user.id }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>{{ user.nom }}</td>
+                                <td>{{ user.prenom }}</td>
+                                <td>{{ user.telephone }}</td>
+                                <td>{{ user.roles | join(', ') }}</td>
+                                <td>
+                                    <div class=\"d-flex\">
+                                        <a href=\"{{ path('admin_user_edit', {'id': user.id}) }}\" class=\"btn btn-warning btn-sm mr-2\">Modifier</a>
+                                        <a href=\"{{ path('admin_user_delete', {'id': user.id}) }}\" class=\"btn btn-danger btn-sm\" onclick=\"return confirm('Êtes-vous sûr ?')\">Supprimer</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-
 {% endblock %}
 
 {% block stylesheets %}
     <style>
         .container {
-            width: 80%;
-            margin: 0 auto;
             padding: 20px;
-            text-align: right;
-        }
-
-        .table {
-            width: 100%;
-            border-collapse: collapse;
         }
 
         .table th, .table td {
@@ -366,16 +355,16 @@ class __TwigTemplate_25d1dae5ddbe8245f2558a8d5cadc2b5 extends Template
             background-color: #f9f9f9;
         }
 
-        .text-right {
-            text-align: right;
-        }
-
         .container h1 {
             margin-bottom: 20px;
         }
 
         .table td img {
             border-radius: 50%;
+        }
+
+        .d-flex a {
+            margin-right: 10px; /* Optional, in case you need more space between the buttons */
         }
     </style>
 {% endblock %}

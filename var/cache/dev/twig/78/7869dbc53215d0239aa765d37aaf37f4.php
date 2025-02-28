@@ -52,7 +52,7 @@ class __TwigTemplate_482efac8ab32893bffbcd2a04a47f8ae extends Template
         // line 2
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken(("delete" . CoreExtension::getAttribute($this->env, $this->source, (isset($context["offre"]) || array_key_exists("offre", $context) ? $context["offre"] : (function () { throw new RuntimeError('Variable "offre" does not exist.', 2, $this->source); })()), "id", [], "any", false, false, false, 2))), "html", null, true);
         yield "\">
-    <button class=\"btn\">Delete</button>
+    <button class=\"btn\">Supprimer</button>
 </form>
 ";
         
@@ -92,7 +92,7 @@ class __TwigTemplate_482efac8ab32893bffbcd2a04a47f8ae extends Template
     {
         return new Source("<form method=\"post\" action=\"{{ path('app_offre_delete', {'id': offre.id}) }}\" onsubmit=\"return confirm('Are you sure you want to delete this item?');\">
     <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ offre.id) }}\">
-    <button class=\"btn\">Delete</button>
+    <button class=\"btn\">Supprimer</button>
 </form>
 ", "offre/_delete_form.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\offre\\_delete_form.html.twig");
     }

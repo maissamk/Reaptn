@@ -97,16 +97,32 @@ class __TwigTemplate_bed8e978a287627a591897a08b5cfbe4 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        yield "<div class=\"container mt-5\" style=\"width: 70%; margin-left: 27%; padding-top: 50px;\">
-    <div class=\"container mt-4\">
-        <h1>Modifier l'Offre</h1>
+        yield "<div class=\"container mt-5 pt-5\" style=\"margin-left: 250px;\">
+    <div class=\"row justify-content-center\">
+        <div class=\"col-md-8\">
+            <div class=\"card shadow-lg\">
+                <div class=\"card-header bg-primary text-white text-center\">
+                    <h2>Modifier l'Offre</h2>
+                </div>
+                <div class=\"card-body\">
+                    ";
+        // line 14
+        yield from $this->loadTemplate("admin/offre/_form_back.html.twig", "admin/offre/edit_back.html.twig", 14)->unwrap()->yield(CoreExtension::merge($context, ["form" => (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 14, $this->source); })()), "button_label" => "Modifier l'offre"]));
+        // line 15
+        yield "                </div>
+            </div>
 
-        ";
-        // line 11
-        yield "        ";
-        yield from $this->loadTemplate("admin/offre/_form_back.html.twig", "admin/offre/edit_back.html.twig", 11)->unwrap()->yield(CoreExtension::merge($context, ["form" => (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 11, $this->source); })()), "button_label" => "Modifier l'offre"]));
-        // line 12
-        yield "    </div>
+            <div class=\"text-center mt-4\">
+                <a href=\"";
+        // line 19
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_offre_index");
+        yield "\" class=\"btn btn-outline-secondary\">
+                    <i class=\"fas fa-arrow-left\"></i> Retour à la liste
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -138,7 +154,7 @@ class __TwigTemplate_bed8e978a287627a591897a08b5cfbe4 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  109 => 12,  106 => 11,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  118 => 19,  112 => 15,  110 => 14,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -148,14 +164,26 @@ class __TwigTemplate_bed8e978a287627a591897a08b5cfbe4 extends Template
 {% block title %}Modifier l'Offre{% endblock %}
 
 {% block body %}
-<div class=\"container mt-5\" style=\"width: 70%; margin-left: 27%; padding-top: 50px;\">
-    <div class=\"container mt-4\">
-        <h1>Modifier l'Offre</h1>
+<div class=\"container mt-5 pt-5\" style=\"margin-left: 250px;\">
+    <div class=\"row justify-content-center\">
+        <div class=\"col-md-8\">
+            <div class=\"card shadow-lg\">
+                <div class=\"card-header bg-primary text-white text-center\">
+                    <h2>Modifier l'Offre</h2>
+                </div>
+                <div class=\"card-body\">
+                    {% include 'admin/offre/_form_back.html.twig' with { 'form': form, 'button_label': 'Modifier l\\'offre' } %}
+                </div>
+            </div>
 
-        {# ✅ Include the form from the correct path #}
-        {% include 'admin/offre/_form_back.html.twig' with { 'form': form, 'button_label': 'Modifier l\\'offre' } %}
+            <div class=\"text-center mt-4\">
+                <a href=\"{{ path('admin_offre_index') }}\" class=\"btn btn-outline-secondary\">
+                    <i class=\"fas fa-arrow-left\"></i> Retour à la liste
+                </a>
+            </div>
+        </div>
     </div>
-{% endblock %}
-", "admin/offre/edit_back.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\admin\\offre\\edit_back.html.twig");
+</div>
+{% endblock %}", "admin/offre/edit_back.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\admin\\offre\\edit_back.html.twig");
     }
 }

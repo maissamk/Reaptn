@@ -8,16 +8,98 @@ use App\Form\EmployeType;
 use App\Repository\EmployeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Bundle\SecurityBundle\Security;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
+
+use App\Service\HuggingFaceService;
+
 
 #[Route('/employe')]
 final class EmployeController extends AbstractController
 {
     // Front office functions
+    #[Route('/employe/{id}/confirm', name: 'employe_confirm')]
+public function confirmAction(int $id, EntityManagerInterface $entityManager): Response
+{
+    $employe = $entityManager->getRepository(Employe::class)->find($id);
+
+    if (!$employe) {
+        throw $this->createNotFoundException('Employé non trouvé.');
+    }
+
+    $employe->setConf(1); // Set conf to confirmed
+    $entityManager->persist($employe);
+    $entityManager->flush();
+
+    return $this->redirectToRoute('app_offre_show', ['id' => $employe->getOffre()->getId()]);
+}
+#[Route('/employe/{id}/reject', name: 'employe_reject', methods: ['POST'])]
+public function rejectEmploye(Employe $employe, EntityManagerInterface $entityManager): Response
+{
+    $offreId = $employe->getOffre()->getId(); // Get the offer ID before deletion
+    $entityManager->remove($employe);
+    $entityManager->flush();
+
+    $this->addFlash('danger', 'Employee rejected and removed!');
+    return $this->redirectToRoute('app_offre_show', ['id' => $offreId]);
+}
+
+#[Route('/update-suggested/{id}', name: 'update_suggested')]
+public function updateSuggestedForEmployes(int $id, HttpClientInterface $client, EntityManagerInterface $entityManager): Response
+    {
+        // 1️⃣ Retrieve the Offre by ID
+        $offre = $entityManager->getRepository(Offre::class)->find($id);
+
+        if (!$offre) {
+            return new Response("Offre not found", 404);
+        }
+
+        // 2️⃣ Retrieve the competence from the Offre
+        $offreCompetence = $offre->getComp(); // Assuming 'competence' is the field in the Offre entity
+
+        // 3️⃣ Get Hugging Face API Token from environment
+        $apiToken = getenv('HUGGING_FACE_API_TOKEN');
+
+
+        // 4️⃣ Loop through each employee linked to the Offre
+        foreach ($offre->getEmployes() as $employe) {
+            $competence = $employe->getComp(); // Assuming 'comp' is the field in the Employe entity
+
+            // 5️⃣ Make API request to Hugging Face to compare the competences
+            $response = $client->request('POST', 'https://api-inference.huggingface.co/models/sentence-transformers/all-MiniLM-L6-v2', [
+                'headers' => [
+                    'Authorization' => 'Bearer ' . $apiToken,
+                ],
+                'json' => [
+                    'inputs' => [$offreCompetence, $competence]
+                ],
+            ]);
+
+            // 6️⃣ Parse the API response
+            $data = $response->toArray();
+            $similarityScore = $data[0] ?? 0; // Assuming similarity score is returned in the first position
+
+            // 7️⃣ Compare the similarity score and update the 'suggested' field
+            if ($similarityScore > 0.7) {
+                $employe->setSuggested(1); // Mark as suggested
+            } else {
+                $employe->setSuggested(0); // Mark as not suggested
+            }
+
+            // 8️⃣ Save the updated employe entity
+            $entityManager->flush();
+        }
+
+        return new Response("Updated suggested for employees successfully.");
+    }
+
+    //not using this
     #[Route('/', name: 'app_employe_index', methods: ['GET'])]
     public function index(EmployeRepository $employeRepository): Response
     {
@@ -26,46 +108,7 @@ final class EmployeController extends AbstractController
         ]);
     }
 
-    #[Route('/new/{id}', name: 'app_employe_new', methods: ['POST'])]
-public function new(Request $request, int $id, EntityManagerInterface $entityManager, Security $security): Response
-{
-    $offre = $entityManager->getRepository(Offre::class)->find($id);
-    if (!$offre) {
-        throw $this->createNotFoundException('Offer not found.');
-    }
-
-    // Get the logged-in user's ID
-    $user = $security->getUser();
-    if (!$user) {
-        $this->addFlash('error', 'You must be logged in to subscribe.');
-        return $this->redirectToRoute('app_offre_show', ['id' => $id]);
-    }
-    $userId = $user->getId(); // Only change here
-
-    $competence = $request->request->get('comp');
-
-    // Check if this user is already subscribed
-    $existingEmploye = $entityManager->getRepository(Employe::class)
-        ->findOneBy(['userIdentifier' => $userId, 'offre' => $offre]);
-
-    if ($existingEmploye) {
-        $this->addFlash('error', 'You are already subscribed to this offer.');
-        return $this->redirectToRoute('app_offre_show', ['id' => $id]);
-    }
-
-    // Create new employee record
-    $employe = new Employe();
-    $employe->setUserIdentifier($userId);
-    $employe->setComp($competence);
-    $employe->setOffre($offre);
-
-    $entityManager->persist($employe);
-    $entityManager->flush();
-
-    $this->addFlash('success', 'You have successfully subscribed to this offer!');
-    return $this->redirectToRoute('app_offre_show', ['id' => $id]);
-}
-
+    
     #[Route('/{id}', name: 'app_employe_show', methods: ['GET'])]
     public function show(Employe $employe): Response
     {
@@ -92,16 +135,35 @@ public function new(Request $request, int $id, EntityManagerInterface $entityMan
     }
 
     #[Route('/delete/{id}', name: 'app_employe_delete', methods: ['POST'])]
-    public function delete(Request $request, Employe $employe, EntityManagerInterface $entityManager): Response
-    {
-        if ($this->isCsrfTokenValid('delete' . $employe->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($employe);
-            $entityManager->flush();
-            $this->addFlash('success', 'Employee deleted successfully.');
-        }
-
-        return $this->redirectToRoute('app_employe_index', [], Response::HTTP_SEE_OTHER);
+public function delete(int $id, EntityManagerInterface $entityManager, Security $security): Response
+{
+    $user = $security->getUser();
+    if (!$user) {
+        $this->addFlash('error', 'You must be logged in to delete your subscription.');
+        return $this->redirectToRoute('app_offre_show', ['id' => $id]);
     }
+
+    // Find the subscription (Employe entity)
+    $employe = $entityManager->getRepository(Employe::class)
+        ->findOneBy(['userIdentifier' => $user->getId(), 'offre' => $entityManager->getReference(Offre::class, $id)]);
+
+    if (!$employe) {
+        $this->addFlash('error', 'You are not subscribed to this offer.');
+        return $this->redirectToRoute('app_offre_show', ['id' => $id]);
+    }
+
+    // Remove the subscription
+    $entityManager->remove($employe);
+    $entityManager->flush();
+
+    $this->addFlash('success', 'Your subscription has been deleted.');
+    return $this->redirectToRoute('app_offre_show', ['id' => $id]);
+}
+
+
+
+
+
 
     // Back office functions
 
@@ -184,4 +246,8 @@ public function new(Request $request, int $id, EntityManagerInterface $entityMan
 
         return $this->redirectToRoute('admin_employe_index');
     }
+
+
+
+
 }

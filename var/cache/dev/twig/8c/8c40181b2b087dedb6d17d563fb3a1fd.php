@@ -154,7 +154,7 @@ class __TwigTemplate_b6088f404be84b32e69e81e230996284 extends Template
             <a href=\"";
         // line 40
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_edit_profile");
-        yield "\" class=\"btn btn-warning btn-lg px-5 py-2 mx-2\">Modifier le Profil</a>
+        yield "\" class=\"btn btn-warning btn-lg px-5 py-2 mx-2 text-white\"><i class=\"fas fa-edit\"></i>Modifier le Profil</a>
         </div>
     </div>
 ";
@@ -232,7 +232,7 @@ class __TwigTemplate_b6088f404be84b32e69e81e230996284 extends Template
 
         <!-- Boutons -->
         <div class=\"mt-5 text-center\">
-            <a href=\"{{ path('app_edit_profile') }}\" class=\"btn btn-warning btn-lg px-5 py-2 mx-2\">Modifier le Profil</a>
+            <a href=\"{{ path('app_edit_profile') }}\" class=\"btn btn-warning btn-lg px-5 py-2 mx-2 text-white\"><i class=\"fas fa-edit\"></i>Modifier le Profil</a>
         </div>
     </div>
 {% endblock %}

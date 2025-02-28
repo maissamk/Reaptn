@@ -98,8 +98,8 @@ class __TwigTemplate_4dbfc3a27d9a3a75d633b48d65101a24 extends Template
 
         // line 6
         yield "    <div class=\"container-fluid fruite py-5\">
-        <div class=\"container py-5\">
-            <div class=\"tab-class text-center\">
+        <div class=\"container py-5 \">
+            <div class=\"tab-class text-center \">
                 <div class=\"row g-4\">
                     <div class=\"col-lg-4 text-start\">
                         <h1>Our Organic Products</h1>
@@ -138,19 +138,25 @@ class __TwigTemplate_4dbfc3a27d9a3a75d633b48d65101a24 extends Template
                                         <a href=\"";
             // line 26
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_offre_show", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["offre"], "id", [], "any", false, false, false, 26)]), "html", null, true);
-            yield "\" class=\"btn btn-primary btn-sm\">Show</a>
-                                        <a href=\"";
+            yield "\"  class=\"btn btn-info btn-sm text-white\"><i class=\"fas fa-eye\"></i>Voir</a>
+                                        ";
             // line 27
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_offre_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["offre"], "id", [], "any", false, false, false, 27)]), "html", null, true);
-            yield "\" class=\"btn btn-warning btn-sm\">Edit</a>
+            if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_AGRICULTEUR")) {
+                // line 28
+                yield "                                        <a href=\"";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_offre_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["offre"], "id", [], "any", false, false, false, 28)]), "html", null, true);
+                yield "\" class=\"btn btn-warning btn-sm text-white\"><i class=\"fas fa-edit\"></i> Modifier</a>
                                     </div>
-                                </div>
+                                    ";
+            }
+            // line 31
+            yield "                                </div>
                             ";
             $context['_iterated'] = true;
         }
-        // line 30
+        // line 32
         if (!$context['_iterated']) {
-            // line 31
+            // line 33
             yield "                                <div class=\"text-center\">
                                     <p>No records found</p>
                                 </div>
@@ -159,14 +165,20 @@ class __TwigTemplate_4dbfc3a27d9a3a75d633b48d65101a24 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['offre'], $context['_parent'], $context['_iterated']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 35
-        yield "                            <div class=\"text-end\">
+        // line 37
+        yield "                            ";
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_AGRICULTEUR")) {
+            // line 38
+            yield "                            <div class=\"text-end\">
                                 <a href=\"";
-        // line 36
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_offre_new");
-        yield "\" class=\"btn btn-success\">Create new</a>
+            // line 39
+            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_offre_new");
+            yield "\" class=\"btn btn-success\">Ajouter Offre</a>
                             </div>
-                        </div>
+                            ";
+        }
+        // line 42
+        yield "                        </div>
                     </div>
                 </div>
             </div>
@@ -203,7 +215,7 @@ class __TwigTemplate_4dbfc3a27d9a3a75d633b48d65101a24 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  166 => 36,  163 => 35,  154 => 31,  152 => 30,  144 => 27,  140 => 26,  134 => 23,  130 => 22,  126 => 21,  122 => 20,  118 => 18,  113 => 17,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  181 => 42,  175 => 39,  172 => 38,  169 => 37,  160 => 33,  158 => 32,  153 => 31,  146 => 28,  144 => 27,  140 => 26,  134 => 23,  130 => 22,  126 => 21,  122 => 20,  118 => 18,  113 => 17,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -214,8 +226,8 @@ class __TwigTemplate_4dbfc3a27d9a3a75d633b48d65101a24 extends Template
 
 {% block body %}
     <div class=\"container-fluid fruite py-5\">
-        <div class=\"container py-5\">
-            <div class=\"tab-class text-center\">
+        <div class=\"container py-5 \">
+            <div class=\"tab-class text-center \">
                 <div class=\"row g-4\">
                     <div class=\"col-lg-4 text-start\">
                         <h1>Our Organic Products</h1>
@@ -233,18 +245,22 @@ class __TwigTemplate_4dbfc3a27d9a3a75d633b48d65101a24 extends Template
                                         <p><strong>Compétences demandées:</strong> {{ offre.comp }}</p>
                                     </div>
                                     <div class=\"text-end\">
-                                        <a href=\"{{ path('app_offre_show', {'id': offre.id}) }}\" class=\"btn btn-primary btn-sm\">Show</a>
-                                        <a href=\"{{ path('app_offre_edit', {'id': offre.id}) }}\" class=\"btn btn-warning btn-sm\">Edit</a>
+                                        <a href=\"{{ path('app_offre_show', {'id': offre.id}) }}\"  class=\"btn btn-info btn-sm text-white\"><i class=\"fas fa-eye\"></i>Voir</a>
+                                        {% if  is_granted('ROLE_AGRICULTEUR') %}
+                                        <a href=\"{{ path('app_offre_edit', {'id': offre.id}) }}\" class=\"btn btn-warning btn-sm text-white\"><i class=\"fas fa-edit\"></i> Modifier</a>
                                     </div>
+                                    {% endif %}
                                 </div>
                             {% else %}
                                 <div class=\"text-center\">
                                     <p>No records found</p>
                                 </div>
                             {% endfor %}
+                            {% if  is_granted('ROLE_AGRICULTEUR') %}
                             <div class=\"text-end\">
-                                <a href=\"{{ path('app_offre_new') }}\" class=\"btn btn-success\">Create new</a>
+                                <a href=\"{{ path('app_offre_new') }}\" class=\"btn btn-success\">Ajouter Offre</a>
                             </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

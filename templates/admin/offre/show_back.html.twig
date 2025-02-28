@@ -3,18 +3,62 @@
 {% block title %}Détails de l'Offre{% endblock %}
 
 {% block body %}
-    <div class="container mt-5" style="width: 70%; margin-left: 27%; padding-top: 50px;">
-        <h1>Détails de l'Offre</h1>
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="card shadow-sm p-4 rounded" style="max-width: 600px; width: 100%;">
+        <h2 class="text-primary text-center">Détails de l'Offre</h2>
+        <table class="table table-hover">
+            <tbody>
+                <tr>
+                    <th>Titre</th>
+                    <td>{{ offre.titre }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ offre.descr ? offre.descr : 'Aucune description' }}</td>
+                </tr>
+                <tr>
+                    <th>Statut</th>
+                    <td>
+                        <span class="badge {% if offre.statut %}bg-success{% else %}bg-danger{% endif %}">
+                            {% if offre.statut %} Active {% else %} Inactive {% endif %}
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Compétences</th>
+                    <td>{{ offre.comp ? offre.comp : 'Aucune compétence' }}</td>
+                </tr>
+                <tr>
+                    <th>Identifiant A</th>
+                    <td>{{ offre.ida }}</td>
+                </tr>
+                <tr>
+                    <th>Identifiant E</th>
+                    <td>{{ offre.ide ? offre.ide : 'Non défini' }}</td>
+                </tr>
+            </tbody>
+        </table>
 
-        <p><strong>Titre :</strong> {{ offre.titre }}</p>
-        <p><strong>Description :</strong> {{ offre.descr ? offre.descr : 'Aucune description' }}</p>
-        <p><strong>Statut :</strong> {{ offre.statut ? 'Active' : 'Inactive' }}</p>
-        <p><strong>Compétences :</strong> {{ offre.comp ? offre.comp : 'Aucune compétence' }}</p>
-        <p><strong>Identifiant A :</strong> {{ offre.ida }}</p>
-        <p><strong>Identifiant E :</strong> {{ offre.ide ? offre.ide : 'Non défini' }}</p>
-
-        <a href="{{ path('admin_offre_edit', {id: offre.id}) }}" class="btn btn-warning">Modifier</a>
-        {#{% include 'admin/_delete_back.html.twig' with { 'delete_path': 'admin_offre_delete' } %}#}
-        <a href="{{ path('admin_offre_index') }}" class="btn btn-secondary">Retour</a>
+        <div class="d-flex justify-content-between mt-4">
+            <a href="{{ path('admin_offre_index') }}" class="btn btn-success" style="background-color: #8CC63F; border: none;">
+                <i class="fas fa-arrow-left"></i> Retour
+            </a>
+            <a href="{{ path('admin_offre_edit', {id: offre.id}) }}" class="btn btn-warning">
+                <i class="fas fa-edit"></i> Modifier
+            </a>
+        </div>
     </div>
+</div>
+
+<style>
+    .table th {
+        width: 30%;
+        background-color: #f8f9fa;
+    }
+
+    .btn-success {
+        font-weight: bold;
+        color: white;
+    }
+</style>
 {% endblock %}

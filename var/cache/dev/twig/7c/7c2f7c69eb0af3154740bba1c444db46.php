@@ -80,7 +80,7 @@ class __TwigTemplate_ef30fae7f2a6810b73f9ae013c2853c6 extends Template
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 12
         yield "
-<button class=\"btn btn-primary\">";
+<button class=\"btn btn-warning btn-sm text-white\">";
         // line 13
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(((array_key_exists("button_label", $context)) ? (Twig\Extension\CoreExtension::default((isset($context["button_label"]) || array_key_exists("button_label", $context) ? $context["button_label"] : (function () { throw new RuntimeError('Variable "button_label" does not exist.', 13, $this->source); })()), "Enregistrer")) : ("Enregistrer")), "html", null, true);
         yield "</button>
@@ -137,7 +137,7 @@ class __TwigTemplate_ef30fae7f2a6810b73f9ae013c2853c6 extends Template
     {% endif %}
 {% endfor %}
 
-<button class=\"btn btn-primary\">{{ button_label|default('Enregistrer') }}</button>
+<button class=\"btn btn-warning btn-sm text-white\">{{ button_label|default('Enregistrer') }}</button>
 
 {{ form_end(form) }}
 ", "offre/_form.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\offre\\_form.html.twig");

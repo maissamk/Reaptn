@@ -108,7 +108,7 @@ class __TwigTemplate_760d3f58068638b083b46d6b4c4c22e6 extends Template
     <a href=\"";
         // line 11
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materiellocation_index");
-        yield "\">back to list</a>
+        yield "\"class=\"btn btn-primary me-3\"><i class=\"fa fa-arrow-left\"></i>Retour</a>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -155,7 +155,7 @@ class __TwigTemplate_760d3f58068638b083b46d6b4c4c22e6 extends Template
 
     {{ include('materiellocation/_form.html.twig') }}
 
-    <a href=\"{{ path('app_materiellocation_index') }}\">back to list</a>
+    <a href=\"{{ path('app_materiellocation_index') }}\"class=\"btn btn-primary me-3\"><i class=\"fa fa-arrow-left\"></i>Retour</a>
 {% endblock %}
 ", "materiellocation/new.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\materiellocation\\new.html.twig");
     }
