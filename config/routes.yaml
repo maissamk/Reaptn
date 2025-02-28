@@ -1,12 +1,13 @@
-oauth_google_connect:
+# knpu_oauth:
+#     resource: "@KnpUOAuthBundle/Resources/config/routing/connect.xml"
+#     prefix: /connect
+connect_google:
     path: /connect/google
-    controller: HWI\Bundle\OAuthBundle\Controller\ConnectController::connectAction
+    controller: App\Controller\SecurityController::connectGoogle
 
-oauth_google_check:
+connect_google_check:
     path: /connect/google/check
-    controller: HWI\Bundle\OAuthBundle\Controller\ConnectController::checkAction
-
-
+    controller: App\Controller\SecurityController::connectGoogleCheck
 controllers:
     resource:
         path: ../src/Controller/

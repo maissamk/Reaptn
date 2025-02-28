@@ -6,7 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-
+use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use App\Service\GoogleAuthenticator;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use App\Repository\UserRepository;
+use App\Entity\User;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 class SecurityController extends AbstractController
 {
     #[Route(path: '/login', name: 'app_login')]
@@ -48,15 +56,20 @@ class SecurityController extends AbstractController
     {
         // Symfony will handle this
     }
-    #[Route(path: '/login/google/callback', name: 'google_redirect')]
-    public function googleRedirect(): RedirectResponse
+    #[Route('/connect/google', name: 'connect_google')]
+    public function connectGoogle(ClientRegistry $clientRegistry): RedirectResponse
     {
-        // The OAuth2 client bundle handles the OAuth process
-        // Once the user successfully logs in with Google, this route will be called
-
-        // You can fetch the OAuth user info here if needed, and handle login logic
-        // Redirect to a different page after successful login (e.g., profile page)
-        return $this->redirectToRoute('profile'); // Change this route to your desired target
+        return $clientRegistry->getClient('google')->redirect(
+            ['email', 'profile'], // Scopes
+            [] // Options (empty array if not needed)
+        );
     }
     
+    #[Route('/connect/google/check', name: 'connect_google_check', methods: ['GET', 'POST'])]
+    public function connectGoogleCheck(Request $request): void
+    {
+        // This method should never be executed because the GoogleAuthenticator
+        // intercepts requests to this route.
+        throw new \LogicException('This route is handled by the GoogleAuthenticator.');
+    }
 }

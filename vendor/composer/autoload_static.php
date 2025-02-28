@@ -19,11 +19,11 @@ class ComposerStaticInit54c05e64f01f49eb136e9af7b3075bdd
         'f844ccf1d25df8663951193c3fc307c8' => __DIR__ . '/..' . '/twig/twig/src/Resources/string_loader.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
-        '2203a247e6fda86070a5e4e07aed533a' => __DIR__ . '/..' . '/symfony/clock/Resources/now.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
-        '6a47392539ca2329373e0d33e1dba053' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/bootstrap.php',
+        '2203a247e6fda86070a5e4e07aed533a' => __DIR__ . '/..' . '/symfony/clock/Resources/now.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        '6a47392539ca2329373e0d33e1dba053' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/bootstrap.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '92c8763cd6170fce6fcfe7e26b4e8c10' => __DIR__ . '/..' . '/symfony/phpunit-bridge/bootstrap.php',
@@ -153,10 +153,6 @@ class ComposerStaticInit54c05e64f01f49eb136e9af7b3075bdd
             'Knp\\Bundle\\SnappyBundle\\' => 24,
             'Knp\\Bundle\\PaginatorBundle\\' => 27,
             'KnpU\\OAuth2ClientBundle\\' => 24,
-        ),
-        'H' => 
-        array (
-            'HWI\\Bundle\\OAuthBundle\\' => 23,
         ),
         'G' => 
         array (
@@ -595,10 +591,6 @@ class ComposerStaticInit54c05e64f01f49eb136e9af7b3075bdd
         'KnpU\\OAuth2ClientBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/knpuniversity/oauth2-client-bundle/src',
-        ),
-        'HWI\\Bundle\\OAuthBundle\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/hwi/oauth-bundle/src',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (

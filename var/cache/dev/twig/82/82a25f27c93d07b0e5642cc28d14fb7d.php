@@ -251,7 +251,13 @@ class __TwigTemplate_460e56bfea0e816cda903784489ba742 extends Template
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
         yield "\">Vous n'avez pas de compte ? Inscrivez-vous</a> 
                 </div>
-                
+                <a href=\"";
+        // line 65
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("connect_google");
+        yield "\" class=\"btn btn-primary\">
+                    Login with Google
+                </a>
+
                 
             </div>
         </div>
@@ -287,7 +293,7 @@ class __TwigTemplate_460e56bfea0e816cda903784489ba742 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  251 => 63,  242 => 57,  236 => 54,  224 => 44,  218 => 41,  215 => 40,  213 => 39,  209 => 38,  203 => 35,  192 => 27,  184 => 21,  171 => 20,  157 => 16,  144 => 15,  130 => 11,  117 => 10,  103 => 5,  90 => 4,  67 => 3,  44 => 1,);
+        return array (  256 => 65,  251 => 63,  242 => 57,  236 => 54,  224 => 44,  218 => 41,  215 => 40,  213 => 39,  209 => 38,  203 => 35,  192 => 27,  184 => 21,  171 => 20,  157 => 16,  144 => 15,  130 => 11,  117 => 10,  103 => 5,  90 => 4,  67 => 3,  44 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -356,7 +362,10 @@ class __TwigTemplate_460e56bfea0e816cda903784489ba742 extends Template
                 <div class=\"mt-3 text-center\">
                     <a href=\"{{ path('app_register') }}\">Vous n'avez pas de compte ? Inscrivez-vous</a> 
                 </div>
-                
+                <a href=\"{{ path('connect_google') }}\" class=\"btn btn-primary\">
+                    Login with Google
+                </a>
+
                 
             </div>
         </div>

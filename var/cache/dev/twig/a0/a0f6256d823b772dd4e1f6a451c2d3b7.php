@@ -125,16 +125,14 @@ class __TwigTemplate_1631b91effa4082a54ed2972ec34217f extends Template
 <script>
     var ctx = document.getElementById('userChart').getContext('2d');
 
-    // Initialize an empty object for stats
     var statsData = {};
 
-    // Loop through the stats data and add to the object
     ";
-        // line 38
+        // line 36
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["stats"]) || array_key_exists("stats", $context) ? $context["stats"] : (function () { throw new RuntimeError('Variable "stats" does not exist.', 38, $this->source); })()));
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["stats"]) || array_key_exists("stats", $context) ? $context["stats"] : (function () { throw new RuntimeError('Variable "stats" does not exist.', 36, $this->source); })()));
         foreach ($context['_seq'] as $context["role"] => $context["count"]) {
-            // line 39
+            // line 37
             yield "        statsData[\"";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["role"], "html", null, true);
             yield "\"] = ";
@@ -145,29 +143,28 @@ class __TwigTemplate_1631b91effa4082a54ed2972ec34217f extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['role'], $context['count'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 41
+        // line 39
         yield "
-    // Get the roles and counts from the object
     var roles = Object.keys(statsData);
     var counts = Object.values(statsData);
 
     var userChart = new Chart(ctx, {
-        type: 'pie',  // Change the chart type to 'pie'
+        type: 'pie',  
         data: {
-            labels: roles,  // Role names as labels
+            labels: roles,  
             datasets: [{
                 label: 'Number of Users',
-                data: counts,  // User count for each role
+                data: counts,  
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.6)',
                     'rgba(255, 99, 132, 0.6)',
                     'rgba(75, 192, 192, 0.6)'
-                ],  // Different colors for each slice
+                ],  
                 borderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)'
-                ],  // Border colors
+                ],  
                 borderWidth: 1
             }]
         },
@@ -180,7 +177,7 @@ class __TwigTemplate_1631b91effa4082a54ed2972ec34217f extends Template
                 tooltip: {
                     callbacks: {
                         label: function(tooltipItem) {
-                            return tooltipItem.label + ': ' + tooltipItem.raw;  // Show count in tooltip
+                            return tooltipItem.label + ': ' + tooltipItem.raw;  
                         }
                     }
                 }
@@ -219,7 +216,7 @@ class __TwigTemplate_1631b91effa4082a54ed2972ec34217f extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  149 => 41,  138 => 39,  134 => 38,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  147 => 39,  136 => 37,  132 => 36,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -257,35 +254,32 @@ class __TwigTemplate_1631b91effa4082a54ed2972ec34217f extends Template
 <script>
     var ctx = document.getElementById('userChart').getContext('2d');
 
-    // Initialize an empty object for stats
     var statsData = {};
 
-    // Loop through the stats data and add to the object
     {% for role, count in stats %}
         statsData[\"{{ role }}\"] = {{ count }};
     {% endfor %}
 
-    // Get the roles and counts from the object
     var roles = Object.keys(statsData);
     var counts = Object.values(statsData);
 
     var userChart = new Chart(ctx, {
-        type: 'pie',  // Change the chart type to 'pie'
+        type: 'pie',  
         data: {
-            labels: roles,  // Role names as labels
+            labels: roles,  
             datasets: [{
                 label: 'Number of Users',
-                data: counts,  // User count for each role
+                data: counts,  
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.6)',
                     'rgba(255, 99, 132, 0.6)',
                     'rgba(75, 192, 192, 0.6)'
-                ],  // Different colors for each slice
+                ],  
                 borderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)'
-                ],  // Border colors
+                ],  
                 borderWidth: 1
             }]
         },
@@ -298,7 +292,7 @@ class __TwigTemplate_1631b91effa4082a54ed2972ec34217f extends Template
                 tooltip: {
                     callbacks: {
                         label: function(tooltipItem) {
-                            return tooltipItem.label + ': ' + tooltipItem.raw;  // Show count in tooltip
+                            return tooltipItem.label + ': ' + tooltipItem.raw;  
                         }
                     }
                 }

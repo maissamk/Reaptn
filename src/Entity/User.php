@@ -95,6 +95,9 @@ private ?string $status = 'inactive';
 #[ORM\Column(nullable: true)]
 private ?int $loginAttempts = null;
 
+#[ORM\Column(length: 255, nullable: true)]
+private ?string $google_id = null;
+
 public function __construct()
 {
     $this->parcelleProprietes = new ArrayCollection();
@@ -409,4 +412,16 @@ public function __construct()
 
     return $this;
 }
+
+    public function getGoogleId(): ?string
+    {
+        return $this->google_id;
+    }
+
+    public function setGoogleId(?string $google_id): static
+    {
+        $this->google_id = $google_id;
+
+        return $this;
+    }
 }

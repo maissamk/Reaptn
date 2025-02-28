@@ -441,7 +441,7 @@ class __TwigTemplate_0d973bd45317ac4d1a88558d95d1e619 extends Template
                     yield "(empty)";
                 } else {
                     // line 154
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(json_encode(CoreExtension::getAttribute($this->env, $this->source, (isset($context["message"]) || array_key_exists("message", $context) ? $context["message"] : (function () { throw new RuntimeError('Variable "message" does not exist.', 154, $this->source); })()), "getOptions", [], "method", false, false, false, 154), Twig\Extension\CoreExtension::constant("JSON_PRETTY_PRINT")), "html", null, true);
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(json_encode(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["message"]) || array_key_exists("message", $context) ? $context["message"] : (function () { throw new RuntimeError('Variable "message" does not exist.', 154, $this->source); })()), "getOptions", [], "method", false, false, false, 154), "toArray", [], "method", false, false, false, 154), Twig\Extension\CoreExtension::constant("JSON_PRETTY_PRINT")), "html", null, true);
                 }
                 // line 156
                 yield "                                                        </pre>
@@ -661,7 +661,7 @@ class __TwigTemplate_0d973bd45317ac4d1a88558d95d1e619 extends Template
                                                             {%- if message.getOptions() is null %}
                                                                 {{- '(empty)' }}
                                                             {%- else %}
-                                                                {{- message.getOptions()|json_encode(constant('JSON_PRETTY_PRINT')) }}
+                                                                {{- message.getOptions().toArray()|json_encode(constant('JSON_PRETTY_PRINT')) }}
                                                             {%- endif %}
                                                         </pre>
                                                     </div>

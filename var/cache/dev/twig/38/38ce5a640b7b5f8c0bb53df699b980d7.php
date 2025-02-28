@@ -348,13 +348,11 @@ $context["user"], "status", [], "any", false, false, false, 83) == "blocked")) {
         });
     }
 
-    // Event listener for the 'Statistiques des Rôles' button
     \$('#btnUserRoles').click(function() {
         console.log(\"Button clicked for user roles statistics\");
         fetchStatistics('statistics');
     });
 
-    // Event listener for the 'Statistiques de Connexion' button
     \$('#btnLoginAttempts').click(function() {
         console.log(\"Button clicked for login attempts statistics\");
         fetchStatistics('LoginStats');
@@ -537,13 +535,11 @@ $context["user"], "status", [], "any", false, false, false, 83) == "blocked")) {
         });
     }
 
-    // Event listener for the 'Statistiques des Rôles' button
     \$('#btnUserRoles').click(function() {
         console.log(\"Button clicked for user roles statistics\");
         fetchStatistics('statistics');
     });
 
-    // Event listener for the 'Statistiques de Connexion' button
     \$('#btnLoginAttempts').click(function() {
         console.log(\"Button clicked for login attempts statistics\");
         fetchStatistics('LoginStats');
