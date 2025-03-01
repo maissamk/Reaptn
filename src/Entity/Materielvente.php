@@ -5,8 +5,14 @@ namespace App\Entity;
 use App\Repository\MaterielventeRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
+
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: MaterielventeRepository::class)]
+#[Vich\Uploadable]  // Ajout de l'annotation pour le bundle VichUploader
+
 class Materielvente
 {
     #[ORM\Id]
@@ -24,6 +30,10 @@ class Materielvente
     #[Assert\Regex(pattern: "/^[a-zA-ZÀ-ÿ\- ]+$/", message: "Le nom doit contenir uniquement des lettres.")]
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
+
+    #[Gedmo\Slug(fields: ["nom"])]
+    #[ORM\Column(length: 255, unique: true)]
+    private ?string $slug = null;
 
     #[Assert\NotBlank(message: "Le prix est obligatoire.")]
     #[ORM\Column]
@@ -46,6 +56,23 @@ class Materielvente
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
+    // Propriétés pour l'upload avec VichUploader
+    #[Vich\UploadableField(mapping: 'materiel_images', fileNameProperty: 'image')]
+    private ?File $imageFile = null;
+
+
+
+    
+    #[Gedmo\Timestampable(on: "create")]
+    #[ORM\Column(type: "datetime")]
+    private \DateTime $createdAt;
+    #[Gedmo\Timestampable(on: "update")]
+    #[ORM\Column(type: "datetime")]
+     private \DateTime $updatedAt;
+
+
+
+
     #[ORM\ManyToOne(targetEntity: Commande::class, inversedBy: 'materiels')]
     #[ORM\JoinColumn(nullable: true)]
     private ?Commande $commande = null;
@@ -53,7 +80,8 @@ class Materielvente
     #[ORM\ManyToOne(inversedBy: 'materielventes')]
     private ?User $user_id_materielvente = null;
 
-    
+    #[ORM\ManyToOne(inversedBy: 'materielventes')]
+    private ?Categorie $categorie = null;
 
     public function getId(): ?int
     {
@@ -70,6 +98,17 @@ class Materielvente
         $this->nom = $nom;
         return $this;
     }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
+        return $this;
+    }
+    
 
     public function getPrix(): ?float
     {
@@ -115,6 +154,28 @@ class Materielvente
         return $this;
     }
 
+
+    // Getter et Setter pour l'imageFile
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+        if ($imageFile) {
+            // Le champ "updatedAt" doit être mis à jour à chaque changement de fichier
+            $this->updatedAt = new \DateTime();
+        }
+    }
+
+
+
+
+
+
+
     public function getCommande(): ?Commande
     {
         return $this->commande;
@@ -137,5 +198,41 @@ class Materielvente
         return $this;
     }
 
-    
+    public function getCategorie(): ?categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?categorie $categorie): static
+    {
+        $this->categorie = $categorie;
+        return $this;
+    }
+
+
+
+     //getter et setters
+     public function getCreatedAt(): \DateTime
+     {
+         return $this->createdAt;
+     }
+     
+     public function setCreatedAt(\DateTime $createdAt): self
+     {
+         $this->createdAt = $createdAt;
+         return $this;
+     }
+     
+     public function getUpdatedAt(): \DateTime
+     {
+         return $this->updatedAt;
+     }
+     
+     public function setUpdatedAt(\DateTime $updatedAt): self
+     {
+         $this->updatedAt = $updatedAt;
+         return $this;
+     }
 }
+
+

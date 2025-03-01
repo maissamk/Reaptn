@@ -66,9 +66,13 @@
 
                     {# Submit Button #}
                     <button type="submit" class="btn btn-success w-100 mt-3">Enregistrer les Modifications</button>
+                      
 
                 {{ form_end(form) }}
+                
             </div>
+            <a href="{{ path('app_profile') }}" class="btn btn-primary me-3"><i class="fa fa-arrow-left"></i>  Retour</a>
         </div>
+        
     </div>
 {% endblock %}
