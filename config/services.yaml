@@ -2,7 +2,10 @@ parameters:
     product_images_directory: '%kernel.project_dir%/public/uploads/products'
     images_directory: '%kernel.project_dir%/public/uploads/images'
     avatars_directory: '%kernel.project_dir%/public/uploads/avatars'
-
+    face_images_directory: '%kernel.project_dir%/public/uploads/face_images'
+    captured_images_directory: '%kernel.project_dir%/public/uploads/captured_images'
+    recaptcha.site_key: '%env(RECAPTCHA_SITE_KEY)%'
+    recaptcha.secret_key: '%env(RECAPTCHA_SECRET_KEY)%'
 services:
 
     # default configuration for services in *this* file
@@ -54,3 +57,10 @@ services:
 
     App\Service\UserStatisticsService:
         public: true
+
+    App\Security\FaceLoginFormAuthenticator:
+        arguments:
+            $httpClient: '@http_client'
+            $entityManager: '@doctrine.orm.entity_manager'
+            $urlGenerator: '@router.default'
+    App\Service\FaceComparisonService: ~

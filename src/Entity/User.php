@@ -98,6 +98,13 @@ private ?int $loginAttempts = null;
 #[ORM\Column(length: 255, nullable: true)]
 private ?string $google_id = null;
 
+#[ORM\Column(type: 'string', length: 255, nullable: true)]
+private ?string $faceToken = null;
+
+#[ORM\Column(type: 'string', length: 255, nullable: true)]
+private ?string $faceImagePath = null;
+
+
 public function __construct()
 {
     $this->parcelleProprietes = new ArrayCollection();
@@ -424,4 +431,26 @@ public function __construct()
 
         return $this;
     }
+    public function getFaceToken(): ?string
+    {
+        return $this->faceToken;
+    }
+
+    public function setFaceToken(?string $faceToken): self
+    {
+        $this->faceToken = $faceToken;
+        return $this;
+    }
+
+    public function getFaceImagePath(): ?string
+    {
+        return $this->faceImagePath;
+    }
+
+    public function setFaceImagePath(?string $faceImagePath): self
+    {
+        $this->faceImagePath = $faceImagePath;
+        return $this;
+    }
 }
+

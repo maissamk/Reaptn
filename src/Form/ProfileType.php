@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Validator\Constraints\Image;
 
 class ProfileType extends AbstractType
 {
@@ -46,7 +47,21 @@ class ProfileType extends AbstractType
                 'mapped' => false, // Not mapped to the entity directly
                 'required' => false,
                 'attr' => ['accept' => 'image/*'],
+            ])
+            ->add('faceImage', FileType::class, [
+                'label' => 'Upload Face Image',
+                'mapped' => false, // This field is not mapped to the User entity
+                'required' => false, // The field is optional
+                'constraints' => [
+                    new Image([
+                        'maxSize' => '5M', // Maximum file size
+                        'mimeTypes' => ['image/jpeg', 'image/png'], // Allowed file types
+                        'mimeTypesMessage' => 'Please upload a valid JPEG or PNG image.',
+                    ]),
+                ],
             ]);
+            
+            
 
         // ✅ Only allow admins to modify the status field
         if ($this->security->isGranted('ROLE_ADMIN') ) {

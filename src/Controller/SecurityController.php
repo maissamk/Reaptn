@@ -15,7 +15,14 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 use App\Repository\UserRepository;
 use App\Entity\User;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use App\Form\CompleteProfileFormType;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+
+
+
+
 class SecurityController extends AbstractController
+
 {
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
@@ -72,4 +79,45 @@ class SecurityController extends AbstractController
         // intercepts requests to this route.
         throw new \LogicException('This route is handled by the GoogleAuthenticator.');
     }
+    #[Route('/complete-profile', name: 'complete_profile')]
+    public function completeProfile(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        UserPasswordHasherInterface $passwordHasher
+    ): Response {
+        // Get the currently logged-in user
+        $user = $this->getUser();
+
+        if (!$user) {
+            return $this->redirectToRoute('app_login');
+        }
+
+        // Create the form
+        $form = $this->createForm(CompleteProfileFormType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Hash the password
+            $plainPassword = $form->get('plainPassword')->getData();
+            $user->setPassword($passwordHasher->hashPassword($user, $plainPassword));
+
+            // Set the selected role
+            $role = $form->get('roles')->getData();
+            if ($role) {
+                $user->setRoles([$role]);
+            }
+
+            // Save the updated user
+            $entityManager->flush();
+
+            // Redirect to the home page or another route
+            return $this->redirectToRoute('app_page');
+        }
+
+        // Render the form
+        return $this->render('security/complete_profile.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+   
 }

@@ -32,7 +32,6 @@ class __TwigTemplate_0ea1431e1d568171133cce6d21551bbb extends Template
         $this->blocks = [
             'title' => [$this, 'block_title'],
             'body' => [$this, 'block_body'],
-            'javascripts' => [$this, 'block_javascripts'],
         ];
     }
 
@@ -168,17 +167,16 @@ class __TwigTemplate_0ea1431e1d568171133cce6d21551bbb extends Template
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_users_pdf");
         yield "\" class=\"btn btn-success\">📥PDF</a>
         </div>
-        
     </form>
 
-   <div class=\"mb-3\">
-    <button id=\"btnUserRoles\" class=\"btn btn-primary\">📊 Statistiques des Rôles</button>
-    
-    <button id=\"btnLoginAttempts\" class=\"btn btn-secondary\">📊 Statistiques de Connexion</button>
-</div>
+    <div class=\"mb-3\">
+        <button id=\"btnUserRoles\" class=\"btn btn-primary\">📊 Statistiques des Rôles</button>
+        <button id=\"btnLoginAttempts\" class=\"btn btn-secondary\">📊 Statistiques de Connexion</button>
+    </div>
 
-<div id=\"statisticsResults\"></div>
-
+    <div id=\"statisticsResults\">
+        <canvas id=\"chartCanvas\" width=\"400\" height=\"200\"></canvas>
+    </div>
 
     <div class=\"table-responsive mt-4 w-100\" style=\"overflow-x: hidden;\">
         <table class=\"table table-striped table-bordered\">
@@ -197,84 +195,84 @@ class __TwigTemplate_0ea1431e1d568171133cce6d21551bbb extends Template
             </thead>
             <tbody id=\"userTableBody\">
                 ";
-        // line 65
+        // line 64
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["users"]) || array_key_exists("users", $context) ? $context["users"] : (function () { throw new RuntimeError('Variable "users" does not exist.', 65, $this->source); })()));
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["users"]) || array_key_exists("users", $context) ? $context["users"] : (function () { throw new RuntimeError('Variable "users" does not exist.', 64, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["user"]) {
-            // line 66
+            // line 65
             yield "                    <tr>
                         <td class=\"text-center\">
                             ";
-            // line 68
-            if (CoreExtension::getAttribute($this->env, $this->source, $context["user"], "avatar", [], "any", false, false, false, 68)) {
-                // line 69
+            // line 67
+            if (CoreExtension::getAttribute($this->env, $this->source, $context["user"], "avatar", [], "any", false, false, false, 67)) {
+                // line 68
                 yield "                                <img src=\"";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/avatars/" . CoreExtension::getAttribute($this->env, $this->source, $context["user"], "avatar", [], "any", false, false, false, 69))), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/avatars/" . CoreExtension::getAttribute($this->env, $this->source, $context["user"], "avatar", [], "any", false, false, false, 68))), "html", null, true);
                 yield "\" width=\"50\" height=\"50\" class=\"rounded-circle\" alt=\"Avatar\">
                             ";
             } else {
-                // line 71
+                // line 70
                 yield "                                <img src=\"";
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/default-avatar.png"), "html", null, true);
                 yield "\" width=\"50\" height=\"50\" class=\"rounded-circle\" alt=\"Default Avatar\">
                             ";
             }
-            // line 73
+            // line 72
             yield "                        </td>
                         <td class=\"text-center\">";
+            // line 73
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 73), "html", null, true);
+            yield "</td>
+                        <td class=\"text-center\">";
             // line 74
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 74), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "email", [], "any", false, false, false, 74), "html", null, true);
             yield "</td>
                         <td class=\"text-center\">";
             // line 75
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "email", [], "any", false, false, false, 75), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "nom", [], "any", false, false, false, 75), "html", null, true);
             yield "</td>
                         <td class=\"text-center\">";
             // line 76
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "nom", [], "any", false, false, false, 76), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "prenom", [], "any", false, false, false, 76), "html", null, true);
             yield "</td>
                         <td class=\"text-center\">";
             // line 77
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "prenom", [], "any", false, false, false, 77), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "telephone", [], "any", false, false, false, 77), "html", null, true);
             yield "</td>
                         <td class=\"text-center\">";
             // line 78
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "telephone", [], "any", false, false, false, 78), "html", null, true);
-            yield "</td>
-                        <td class=\"text-center\">";
-            // line 79
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::join(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "roles", [], "any", false, false, false, 79), ", "), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(Twig\Extension\CoreExtension::join(CoreExtension::getAttribute($this->env, $this->source, $context["user"], "roles", [], "any", false, false, false, 78), ", "), "html", null, true);
             yield "</td>
                         <td class=\"text-center\">
                             ";
-            // line 81
-            if ((CoreExtension::getAttribute($this->env, $this->source, $context["user"], "status", [], "any", false, false, false, 81) == "active")) {
-                // line 82
+            // line 80
+            if ((CoreExtension::getAttribute($this->env, $this->source, $context["user"], "status", [], "any", false, false, false, 80) == "active")) {
+                // line 81
                 yield "                                <span class=\"badge bg-success text-white\">Actif</span>
                             ";
-            } elseif ((CoreExtension::getAttribute($this->env, $this->source,             // line 83
-$context["user"], "status", [], "any", false, false, false, 83) == "blocked")) {
-                // line 84
+            } elseif ((CoreExtension::getAttribute($this->env, $this->source,             // line 82
+$context["user"], "status", [], "any", false, false, false, 82) == "blocked")) {
+                // line 83
                 yield "                                <span class=\"badge bg-danger text-white\">Bloqué</span>
                             ";
             } else {
-                // line 86
+                // line 85
                 yield "                                <span class=\"badge bg-secondary text-white\">Inactif</span>
                             ";
             }
-            // line 88
+            // line 87
             yield "                        </td>
                         <td class=\"text-center\">
                             <div class=\"d-flex justify-content-center\">
                                 <a href=\"";
-            // line 91
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_user_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 91)]), "html", null, true);
+            // line 90
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_user_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 90)]), "html", null, true);
             yield "\" class=\"btn btn-warning btn-sm mr-2\">
                                     <i class=\"fas fa-edit\"></i> Modifier
                                 </a>
                                 <a href=\"";
-            // line 94
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_user_delete", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 94)]), "html", null, true);
+            // line 93
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_user_delete", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 93)]), "html", null, true);
             yield "\" class=\"btn btn-danger btn-sm\" onclick=\"return confirm('Êtes-vous sûr ?')\">
                                     <i class=\"fas fa-trash-alt\"></i> Supprimer
                                 </a>
@@ -286,61 +284,118 @@ $context["user"], "status", [], "any", false, false, false, 83) == "blocked")) {
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['user'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 101
+        // line 100
         yield "            </tbody>
         </table>
     </div>
 </div>
-";
-        
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
-        
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
-
-        yield from [];
-    }
-
-    // line 107
-    /**
-     * @return iterable<null|scalar|\Stringable>
-     */
-    public function block_javascripts(array $context, array $blocks = []): iterable
-    {
-        $macros = $this->macros;
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
-
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
-
-        // line 108
-        yield "<script src=\"https://code.jquery.com/jquery-3.6.0.min.js\"></script>
+<script src=\"https://code.jquery.com/jquery-3.6.0.min.js\"></script>
+<script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script>
 
 <script>
+    let chartInstance = null; // To store the current chart instance
+
+    function renderChart(data, type) {
+        const ctx = document.getElementById('chartCanvas').getContext('2d');
+
+        // Destroy the previous chart instance if it exists
+        if (chartInstance) {
+            chartInstance.destroy();
+        }
+
+        let chartData, chartOptions;
+
+        if (type === 'roles') {
+            // Pie chart for roles
+            chartData = {
+                labels: data.map(stat => stat.role),
+                datasets: [{
+                    label: 'Number of Users',
+                    data: data.map(stat => stat.count),
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(75, 192, 192, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(75, 192, 192, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            };
+
+            chartOptions = {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw;
+                            }
+                        }
+                    }
+                }
+            };
+        } else if (type === 'loginAttempts') {
+            // Bar chart for login attempts
+            chartData = {
+                labels: data.map(stat => `\${stat.email}: \${stat.loginAttempts} Attempts`),
+                datasets: [{
+                    label: 'Login Attempts',
+                    data: data.map(stat => stat.loginAttempts),
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            };
+
+            chartOptions = {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return 'User: ' + tooltipItem.label + ' | Attempts: ' + tooltipItem.raw;
+                            }
+                        }
+                    }
+                }
+            };
+        }
+
+        // Create the new chart
+        chartInstance = new Chart(ctx, {
+            type: type === 'roles' ? 'pie' : 'bar',
+            data: chartData,
+            options: chartOptions
+        });
+    }
+
     function fetchStatistics(statType) {
         \$.ajax({
-            url: '/admin/user/' + statType,  
+            url: '/admin/user/' + statType,
             type: 'GET',
-            dataType: 'json',  
+            dataType: 'json',
             success: function(response) {
-                let output = '';
-                
                 if (statType === 'statistics') {
-                    output = '<h3>Statistiques des Rôles:</h3><ul>';
-                    response.forEach(function(stat) {
-                        output += '<li>' + stat.role + ': ' + stat.count + ' utilisateurs</li>';
-                    });
-                    output += '</ul>';
+                    renderChart(response, 'roles');
                 } else if (statType === 'LoginStats') {
-                    output = '<h3>Statistiques de Connexion:</h3><ul>';
-                    response.forEach(function(stat) {
-                        output += '<li>' + stat.email + ' : ' + stat.loginAttempts + ' tentatives</li>';
-                    });
-                    output += '</ul>';
+                    renderChart(response, 'loginAttempts');
                 }
-
-                \$('#statisticsResults').html(output);
             },
             error: function() {
                 \$('#statisticsResults').html('<p>Erreur lors de la récupération des statistiques.</p>');
@@ -348,13 +403,12 @@ $context["user"], "status", [], "any", false, false, false, 83) == "blocked")) {
         });
     }
 
-    \$('#btnUserRoles').click(function() {
-        console.log(\"Button clicked for user roles statistics\");
+    // Event listeners for button clicks to fetch data
+    document.getElementById('btnUserRoles').addEventListener('click', function() {
         fetchStatistics('statistics');
     });
 
-    \$('#btnLoginAttempts').click(function() {
-        console.log(\"Button clicked for login attempts statistics\");
+    document.getElementById('btnLoginAttempts').addEventListener('click', function() {
         fetchStatistics('LoginStats');
     });
 </script>
@@ -390,7 +444,7 @@ $context["user"], "status", [], "any", false, false, false, 83) == "blocked")) {
      */
     public function getDebugInfo(): array
     {
-        return array (  318 => 108,  305 => 107,  290 => 101,  277 => 94,  271 => 91,  266 => 88,  262 => 86,  258 => 84,  256 => 83,  253 => 82,  251 => 81,  246 => 79,  242 => 78,  238 => 77,  234 => 76,  230 => 75,  226 => 74,  223 => 73,  217 => 71,  211 => 69,  209 => 68,  205 => 66,  201 => 65,  168 => 35,  164 => 34,  153 => 28,  147 => 27,  141 => 26,  129 => 19,  123 => 18,  117 => 17,  108 => 11,  101 => 6,  88 => 5,  65 => 3,  42 => 1,);
+        return array (  288 => 100,  275 => 93,  269 => 90,  264 => 87,  260 => 85,  256 => 83,  254 => 82,  251 => 81,  249 => 80,  244 => 78,  240 => 77,  236 => 76,  232 => 75,  228 => 74,  224 => 73,  221 => 72,  215 => 70,  209 => 68,  207 => 67,  203 => 65,  199 => 64,  167 => 35,  163 => 34,  152 => 28,  146 => 27,  140 => 26,  128 => 19,  122 => 18,  116 => 17,  107 => 11,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -431,17 +485,16 @@ $context["user"], "status", [], "any", false, false, false, 83) == "blocked")) {
             <a href=\"{{ path('admin_users') }}\" id=\"clearSearchBtn\" class=\"btn btn-secondary\">🔄 Clear Recherche</a>
             <a href=\"{{ path('admin_users_pdf') }}\" class=\"btn btn-success\">📥PDF</a>
         </div>
-        
     </form>
 
-   <div class=\"mb-3\">
-    <button id=\"btnUserRoles\" class=\"btn btn-primary\">📊 Statistiques des Rôles</button>
-    
-    <button id=\"btnLoginAttempts\" class=\"btn btn-secondary\">📊 Statistiques de Connexion</button>
-</div>
+    <div class=\"mb-3\">
+        <button id=\"btnUserRoles\" class=\"btn btn-primary\">📊 Statistiques des Rôles</button>
+        <button id=\"btnLoginAttempts\" class=\"btn btn-secondary\">📊 Statistiques de Connexion</button>
+    </div>
 
-<div id=\"statisticsResults\"></div>
-
+    <div id=\"statisticsResults\">
+        <canvas id=\"chartCanvas\" width=\"400\" height=\"200\"></canvas>
+    </div>
 
     <div class=\"table-responsive mt-4 w-100\" style=\"overflow-x: hidden;\">
         <table class=\"table table-striped table-bordered\">
@@ -499,35 +552,113 @@ $context["user"], "status", [], "any", false, false, false, 83) == "blocked")) {
         </table>
     </div>
 </div>
-{% endblock %}
 
-{% block javascripts %}
 <script src=\"https://code.jquery.com/jquery-3.6.0.min.js\"></script>
+<script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script>
 
 <script>
+    let chartInstance = null; // To store the current chart instance
+
+    function renderChart(data, type) {
+        const ctx = document.getElementById('chartCanvas').getContext('2d');
+
+        // Destroy the previous chart instance if it exists
+        if (chartInstance) {
+            chartInstance.destroy();
+        }
+
+        let chartData, chartOptions;
+
+        if (type === 'roles') {
+            // Pie chart for roles
+            chartData = {
+                labels: data.map(stat => stat.role),
+                datasets: [{
+                    label: 'Number of Users',
+                    data: data.map(stat => stat.count),
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(75, 192, 192, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(75, 192, 192, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            };
+
+            chartOptions = {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw;
+                            }
+                        }
+                    }
+                }
+            };
+        } else if (type === 'loginAttempts') {
+            // Bar chart for login attempts
+            chartData = {
+                labels: data.map(stat => `\${stat.email}: \${stat.loginAttempts} Attempts`),
+                datasets: [{
+                    label: 'Login Attempts',
+                    data: data.map(stat => stat.loginAttempts),
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            };
+
+            chartOptions = {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return 'User: ' + tooltipItem.label + ' | Attempts: ' + tooltipItem.raw;
+                            }
+                        }
+                    }
+                }
+            };
+        }
+
+        // Create the new chart
+        chartInstance = new Chart(ctx, {
+            type: type === 'roles' ? 'pie' : 'bar',
+            data: chartData,
+            options: chartOptions
+        });
+    }
+
     function fetchStatistics(statType) {
         \$.ajax({
-            url: '/admin/user/' + statType,  
+            url: '/admin/user/' + statType,
             type: 'GET',
-            dataType: 'json',  
+            dataType: 'json',
             success: function(response) {
-                let output = '';
-                
                 if (statType === 'statistics') {
-                    output = '<h3>Statistiques des Rôles:</h3><ul>';
-                    response.forEach(function(stat) {
-                        output += '<li>' + stat.role + ': ' + stat.count + ' utilisateurs</li>';
-                    });
-                    output += '</ul>';
+                    renderChart(response, 'roles');
                 } else if (statType === 'LoginStats') {
-                    output = '<h3>Statistiques de Connexion:</h3><ul>';
-                    response.forEach(function(stat) {
-                        output += '<li>' + stat.email + ' : ' + stat.loginAttempts + ' tentatives</li>';
-                    });
-                    output += '</ul>';
+                    renderChart(response, 'loginAttempts');
                 }
-
-                \$('#statisticsResults').html(output);
             },
             error: function() {
                 \$('#statisticsResults').html('<p>Erreur lors de la récupération des statistiques.</p>');
@@ -535,19 +666,16 @@ $context["user"], "status", [], "any", false, false, false, 83) == "blocked")) {
         });
     }
 
-    \$('#btnUserRoles').click(function() {
-        console.log(\"Button clicked for user roles statistics\");
+    // Event listeners for button clicks to fetch data
+    document.getElementById('btnUserRoles').addEventListener('click', function() {
         fetchStatistics('statistics');
     });
 
-    \$('#btnLoginAttempts').click(function() {
-        console.log(\"Button clicked for login attempts statistics\");
+    document.getElementById('btnLoginAttempts').addEventListener('click', function() {
         fetchStatistics('LoginStats');
     });
 </script>
 
-{% endblock %}
-
-", "admin/user/users.html.twig", "C:\\Games\\Reaptn\\templates\\admin\\user\\users.html.twig");
+{% endblock %}", "admin/user/users.html.twig", "C:\\Games\\Reaptn\\templates\\admin\\user\\users.html.twig");
     }
 }

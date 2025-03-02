@@ -37,10 +37,14 @@ security:
             custom_authenticator:
                 - App\Security\LoginFormAuthenticator
                 - App\Service\GoogleAuthenticator
+                - App\Security\FaceLoginFormAuthenticator
             remember_me:
                 secret: '%kernel.secret%'
                 lifetime: 604800
                 path: /
+        face_login:
+            pattern: ^/face-login
+            security: false
 
         # Admin firewall
         admin:

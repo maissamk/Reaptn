@@ -101,6 +101,10 @@
     <parameter key="product_images_directory">C:\Games\Reaptn/public/uploads/products</parameter>
     <parameter key="images_directory">C:\Games\Reaptn/public/uploads/images</parameter>
     <parameter key="avatars_directory">C:\Games\Reaptn/public/uploads/avatars</parameter>
+    <parameter key="face_images_directory">C:\Games\Reaptn/public/uploads/face_images</parameter>
+    <parameter key="captured_images_directory">C:\Games\Reaptn/public/uploads/captured_images</parameter>
+    <parameter key="recaptcha.site_key">%env(RECAPTCHA_SITE_KEY)%</parameter>
+    <parameter key="recaptcha.secret_key">%env(RECAPTCHA_SECRET_KEY)%</parameter>
     <parameter key="event_dispatcher.event_aliases" type="collection">
       <parameter key="Symfony\Component\Console\Event\ConsoleCommandEvent">console.command</parameter>
       <parameter key="Symfony\Component\Console\Event\ConsoleErrorEvent">console.error</parameter>
@@ -249,6 +253,7 @@
     <parameter key="security.firewalls" type="collection">
       <parameter>dev</parameter>
       <parameter>main</parameter>
+      <parameter>face_login</parameter>
       <parameter>admin</parameter>
     </parameter>
     <parameter key="security.logout_uris" type="collection"/>
@@ -421,12 +426,29 @@
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\EmployeController"/>
       </call>
     </service>
+    <service id="App\Controller\FaceLoginController" class="App\Controller\FaceLoginController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\FaceLoginController"/>
+      </call>
+    </service>
+    <service id="App\Controller\FaceRecognitionController" class="App\Controller\FaceRecognitionController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\FaceRecognitionController"/>
+      </call>
+    </service>
     <service id="App\Controller\LivraisonController" class="App\Controller\LivraisonController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\LivraisonController"/>
       </call>
+    </service>
+    <service id="App\Controller\MailerController" class="App\Controller\MailerController" autowire="true" autoconfigure="true">
+      <tag name="container.error" message="The autoloader expected class &quot;App\Controller\MailerController&quot; to be defined in file &quot;C:\Games\Reaptn\vendor\composer/../../src\Controller\MailerController.php&quot;. The file was found but the class was not in it, the class name or namespace probably has a typo."/>
     </service>
     <service id="App\Controller\MaterielController" class="App\Controller\MaterielController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
@@ -499,6 +521,7 @@
     <service id="App\Controller\ProfileController" class="App\Controller\ProfileController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
+      <argument type="service" id=".debug.http_client"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\ProfileController"/>
       </call>
@@ -554,6 +577,9 @@
       <tag name="form.type"/>
     </service>
     <service id="App\Form\CommandeType" class="App\Form\CommandeType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\CompleteProfileFormType" class="App\Form\CompleteProfileFormType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
     <service id="App\Form\ContratType" class="App\Form\ContratType" autowire="true" autoconfigure="true">
@@ -684,6 +710,12 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
+    <service id="App\Security\FaceLoginFormAuthenticator" class="App\Security\FaceLoginFormAuthenticator" autowire="true" autoconfigure="true">
+      <argument type="service" id=".debug.http_client"/>
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+      <argument type="service" id="parameter_bag"/>
+      <argument type="service" id="router.default"/>
+    </service>
     <service id="App\Security\LoginFormAuthenticator" class="App\Security\LoginFormAuthenticator" autowire="true" autoconfigure="true">
       <argument type="service" id="router.default"/>
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
@@ -709,6 +741,7 @@
     <service id="App\Service\UserStatisticsService" class="App\Service\UserStatisticsService" public="true" autowire="true" autoconfigure="true">
       <argument type="service" id="App\Repository\UserRepository"/>
     </service>
+    <service id="App\Service\FaceComparisonService" class="App\Service\FaceComparisonService" autowire="true" autoconfigure="true"/>
     <service id="argument_metadata_factory" class="Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory"/>
     <service id="argument_resolver.backed_enum_resolver" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver">
       <tag priority="100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver">controller.argument_value_resolver</tag>
@@ -736,7 +769,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.8bxfGSd"/>
+      <argument type="service" id=".service_locator.2mfGzOz"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -1673,6 +1706,7 @@
       <argument type="collection">
         <argument>App\Form\ChangePasswordFormType</argument>
         <argument>App\Form\CommandeType</argument>
+        <argument>App\Form\CompleteProfileFormType</argument>
         <argument>App\Form\ContratType</argument>
         <argument>App\Form\EmployeType</argument>
         <argument>App\Form\LivraisonType</argument>
@@ -3823,7 +3857,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.8bxfGSd"/>
+      <argument type="service" id=".service_locator.2mfGzOz"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <tag name="kernel.reset" method="reset"/>
@@ -4312,7 +4346,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.iOh.ad9"/>
+      <argument type="service" id=".service_locator.k2v2Eyy"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -6698,7 +6732,8 @@
       <argument type="service" id=".service_locator.e_.xxAP"/>
       <argument type="collection">
         <argument key="dev">null</argument>
-        <argument key="main" type="service" id=".service_locator.4DTikrs"/>
+        <argument key="main" type="service" id=".service_locator.QGMYjDS"/>
+        <argument key="face_login">null</argument>
         <argument key="admin" type="service" id=".service_locator.1T_pO6Q"/>
       </argument>
     </service>
@@ -6754,10 +6789,11 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="security.firewall.map" class="Symfony\Bundle\SecurityBundle\Security\FirewallMap">
-      <argument type="service" id=".service_locator.DdRG1kp"/>
+      <argument type="service" id=".service_locator.hkTbdrx"/>
       <argument type="iterator">
         <argument key="security.firewall.map.context.dev" type="service" id=".security.request_matcher.kLbKLHa"/>
         <argument key="security.firewall.map.context.main">null</argument>
+        <argument key="security.firewall.map.context.face_login" type="service" id=".security.request_matcher.DHzo0XA"/>
         <argument key="security.firewall.map.context.admin" type="service" id=".security.request_matcher.5eRZPSi"/>
       </argument>
     </service>
@@ -7269,12 +7305,13 @@
       <tag name="console.command" command="debug:firewall"/>
       <tag name="container.no_preload"/>
       <argument>%security.firewalls%</argument>
-      <argument type="service" id=".service_locator.DdRG1kp"/>
+      <argument type="service" id=".service_locator.hkTbdrx"/>
       <argument type="service" id=".service_locator.OFsXjhj"/>
       <argument type="collection">
         <argument key="main" type="collection">
           <argument type="service" id="App\Security\LoginFormAuthenticator"/>
           <argument type="service" id="App\Service\GoogleAuthenticator"/>
+          <argument type="service" id="App\Security\FaceLoginFormAuthenticator"/>
           <argument type="service" id="security.authenticator.form_login.main"/>
           <argument type="service" id="security.authenticator.remember_me.main"/>
         </argument>
@@ -7356,6 +7393,7 @@
         <argument>remember_me</argument>
         <argument>App\Security\LoginFormAuthenticator</argument>
         <argument>App\Service\GoogleAuthenticator</argument>
+        <argument>App\Security\FaceLoginFormAuthenticator</argument>
       </argument>
       <argument>null</argument>
       <argument type="collection">
@@ -7579,6 +7617,7 @@
       <argument type="collection">
         <argument type="service" id="App\Security\LoginFormAuthenticator"/>
         <argument type="service" id="App\Service\GoogleAuthenticator"/>
+        <argument type="service" id="App\Security\FaceLoginFormAuthenticator"/>
         <argument type="service" id="security.authenticator.form_login.main"/>
         <argument type="service" id="security.authenticator.remember_me.main"/>
       </argument>
@@ -7610,9 +7649,10 @@
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
       <argument>false</argument>
     </service>
-    <service id=".service_locator.4DTikrs" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.QGMYjDS" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Security\FaceLoginFormAuthenticator" type="service_closure" id="App\Security\FaceLoginFormAuthenticator"/>
         <argument key="App\Security\LoginFormAuthenticator" type="service_closure" id="App\Security\LoginFormAuthenticator"/>
         <argument key="App\Service\GoogleAuthenticator" type="service_closure" id="App\Service\GoogleAuthenticator"/>
         <argument key="security.authenticator.form_login.main" type="service_closure" id="security.authenticator.form_login.main"/>
@@ -7629,6 +7669,35 @@
       <argument type="service" id="security.exception_listener.main"/>
       <argument type="service" id="security.logout_listener.main"/>
       <argument type="service" id="security.firewall.map.config.main"/>
+    </service>
+    <service id="security.firewall.map.config.face_login" class="Symfony\Bundle\SecurityBundle\Security\FirewallConfig">
+      <argument>face_login</argument>
+      <argument>security.user_checker</argument>
+      <argument>.security.request_matcher.DHzo0XA</argument>
+      <argument>false</argument>
+      <argument>false</argument>
+      <argument>null</argument>
+      <argument>null</argument>
+      <argument>null</argument>
+      <argument>null</argument>
+      <argument>null</argument>
+      <argument type="collection"/>
+      <argument>null</argument>
+      <argument>null</argument>
+    </service>
+    <service id=".security.request_matcher.TSqcXSn" class="Symfony\Component\HttpFoundation\RequestMatcher\PathRequestMatcher">
+      <argument>^/face-login</argument>
+    </service>
+    <service id=".security.request_matcher.DHzo0XA" class="Symfony\Component\HttpFoundation\ChainRequestMatcher">
+      <argument type="collection">
+        <argument type="service" id=".security.request_matcher.TSqcXSn"/>
+      </argument>
+    </service>
+    <service id="security.firewall.map.context.face_login" class="Symfony\Bundle\SecurityBundle\Security\FirewallContext">
+      <argument type="iterator"/>
+      <argument>null</argument>
+      <argument>null</argument>
+      <argument type="service" id="security.firewall.map.config.face_login"/>
     </service>
     <service id="security.firewall.map.config.admin" class="Symfony\Bundle\SecurityBundle\Security\FirewallConfig">
       <argument>admin</argument>
@@ -7870,11 +7939,12 @@
       <argument type="service" id="security.logout_listener.admin"/>
       <argument type="service" id="security.firewall.map.config.admin"/>
     </service>
-    <service id=".service_locator.DdRG1kp" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.hkTbdrx" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="security.firewall.map.context.admin" type="service_closure" id="security.firewall.map.context.admin"/>
         <argument key="security.firewall.map.context.dev" type="service_closure" id="security.firewall.map.context.dev"/>
+        <argument key="security.firewall.map.context.face_login" type="service_closure" id="security.firewall.map.context.face_login"/>
         <argument key="security.firewall.map.context.main" type="service_closure" id="security.firewall.map.context.main"/>
       </argument>
     </service>
@@ -8368,6 +8438,12 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\EmployeController" class="App\Controller\EmployeController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\EmployeController" class="App\Controller\EmployeController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\EmployeController" class="App\Controller\EmployeController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\FaceLoginController" class="App\Controller\FaceLoginController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\FaceLoginController" class="App\Controller\FaceLoginController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\FaceLoginController" class="App\Controller\FaceLoginController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\FaceRecognitionController" class="App\Controller\FaceRecognitionController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\FaceRecognitionController" class="App\Controller\FaceRecognitionController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\FaceRecognitionController" class="App\Controller\FaceRecognitionController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LivraisonController" class="App\Controller\LivraisonController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LivraisonController" class="App\Controller\LivraisonController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\LivraisonController" class="App\Controller\LivraisonController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -8421,6 +8497,8 @@
     <service id=".abstract.instanceof.App\Form\ChangePasswordFormType" class="App\Form\ChangePasswordFormType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CommandeType" class="App\Form\CommandeType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\CommandeType" class="App\Form\CommandeType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CompleteProfileFormType" class="App\Form\CompleteProfileFormType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\CompleteProfileFormType" class="App\Form\CompleteProfileFormType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ContratType" class="App\Form\ContratType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ContratType" class="App\Form\ContratType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\EmployeType" class="App\Form\EmployeType" autowire="true" abstract="true"/>
@@ -9167,6 +9245,13 @@
         <argument key="clientRegistry" type="service_closure" id="knpu.oauth2.registry"/>
       </argument>
     </service>
+    <service id=".service_locator.qrNhk2c" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="passwordHasher" type="service_closure" id="security.user_password_hasher"/>
+      </argument>
+    </service>
     <service id=".service_locator.djBiB42" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -9194,7 +9279,7 @@
         <argument key="userStatisticsService" type="service_closure" id="App\Service\UserStatisticsService"/>
       </argument>
     </service>
-    <service id=".service_locator.8bxfGSd" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.2mfGzOz" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminController::adminIndex" type="service_closure" id=".service_locator.vs9Bn8g"/>
@@ -9309,6 +9394,7 @@
         <argument key="App\Controller\ResetPasswordController::request" type="service_closure" id=".service_locator.EE0.cm9"/>
         <argument key="App\Controller\ResetPasswordController::reset" type="service_closure" id=".service_locator.Z9ydiC1"/>
         <argument key="App\Controller\SecurityController::adminLogin" type="service_closure" id=".service_locator.rSTd.nA"/>
+        <argument key="App\Controller\SecurityController::completeProfile" type="service_closure" id=".service_locator.qrNhk2c"/>
         <argument key="App\Controller\SecurityController::connectGoogle" type="service_closure" id=".service_locator.hokdgZZ"/>
         <argument key="App\Controller\SecurityController::login" type="service_closure" id=".service_locator.rSTd.nA"/>
         <argument key="App\Controller\UserAdminController::deleteUser" type="service_closure" id=".service_locator.9kKwU2t"/>
@@ -9433,6 +9519,7 @@
         <argument key="App\Controller\ResetPasswordController:request" type="service_closure" id=".service_locator.EE0.cm9"/>
         <argument key="App\Controller\ResetPasswordController:reset" type="service_closure" id=".service_locator.Z9ydiC1"/>
         <argument key="App\Controller\SecurityController:adminLogin" type="service_closure" id=".service_locator.rSTd.nA"/>
+        <argument key="App\Controller\SecurityController:completeProfile" type="service_closure" id=".service_locator.qrNhk2c"/>
         <argument key="App\Controller\SecurityController:connectGoogle" type="service_closure" id=".service_locator.hokdgZZ"/>
         <argument key="App\Controller\SecurityController:login" type="service_closure" id=".service_locator.rSTd.nA"/>
         <argument key="App\Controller\UserAdminController:deleteUser" type="service_closure" id=".service_locator.9kKwU2t"/>
@@ -9602,11 +9689,12 @@
       <argument type="service" id="argument_resolver.query_parameter_value_resolver"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.iOh.ad9" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.k2v2Eyy" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\ChangePasswordFormType" type="service_closure" id="App\Form\ChangePasswordFormType"/>
         <argument key="App\Form\CommandeType" type="service_closure" id="App\Form\CommandeType"/>
+        <argument key="App\Form\CompleteProfileFormType" type="service_closure" id="App\Form\CompleteProfileFormType"/>
         <argument key="App\Form\ContratType" type="service_closure" id="App\Form\ContratType"/>
         <argument key="App\Form\EmployeType" type="service_closure" id="App\Form\EmployeType"/>
         <argument key="App\Form\LivraisonType" type="service_closure" id="App\Form\LivraisonType"/>
@@ -10362,6 +10450,18 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.O2p6Lk7" method="withContext"/>
     </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\FaceLoginController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\FaceLoginController"/>
+      <argument>App\Controller\FaceLoginController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\FaceRecognitionController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\FaceRecognitionController"/>
+      <argument>App\Controller\FaceRecognitionController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
     <service id=".service_locator.O2p6Lk7.App\Controller\LivraisonController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\LivraisonController"/>
       <argument>App\Controller\LivraisonController</argument>
@@ -10638,6 +10738,8 @@
           <argument>App\Controller\CommandeController</argument>
           <argument>App\Controller\ContratController</argument>
           <argument>App\Controller\EmployeController</argument>
+          <argument>App\Controller\FaceLoginController</argument>
+          <argument>App\Controller\FaceRecognitionController</argument>
           <argument>App\Controller\LivraisonController</argument>
           <argument>App\Controller\MaterielController</argument>
           <argument>App\Controller\MateriellocationController</argument>
@@ -12103,7 +12205,7 @@
     <service id="security.user_checker.main" alias="security.user_checker"/>
     <service id="security.authentication.session_strategy.admin" alias="security.authentication.session_strategy"/>
     <service id="security.user_checker.admin" alias="security.user_checker"/>
-    <service id="security.firewall.context_locator" alias=".service_locator.DdRG1kp"/>
+    <service id="security.firewall.context_locator" alias=".service_locator.hkTbdrx"/>
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker"/>
     <service id="logger" alias="monolog.logger"/>
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger"/>
@@ -12117,7 +12219,7 @@
     <service id="KnpU\OAuth2ClientBundle\Client\Provider\GoogleClient" alias="knpu.oauth2.client.google"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.w7.f4fT" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.8bxfGSd"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.2mfGzOz"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -12141,7 +12243,8 @@
     <service id="Psr\Log\LoggerInterface $deprecationLogger" alias="monolog.logger.deprecation"/>
     <service id=".service_locator.80edgLI" alias="messenger.receiver_locator"/>
     <service id=".service_locator.h8Jkkd2" alias="messenger.retry_strategy_locator"/>
-    <service id=".service_locator.RIGJPw_" alias=".service_locator.DdRG1kp"/>
+    <service id=".service_locator.Lh5Xqvf" alias=".service_locator.QGMYjDS"/>
+    <service id=".service_locator.ZerQI.V" alias=".service_locator.hkTbdrx"/>
     <service id=".service_locator.bJ.4HC5" alias=".service_locator.w7.f4fT"/>
     <service id=".service_locator.ShRxZre" alias=".service_locator.wZGs69i"/>
     <service id=".service_locator.ccJpJqa" alias=".service_locator.qAUb40R"/>
@@ -12152,9 +12255,9 @@
     <service id=".service_locator.66Dh_nl" alias=".service_locator.OZJWVTB"/>
     <service id=".service_locator.V6D1oJY" alias=".service_locator.e_4zbH4"/>
     <service id=".service_locator.WW2Kq9d" alias=".service_locator.m5PcCSp"/>
-    <service id=".service_locator.0bR5rE6" alias=".service_locator.8bxfGSd"/>
+    <service id=".service_locator.RBse3GJ" alias=".service_locator.2mfGzOz"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
-    <service id=".service_locator.nh.9sqv" alias=".service_locator.iOh.ad9"/>
+    <service id=".service_locator.bkTJwGm" alias=".service_locator.k2v2Eyy"/>
     <service id=".service_locator.XtmiKbi" alias=".service_locator.MfxSDRP"/>
     <service id=".service_locator.O24_MAy" alias=".service_locator.yY.p4P7"/>
     <service id=".service_locator.jUv.zyj" alias=".service_locator.O2p6Lk7"/>
@@ -12219,6 +12322,7 @@
     <service id=".service_locator.uPguXMt" alias=".service_locator.Z9ydiC1"/>
     <service id=".service_locator.7NIAq8D" alias=".service_locator.rSTd.nA"/>
     <service id=".service_locator.Yc1mPPx" alias=".service_locator.hokdgZZ"/>
+    <service id=".service_locator.GEFQPA3" alias=".service_locator.qrNhk2c"/>
     <service id=".service_locator.mYUNP96" alias=".service_locator.djBiB42"/>
     <service id=".service_locator._frJunc" alias=".service_locator.P3uOD4s"/>
     <service id=".service_locator.tWrCAkC" alias=".service_locator.m5PcCSp"/>

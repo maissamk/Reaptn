@@ -34,17 +34,16 @@
             <a href="{{ path('admin_users') }}" id="clearSearchBtn" class="btn btn-secondary">🔄 Clear Recherche</a>
             <a href="{{ path('admin_users_pdf') }}" class="btn btn-success">📥PDF</a>
         </div>
-        
     </form>
 
-   <div class="mb-3">
-    <button id="btnUserRoles" class="btn btn-primary">📊 Statistiques des Rôles</button>
-    
-    <button id="btnLoginAttempts" class="btn btn-secondary">📊 Statistiques de Connexion</button>
-</div>
+    <div class="mb-3">
+        <button id="btnUserRoles" class="btn btn-primary">📊 Statistiques des Rôles</button>
+        <button id="btnLoginAttempts" class="btn btn-secondary">📊 Statistiques de Connexion</button>
+    </div>
 
-<div id="statisticsResults"></div>
-
+    <div id="statisticsResults">
+        <canvas id="chartCanvas" width="400" height="200"></canvas>
+    </div>
 
     <div class="table-responsive mt-4 w-100" style="overflow-x: hidden;">
         <table class="table table-striped table-bordered">
@@ -102,35 +101,113 @@
         </table>
     </div>
 </div>
-{% endblock %}
 
-{% block javascripts %}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
+    let chartInstance = null; // To store the current chart instance
+
+    function renderChart(data, type) {
+        const ctx = document.getElementById('chartCanvas').getContext('2d');
+
+        // Destroy the previous chart instance if it exists
+        if (chartInstance) {
+            chartInstance.destroy();
+        }
+
+        let chartData, chartOptions;
+
+        if (type === 'roles') {
+            // Pie chart for roles
+            chartData = {
+                labels: data.map(stat => stat.role),
+                datasets: [{
+                    label: 'Number of Users',
+                    data: data.map(stat => stat.count),
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(75, 192, 192, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(75, 192, 192, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            };
+
+            chartOptions = {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw;
+                            }
+                        }
+                    }
+                }
+            };
+        } else if (type === 'loginAttempts') {
+            // Bar chart for login attempts
+            chartData = {
+                labels: data.map(stat => `${stat.email}: ${stat.loginAttempts} Attempts`),
+                datasets: [{
+                    label: 'Login Attempts',
+                    data: data.map(stat => stat.loginAttempts),
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            };
+
+            chartOptions = {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return 'User: ' + tooltipItem.label + ' | Attempts: ' + tooltipItem.raw;
+                            }
+                        }
+                    }
+                }
+            };
+        }
+
+        // Create the new chart
+        chartInstance = new Chart(ctx, {
+            type: type === 'roles' ? 'pie' : 'bar',
+            data: chartData,
+            options: chartOptions
+        });
+    }
+
     function fetchStatistics(statType) {
         $.ajax({
-            url: '/admin/user/' + statType,  
+            url: '/admin/user/' + statType,
             type: 'GET',
-            dataType: 'json',  
+            dataType: 'json',
             success: function(response) {
-                let output = '';
-                
                 if (statType === 'statistics') {
-                    output = '<h3>Statistiques des Rôles:</h3><ul>';
-                    response.forEach(function(stat) {
-                        output += '<li>' + stat.role + ': ' + stat.count + ' utilisateurs</li>';
-                    });
-                    output += '</ul>';
+                    renderChart(response, 'roles');
                 } else if (statType === 'LoginStats') {
-                    output = '<h3>Statistiques de Connexion:</h3><ul>';
-                    response.forEach(function(stat) {
-                        output += '<li>' + stat.email + ' : ' + stat.loginAttempts + ' tentatives</li>';
-                    });
-                    output += '</ul>';
+                    renderChart(response, 'loginAttempts');
                 }
-
-                $('#statisticsResults').html(output);
             },
             error: function() {
                 $('#statisticsResults').html('<p>Erreur lors de la récupération des statistiques.</p>');
@@ -138,16 +215,14 @@
         });
     }
 
-    $('#btnUserRoles').click(function() {
-        console.log("Button clicked for user roles statistics");
+    // Event listeners for button clicks to fetch data
+    document.getElementById('btnUserRoles').addEventListener('click', function() {
         fetchStatistics('statistics');
     });
 
-    $('#btnLoginAttempts').click(function() {
-        console.log("Button clicked for login attempts statistics");
+    document.getElementById('btnLoginAttempts').addEventListener('click', function() {
         fetchStatistics('LoginStats');
     });
 </script>
 
 {% endblock %}
-
