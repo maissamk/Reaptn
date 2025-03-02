@@ -2,6 +2,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         .admin-layout {
             padding-top: 150px; /* Increased padding for admin pages */
@@ -76,12 +77,6 @@
                             <li class="nav-item">
                                 <a class="nav-link {% if app.request.get('_route') starts with 'admin_stocks' %}active{% endif %}" href="{{ path('admin_stocks') }}">
                                     <i class="fas fa-warehouse"></i> Stock Management
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('app_admin_orders') }}">
-                                    <i class="fas fa-fw fa-shopping-cart"></i>
-                                    <span>Orders</span>
                                 </a>
                             </li>
                         </ul>

@@ -23,13 +23,13 @@
                         <div class="col-lg-6">
                             <div class="border rounded">
                                 <a href="#">
-                                    <img src="{{ asset(product.image) }}" class="img-fluid rounded" alt="{{ product.name }}">
+                                    <img src="{{ asset(product.image) }}" class="img-fluid rounded" alt="{{ product.category }}">
                                 </a>
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <h4 class="fw-bold mb-3">{{ product.name }}</h4>
-                            <p class="mb-3">Season: {{ product.type.name }}</p>
+                            <h4 class="fw-bold mb-3">{{ product.category }}</h4>
+                            <p class="mb-3">Season: {{ product.type.season }}</p>
                             <h5 class="fw-bold mb-3">${{ product.price }} / kg</h5>
                             <div class="d-flex mb-4">
                                 <i class="fa fa-star text-secondary"></i>
@@ -45,17 +45,16 @@
                                         <i class="fa fa-minus"></i>
                                     </button>
                                 </div>
-                                <input type="text" id="quantity" class="form-control form-control-sm text-center border-0" value="1">
+                                <input type="text" id="quantity" class="form-control form-control-sm text-center border-0" value="1" readonly>
                                 <div class="input-group-btn">
                                     <button class="btn btn-sm btn-plus rounded-circle bg-light border">
                                         <i class="fa fa-plus"></i>
                                     </button>
                                 </div>
                             </div>
-                            <a href="#" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary add-to-cart" 
-                               data-product-id="{{ product.id }}">
+                            <button class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary">
                                 <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
-                            </a>
+                            </button>
                         </div>
                         <div class="col-lg-12">
                             <nav>
@@ -79,7 +78,7 @@
                                                         <p class="mb-0">Season</p>
                                                     </div>
                                                     <div class="col-6">
-                                                        <p class="mb-0">{{ product.type.name }}</p>
+                                                        <p class="mb-0">{{ product.type.season }}</p>
                                                     </div>
                                                 </div>
                                                 <div class="row text-center align-items-center justify-content-center py-2">
@@ -123,18 +122,18 @@
                             <div class="mb-4">
                                 <h4>Related products</h4>
                                 <div class="row g-4">
-                                    {% for featured in featured_products %}
+                                    {% for featured in relatedProducts %}
                                         <div class="col-lg-12">
                                             <div class="rounded position-relative fruite-item">
                                                 <div class="fruite-img">
-                                                    <img src="{{ asset('img/' ~ featured.image) }}" class="img-fluid w-100 rounded-top" alt="">
+                                                    <img src="{{ asset(featured.image) }}" class="img-fluid w-100 rounded-top" alt="{{ featured.category }}">
                                                 </div>
                                                 <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                    <h4>{{ featured.name }}</h4>
+                                                    <h4>{{ featured.category }}</h4>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
                                                         <p class="text-dark fs-5 fw-bold mb-0">${{ featured.price }} / kg</p>
                                                         <a href="{{ path('app_temp_shop_detail', {'id': featured.id}) }}" class="btn border border-secondary rounded-pill px-3 text-primary">
-                                                            <i class="fa fa-shopping-bag me-2 text-primary"></i> View
+                                                            <i class="fa fa-eye me-2 text-primary"></i> View
                                                         </a>
                                                     </div>
                                                 </div>
@@ -150,34 +149,4 @@
         </div>
     </div>
     <!-- Single Product End -->
-{% endblock %}
-
-{% block javascripts %}
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Quantity buttons
-    const quantityInput = document.getElementById('quantity');
-    
-    document.querySelector('.btn-minus').addEventListener('click', function() {
-        let value = parseInt(quantityInput.value);
-        if (value > 1) {
-            quantityInput.value = value - 1;
-        }
-    });
-    
-    document.querySelector('.btn-plus').addEventListener('click', function() {
-        let value = parseInt(quantityInput.value);
-        quantityInput.value = value + 1;
-    });
-    
-    // Add to cart button
-    document.querySelector('.add-to-cart').addEventListener('click', function(e) {
-        e.preventDefault();
-        const productId = this.dataset.productId;
-        const quantity = document.getElementById('quantity').value;
-        
-        window.location.href = "{{ path('app_cart_add', {'id': product.id}) }}" + "?quantity=" + quantity;
-    });
-});
-</script>
 {% endblock %}
