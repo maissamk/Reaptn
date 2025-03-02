@@ -37,7 +37,7 @@
     </form>
 
     <div class="mb-3">
-        <button id="btnUserRoles" class="btn btn-primary">📊 Statistiques des Rôles</button>
+        <a href="{{ path('admin_statistics') }}"class="btn btn-primary">📊 Statistiques des Rôles</a>
         <button id="btnLoginAttempts" class="btn btn-secondary">📊 Statistiques de Connexion</button>
     </div>
 
@@ -157,6 +157,7 @@
         } else if (type === 'loginAttempts') {
             // Bar chart for login attempts
             chartData = {
+                
                 labels: data.map(stat => `${stat.email}: ${stat.loginAttempts} Attempts`),
                 datasets: [{
                     label: 'Login Attempts',
@@ -216,9 +217,9 @@
     }
 
     // Event listeners for button clicks to fetch data
-    document.getElementById('btnUserRoles').addEventListener('click', function() {
-        fetchStatistics('statistics');
-    });
+    // document.getElementById('btnUserRoles').addEventListener('click', function() {
+    //     fetchStatistics('statistics');
+    // });
 
     document.getElementById('btnLoginAttempts').addEventListener('click', function() {
         fetchStatistics('LoginStats');

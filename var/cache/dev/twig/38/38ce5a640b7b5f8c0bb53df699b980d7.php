@@ -170,7 +170,10 @@ class __TwigTemplate_0ea1431e1d568171133cce6d21551bbb extends Template
     </form>
 
     <div class=\"mb-3\">
-        <button id=\"btnUserRoles\" class=\"btn btn-primary\">📊 Statistiques des Rôles</button>
+        <a href=\"";
+        // line 40
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_statistics");
+        yield "\"class=\"btn btn-primary\">📊 Statistiques des Rôles</a>
         <button id=\"btnLoginAttempts\" class=\"btn btn-secondary\">📊 Statistiques de Connexion</button>
     </div>
 
@@ -345,6 +348,7 @@ $context["user"], "status", [], "any", false, false, false, 82) == "blocked")) {
         } else if (type === 'loginAttempts') {
             // Bar chart for login attempts
             chartData = {
+                
                 labels: data.map(stat => `\${stat.email}: \${stat.loginAttempts} Attempts`),
                 datasets: [{
                     label: 'Login Attempts',
@@ -404,9 +408,9 @@ $context["user"], "status", [], "any", false, false, false, 82) == "blocked")) {
     }
 
     // Event listeners for button clicks to fetch data
-    document.getElementById('btnUserRoles').addEventListener('click', function() {
-        fetchStatistics('statistics');
-    });
+    // document.getElementById('btnUserRoles').addEventListener('click', function() {
+    //     fetchStatistics('statistics');
+    // });
 
     document.getElementById('btnLoginAttempts').addEventListener('click', function() {
         fetchStatistics('LoginStats');
@@ -444,7 +448,7 @@ $context["user"], "status", [], "any", false, false, false, 82) == "blocked")) {
      */
     public function getDebugInfo(): array
     {
-        return array (  288 => 100,  275 => 93,  269 => 90,  264 => 87,  260 => 85,  256 => 83,  254 => 82,  251 => 81,  249 => 80,  244 => 78,  240 => 77,  236 => 76,  232 => 75,  228 => 74,  224 => 73,  221 => 72,  215 => 70,  209 => 68,  207 => 67,  203 => 65,  199 => 64,  167 => 35,  163 => 34,  152 => 28,  146 => 27,  140 => 26,  128 => 19,  122 => 18,  116 => 17,  107 => 11,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  291 => 100,  278 => 93,  272 => 90,  267 => 87,  263 => 85,  259 => 83,  257 => 82,  254 => 81,  252 => 80,  247 => 78,  243 => 77,  239 => 76,  235 => 75,  231 => 74,  227 => 73,  224 => 72,  218 => 70,  212 => 68,  210 => 67,  206 => 65,  202 => 64,  175 => 40,  167 => 35,  163 => 34,  152 => 28,  146 => 27,  140 => 26,  128 => 19,  122 => 18,  116 => 17,  107 => 11,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -488,7 +492,7 @@ $context["user"], "status", [], "any", false, false, false, 82) == "blocked")) {
     </form>
 
     <div class=\"mb-3\">
-        <button id=\"btnUserRoles\" class=\"btn btn-primary\">📊 Statistiques des Rôles</button>
+        <a href=\"{{ path('admin_statistics') }}\"class=\"btn btn-primary\">📊 Statistiques des Rôles</a>
         <button id=\"btnLoginAttempts\" class=\"btn btn-secondary\">📊 Statistiques de Connexion</button>
     </div>
 
@@ -608,6 +612,7 @@ $context["user"], "status", [], "any", false, false, false, 82) == "blocked")) {
         } else if (type === 'loginAttempts') {
             // Bar chart for login attempts
             chartData = {
+                
                 labels: data.map(stat => `\${stat.email}: \${stat.loginAttempts} Attempts`),
                 datasets: [{
                     label: 'Login Attempts',
@@ -667,9 +672,9 @@ $context["user"], "status", [], "any", false, false, false, 82) == "blocked")) {
     }
 
     // Event listeners for button clicks to fetch data
-    document.getElementById('btnUserRoles').addEventListener('click', function() {
-        fetchStatistics('statistics');
-    });
+    // document.getElementById('btnUserRoles').addEventListener('click', function() {
+    //     fetchStatistics('statistics');
+    // });
 
     document.getElementById('btnLoginAttempts').addEventListener('click', function() {
         fetchStatistics('LoginStats');

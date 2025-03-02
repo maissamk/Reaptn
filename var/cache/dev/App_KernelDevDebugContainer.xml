@@ -447,9 +447,6 @@
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\LivraisonController"/>
       </call>
     </service>
-    <service id="App\Controller\MailerController" class="App\Controller\MailerController" autowire="true" autoconfigure="true">
-      <tag name="container.error" message="The autoloader expected class &quot;App\Controller\MailerController&quot; to be defined in file &quot;C:\Games\Reaptn\vendor\composer/../../src\Controller\MailerController.php&quot;. The file was found but the class was not in it, the class name or namespace probably has a typo."/>
-    </service>
     <service id="App\Controller\MaterielController" class="App\Controller\MaterielController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
