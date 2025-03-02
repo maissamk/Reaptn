@@ -135,6 +135,7 @@ class ComposerStaticInit54c05e64f01f49eb136e9af7b3075bdd
             'Psr\\Container\\' => 14,
             'Psr\\Clock\\' => 10,
             'Psr\\Cache\\' => 10,
+            'Phpml\\' => 6,
             'PhpParser\\' => 10,
             'PHPStan\\PhpDocParser\\' => 21,
         ),
@@ -142,6 +143,10 @@ class ComposerStaticInit54c05e64f01f49eb136e9af7b3075bdd
         array (
             'Monolog\\' => 8,
             'Masterminds\\' => 12,
+        ),
+        'L' => 
+        array (
+            'Lexik\\Bundle\\TranslationBundle\\' => 31,
         ),
         'K' => 
         array (
@@ -554,6 +559,10 @@ class ComposerStaticInit54c05e64f01f49eb136e9af7b3075bdd
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
         ),
+        'Phpml\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-ai/php-ml/src',
+        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
@@ -569,6 +578,10 @@ class ComposerStaticInit54c05e64f01f49eb136e9af7b3075bdd
         'Masterminds\\' => 
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
+        ),
+        'Lexik\\Bundle\\TranslationBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/lexik/translation-bundle',
         ),
         'Knp\\Component\\' => 
         array (

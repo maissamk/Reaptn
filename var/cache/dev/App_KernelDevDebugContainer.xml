@@ -28,6 +28,7 @@
       <parameter key="KnpPaginatorBundle">Knp\Bundle\PaginatorBundle\KnpPaginatorBundle</parameter>
       <parameter key="SymfonyCastsResetPasswordBundle">SymfonyCasts\Bundle\ResetPassword\SymfonyCastsResetPasswordBundle</parameter>
       <parameter key="StofDoctrineExtensionsBundle">Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle</parameter>
+      <parameter key="LexikTranslationBundle">Lexik\Bundle\TranslationBundle\LexikTranslationBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -90,6 +91,10 @@
         <parameter key="path">C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\stof\doctrine-extensions-bundle\src</parameter>
         <parameter key="namespace">Stof\DoctrineExtensionsBundle</parameter>
       </parameter>
+      <parameter key="LexikTranslationBundle" type="collection">
+        <parameter key="path">C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\lexik\translation-bundle</parameter>
+        <parameter key="namespace">Lexik\Bundle\TranslationBundle</parameter>
+      </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">App_KernelDevDebugContainer</parameter>
@@ -97,6 +102,7 @@
     <parameter key="images_directory">C:\Users\LENOVO\Desktop\PI2025\Reaptn/public/uploads/images</parameter>
     <parameter key="avatars_directory">C:\Users\LENOVO\Desktop\PI2025\Reaptn/public/uploads/avatars</parameter>
     <parameter key="hugging_face_api_token">%env(HUGGING_FACE_API_TOKEN)%</parameter>
+    <parameter key="is_arabic_enabled">true</parameter>
     <parameter key="event_dispatcher.event_aliases" type="collection">
       <parameter key="Symfony\Component\Console\Event\ConsoleCommandEvent">console.command</parameter>
       <parameter key="Symfony\Component\Console\Event\ConsoleErrorEvent">console.error</parameter>
@@ -288,6 +294,68 @@
     <parameter key="stof_doctrine_extensions.listener.softdeleteable.class">Gedmo\SoftDeleteable\SoftDeleteableListener</parameter>
     <parameter key="stof_doctrine_extensions.listener.uploadable.class">Gedmo\Uploadable\UploadableListener</parameter>
     <parameter key="stof_doctrine_extensions.listener.reference_integrity.class">Gedmo\ReferenceIntegrity\ReferenceIntegrityListener</parameter>
+    <parameter key="lexik_translation.translator.class">Lexik\Bundle\TranslationBundle\Translation\Translator</parameter>
+    <parameter key="lexik_translation.loader.database.class">Lexik\Bundle\TranslationBundle\Translation\Loader\DatabaseLoader</parameter>
+    <parameter key="lexik_translation.trans_unit.manager.class">Lexik\Bundle\TranslationBundle\Manager\TransUnitManager</parameter>
+    <parameter key="lexik_translation.file.manager.class">Lexik\Bundle\TranslationBundle\Manager\FileManager</parameter>
+    <parameter key="lexik_translation.locale.manager.class">Lexik\Bundle\TranslationBundle\Manager\LocaleManager</parameter>
+    <parameter key="lexik_translation.importer.file.class">Lexik\Bundle\TranslationBundle\Translation\Importer\FileImporter</parameter>
+    <parameter key="lexik_translation.exporter_collector.class">Lexik\Bundle\TranslationBundle\Translation\Exporter\ExporterCollector</parameter>
+    <parameter key="lexik_translation.exporter.xliff.class">Lexik\Bundle\TranslationBundle\Translation\Exporter\XliffExporter</parameter>
+    <parameter key="lexik_translation.exporter.json.class">Lexik\Bundle\TranslationBundle\Translation\Exporter\JsonExporter</parameter>
+    <parameter key="lexik_translation.exporter.yml.class">Lexik\Bundle\TranslationBundle\Translation\Exporter\YamlExporter</parameter>
+    <parameter key="lexik_translation.exporter.php.class">Lexik\Bundle\TranslationBundle\Translation\Exporter\PhpExporter</parameter>
+    <parameter key="lexik_translation.orm.translation_storage.class">Lexik\Bundle\TranslationBundle\Storage\DoctrineORMStorage</parameter>
+    <parameter key="lexik_translation.orm.listener.class">Lexik\Bundle\TranslationBundle\Storage\Listener\DoctrineORMListener</parameter>
+    <parameter key="lexik_translation.orm.trans_unit.class">Lexik\Bundle\TranslationBundle\Entity\TransUnit</parameter>
+    <parameter key="lexik_translation.orm.translation.class">Lexik\Bundle\TranslationBundle\Entity\Translation</parameter>
+    <parameter key="lexik_translation.orm.file.class">Lexik\Bundle\TranslationBundle\Entity\File</parameter>
+    <parameter key="lexik_translation.mongodb.translation_storage.class">Lexik\Bundle\TranslationBundle\Storage\DoctrineMongoDBStorage</parameter>
+    <parameter key="lexik_translation.mongodb.trans_unit.class">Lexik\Bundle\TranslationBundle\Document\TransUnit</parameter>
+    <parameter key="lexik_translation.mongodb.translation.class">Lexik\Bundle\TranslationBundle\Document\Translation</parameter>
+    <parameter key="lexik_translation.mongodb.file.class">Lexik\Bundle\TranslationBundle\Document\File</parameter>
+    <parameter key="lexik_translation.propel.translation_storage.class">Lexik\Bundle\TranslationBundle\Storage\PropelStorage</parameter>
+    <parameter key="lexik_translation.propel.trans_unit.class">Lexik\Bundle\TranslationBundle\Propel\TransUnit</parameter>
+    <parameter key="lexik_translation.propel.translation.class">Lexik\Bundle\TranslationBundle\Propel\Translation</parameter>
+    <parameter key="lexik_translation.propel.file.class">Lexik\Bundle\TranslationBundle\Propel\File</parameter>
+    <parameter key="lexik_translation.data_grid.formatter.class">Lexik\Bundle\TranslationBundle\Util\DataGrid\DataGridFormatter</parameter>
+    <parameter key="lexik_translation.data_grid.request_handler.class">Lexik\Bundle\TranslationBundle\Util\DataGrid\DataGridRequestHandler</parameter>
+    <parameter key="lexik_translation.overview.stats_aggregator.class">Lexik\Bundle\TranslationBundle\Util\Overview\StatsAggregator</parameter>
+    <parameter key="lexik_translation.form.handler.trans_unit.class">Lexik\Bundle\TranslationBundle\Form\Handler\TransUnitFormHandler</parameter>
+    <parameter key="lexik_translation.listener.get_database_resources.class">Lexik\Bundle\TranslationBundle\EventDispatcher\GetDatabaseResourcesListener</parameter>
+    <parameter key="lexik_translation.listener.clean_translation_cache.class">Lexik\Bundle\TranslationBundle\EventDispatcher\CleanTranslationCacheListener</parameter>
+    <parameter key="lexik_translation.token_finder.class">Lexik\Bundle\TranslationBundle\Util\Profiler\TokenFinder</parameter>
+    <parameter key="lexik_translation.command.import_translations.class">Lexik\Bundle\TranslationBundle\Command\ImportTranslationsCommand</parameter>
+    <parameter key="lexik_translation.command.export_translations.class">Lexik\Bundle\TranslationBundle\Command\ExportTranslationsCommand</parameter>
+    <parameter key="lexik_translation.controller.translation.class">Lexik\Bundle\TranslationBundle\Controller\TranslationController</parameter>
+    <parameter key="lexik_translation.controller.rest.class">Lexik\Bundle\TranslationBundle\Controller\RestController</parameter>
+    <parameter key="lexik_translation.importer.case_insensitive">false</parameter>
+    <parameter key="lexik_translation.token_finder.limit">15</parameter>
+    <parameter key="lexik_translation.translator.options" type="collection">
+      <parameter key="cache_dir">C:\Users\LENOVO\Desktop\PI2025\Reaptn\var\cache\dev/translations</parameter>
+      <parameter key="debug">true</parameter>
+    </parameter>
+    <parameter key="lexik_translation.managed_locales" type="collection">
+      <parameter>ar</parameter>
+      <parameter>en</parameter>
+      <parameter>fr</parameter>
+    </parameter>
+    <parameter key="lexik_translation.fallback_locale" type="collection">
+      <parameter>fr</parameter>
+    </parameter>
+    <parameter key="lexik_translation.storage" type="collection">
+      <parameter key="type">orm</parameter>
+    </parameter>
+    <parameter key="lexik_translation.base_layout">@LexikTranslationBundle/layout.html.twig</parameter>
+    <parameter key="lexik_translation.grid_input_type">text</parameter>
+    <parameter key="lexik_translation.grid_toggle_similar">false</parameter>
+    <parameter key="lexik_translation.auto_cache_clean">false</parameter>
+    <parameter key="lexik_translation.dev_tools.enable">false</parameter>
+    <parameter key="lexik_translation.dev_tools.create_missing">false</parameter>
+    <parameter key="lexik_translation.dev_tools.file_format">yml</parameter>
+    <parameter key="lexik_translation.exporter.json.hierarchical_format">false</parameter>
+    <parameter key="lexik_translation.exporter.yml.use_tree">false</parameter>
+    <parameter key="lexik_translation.storage.type">orm</parameter>
     <parameter key="data_collector.templates" type="collection">
       <parameter key="data_collector.request" type="collection">
         <parameter>request</parameter>
@@ -382,7 +450,10 @@
         <parameter>@WebProfiler/Collector/config.html.twig</parameter>
       </parameter>
     </parameter>
-    <parameter key="console.command.ids" type="collection"/>
+    <parameter key="console.command.ids" type="collection">
+      <parameter>console.command.public_alias.Lexik\Bundle\TranslationBundle\Command\ImportTranslationsCommand</parameter>
+      <parameter>console.command.public_alias.Lexik\Bundle\TranslationBundle\Command\ExportTranslationsCommand</parameter>
+    </parameter>
   </parameters>
   <services>
     <service id="service_container" class="Symfony\Component\DependencyInjection\ContainerInterface" public="true" synthetic="true"/>
@@ -391,7 +462,26 @@
       <tag name="routing.route_loader"/>
     </service>
     <service id="App\Service\HuggingFaceService" class="App\Service\HuggingFaceService" autowire="true" autoconfigure="true">
-      <tag name="container.error" message="Cannot autowire service &quot;App\Service\HuggingFaceService&quot;: argument &quot;$apiToken&quot; of method &quot;__construct()&quot; is type-hinted &quot;string&quot;, you should configure its value explicitly."/>
+      <argument type="service" id=".debug.http_client"/>
+    </service>
+    <service id="App\EventListener\LocaleListener" class="App\EventListener\LocaleListener" autowire="true" autoconfigure="true">
+      <tag name="kernel.event_subscriber"/>
+      <tag name="container.hot_path"/>
+      <argument type="service" id="request_stack"/>
+    </service>
+    <service id="App\Controller\LanguageController" class="App\Controller\LanguageController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\LanguageController"/>
+      </call>
+    </service>
+    <service id="App\Service\LingvaTranslator" class="App\Service\LingvaTranslator" autowire="true" autoconfigure="true"/>
+    <service id="App\Twig\AppExtension" class="App\Twig\AppExtension" autowire="true" autoconfigure="true">
+      <tag name="container.error" message="The autoloader expected class &quot;App\Twig\AppExtension&quot; to be defined in file &quot;C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\composer/../../src\Twig\AppExtension.php&quot;. The file was found but the class was not in it, the class name or namespace probably has a typo."/>
+    </service>
+    <service id="App\Service\TextGenerationService" class="App\Service\TextGenerationService" autowire="true" autoconfigure="true">
+      <tag name="container.error" message="Cannot autowire service &quot;App\Service\TextGenerationService&quot;: argument &quot;$apiKey&quot; of method &quot;__construct()&quot; is type-hinted &quot;string&quot;, you should configure its value explicitly."/>
     </service>
     <service id="App\Service\CartService" class="App\Service\CartService" autowire="true" autoconfigure="true">
       <argument type="service" id="request_stack"/>
@@ -661,6 +751,7 @@
     <service id="App\Security\LoginFormAuthenticator" class="App\Security\LoginFormAuthenticator" autowire="true" autoconfigure="true">
       <argument type="service" id="router.default"/>
     </service>
+    <service id="App\Service\TranslationService" class="App\Service\TranslationService" autowire="true" autoconfigure="true"/>
     <service id="argument_metadata_factory" class="Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory"/>
     <service id="argument_resolver.backed_enum_resolver" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver">
       <tag priority="100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver">controller.argument_value_resolver</tag>
@@ -688,7 +779,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.IFaIz09"/>
+      <argument type="service" id=".service_locator.aC16lYi"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -970,6 +1061,7 @@
         <argument type="service" id="slugger"/>
         <argument type="service" id="translator.default"/>
         <argument type="service" id="translation.locale_switcher"/>
+        <argument type="service" id="lexik_translation.translator"/>
       </argument>
       <argument type="service" id="request_stack"/>
     </service>
@@ -1014,6 +1106,9 @@
       <tag name="container.excluded"/>
     </service>
     <service id="Symfony\Component\HttpFoundation\Response" class="Symfony\Component\HttpFoundation\Response" abstract="true">
+      <tag name="container.excluded"/>
+    </service>
+    <service id="Symfony\Component\HttpFoundation\Session\SessionInterface" class="Symfony\Component\HttpFoundation\Session\SessionInterface" abstract="true">
       <tag name="container.excluded"/>
     </service>
     <service id="fragment.handler" class="Symfony\Component\HttpKernel\DependencyInjection\LazyLoadingFragmentHandler">
@@ -1509,8 +1604,10 @@
         <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\security-core/Resources/translations</argument>
         <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\knplabs\knp-paginator-bundle/translations</argument>
         <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfonycasts\reset-password-bundle\src/Resources/translations</argument>
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\lexik\translation-bundle/Resources/translations</argument>
       </argument>
       <argument type="collection">
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn/vendor/lexik/translation-bundle/Resources/views</argument>
         <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\twig-bridge/Resources/views/Email</argument>
         <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\twig-bridge/Resources/views/Form</argument>
       </argument>
@@ -1537,8 +1634,10 @@
         <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\security-core/Resources/translations</argument>
         <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\knplabs\knp-paginator-bundle/translations</argument>
         <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfonycasts\reset-password-bundle\src/Resources/translations</argument>
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\lexik\translation-bundle/Resources/translations</argument>
       </argument>
       <argument type="collection">
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn/vendor/lexik/translation-bundle/Resources/views</argument>
         <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\twig-bridge/Resources/views/Email</argument>
         <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\twig-bridge/Resources/views/Form</argument>
       </argument>
@@ -2000,6 +2099,7 @@
         <argument key="C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\ux-turbo\src\DependencyInjection/../../assets/dist">@symfony/ux-turbo</argument>
         <argument key="C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\stimulus-bundle\src\DependencyInjection/../../assets/dist">@symfony/stimulus-bundle</argument>
         <argument key="assets/"></argument>
+        <argument key="C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\lexik\translation-bundle/Resources/public">bundles/lexiktranslation</argument>
       </argument>
       <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn</argument>
       <argument type="collection">
@@ -2261,10 +2361,6 @@
     <service id="mailer.transport_factory" class="Symfony\Component\Mailer\Transport">
       <argument type="tagged_iterator" tag="mailer.transport_factory"/>
     </service>
-    <service id="mailer.default_transport" class="Symfony\Component\Mailer\Transport\TransportInterface">
-      <argument>%env(MAILER_DSN)%</argument>
-      <factory service="mailer.transport_factory" method="fromString"/>
-    </service>
     <service id="mailer.messenger.message_handler" class="Symfony\Component\Mailer\Messenger\MessageHandler">
       <tag name="messenger.message_handler"/>
       <argument type="service" id="mailer.transports"/>
@@ -2324,7 +2420,7 @@
     </service>
     <service id="translator.default" class="Symfony\Bundle\FrameworkBundle\Translation\Translator">
       <tag name="kernel.locale_aware"/>
-      <argument type="service" id=".service_locator.yY.p4P7"/>
+      <argument type="service" id=".service_locator.k1TyYKw"/>
       <argument type="service" id="translator.formatter.default"/>
       <argument>en</argument>
       <argument type="collection">
@@ -2363,6 +2459,9 @@
         <argument key="translation.loader.json" type="collection">
           <argument>json</argument>
         </argument>
+        <argument key="Lexik\Bundle\TranslationBundle\Translation\Loader" type="collection">
+          <argument>database</argument>
+        </argument>
       </argument>
       <argument type="collection">
         <argument key="cache_dir">C:\Users\LENOVO\Desktop\PI2025\Reaptn\var\cache\dev/translations</argument>
@@ -2379,6 +2478,12 @@
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\security-core/Resources/translations\security.ar.xlf</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ar.xliff</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.ar.xlf</argument>
+            <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn/translations\KnpPaginatorBundle.ar.yaml</argument>
+            <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn/translations\LexikTranslationBundle.ar.yaml</argument>
+            <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn/translations\ResetPasswordBundle.ar.yaml</argument>
+            <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn/translations\messages.ar.yaml</argument>
+            <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn/translations\security.ar.yaml</argument>
+            <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn/translations\validators.ar.yaml</argument>
           </argument>
           <argument key="az" type="collection">
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\validator/Resources/translations\validators.az.xlf</argument>
@@ -2433,6 +2538,7 @@
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\security-core/Resources/translations\security.de.xlf</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.de.xliff</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.de.xlf</argument>
+            <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\lexik\translation-bundle/Resources/translations\LexikTranslationBundle.de.yml</argument>
           </argument>
           <argument key="el" type="collection">
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\validator/Resources/translations\validators.el.xlf</argument>
@@ -2446,6 +2552,7 @@
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\security-core/Resources/translations\security.en.xlf</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.en.xliff</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.en.xlf</argument>
+            <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\lexik\translation-bundle/Resources/translations\LexikTranslationBundle.en.yml</argument>
           </argument>
           <argument key="es" type="collection">
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\validator/Resources/translations\validators.es.xlf</argument>
@@ -2453,6 +2560,7 @@
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\security-core/Resources/translations\security.es.xlf</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.es.xliff</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.es.xlf</argument>
+            <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\lexik\translation-bundle/Resources/translations\LexikTranslationBundle.es.yml</argument>
           </argument>
           <argument key="et" type="collection">
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\validator/Resources/translations\validators.et.xlf</argument>
@@ -2485,6 +2593,7 @@
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\security-core/Resources/translations\security.fr.xlf</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.fr.xliff</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.fr.xlf</argument>
+            <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\lexik\translation-bundle/Resources/translations\LexikTranslationBundle.fr.yml</argument>
           </argument>
           <argument key="gl" type="collection">
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\validator/Resources/translations\validators.gl.xlf</argument>
@@ -2527,6 +2636,7 @@
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\security-core/Resources/translations\security.it.xlf</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.it.xliff</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.it.xlf</argument>
+            <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\lexik\translation-bundle/Resources/translations\LexikTranslationBundle.it.yml</argument>
           </argument>
           <argument key="ja" type="collection">
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\validator/Resources/translations\validators.ja.xlf</argument>
@@ -2545,11 +2655,13 @@
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\form/Resources/translations\validators.lt.xlf</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\security-core/Resources/translations\security.lt.xlf</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.lt.xliff</argument>
+            <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\lexik\translation-bundle/Resources/translations\LexikTranslationBundle.lt.yml</argument>
           </argument>
           <argument key="lv" type="collection">
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\validator/Resources/translations\validators.lv.xlf</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\form/Resources/translations\validators.lv.xlf</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\security-core/Resources/translations\security.lv.xlf</argument>
+            <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\lexik\translation-bundle/Resources/translations\LexikTranslationBundle.lv.yml</argument>
           </argument>
           <argument key="mk" type="collection">
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\validator/Resources/translations\validators.mk.xlf</argument>
@@ -2579,6 +2691,7 @@
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\security-core/Resources/translations\security.nl.xlf</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.nl.xliff</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle+intl-icu.nl.xlf</argument>
+            <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\lexik\translation-bundle/Resources/translations\LexikTranslationBundle.nl.yml</argument>
           </argument>
           <argument key="nn" type="collection">
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\validator/Resources/translations\validators.nn.xlf</argument>
@@ -2597,6 +2710,7 @@
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\security-core/Resources/translations\security.pl.xlf</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.pl.xliff</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.pl.xlf</argument>
+            <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\lexik\translation-bundle/Resources/translations\LexikTranslationBundle.pl.yml</argument>
           </argument>
           <argument key="pt" type="collection">
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\validator/Resources/translations\validators.pt.xlf</argument>
@@ -2616,6 +2730,7 @@
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\security-core/Resources/translations\security.ro.xlf</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ro.xliff</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.ro.xlf</argument>
+            <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\lexik\translation-bundle/Resources/translations\LexikTranslationBundle.ro.yml</argument>
           </argument>
           <argument key="ru" type="collection">
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\validator/Resources/translations\validators.ru.xlf</argument>
@@ -2623,12 +2738,14 @@
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\security-core/Resources/translations\security.ru.xlf</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ru.xliff</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.ru.xlf</argument>
+            <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\lexik\translation-bundle/Resources/translations\LexikTranslationBundle.ru.yml</argument>
           </argument>
           <argument key="sk" type="collection">
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\validator/Resources/translations\validators.sk.xlf</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\form/Resources/translations\validators.sk.xlf</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\security-core/Resources/translations\security.sk.xlf</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.sk.xlf</argument>
+            <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\lexik\translation-bundle/Resources/translations\LexikTranslationBundle.sk.yml</argument>
           </argument>
           <argument key="sl" type="collection">
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\validator/Resources/translations\validators.sl.xlf</argument>
@@ -2722,6 +2839,7 @@
           <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\security-core/Resources/translations</argument>
           <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\knplabs\knp-paginator-bundle/translations</argument>
           <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfonycasts\reset-password-bundle\src/Resources/translations</argument>
+          <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\lexik\translation-bundle/Resources/translations</argument>
           <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn/translations</argument>
           <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\framework-bundle/translations</argument>
           <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\doctrine\doctrine-bundle/translations</argument>
@@ -2744,6 +2862,7 @@
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\security-core/Resources/translations</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\knplabs\knp-paginator-bundle/translations</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfonycasts\reset-password-bundle\src/Resources/translations</argument>
+            <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\lexik\translation-bundle/Resources/translations</argument>
             <argument>translations</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\framework-bundle/translations</argument>
             <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\doctrine\doctrine-bundle/translations</argument>
@@ -2986,6 +3105,10 @@
         <argument>json</argument>
         <argument type="service" id="translation.loader.json"/>
       </call>
+      <call method="addLoader">
+        <argument>database</argument>
+        <argument type="service" id="Lexik\Bundle\TranslationBundle\Translation\Loader"/>
+      </call>
     </service>
     <service id="translation.extractor" class="Symfony\Component\Translation\Extractor\ChainExtractor">
       <call method="addExtractor">
@@ -3160,6 +3283,22 @@
           <argument>onKernelRequest</argument>
         </argument>
         <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>Lexik\Bundle\TranslationBundle\EventDispatcher\Event\GetDatabaseResourcesEvent</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="Lexik\Bundle\TranslationBundle\EventDispatcher\Event\GetDatabaseResourcesEvent"/>
+          <argument>onGetDatabaseResources</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>kernel.request</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="App\EventListener\LocaleListener"/>
+          <argument>onKernelRequest</argument>
+        </argument>
+        <argument>20</argument>
       </call>
       <call method="addListener">
         <argument>kernel.controller_arguments</argument>
@@ -3751,7 +3890,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.IFaIz09"/>
+      <argument type="service" id=".service_locator.aC16lYi"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <tag name="kernel.reset" method="reset"/>
@@ -5207,7 +5346,7 @@
       <argument type="service" id="debug.validator"/>
     </service>
     <service id="translator.data_collector" class="Symfony\Component\Translation\DataCollectorTranslator">
-      <argument type="service" id="translator.default"/>
+      <argument type="service" id="lexik_translation.translator"/>
     </service>
     <service id="data_collector.translation" class="Symfony\Component\Translation\DataCollector\TranslationDataCollector">
       <tag name="data_collector" template="@WebProfiler/Collector/translation.html.twig" id="translation" priority="275"/>
@@ -5348,7 +5487,7 @@
       </call>
     </service>
     <service id="doctrine.dbal.default_connection.event_manager" class="Symfony\Bridge\Doctrine\ContainerAwareEventManager">
-      <argument type="service" id=".service_locator.MfxSDRP"/>
+      <argument type="service" id=".service_locator.9uq.MP5"/>
       <argument type="collection">
         <argument type="collection">
           <argument type="collection">
@@ -5403,6 +5542,12 @@
             <argument>postFlush</argument>
           </argument>
           <argument>turbo.doctrine.event_listener</argument>
+        </argument>
+        <argument type="collection">
+          <argument type="collection">
+            <argument>loadClassMetadata</argument>
+          </argument>
+          <argument>lexik_translation.orm.listener</argument>
         </argument>
       </argument>
     </service>
@@ -5663,6 +5808,7 @@
       <call method="setEntityNamespaces">
         <argument type="collection">
           <argument key="App">App\Entity</argument>
+          <argument key="LexikTranslationBundle">Lexik\Bundle\TranslationBundle\Entity</argument>
         </argument>
       </call>
       <call method="setMetadataCache">
@@ -5722,6 +5868,16 @@
         <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\src\Entity</argument>
       </argument>
       <argument>true</argument>
+    </service>
+    <service id="doctrine.orm.default_xml_metadata_driver" class="Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver">
+      <argument type="collection">
+        <argument key="C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\lexik\translation-bundle\Resources\config\doctrine">Lexik\Bundle\TranslationBundle\Entity</argument>
+      </argument>
+      <argument>.orm.xml</argument>
+      <argument>true</argument>
+      <call method="setGlobalBasename">
+        <argument>mapping</argument>
+      </call>
     </service>
     <service id="cache.doctrine.orm.default.metadata" class="Symfony\Component\Cache\Adapter\ArrayAdapter"/>
     <service id="cache.doctrine.orm.default.result" class="Symfony\Component\Cache\Adapter\TraceableAdapter">
@@ -6223,6 +6379,7 @@
     <service id="twig.template_iterator" class="Symfony\Bundle\TwigBundle\TemplateIterator">
       <argument type="service" id="kernel"/>
       <argument type="collection">
+        <argument key="C:\Users\LENOVO\Desktop\PI2025\Reaptn/vendor/lexik/translation-bundle/Resources/views">LexikTranslationBundle</argument>
         <argument key="C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\twig-bridge/Resources/views/Email">email</argument>
         <argument key="C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\twig-bridge/Resources/views/Form">null</argument>
       </argument>
@@ -6241,6 +6398,10 @@
       <tag name="twig.loader"/>
       <argument type="collection"/>
       <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn</argument>
+      <call method="addPath">
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn/vendor/lexik/translation-bundle/Resources/views</argument>
+        <argument>LexikTranslationBundle</argument>
+      </call>
       <call method="addPath">
         <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\doctrine\doctrine-bundle/templates</argument>
         <argument>Doctrine</argument>
@@ -6304,6 +6465,14 @@
       <call method="addPath">
         <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\knplabs\knp-paginator-bundle/templates</argument>
         <argument>!KnpPaginator</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\lexik\translation-bundle/Resources/views</argument>
+        <argument>LexikTranslation</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\lexik\translation-bundle/Resources/views</argument>
+        <argument>!LexikTranslation</argument>
       </call>
       <call method="addPath">
         <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn/templates</argument>
@@ -7953,6 +8122,10 @@
             <argument>App\Entity</argument>
             <argument type="service" id="doctrine.orm.default_attribute_metadata_driver"/>
           </argument>
+          <argument type="collection">
+            <argument>Lexik\Bundle\TranslationBundle\Entity</argument>
+            <argument type="service" id="doctrine.orm.default_xml_metadata_driver"/>
+          </argument>
         </argument>
       </argument>
     </service>
@@ -8207,6 +8380,370 @@
       <argument>3600</argument>
     </service>
     <service id="stof_doctrine_extensions.metadata_cache" class="Symfony\Component\Cache\Adapter\ArrayAdapter"/>
+    <service id="Lexik\Bundle\TranslationBundle\Translation\Translator" class="Lexik\Bundle\TranslationBundle\Translation\Translator">
+      <argument type="service" id="service_container"/>
+      <argument type="service" id="translator.formatter.default"/>
+      <argument></argument>
+      <argument type="collection"/>
+      <argument type="collection">
+        <argument key="cache_dir">C:\Users\LENOVO\Desktop\PI2025\Reaptn\var\cache\dev</argument>
+      </argument>
+    </service>
+    <service id="Lexik\Bundle\TranslationBundle\Translation\Loader" class="Lexik\Bundle\TranslationBundle\Translation\Loader\DatabaseLoader">
+      <tag name="translation.loader" alias="database"/>
+      <argument type="service" id="lexik_translation.translation_storage"/>
+    </service>
+    <service id="lexik_translation.trans_unit.manager" class="Lexik\Bundle\TranslationBundle\Manager\TransUnitManager" public="true">
+      <argument type="service" id="lexik_translation.translation_storage"/>
+      <argument type="service" id="lexik_translation.file.manager"/>
+      <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn</argument>
+    </service>
+    <service id="lexik_translation.file.manager" class="Lexik\Bundle\TranslationBundle\Manager\FileManager">
+      <argument type="service" id="lexik_translation.translation_storage"/>
+      <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn</argument>
+    </service>
+    <service id="Lexik\Bundle\TranslationBundle\Manager\LocaleManager" class="Lexik\Bundle\TranslationBundle\Manager\LocaleManager" public="true">
+      <argument>%lexik_translation.managed_locales%</argument>
+    </service>
+    <service id="Lexik\Bundle\TranslationBundle\Translation\Importer\FileImporter" class="Lexik\Bundle\TranslationBundle\Translation\Importer\FileImporter">
+      <argument type="collection">
+        <argument key="php" type="service" id="translation.loader.php"/>
+        <argument key="yaml" type="service" id="translation.loader.yml"/>
+        <argument key="yml" type="service" id="translation.loader.yml"/>
+        <argument key="xlf" type="service" id="translation.loader.xliff"/>
+        <argument key="xliff" type="service" id="translation.loader.xliff"/>
+        <argument key="po" type="service" id="translation.loader.po"/>
+        <argument key="mo" type="service" id="translation.loader.mo"/>
+        <argument key="ts" type="service" id="translation.loader.qt"/>
+        <argument key="csv" type="service" id="translation.loader.csv"/>
+        <argument key="res" type="service" id="translation.loader.res"/>
+        <argument key="dat" type="service" id="translation.loader.dat"/>
+        <argument key="ini" type="service" id="translation.loader.ini"/>
+        <argument key="json" type="service" id="translation.loader.json"/>
+        <argument key="database" type="service" id="Lexik\Bundle\TranslationBundle\Translation\Loader"/>
+      </argument>
+      <argument type="service" id="lexik_translation.translation_storage"/>
+      <argument type="service" id="lexik_translation.trans_unit.manager"/>
+      <argument type="service" id="lexik_translation.file.manager"/>
+      <call method="setCaseInsensitiveInsert">
+        <argument>false</argument>
+      </call>
+    </service>
+    <service id="Lexik\Bundle\TranslationBundle\Translation\Exporter\ExporterCollector" class="Lexik\Bundle\TranslationBundle\Translation\Exporter\ExporterCollector">
+      <call method="addExporter">
+        <argument>Lexik\Bundle\TranslationBundle\Translation\Exporter\XliffExporter</argument>
+        <argument type="service" id="Lexik\Bundle\TranslationBundle\Translation\Exporter\XliffExporter"/>
+      </call>
+      <call method="addExporter">
+        <argument>Lexik\Bundle\TranslationBundle\Translation\Exporter\JsonExporter</argument>
+        <argument type="service" id="Lexik\Bundle\TranslationBundle\Translation\Exporter\JsonExporter"/>
+      </call>
+      <call method="addExporter">
+        <argument>Lexik\Bundle\TranslationBundle\Translation\Exporter\YamlExporter</argument>
+        <argument type="service" id="Lexik\Bundle\TranslationBundle\Translation\Exporter\YamlExporter"/>
+      </call>
+      <call method="addExporter">
+        <argument>Lexik\Bundle\TranslationBundle\Translation\Exporter\PhpExporter</argument>
+        <argument type="service" id="Lexik\Bundle\TranslationBundle\Translation\Exporter\PhpExporter"/>
+      </call>
+    </service>
+    <service id="Lexik\Bundle\TranslationBundle\Translation\Exporter\XliffExporter" class="Lexik\Bundle\TranslationBundle\Translation\Exporter\XliffExporter">
+      <tag name="lexik_translation.exporter" alias="xlf"/>
+    </service>
+    <service id="Lexik\Bundle\TranslationBundle\Translation\Exporter\JsonExporter" class="Lexik\Bundle\TranslationBundle\Translation\Exporter\JsonExporter">
+      <tag name="lexik_translation.exporter" alias="json"/>
+      <argument>false</argument>
+    </service>
+    <service id="Lexik\Bundle\TranslationBundle\Translation\Exporter\YamlExporter" class="Lexik\Bundle\TranslationBundle\Translation\Exporter\YamlExporter">
+      <tag name="lexik_translation.exporter" alias="yml"/>
+      <argument>false</argument>
+    </service>
+    <service id="Lexik\Bundle\TranslationBundle\Translation\Exporter\PhpExporter" class="Lexik\Bundle\TranslationBundle\Translation\Exporter\PhpExporter">
+      <tag name="lexik_translation.exporter" alias="php"/>
+    </service>
+    <service id="lexik_translation.data_grid.formatter" class="Lexik\Bundle\TranslationBundle\Util\DataGrid\DataGridFormatter" public="true">
+      <argument type="service" id="Lexik\Bundle\TranslationBundle\Manager\LocaleManager"/>
+      <argument>orm</argument>
+    </service>
+    <service id="lexik_translation.data_grid.request_handler" class="Lexik\Bundle\TranslationBundle\Util\DataGrid\DataGridRequestHandler" public="true">
+      <argument type="service" id="lexik_translation.trans_unit.manager"/>
+      <argument type="service" id="lexik_translation.file.manager"/>
+      <argument type="service" id="lexik_translation.translation_storage"/>
+      <argument type="service" id="Lexik\Bundle\TranslationBundle\Manager\LocaleManager"/>
+      <call method="setCreateMissing">
+        <argument>false</argument>
+      </call>
+      <call method="setDefaultFileFormat">
+        <argument>yml</argument>
+      </call>
+    </service>
+    <service id="lexik_translation.overview.stats_aggregator" class="Lexik\Bundle\TranslationBundle\Util\Overview\StatsAggregator" public="true">
+      <argument type="service" id="lexik_translation.translation_storage"/>
+      <argument type="service" id="Lexik\Bundle\TranslationBundle\Manager\LocaleManager"/>
+    </service>
+    <service id="lexik_translation.form.handler.trans_unit" class="Lexik\Bundle\TranslationBundle\Form\Handler\TransUnitFormHandler" public="true" autowire="true" autoconfigure="true">
+      <argument type="service" id="lexik_translation.trans_unit.manager"/>
+      <argument type="service" id="lexik_translation.file.manager"/>
+      <argument type="service" id="lexik_translation.translation_storage"/>
+      <argument type="service" id="Lexik\Bundle\TranslationBundle\Manager\LocaleManager"/>
+      <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn</argument>
+    </service>
+    <service id="Lexik\Bundle\TranslationBundle\EventDispatcher\Event\GetDatabaseResourcesEvent" class="Lexik\Bundle\TranslationBundle\EventDispatcher\GetDatabaseResourcesListener">
+      <tag name="kernel.event_listener" event="Lexik\Bundle\TranslationBundle\EventDispatcher\Event\GetDatabaseResourcesEvent" method="onGetDatabaseResources"/>
+      <argument type="service" id="lexik_translation.translation_storage"/>
+      <argument>orm</argument>
+    </service>
+    <service id="Lexik\Bundle\TranslationBundle\Command\ImportTranslationsCommand" class="Lexik\Bundle\TranslationBundle\Command\ImportTranslationsCommand" autowire="true">
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id="translator.data_collector"/>
+      <argument type="service" id="Lexik\Bundle\TranslationBundle\Manager\LocaleManager"/>
+      <argument type="service" id="Lexik\Bundle\TranslationBundle\Translation\Importer\FileImporter"/>
+    </service>
+    <service id="Lexik\Bundle\TranslationBundle\Command\ExportTranslationsCommand" class="Lexik\Bundle\TranslationBundle\Command\ExportTranslationsCommand" autowire="true">
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id="lexik_translation.translation_storage"/>
+      <argument type="service" id="translator.data_collector"/>
+      <argument type="service" id="filesystem"/>
+      <argument type="service" id="Lexik\Bundle\TranslationBundle\Translation\Exporter\ExporterCollector"/>
+      <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn</argument>
+    </service>
+    <service id="Lexik\Bundle\TranslationBundle\Controller\RestController" class="Lexik\Bundle\TranslationBundle\Controller\RestController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <argument type="service" id="lexik_translation.data_grid.request_handler"/>
+      <argument type="service" id="lexik_translation.data_grid.formatter"/>
+      <argument type="service" id="lexik_translation.translation_storage"/>
+      <argument type="service" id="lexik_translation.trans_unit.manager"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.Lexik\Bundle\TranslationBundle\Controller\RestController"/>
+      </call>
+      <call method="setRequestStack">
+        <argument type="service" id="request_stack"/>
+      </call>
+      <call method="setTokenManager">
+        <argument>null</argument>
+      </call>
+    </service>
+    <service id="Lexik\Bundle\TranslationBundle\Controller\TranslationController" class="Lexik\Bundle\TranslationBundle\Controller\TranslationController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <argument type="service" id="lexik_translation.translation_storage"/>
+      <argument type="service" id="lexik_translation.overview.stats_aggregator"/>
+      <argument type="service" id="lexik_translation.form.handler.trans_unit"/>
+      <argument type="service" id="Lexik\Bundle\TranslationBundle\Translation\Translator"/>
+      <argument type="service" id="translator.data_collector"/>
+      <argument type="service" id="Lexik\Bundle\TranslationBundle\Manager\LocaleManager"/>
+      <argument>null</argument>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.O2p6Lk7.Lexik\Bundle\TranslationBundle\Controller\TranslationController"/>
+      </call>
+      <call method="setRequestStack">
+        <argument type="service" id="request_stack"/>
+      </call>
+      <call method="setTokenManager">
+        <argument>null</argument>
+      </call>
+    </service>
+    <service id="lexik_translation.translator" class="Lexik\Bundle\TranslationBundle\Translation\Translator" public="true">
+      <tag name="kernel.locale_aware"/>
+      <argument type="service" id=".service_locator.nFxFpWE"/>
+      <argument type="service" id="translator.formatter.default"/>
+      <argument>%kernel.default_locale%</argument>
+      <argument type="collection">
+        <argument key="translation.loader.php" type="collection">
+          <argument>php</argument>
+        </argument>
+        <argument key="translation.loader.yml" type="collection">
+          <argument>yaml</argument>
+          <argument>yml</argument>
+        </argument>
+        <argument key="translation.loader.xliff" type="collection">
+          <argument>xlf</argument>
+          <argument>xliff</argument>
+        </argument>
+        <argument key="translation.loader.po" type="collection">
+          <argument>po</argument>
+        </argument>
+        <argument key="translation.loader.mo" type="collection">
+          <argument>mo</argument>
+        </argument>
+        <argument key="translation.loader.qt" type="collection">
+          <argument>ts</argument>
+        </argument>
+        <argument key="translation.loader.csv" type="collection">
+          <argument>csv</argument>
+        </argument>
+        <argument key="translation.loader.res" type="collection">
+          <argument>res</argument>
+        </argument>
+        <argument key="translation.loader.dat" type="collection">
+          <argument>dat</argument>
+        </argument>
+        <argument key="translation.loader.ini" type="collection">
+          <argument>ini</argument>
+        </argument>
+        <argument key="translation.loader.json" type="collection">
+          <argument>json</argument>
+        </argument>
+        <argument key="Lexik\Bundle\TranslationBundle\Translation\Loader" type="collection">
+          <argument>database</argument>
+        </argument>
+      </argument>
+      <argument>%lexik_translation.translator.options%</argument>
+      <call method="setConfigCacheFactory">
+        <argument type="service" id="config_cache_factory"/>
+      </call>
+      <call method="setFallbackLocales">
+        <argument type="collection">
+          <argument>fr</argument>
+        </argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\validator/Resources/translations\validators.ar.xlf</argument>
+        <argument>ar</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\validator/Resources/translations\validators.en.xlf</argument>
+        <argument>en</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\validator/Resources/translations\validators.fr.xlf</argument>
+        <argument>fr</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\form/Resources/translations\validators.ar.xlf</argument>
+        <argument>ar</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\form/Resources/translations\validators.en.xlf</argument>
+        <argument>en</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\form/Resources/translations\validators.fr.xlf</argument>
+        <argument>fr</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\security-core\Exception/../Resources/translations\security.ar.xlf</argument>
+        <argument>ar</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\security-core\Exception/../Resources/translations\security.en.xlf</argument>
+        <argument>en</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfony\security-core\Exception/../Resources/translations\security.fr.xlf</argument>
+        <argument>fr</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.ar.xlf</argument>
+        <argument>ar</argument>
+        <argument>ResetPasswordBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.en.xlf</argument>
+        <argument>en</argument>
+        <argument>ResetPasswordBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\symfonycasts\reset-password-bundle\src/Resources/translations\ResetPasswordBundle.fr.xlf</argument>
+        <argument>fr</argument>
+        <argument>ResetPasswordBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\lexik\translation-bundle/Resources/translations\LexikTranslationBundle.en.yml</argument>
+        <argument>en</argument>
+        <argument>LexikTranslationBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yml</argument>
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\lexik\translation-bundle/Resources/translations\LexikTranslationBundle.fr.yml</argument>
+        <argument>fr</argument>
+        <argument>LexikTranslationBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yaml</argument>
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn/translations\KnpPaginatorBundle.ar.yaml</argument>
+        <argument>ar</argument>
+        <argument>KnpPaginatorBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yaml</argument>
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn/translations\LexikTranslationBundle.ar.yaml</argument>
+        <argument>ar</argument>
+        <argument>LexikTranslationBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yaml</argument>
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn/translations\messages.ar.yaml</argument>
+        <argument>ar</argument>
+        <argument>messages</argument>
+      </call>
+      <call method="addResource">
+        <argument>yaml</argument>
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn/translations\ResetPasswordBundle.ar.yaml</argument>
+        <argument>ar</argument>
+        <argument>ResetPasswordBundle</argument>
+      </call>
+      <call method="addResource">
+        <argument>yaml</argument>
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn/translations\security.ar.yaml</argument>
+        <argument>ar</argument>
+        <argument>security</argument>
+      </call>
+      <call method="addResource">
+        <argument>yaml</argument>
+        <argument>C:\Users\LENOVO\Desktop\PI2025\Reaptn/translations\validators.ar.yaml</argument>
+        <argument>ar</argument>
+        <argument>validators</argument>
+      </call>
+      <call method="addDatabaseResources"/>
+    </service>
+    <service id="lexik_translation.orm.metadata.xml" class="Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver">
+      <argument type="collection">
+        <argument key="C:\Users\LENOVO\Desktop\PI2025\Reaptn\vendor\lexik\translation-bundle\Resources\config\model">Lexik\Bundle\TranslationBundle\Model</argument>
+      </argument>
+    </service>
+    <service id="lexik_translation.orm.listener" class="Lexik\Bundle\TranslationBundle\Storage\Listener\DoctrineORMListener">
+      <tag name="doctrine.event_listener" event="loadClassMetadata"/>
+    </service>
+    <service id="lexik_translation.translation_storage" class="Lexik\Bundle\TranslationBundle\Storage\DoctrineORMStorage" public="true">
+      <argument type="service" id="doctrine"/>
+      <argument>default</argument>
+      <argument type="collection">
+        <argument key="trans_unit">%lexik_translation.orm.trans_unit.class%</argument>
+        <argument key="translation">%lexik_translation.orm.translation.class%</argument>
+        <argument key="file">%lexik_translation.orm.file.class%</argument>
+      </argument>
+    </service>
+    <service id=".instanceof.Symfony\Component\EventDispatcher\EventSubscriberInterface.0.App\EventListener\LocaleListener" class="App\EventListener\LocaleListener" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\EventListener\LocaleListener" class="App\EventListener\LocaleListener" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LanguageController" class="App\Controller\LanguageController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LanguageController" class="App\Controller\LanguageController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\LanguageController" class="App\Controller\LanguageController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -8334,6 +8871,12 @@
     <service id=".abstract.instanceof.App\Repository\StockRepository" class="App\Repository\StockRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.Lexik\Bundle\TranslationBundle\Controller\RestController" class="Lexik\Bundle\TranslationBundle\Controller\RestController" public="true" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.Lexik\Bundle\TranslationBundle\Controller\RestController" class="Lexik\Bundle\TranslationBundle\Controller\RestController" public="true" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.Lexik\Bundle\TranslationBundle\Controller\RestController" class="Lexik\Bundle\TranslationBundle\Controller\RestController" public="true" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.Lexik\Bundle\TranslationBundle\Controller\TranslationController" class="Lexik\Bundle\TranslationBundle\Controller\TranslationController" public="true" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.Lexik\Bundle\TranslationBundle\Controller\TranslationController" class="Lexik\Bundle\TranslationBundle\Controller\TranslationController" public="true" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.Lexik\Bundle\TranslationBundle\Controller\TranslationController" class="Lexik\Bundle\TranslationBundle\Controller\TranslationController" public="true" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.w7.f4fT" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -8903,13 +9446,6 @@
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
-    <service id=".service_locator.yQtgQR9" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="client" type="service_closure" id=".debug.http_client"/>
-        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
-      </argument>
-    </service>
     <service id=".service_locator.JwMuhT7" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -9031,7 +9567,17 @@
         <argument key="authenticationUtils" type="service_closure" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.IFaIz09" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.nFhWISy" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="requestStack" type="service_closure" id="request_stack"/>
+      </argument>
+    </service>
+    <service id=".service_locator.29WlXx6" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection"/>
+    </service>
+    <service id=".service_locator.aC16lYi" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminController::adminIndex" type="service_closure" id=".service_locator.vs9Bn8g"/>
@@ -9092,13 +9638,13 @@
         <argument key="App\Controller\EmployeController::deleteBack" type="service_closure" id=".service_locator.I3mS6IL"/>
         <argument key="App\Controller\EmployeController::edit" type="service_closure" id=".service_locator.I3mS6IL"/>
         <argument key="App\Controller\EmployeController::editBack" type="service_closure" id=".service_locator.I3mS6IL"/>
+        <argument key="App\Controller\EmployeController::evaluateLocal" type="service_closure" id=".service_locator.I3mS6IL"/>
         <argument key="App\Controller\EmployeController::index" type="service_closure" id=".service_locator.JwMuhT7"/>
         <argument key="App\Controller\EmployeController::indexBack" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\EmployeController::newBack" type="service_closure" id=".service_locator.gxkSA7l"/>
         <argument key="App\Controller\EmployeController::rejectEmploye" type="service_closure" id=".service_locator.I3mS6IL"/>
         <argument key="App\Controller\EmployeController::show" type="service_closure" id=".service_locator.je7oNoj"/>
         <argument key="App\Controller\EmployeController::showBack" type="service_closure" id=".service_locator.je7oNoj"/>
-        <argument key="App\Controller\EmployeController::updateSuggestedForEmployes" type="service_closure" id=".service_locator.yQtgQR9"/>
         <argument key="App\Controller\LivraisonController::delete" type="service_closure" id=".service_locator.XA7Hpe0"/>
         <argument key="App\Controller\LivraisonController::edit" type="service_closure" id=".service_locator.XA7Hpe0"/>
         <argument key="App\Controller\LivraisonController::index" type="service_closure" id=".service_locator.W.TDhCz"/>
@@ -9215,13 +9761,13 @@
         <argument key="App\Controller\EmployeController:deleteBack" type="service_closure" id=".service_locator.I3mS6IL"/>
         <argument key="App\Controller\EmployeController:edit" type="service_closure" id=".service_locator.I3mS6IL"/>
         <argument key="App\Controller\EmployeController:editBack" type="service_closure" id=".service_locator.I3mS6IL"/>
+        <argument key="App\Controller\EmployeController:evaluateLocal" type="service_closure" id=".service_locator.I3mS6IL"/>
         <argument key="App\Controller\EmployeController:index" type="service_closure" id=".service_locator.JwMuhT7"/>
         <argument key="App\Controller\EmployeController:indexBack" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\EmployeController:newBack" type="service_closure" id=".service_locator.gxkSA7l"/>
         <argument key="App\Controller\EmployeController:rejectEmploye" type="service_closure" id=".service_locator.I3mS6IL"/>
         <argument key="App\Controller\EmployeController:show" type="service_closure" id=".service_locator.je7oNoj"/>
         <argument key="App\Controller\EmployeController:showBack" type="service_closure" id=".service_locator.je7oNoj"/>
-        <argument key="App\Controller\EmployeController:updateSuggestedForEmployes" type="service_closure" id=".service_locator.yQtgQR9"/>
         <argument key="App\Controller\LivraisonController:delete" type="service_closure" id=".service_locator.XA7Hpe0"/>
         <argument key="App\Controller\LivraisonController:edit" type="service_closure" id=".service_locator.XA7Hpe0"/>
         <argument key="App\Controller\LivraisonController:index" type="service_closure" id=".service_locator.W.TDhCz"/>
@@ -9572,7 +10118,7 @@
       <argument type="service" id="http_client.uri_template"/>
       <argument type="service" id="debug.stopwatch" on-invalid="ignore"/>
     </service>
-    <service id=".service_locator.MfxSDRP" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.9uq.MP5" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="doctrine.orm.default_listeners.attach_entity_listeners" type="service_closure" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
@@ -9581,6 +10127,7 @@
         <argument key="doctrine.orm.listeners.lock_store_schema_listener" type="service_closure" id="doctrine.orm.listeners.lock_store_schema_listener"/>
         <argument key="doctrine.orm.listeners.pdo_session_handler_schema_listener" type="service_closure" id="doctrine.orm.listeners.pdo_session_handler_schema_listener"/>
         <argument key="doctrine.orm.messenger.doctrine_schema_listener" type="service_closure" id="doctrine.orm.messenger.doctrine_schema_listener"/>
+        <argument key="lexik_translation.orm.listener" type="service_closure" id="lexik_translation.orm.listener"/>
         <argument key="turbo.doctrine.event_listener" type="service_closure" id="turbo.doctrine.event_listener"/>
       </argument>
     </service>
@@ -9812,9 +10359,28 @@
     </service>
     <service id="monolog.handler.null_internal" class="Monolog\Handler\NullHandler"/>
     <service id=".stof_doctrine_extensions.reader" class="Gedmo\Mapping\Driver\AttributeReader"/>
-    <service id=".service_locator.yY.p4P7" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.nFxFpWE" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="Lexik\Bundle\TranslationBundle\Translation\Loader" type="service_closure" id="Lexik\Bundle\TranslationBundle\Translation\Loader"/>
+        <argument key="event_dispatcher" type="service_closure" id="debug.event_dispatcher"/>
+        <argument key="translation.loader.csv" type="service_closure" id="translation.loader.csv"/>
+        <argument key="translation.loader.dat" type="service_closure" id="translation.loader.dat"/>
+        <argument key="translation.loader.ini" type="service_closure" id="translation.loader.ini"/>
+        <argument key="translation.loader.json" type="service_closure" id="translation.loader.json"/>
+        <argument key="translation.loader.mo" type="service_closure" id="translation.loader.mo"/>
+        <argument key="translation.loader.php" type="service_closure" id="translation.loader.php"/>
+        <argument key="translation.loader.po" type="service_closure" id="translation.loader.po"/>
+        <argument key="translation.loader.qt" type="service_closure" id="translation.loader.qt"/>
+        <argument key="translation.loader.res" type="service_closure" id="translation.loader.res"/>
+        <argument key="translation.loader.xliff" type="service_closure" id="translation.loader.xliff"/>
+        <argument key="translation.loader.yml" type="service_closure" id="translation.loader.yml"/>
+      </argument>
+    </service>
+    <service id=".service_locator.k1TyYKw" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="Lexik\Bundle\TranslationBundle\Translation\Loader" type="service_closure" id="Lexik\Bundle\TranslationBundle\Translation\Loader"/>
         <argument key="translation.loader.csv" type="service_closure" id="translation.loader.csv"/>
         <argument key="translation.loader.dat" type="service_closure" id="translation.loader.dat"/>
         <argument key="translation.loader.ini" type="service_closure" id="translation.loader.ini"/>
@@ -10116,6 +10682,12 @@
         <argument key="web_link.http_header_serializer" type="service_closure" id="web_link.http_header_serializer" on-invalid="ignore"/>
       </argument>
     </service>
+    <service id=".service_locator.O2p6Lk7.App\Controller\LanguageController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\LanguageController"/>
+      <argument>App\Controller\LanguageController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
     <service id=".service_locator.O2p6Lk7.App\Controller\AdminController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\AdminController"/>
       <argument>App\Controller\AdminController</argument>
@@ -10266,6 +10838,18 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.etVElvN" method="withContext"/>
     </service>
+    <service id=".service_locator.O2p6Lk7.Lexik\Bundle\TranslationBundle\Controller\RestController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="Lexik\Bundle\TranslationBundle\Controller\RestController"/>
+      <argument>Lexik\Bundle\TranslationBundle\Controller\RestController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
+    <service id=".service_locator.O2p6Lk7.Lexik\Bundle\TranslationBundle\Controller\TranslationController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="Lexik\Bundle\TranslationBundle\Controller\TranslationController"/>
+      <argument>Lexik\Bundle\TranslationBundle\Controller\TranslationController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
+    </service>
     <service id=".service_locator.oR77BOj" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -10400,6 +10984,7 @@
       <call method="allowControllers">
         <argument type="collection">
           <argument>App\Kernel</argument>
+          <argument>App\Controller\LanguageController</argument>
           <argument>App\Controller\AdminController</argument>
           <argument>App\Controller\CommandeController</argument>
           <argument>App\Controller\ContratController</argument>
@@ -10418,6 +11003,8 @@
           <argument>App\Controller\ResetPasswordController</argument>
           <argument>App\Controller\SecurityController</argument>
           <argument>Doctrine\Bundle\DoctrineBundle\Controller\ProfilerController</argument>
+          <argument>Lexik\Bundle\TranslationBundle\Controller\RestController</argument>
+          <argument>Lexik\Bundle\TranslationBundle\Controller\TranslationController</argument>
         </argument>
       </call>
     </service>
@@ -10615,6 +11202,14 @@
       <call method="addDriver">
         <argument type="service" id="doctrine.orm.default_attribute_metadata_driver"/>
         <argument>App\Entity</argument>
+      </call>
+      <call method="addDriver">
+        <argument type="service" id="doctrine.orm.default_xml_metadata_driver"/>
+        <argument>Lexik\Bundle\TranslationBundle\Entity</argument>
+      </call>
+      <call method="addDriver">
+        <argument type="service" id="lexik_translation.orm.metadata.xml"/>
+        <argument>Lexik\Bundle\TranslationBundle\Model</argument>
       </call>
     </service>
     <service id="debug.security.event_dispatcher.main.inner" class="Symfony\Component\EventDispatcher\EventDispatcher"/>
@@ -11705,7 +12300,6 @@
         <argument key="Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime" type="service_closure" id="Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime"/>
       </argument>
     </service>
-    <service id="Symfony\Component\HttpFoundation\Session\SessionInterface" alias="session"/>
     <service id="App\Kernel" alias="kernel" public="true"/>
     <service id="Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface" alias="parameter_bag"/>
     <service id="Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface" alias="parameter_bag"/>
@@ -11745,7 +12339,8 @@
     <service id="Psr\Http\Client\ClientInterface" alias="psr18.http_client"/>
     <service id="mailer" alias="mailer.mailer"/>
     <service id="Symfony\Component\Mailer\MailerInterface" alias="mailer.mailer"/>
-    <service id="Symfony\Component\Mailer\Transport\TransportInterface" alias="mailer.default_transport"/>
+    <service id="mailer.default_transport" alias="mailer.transports"/>
+    <service id="Symfony\Component\Mailer\Transport\TransportInterface" alias="mailer.transports"/>
     <service id="Symfony\Component\Translation\Reader\TranslationReaderInterface" alias="translation.reader"/>
     <service id="Symfony\Component\Translation\Extractor\ExtractorInterface" alias="translation.extractor"/>
     <service id="Symfony\Component\Translation\Writer\TranslationWriterInterface" alias="translation.writer"/>
@@ -11877,9 +12472,23 @@
     <service id="Knp\Component\Pager\PaginatorInterface" alias="knp_paginator"/>
     <service id="Knp\Component\Pager\ArgumentAccess\ArgumentAccessInterface" alias="Knp\Component\Pager\ArgumentAccess\RequestArgumentAccess"/>
     <service id="SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface" alias="symfonycasts.reset_password.helper"/>
+    <service id="Lexik\Bundle\TranslationBundle\Storage\StorageInterface" alias="lexik_translation.translation_storage"/>
+    <service id="Lexik\Bundle\TranslationBundle\Manager\TransUnitManagerInterface" alias="lexik_translation.trans_unit.manager"/>
+    <service id="Lexik\Bundle\TranslationBundle\Manager\FileManagerInterface" alias="lexik_translation.file.manager"/>
+    <service id="Lexik\Bundle\TranslationBundle\Manager\LocaleManagerInterface" alias="Lexik\Bundle\TranslationBundle\Manager\LocaleManager" public="true"/>
+    <service id="lexik_translation.importer.file" alias="Lexik\Bundle\TranslationBundle\Translation\Importer\FileImporter" public="true"/>
+    <service id="lexik_translation.exporter_collector" alias="Lexik\Bundle\TranslationBundle\Translation\Exporter\ExporterCollector" public="true"/>
+    <service id="lexik_translation.exporter.xliff" alias="Lexik\Bundle\TranslationBundle\Translation\Exporter\XliffExporter" public="true"/>
+    <service id="lexik_translation.exporter.json" alias="Lexik\Bundle\TranslationBundle\Translation\Exporter\JsonExporter" public="true"/>
+    <service id="lexik_translation.exporter.yml" alias="Lexik\Bundle\TranslationBundle\Translation\Exporter\YamlExporter"/>
+    <service id="lexik_translation.exporter.php" alias="Lexik\Bundle\TranslationBundle\Translation\Exporter\PhpExporter"/>
+    <service id="Lexik\Bundle\TranslationBundle\Util\DataGrid\DataGridFormatter" alias="lexik_translation.data_grid.formatter"/>
+    <service id="Lexik\Bundle\TranslationBundle\Util\DataGrid\DataGridRequestHandler" alias="lexik_translation.data_grid.request_handler"/>
+    <service id="Lexik\Bundle\TranslationBundle\Util\Overview\StatsAggregator" alias="lexik_translation.overview.stats_aggregator"/>
+    <service id="Lexik\Bundle\TranslationBundle\Form\Handler\TransUnitFormHandler" alias="lexik_translation.form.handler.trans_unit"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.w7.f4fT" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.IFaIz09"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.aC16lYi"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -11913,11 +12522,12 @@
     <service id=".service_locator.3.sg1hS" alias=".service_locator.V6favct"/>
     <service id=".service_locator.66Dh_nl" alias=".service_locator.OZJWVTB"/>
     <service id=".service_locator.V6D1oJY" alias=".service_locator.e_4zbH4"/>
-    <service id=".service_locator.csC3SwY" alias=".service_locator.IFaIz09"/>
+    <service id=".service_locator.ErORsUq" alias=".service_locator.aC16lYi"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
     <service id=".service_locator.nh.9sqv" alias=".service_locator.iOh.ad9"/>
-    <service id=".service_locator.XtmiKbi" alias=".service_locator.MfxSDRP"/>
-    <service id=".service_locator.O24_MAy" alias=".service_locator.yY.p4P7"/>
+    <service id=".service_locator.4J8NXyB" alias=".service_locator.9uq.MP5"/>
+    <service id=".service_locator.wXf7KuD" alias=".service_locator.nFxFpWE"/>
+    <service id=".service_locator.NqaP9PK" alias=".service_locator.k1TyYKw"/>
     <service id=".service_locator.jUv.zyj" alias=".service_locator.O2p6Lk7"/>
     <service id="validator" alias="debug.validator"/>
     <service id="http_client" alias=".debug.http_client"/>
@@ -11927,7 +12537,7 @@
     <service id="event_dispatcher" alias="debug.event_dispatcher" public="true"/>
     <service id="controller_resolver" alias="debug.controller_resolver"/>
     <service id="argument_resolver" alias="debug.argument_resolver"/>
-    <service id="translator.data_collector.inner" alias="translator.default"/>
+    <service id="translator.data_collector.inner" alias="lexik_translation.translator"/>
     <service id="serializer" alias="debug.serializer"/>
     <service id="doctrine.migrations.migrations_factory" alias="doctrine.migrations.container_aware_migrations_factory"/>
     <service id="var_dumper.cli_dumper" alias="var_dumper.contextualized_cli_dumper"/>
@@ -11964,7 +12574,6 @@
     <service id=".service_locator.Za9s0hK" alias=".service_locator.jaZM74n"/>
     <service id=".service_locator.QOx9IOW" alias=".service_locator.TqIg1ou"/>
     <service id=".service_locator..EdiTAe" alias=".service_locator.I3mS6IL"/>
-    <service id=".service_locator.JqKdeCy" alias=".service_locator.yQtgQR9"/>
     <service id=".service_locator.tpHEddv" alias=".service_locator.JwMuhT7"/>
     <service id=".service_locator.1T4rAjt" alias=".service_locator.je7oNoj"/>
     <service id=".service_locator.ZbiNKp0" alias=".service_locator.e9C_9eg"/>
@@ -11983,6 +12592,7 @@
     <service id=".service_locator.ostNlSn" alias=".service_locator.EE0.cm9"/>
     <service id=".service_locator.uPguXMt" alias=".service_locator.Z9ydiC1"/>
     <service id=".service_locator.7NIAq8D" alias=".service_locator.rSTd.nA"/>
+    <service id=".service_locator.MCtI1Fb" alias=".service_locator.nFhWISy"/>
     <service id=".service_locator.Q1z.f9O" alias=".service_locator.O2p6Lk7"/>
     <service id=".service_locator.dGUCsbe" alias=".service_locator.oR77BOj"/>
     <service id=".service_locator.FeLY1aP" alias=".service_locator.OFsXjhj"/>
@@ -11990,5 +12600,7 @@
     <service id=".service_locator.hnz5ZNh" alias=".service_locator.0TACwl3"/>
     <service id=".service_locator..Fs8Kd7" alias=".service_locator.e_.xxAP"/>
     <service id=".service_locator.kaL5Omj" alias=".service_locator.ZEzQKyM"/>
+    <service id="console.command.public_alias.Lexik\Bundle\TranslationBundle\Command\ImportTranslationsCommand" alias="Lexik\Bundle\TranslationBundle\Command\ImportTranslationsCommand" public="true"/>
+    <service id="console.command.public_alias.Lexik\Bundle\TranslationBundle\Command\ExportTranslationsCommand" alias="Lexik\Bundle\TranslationBundle\Command\ExportTranslationsCommand" public="true"/>
   </services>
 </container>

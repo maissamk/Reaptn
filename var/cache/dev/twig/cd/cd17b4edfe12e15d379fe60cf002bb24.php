@@ -73,7 +73,7 @@ class __TwigTemplate_376742d765b0377c4d66366cf9bf8f26 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        yield "New Offre";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("New Offre"), "html", null, true);
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -98,24 +98,26 @@ class __TwigTemplate_376742d765b0377c4d66366cf9bf8f26 extends Template
 
         // line 6
         yield "
-    
-
     <!-- Added padding-top to prevent overlap -->
     <div class=\"pt-5\">
     
     <div class=\"container mt-5 pt-5\">
-    <h1>Create new Offre</h1>
+        <h1>";
+        // line 11
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Create new Offre"), "html", null, true);
+        yield "</h1>
 
-    ";
-        // line 15
+        ";
+        // line 13
         yield Twig\Extension\CoreExtension::include($this->env, $context, "offre/_form.html.twig");
         yield "
 
-    <a href=\"";
-        // line 17
+        <a href=\"";
+        // line 15
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_offre_index");
-        yield "\">back to list</a>
-
+        yield "\">";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("back to list"), "html", null, true);
+        yield "</a>
 
 ";
         
@@ -148,30 +150,28 @@ class __TwigTemplate_376742d765b0377c4d66366cf9bf8f26 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  116 => 17,  111 => 15,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  117 => 15,  112 => 13,  107 => 11,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
     {
         return new Source("{% extends 'base.html.twig' %}
 
-{% block title %}New Offre{% endblock %}
+{% block title %}{{ 'New Offre' | trans }}{% endblock %}
 
 {% block body %}
-
-    
 
     <!-- Added padding-top to prevent overlap -->
     <div class=\"pt-5\">
     
     <div class=\"container mt-5 pt-5\">
-    <h1>Create new Offre</h1>
+        <h1>{{ 'Create new Offre' | trans }}</h1>
 
-    {{ include('offre/_form.html.twig') }}
+        {{ include('offre/_form.html.twig') }}
 
-    <a href=\"{{ path('app_offre_index') }}\">back to list</a>
+        <a href=\"{{ path('app_offre_index') }}\">{{ 'back to list' | trans }}</a>
 
-
-{% endblock %}", "offre/new.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\offre\\new.html.twig");
+{% endblock %}
+", "offre/new.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\offre\\new.html.twig");
     }
 }

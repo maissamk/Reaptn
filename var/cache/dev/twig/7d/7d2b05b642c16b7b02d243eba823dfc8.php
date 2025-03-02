@@ -98,11 +98,14 @@ class __TwigTemplate_4dbfc3a27d9a3a75d633b48d65101a24 extends Template
 
         // line 6
         yield "    <div class=\"container-fluid fruite py-5\">
-        <div class=\"container py-5 \">
-            <div class=\"tab-class text-center \">
+        <div class=\"container py-5\">
+            <div class=\"tab-class text-center\">
                 <div class=\"row g-4\">
                     <div class=\"col-lg-4 text-start\">
-                        <h1>Our Organic Products</h1>
+                        <h1>";
+        // line 11
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Our Organic Products"), "html", null, true);
+        yield "</h1>
                     </div>
                 </div>
                 <div class=\"tab-content\">
@@ -115,22 +118,28 @@ class __TwigTemplate_4dbfc3a27d9a3a75d633b48d65101a24 extends Template
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["offre"]) {
             // line 18
-            yield "                                <div class=\"card p-3 mb-3 d-flex flex-row align-items-center\" style=\"width: 100%;\">
+            yield "                                <div class=\"card p-3 mb-3 d-flex flex-row align-items-center\" style=\"width: 100%; border: 1px solid #ccc;\">
                                     <div class=\"flex-grow-1\">
                                         <h4 class=\"fw-bold\">";
             // line 20
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["offre"], "titre", [], "any", false, false, false, 20), "html", null, true);
             yield "</h4>
-                                        <p><strong>Statut:</strong> ";
+                                        <p><strong>";
             // line 21
-            yield ((CoreExtension::getAttribute($this->env, $this->source, $context["offre"], "statut", [], "any", false, false, false, 21)) ? ("Yes") : ("No"));
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Statut"), "html", null, true);
+            yield ":</strong> ";
+            yield ((CoreExtension::getAttribute($this->env, $this->source, $context["offre"], "statut", [], "any", false, false, false, 21)) ? ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Yes"), "html", null, true)) : ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("No"), "html", null, true)));
             yield "</p>
-                                        <p><strong>Description:</strong> ";
+                                        <p><strong>";
             // line 22
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Description"), "html", null, true);
+            yield ":</strong> ";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["offre"], "descr", [], "any", false, false, false, 22), "html", null, true);
             yield "</p>
-                                        <p><strong>Compétences demandées:</strong> ";
+                                        <p><strong>";
             // line 23
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Compétences demandées"), "html", null, true);
+            yield ":</strong> ";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["offre"], "comp", [], "any", false, false, false, 23), "html", null, true);
             yield "</p>
                                     </div>
@@ -138,19 +147,23 @@ class __TwigTemplate_4dbfc3a27d9a3a75d633b48d65101a24 extends Template
                                         <a href=\"";
             // line 26
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_offre_show", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["offre"], "id", [], "any", false, false, false, 26)]), "html", null, true);
-            yield "\"  class=\"btn btn-info btn-sm text-white\"><i class=\"fas fa-eye\"></i>Voir</a>
+            yield "\" class=\"btn btn-info btn-sm text-white\"><i class=\"fas fa-eye\"></i> ";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Voir"), "html", null, true);
+            yield "</a>
                                         ";
             // line 27
             if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_AGRICULTEUR")) {
                 // line 28
-                yield "                                        <a href=\"";
+                yield "                                            <a href=\"";
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_offre_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["offre"], "id", [], "any", false, false, false, 28)]), "html", null, true);
-                yield "\" class=\"btn btn-warning btn-sm text-white\"><i class=\"fas fa-edit\"></i> Modifier</a>
-                                    </div>
-                                    ";
+                yield "\" class=\"btn btn-warning btn-sm text-white\"><i class=\"fas fa-edit\"></i> ";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Modifier"), "html", null, true);
+                yield "</a>
+                                        ";
             }
-            // line 31
-            yield "                                </div>
+            // line 30
+            yield "                                    </div>
+                                </div>
                             ";
             $context['_iterated'] = true;
         }
@@ -158,7 +171,10 @@ class __TwigTemplate_4dbfc3a27d9a3a75d633b48d65101a24 extends Template
         if (!$context['_iterated']) {
             // line 33
             yield "                                <div class=\"text-center\">
-                                    <p>No records found</p>
+                                    <p>";
+            // line 34
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("No records found"), "html", null, true);
+            yield "</p>
                                 </div>
                             ";
         }
@@ -169,12 +185,14 @@ class __TwigTemplate_4dbfc3a27d9a3a75d633b48d65101a24 extends Template
         yield "                            ";
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_AGRICULTEUR")) {
             // line 38
-            yield "                            <div class=\"text-end\">
-                                <a href=\"";
+            yield "                                <div class=\"text-end\">
+                                    <a href=\"";
             // line 39
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_offre_new");
-            yield "\" class=\"btn btn-success\">Ajouter Offre</a>
-                            </div>
+            yield "\" class=\"btn btn-success\">";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Ajouter Offre"), "html", null, true);
+            yield "</a>
+                                </div>
                             ";
         }
         // line 42
@@ -215,7 +233,7 @@ class __TwigTemplate_4dbfc3a27d9a3a75d633b48d65101a24 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  181 => 42,  175 => 39,  172 => 38,  169 => 37,  160 => 33,  158 => 32,  153 => 31,  146 => 28,  144 => 27,  140 => 26,  134 => 23,  130 => 22,  126 => 21,  122 => 20,  118 => 18,  113 => 17,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  199 => 42,  191 => 39,  188 => 38,  185 => 37,  176 => 34,  173 => 33,  171 => 32,  165 => 30,  157 => 28,  155 => 27,  149 => 26,  141 => 23,  135 => 22,  129 => 21,  125 => 20,  121 => 18,  116 => 17,  107 => 11,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -226,40 +244,40 @@ class __TwigTemplate_4dbfc3a27d9a3a75d633b48d65101a24 extends Template
 
 {% block body %}
     <div class=\"container-fluid fruite py-5\">
-        <div class=\"container py-5 \">
-            <div class=\"tab-class text-center \">
+        <div class=\"container py-5\">
+            <div class=\"tab-class text-center\">
                 <div class=\"row g-4\">
                     <div class=\"col-lg-4 text-start\">
-                        <h1>Our Organic Products</h1>
+                        <h1>{{ 'Our Organic Products'|trans }}</h1>
                     </div>
                 </div>
                 <div class=\"tab-content\">
                     <div id=\"tab-1\" class=\"tab-pane fade show p-0 active\">
                         <div class=\"row g-4 flex-column\">
                             {% for offre in offres %}
-                                <div class=\"card p-3 mb-3 d-flex flex-row align-items-center\" style=\"width: 100%;\">
+                                <div class=\"card p-3 mb-3 d-flex flex-row align-items-center\" style=\"width: 100%; border: 1px solid #ccc;\">
                                     <div class=\"flex-grow-1\">
                                         <h4 class=\"fw-bold\">{{ offre.titre }}</h4>
-                                        <p><strong>Statut:</strong> {{ offre.statut ? 'Yes' : 'No' }}</p>
-                                        <p><strong>Description:</strong> {{ offre.descr }}</p>
-                                        <p><strong>Compétences demandées:</strong> {{ offre.comp }}</p>
+                                        <p><strong>{{ 'Statut'|trans }}:</strong> {{ offre.statut ? 'Yes'|trans : 'No'|trans }}</p>
+                                        <p><strong>{{ 'Description'|trans }}:</strong> {{ offre.descr }}</p>
+                                        <p><strong>{{ 'Compétences demandées'|trans }}:</strong> {{ offre.comp }}</p>
                                     </div>
                                     <div class=\"text-end\">
-                                        <a href=\"{{ path('app_offre_show', {'id': offre.id}) }}\"  class=\"btn btn-info btn-sm text-white\"><i class=\"fas fa-eye\"></i>Voir</a>
-                                        {% if  is_granted('ROLE_AGRICULTEUR') %}
-                                        <a href=\"{{ path('app_offre_edit', {'id': offre.id}) }}\" class=\"btn btn-warning btn-sm text-white\"><i class=\"fas fa-edit\"></i> Modifier</a>
+                                        <a href=\"{{ path('app_offre_show', {'id': offre.id}) }}\" class=\"btn btn-info btn-sm text-white\"><i class=\"fas fa-eye\"></i> {{ 'Voir'|trans }}</a>
+                                        {% if is_granted('ROLE_AGRICULTEUR') %}
+                                            <a href=\"{{ path('app_offre_edit', {'id': offre.id}) }}\" class=\"btn btn-warning btn-sm text-white\"><i class=\"fas fa-edit\"></i> {{ 'Modifier'|trans }}</a>
+                                        {% endif %}
                                     </div>
-                                    {% endif %}
                                 </div>
                             {% else %}
                                 <div class=\"text-center\">
-                                    <p>No records found</p>
+                                    <p>{{ 'No records found'|trans }}</p>
                                 </div>
                             {% endfor %}
-                            {% if  is_granted('ROLE_AGRICULTEUR') %}
-                            <div class=\"text-end\">
-                                <a href=\"{{ path('app_offre_new') }}\" class=\"btn btn-success\">Ajouter Offre</a>
-                            </div>
+                            {% if is_granted('ROLE_AGRICULTEUR') %}
+                                <div class=\"text-end\">
+                                    <a href=\"{{ path('app_offre_new') }}\" class=\"btn btn-success\">{{ 'Ajouter Offre'|trans }}</a>
+                                </div>
                             {% endif %}
                         </div>
                     </div>
@@ -267,7 +285,6 @@ class __TwigTemplate_4dbfc3a27d9a3a75d633b48d65101a24 extends Template
             </div>
         </div>
     </div>
-{% endblock %}
-", "offre/index.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\offre\\index.html.twig");
+{% endblock %}", "offre/index.html.twig", "C:\\Users\\LENOVO\\Desktop\\PI2025\\Reaptn\\templates\\offre\\index.html.twig");
     }
 }

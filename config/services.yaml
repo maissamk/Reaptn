@@ -8,7 +8,7 @@ parameters:
     images_directory: '%kernel.project_dir%/public/uploads/images'
     avatars_directory: '%kernel.project_dir%/public/uploads/avatars'
     hugging_face_api_token: '%env(HUGGING_FACE_API_TOKEN)%'
-
+    is_arabic_enabled: true   # Change to false if you don't want Arabic
 
 services:
     # Default configuration for services in *this* file
@@ -20,6 +20,28 @@ services:
     App\Service\HuggingFaceService:
         arguments:
             $apiKey: '%env(HUGGING_FACE_API_TOKEN)%'
+            $client: '@http_client'
+
+    App\EventListener\LocaleListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+    App\Controller\LanguageController:
+        arguments:
+            $locale: '@request_stack'
+        tags: ['controller.service_arguments']
+    App\Service\LingvaTranslator:
+        arguments: []
+
+    App\Twig\AppExtension:
+        arguments:
+            $isArabicEnabled: '%is_arabic_enabled%'
+        tags:
+            - { name: twig.extension }
+            
+    App\Service\TextGenerationService:
+        arguments:
+            $client: '@http_client'
+            $apiKey: '%env(DEEP_AI_API_KEY)%'
 
     # CartService example
     App\Service\CartService:
@@ -27,9 +49,7 @@ services:
         arguments:
             $session: '@session'
 
-    # Aliasing SessionInterface to session
-    Symfony\Component\HttpFoundation\Session\SessionInterface:
-        alias: 'session'
+    
 
         
     # makes classes in src/ available to be used as services

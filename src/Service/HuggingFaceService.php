@@ -1,41 +1,44 @@
 <?php
 
+// src/Service/HuggingFaceService.php
+
 namespace App\Service;
 
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class HuggingFaceService
 {
-    private HttpClientInterface $client;
-    private string $apiToken;
+    private $client;
+    private $apiUrl;
+    private $apiToken;
 
-    public function __construct(HttpClientInterface $client, string $apiToken)
+    public function __construct(HttpClientInterface $client)
     {
         $this->client = $client;
-        $this->apiToken = $apiToken;
+        // Set the model URL (update with your model's actual URL)
+        $this->apiUrl = 'https://api-inference.huggingface.co/models/distilbert-base-uncased';
+        
+        // Replace with your Hugging Face API token
+        $this->apiToken = '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'; // Set your API token here
     }
 
-    public function compareCompetences(string $offreCompetence, string $employeCompetence): float
+    public function compareCompFields(string $employeeComp, string $offerComp): bool
     {
-        // 1️⃣ Normalize the input strings to lowercase and trim spaces
-        $offreCompetence = strtolower(trim($offreCompetence));
-        $employeCompetence = strtolower(trim($employeCompetence));
-
-        // 2️⃣ Make the API request to Hugging Face to compare competences
-        $response = $this->client->request('POST', 'https://api-inference.huggingface.co/models/sentence-transformers/all-MiniLM-L6-v2', [
+        $response = $this->client->request('POST', $this->apiUrl, [
             'headers' => [
-                'Authorization' => 'Bearer ' . $this->apiToken,
+                'Authorization' => 'Bearer ' . $this->apiToken, // Pass token in headers
             ],
             'json' => [
-                'inputs' => [$offreCompetence, $employeCompetence]
+                'inputs' => [
+                    'employee' => $employeeComp,
+                    'offer' => $offerComp,
+                ],
             ],
         ]);
 
-        // 3️⃣ Parse the response from Hugging Face API
         $data = $response->toArray();
-        dump($data);  // Debugging: check what the API is returning
-
-        // 4️⃣ Return the similarity score from the response (assuming it's in the first position of the array)
-        return $data[0] ?? 0;
+        
+        // Assuming the response has a boolean or numeric score to determine similarity
+        return isset($data['result']) && $data['result'] === 'suggested'; // Adjust based on your model's response
     }
 }

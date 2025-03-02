@@ -18,7 +18,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 use App\Service\HuggingFaceService;
-
+use Phpml\FeatureExtraction\TokenCountVectorizer;
+use Phpml\Tokenization\WhitespaceTokenizer;
 
 #[Route('/employe')]
 final class EmployeController extends AbstractController
@@ -50,55 +51,32 @@ public function rejectEmploye(Employe $employe, EntityManagerInterface $entityMa
     return $this->redirectToRoute('app_offre_show', ['id' => $offreId]);
 }
 
-#[Route('/update-suggested/{id}', name: 'update_suggested')]
-public function updateSuggestedForEmployes(int $id, HttpClientInterface $client, EntityManagerInterface $entityManager): Response
-    {
-        // 1️⃣ Retrieve the Offre by ID
-        $offre = $entityManager->getRepository(Offre::class)->find($id);
+#[Route('/evaluate-local/{id}', name: 'evaluate_employe_local')]
+public function evaluateLocal(Employe $employe, EntityManagerInterface $entityManager): Response
+{
+    $offreComp = strtolower($employe->getOffre()->getComp());  
+    $employeComp = strtolower($employe->getComp());
 
-        if (!$offre) {
-            return new Response("Offre not found", 404);
-        }
+    // Tokenize manually (split by whitespace)
+    $tokenizer = new WhitespaceTokenizer();
+    $offreWords = $tokenizer->tokenize($offreComp);
+    $employeWords = $tokenizer->tokenize($employeComp);
 
-        // 2️⃣ Retrieve the competence from the Offre
-        $offreCompetence = $offre->getComp(); // Assuming 'competence' is the field in the Offre entity
+    // Find common words (case insensitive match)
+    $commonWords = array_intersect($offreWords, $employeWords);
+    $similarityScore = count($commonWords);  
 
-        // 3️⃣ Get Hugging Face API Token from environment
-        $apiToken = getenv('HUGGING_FACE_API_TOKEN');
+    // Define a threshold for "suitability"
+    $threshold = 2;
+    $suggested = $similarityScore >= $threshold;
 
+    // Save result
+    $employe->setSuggested($suggested);
+    $entityManager->flush();
 
-        // 4️⃣ Loop through each employee linked to the Offre
-        foreach ($offre->getEmployes() as $employe) {
-            $competence = $employe->getComp(); // Assuming 'comp' is the field in the Employe entity
-
-            // 5️⃣ Make API request to Hugging Face to compare the competences
-            $response = $client->request('POST', 'https://api-inference.huggingface.co/models/sentence-transformers/all-MiniLM-L6-v2', [
-                'headers' => [
-                    'Authorization' => 'Bearer ' . $apiToken,
-                ],
-                'json' => [
-                    'inputs' => [$offreCompetence, $competence]
-                ],
-            ]);
-
-            // 6️⃣ Parse the API response
-            $data = $response->toArray();
-            $similarityScore = $data[0] ?? 0; // Assuming similarity score is returned in the first position
-
-            // 7️⃣ Compare the similarity score and update the 'suggested' field
-            if ($similarityScore > 0.7) {
-                $employe->setSuggested(1); // Mark as suggested
-            } else {
-                $employe->setSuggested(0); // Mark as not suggested
-            }
-
-            // 8️⃣ Save the updated employe entity
-            $entityManager->flush();
-        }
-
-        return new Response("Updated suggested for employees successfully.");
-    }
-
+    // Redirect to the same page where employee is displayed, to update badge
+    return $this->redirectToRoute('employe_show', ['id' => $employe->getId()]);
+}
     //not using this
     #[Route('/', name: 'app_employe_index', methods: ['GET'])]
     public function index(EmployeRepository $employeRepository): Response

@@ -38,7 +38,7 @@ class Employe
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date_join = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(type: 'boolean', nullable: true)]
     private ?bool $suggested = false;
 
     public function __construct()
