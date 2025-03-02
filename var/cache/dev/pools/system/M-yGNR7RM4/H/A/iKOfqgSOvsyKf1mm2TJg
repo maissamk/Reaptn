@@ -1,3 +1,0 @@
-<?php //824b88671bfd7cac4e723562a13f6bdc
-
-return [PHP_INT_MAX, 'backoffice/js/plugin/chartist/chartist.min.js'];
