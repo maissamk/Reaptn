@@ -6,6 +6,8 @@ use App\Entity\Employe;
 use App\Entity\Offre;
 use App\Form\EmployeType;
 use App\Repository\EmployeRepository;
+use App\Repository\OffreRepository;
+
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -225,7 +227,27 @@ public function delete(int $id, EntityManagerInterface $entityManager, Security 
         return $this->redirectToRoute('admin_employe_index');
     }
 
+    #[Route('/admin/statistics/employe', name: 'statistics_employe')]
+    public function statistics(OffreRepository $offreRepository): Response
+    {
+        // Fetch all offers
+        $offres = $offreRepository->findAll();
+        $statistics = [];
 
+        // Count the number of employees for each offer
+        foreach ($offres as $offre) {
+            $statistics[$offre->getId()] = count($offre->getEmployes());
+        }
+
+        // Prepare data for the template
+        $labels = array_keys($statistics); // Get the offer IDs
+        $data = array_values($statistics); // Get the counts of employees
+
+        return $this->render('admin/employe/statistics_employe.html.twig', [
+            'labels' => $labels,
+            'data' => $data,
+        ]);
+    }
 
 
 }

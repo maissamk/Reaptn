@@ -1,0 +1,52 @@
+{# templates/admin/employe/statistics_employe.html.twig #}
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Employee Statistics{% endblock %}
+
+{% block body %}
+    <div class="container mt-5" style="width: 70%; margin-left: 27%; padding-top: 50px;">
+        <h1>Employee Statistics</h1>
+        <canvas id="employeeChart"></canvas> <!-- Canvas for the chart -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Include Chart.js -->
+
+    <script>
+        // Prepare data for the chart
+        const labels = {{ labels|json_encode|raw }}; // Get the offer IDs
+        const data = {{ data|json_encode|raw }}; // Get the counts of employees
+
+        const ctx = document.getElementById('employeeChart').getContext('2d');
+        const employeeChart = new Chart(ctx, {
+            type: 'bar', // You can change this to 'line', 'pie', etc.
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Number of Employees',
+                    data: data,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Number of Employees'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Offre ID'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+{% endblock %}
