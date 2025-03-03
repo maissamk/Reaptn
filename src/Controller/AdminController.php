@@ -987,17 +987,16 @@ public function deleteUser($id, EntityManagerInterface $em)
 #[Route('/admin/materielagricole/stats', name: 'admin_materielagricole_stats')]
 public function showStats(MaterielventeRepository $materielventeRepository): Response
 {
-    
     $materiels = $materielventeRepository->findAll();
 
-    
     $totalMateriels = count($materiels);
     $totalPrix = array_sum(array_map(fn($m) => $m->getPrix(), $materiels)); 
     $disponible = count(array_filter($materiels, fn($m) => $m->isDisponibilite() === true));
-
     $nonDisponible = $totalMateriels - $disponible;
 
-    
+    // Calcul de la moyenne des prix
+    $moyennePrix = $totalMateriels > 0 ? $totalPrix / $totalMateriels : 0;
+
     return $this->render('admin/materielagricole/stats.html.twig', [
         'totalMateriels' => $totalMateriels,
         'totalPrix' => $totalPrix,
@@ -1006,6 +1005,7 @@ public function showStats(MaterielventeRepository $materielventeRepository): Res
         'nonDisponible' => $nonDisponible,
     ]);
 }
+
 
 
 
