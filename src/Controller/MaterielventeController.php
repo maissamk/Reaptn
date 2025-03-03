@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\ImageAnalysisService;
 use App\Entity\Materielvente;
 use App\Form\Materielvente2Type;
 use App\Repository\MaterielventeRepository;
@@ -40,39 +41,36 @@ final class MaterielventeController extends AbstractController
         PaginatorInterface $paginator
     ): Response {
         $searchTerm = $request->query->get('search', '');
-        $categories = $categorieRepository->findAll(); // Ajout de cette ligne
+        $categories = $categorieRepository->findAll();
 
         
-        // Récupérer et convertir minPrice et maxPrice en float
         $minPrice = $request->query->get('minPrice');
         $maxPrice = $request->query->get('maxPrice');
         
-        // Convertir minPrice et maxPrice en float si elles sont définies, sinon les laisser null
+        
         $minPrice = $minPrice !== null && is_numeric($minPrice) ? (float) $minPrice : null;
         $maxPrice = $maxPrice !== null && is_numeric($maxPrice) ? (float) $maxPrice : null;
         
-        // Récupérer et convertir categorieId en entier
+        
         $categorieId = $request->query->get('categorie');
         $categorieId = $categorieId !== null && is_numeric($categorieId) ? (int) $categorieId : null;
         
-        // Appeler la méthode searchByFilters avec les bons paramètres
         $queryBuilder = $materielventeRepository->searchByFilters($searchTerm, $minPrice, $maxPrice, $categorieId);
     
-        // Pagination
         $materielventes = $paginator->paginate(
             $queryBuilder,
             $request->query->getInt('page', 1),
-            9 // Nombre d'éléments par page
+            9 
         );
     
-        // Retourner la vue avec les paramètres nécessaires
+       
         return $this->render('materielvente/index.html.twig', [
             'materielventes' => $materielventes,
             'searchTerm' => $searchTerm,
             'minPrice' => $minPrice,
             'maxPrice' => $maxPrice,
             'categorieId' => $categorieId,
-            'categories' => $categories, // Ajout des catégories pour affichage
+            'categories' => $categories, 
 
             
         ]);
@@ -231,32 +229,32 @@ final class MaterielventeController extends AbstractController
             'materielventes' => $materielventes
         ]);
     }
+
+
+
+
     
 
 
     #[Route('/materielvente/{id}/download', name: 'app_materielvente_download_pdf')]
     public function downloadPdf(Materielvente $materielvente): Response
     {
-        // Configuration de DomPDF
+        
         $options = new Options();
         $options->set('isHtml5ParserEnabled', true);
         $options->set('isPhpEnabled', true);
         
-        // Initialisation de DomPDF
         $dompdf = new Dompdf($options);
         
-        // Créez le contenu HTML pour le PDF
         $html = $this->renderView('materielvente/pdf_template.html.twig', [
             'materielvente' => $materielvente,
         ]);
 
-        // Chargez le contenu HTML dans DomPDF
+        
         $dompdf->loadHtml($html);
 
-        // Définir le format du papier (A4 par défaut)
         $dompdf->setPaper('A4');
 
-        // Rendre le PDF
         $dompdf->render();
 
         // Télécharger le PDF
@@ -273,10 +271,34 @@ final class MaterielventeController extends AbstractController
 
 
 
+    private ImageAnalysisService $imageAnalysisService;
 
+    public function __construct(ImageAnalysisService $imageAnalysisService)
+    {
+        $this->imageAnalysisService = $imageAnalysisService;
+    }
 
-
-
+    #[Route('/{id}/analyze', name: 'analyze_image', methods: ['POST'])]
+    public function analyze(Request $request, int $id): Response
+    {
+        $data = json_decode($request->getContent(), true);
+        $imageName = $data['image'] ?? null;
+    
+        if (!$imageName) {
+            return $this->json(['error' => 'No image specified'], Response::HTTP_BAD_REQUEST);
+        }
+    
+        $imagePath = $this->getParameter('images_directory') . '/' . $imageName;
+    
+        if (!file_exists($imagePath)) {
+            return $this->json(['error' => 'Image not found'], Response::HTTP_NOT_FOUND);
+        }
+    
+        // Call Hugging Face API or local AI model
+        $description = $this->imageAnalysisService->analyzeImage($imagePath);
+    
+        return $this->json(['description' => $description]);
+    }
 
 
 

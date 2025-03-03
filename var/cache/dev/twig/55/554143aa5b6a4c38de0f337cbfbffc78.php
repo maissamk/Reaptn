@@ -205,6 +205,22 @@ class __TwigTemplate_c5dcd79e4ed37b06d145118c27a3a00f extends Template
         yield "\" class=\"btn btn-primary me-3\">
                 <i class=\"fa fa-arrow-left\"></i> Retour
             </a>
+            <form id=\"analyze-form\">
+\t\t\t\t\t<input type=\"hidden\" id=\"image-path\" value=\"";
+        // line 71
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 71, $this->source); })()), "image", [], "any", false, false, false, 71), "html", null, true);
+        yield "\">
+\t\t\t\t\t<button type=\"submit\" id=\"analyze-btn\" class=\"btn btn-primary flex items-center gap-2\">
+\t\t\t\t\t\t<i class=\"fa fa-circle-plus\"></i>
+\t\t\t\t\t\tGenerate a description for the image
+\t\t\t\t\t</button>
+\t\t\t\t</form>
+
+\t\t\t\t<div id=\"loading-spinner\" class=\"spinner-border text-primary mt-2\" style=\"display: none;\" role=\"status\">
+\t\t\t\t\t<span class=\"visually-hidden\">Loading...</span>
+\t\t\t\t</div>
+
+\t\t\t\t<p id=\"analysis-result\" class=\"text-center text-success mt-2\"></p>
         </div>
     </div>
 </div>
@@ -225,6 +241,47 @@ class __TwigTemplate_c5dcd79e4ed37b06d145118c27a3a00f extends Template
         width: 70%;
     }
 </style>
+
+<script>
+\t\tdocument.getElementById('analyze-form').addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    const imagePath = document.getElementById('image-path').value;
+    const materielId = \"";
+        // line 109
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 109, $this->source); })()), "id", [], "any", false, false, false, 109), "html", null, true);
+        yield "\"; // Get the material ID from Twig
+    const analyzeBtn = document.getElementById('analyze-btn');
+    const spinner = document.getElementById('loading-spinner');
+    const resultElement = document.getElementById('analysis-result');
+
+    // Show spinner and disable button
+    analyzeBtn.disabled = true;
+    spinner.style.display = \"block\";
+    resultElement.innerText = \"\";
+
+    try {
+        const response = await fetch(`/materielvente/\${materielId}/analyze`, {  // Include ID in the URL
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ image: imagePath })
+        });
+
+        if (!response.ok) throw new Error(\"Server error\");
+
+        const data = await response.json();
+        resultElement.innerText = data.description;
+
+    } catch (error) {
+        console.error(\"Error:\", error);
+        resultElement.innerText = \"Error processing image.\";
+    } finally {
+        // Hide spinner and enable button
+        spinner.style.display = \"none\";
+        analyzeBtn.disabled = false;
+    }
+});
+\t</script>
 
 ";
         
@@ -257,7 +314,7 @@ class __TwigTemplate_c5dcd79e4ed37b06d145118c27a3a00f extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  204 => 67,  191 => 56,  187 => 54,  183 => 52,  181 => 51,  173 => 46,  166 => 42,  161 => 39,  157 => 37,  151 => 35,  149 => 34,  141 => 29,  128 => 20,  119 => 15,  113 => 12,  107 => 10,  105 => 9,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  252 => 109,  211 => 71,  204 => 67,  191 => 56,  187 => 54,  183 => 52,  181 => 51,  173 => 46,  166 => 42,  161 => 39,  157 => 37,  151 => 35,  149 => 34,  141 => 29,  128 => 20,  119 => 15,  113 => 12,  107 => 10,  105 => 9,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -331,6 +388,19 @@ class __TwigTemplate_c5dcd79e4ed37b06d145118c27a3a00f extends Template
             <a href=\"{{ path('app_materielvente_index') }}\" class=\"btn btn-primary me-3\">
                 <i class=\"fa fa-arrow-left\"></i> Retour
             </a>
+            <form id=\"analyze-form\">
+\t\t\t\t\t<input type=\"hidden\" id=\"image-path\" value=\"{{ materielvente.image }}\">
+\t\t\t\t\t<button type=\"submit\" id=\"analyze-btn\" class=\"btn btn-primary flex items-center gap-2\">
+\t\t\t\t\t\t<i class=\"fa fa-circle-plus\"></i>
+\t\t\t\t\t\tGenerate a description for the image
+\t\t\t\t\t</button>
+\t\t\t\t</form>
+
+\t\t\t\t<div id=\"loading-spinner\" class=\"spinner-border text-primary mt-2\" style=\"display: none;\" role=\"status\">
+\t\t\t\t\t<span class=\"visually-hidden\">Loading...</span>
+\t\t\t\t</div>
+
+\t\t\t\t<p id=\"analysis-result\" class=\"text-center text-success mt-2\"></p>
         </div>
     </div>
 </div>
@@ -351,6 +421,44 @@ class __TwigTemplate_c5dcd79e4ed37b06d145118c27a3a00f extends Template
         width: 70%;
     }
 </style>
+
+<script>
+\t\tdocument.getElementById('analyze-form').addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    const imagePath = document.getElementById('image-path').value;
+    const materielId = \"{{ materielvente.id }}\"; // Get the material ID from Twig
+    const analyzeBtn = document.getElementById('analyze-btn');
+    const spinner = document.getElementById('loading-spinner');
+    const resultElement = document.getElementById('analysis-result');
+
+    // Show spinner and disable button
+    analyzeBtn.disabled = true;
+    spinner.style.display = \"block\";
+    resultElement.innerText = \"\";
+
+    try {
+        const response = await fetch(`/materielvente/\${materielId}/analyze`, {  // Include ID in the URL
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ image: imagePath })
+        });
+
+        if (!response.ok) throw new Error(\"Server error\");
+
+        const data = await response.json();
+        resultElement.innerText = data.description;
+
+    } catch (error) {
+        console.error(\"Error:\", error);
+        resultElement.innerText = \"Error processing image.\";
+    } finally {
+        // Hide spinner and enable button
+        spinner.style.display = \"none\";
+        analyzeBtn.disabled = false;
+    }
+});
+\t</script>
 
 {% endblock %}
 ", "materielvente/show.html.twig", "C:\\Users\\asus\\Desktop\\PI2025\\pi2025\\templates\\materielvente\\show.html.twig");

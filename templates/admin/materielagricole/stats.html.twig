@@ -1,0 +1,121 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Statistiques des Matériels Agricoles{% endblock %}
+
+{% block body %}
+<div class="container-fluid pt-5" style="margin-left: 260px; min-height: 100vh;">
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h2 class="mb-0">📊 Statistiques des Matériels Agricoles</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <!-- Graphiques -->
+                        <div class="col-md-6">
+                            <div class="card shadow-sm p-3">
+                                <h5 class="text-center">Disponibilité des Matériels</h5>
+                                <canvas id="disponibiliteChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card shadow-sm p-3">
+                                <h5 class="text-center">Analyse des Prix</h5>
+                                <canvas id="prixChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Statistiques textuelles -->
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card shadow-sm p-3">
+                                <h5>Total des Matériels</h5>
+                                <p class="h4 text-primary">{{ totalMateriels }}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card shadow-sm p-3">
+                                <h5>Total des Prix</h5>
+                                <p class="h4 text-success">{{ totalPrix }} DT</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <div class="card shadow-sm p-3">
+                                <h5>Moyenne des Prix</h5>
+                                <p class="h4 text-warning">{{ moyennePrix|number_format(2) }} DT</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <div class="card shadow-sm p-3">
+                                <h5>Matériels Disponibles</h5>
+                                <p class="h4 text-success">{{ disponible }}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <div class="card shadow-sm p-3">
+                                <h5>Matériels Non Disponibles</h5>
+                                <p class="h4 text-danger">{{ nonDisponible }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <a href="{{ path('app_tables') }}" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-arrow-left"></i> Retour à la gestion des matériels
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Intégration de Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Graphique des disponibilités (disponible vs non disponible)
+        var disponibiliteChart = new Chart(document.getElementById('disponibiliteChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Disponible', 'Non Disponible'],
+                datasets: [{
+                    data: [{{ disponible }}, {{ nonDisponible }}],
+                    backgroundColor: ['#28a745', '#dc3545'],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+
+        // Graphique des prix (total vs moyenne)
+        var prixChart = new Chart(document.getElementById('prixChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Total Prix', 'Moyenne Prix'],
+                datasets: [{
+                    data: [{{ totalPrix }}, {{ moyennePrix|number_format(2) }}],
+                    backgroundColor: ['#007bff', '#ffc107'],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+    });
+</script>
+
+{% endblock %}

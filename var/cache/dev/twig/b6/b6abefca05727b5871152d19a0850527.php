@@ -129,20 +129,42 @@ class __TwigTemplate_1be02f2dfd7832e5c9ccaf8a332f917f extends Template
         yield "</div>
         </td>
     </tr>
+
+
+
+<tr>
+        <td><label>";
+        // line 43
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 43, $this->source); })()), "categorie", [], "any", false, false, false, 43), 'label');
+        yield "</label></td>
+        <td>
+            ";
+        // line 45
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 45, $this->source); })()), "categorie", [], "any", false, false, false, 45), 'widget', ["attr" => ["class" => "form-control", "style" => "width: 350px;"]]);
+        yield "
+            <div class=\"text-danger\">";
+        // line 46
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 46, $this->source); })()), "categorie", [], "any", false, false, false, 46), 'errors');
+        yield "</div>
+        </td>
+    </tr>
+
+
+
     
     <tr>
         <td colspan=\"2\"  style=\"padding-top: 10px;\">
             <button type=\"submit\" class=\"btn btn-primary\">";
-        // line 42
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(((array_key_exists("button_label", $context)) ? (Twig\Extension\CoreExtension::default((isset($context["button_label"]) || array_key_exists("button_label", $context) ? $context["button_label"] : (function () { throw new RuntimeError('Variable "button_label" does not exist.', 42, $this->source); })()), "Save")) : ("Save")), "html", null, true);
+        // line 55
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(((array_key_exists("button_label", $context)) ? (Twig\Extension\CoreExtension::default((isset($context["button_label"]) || array_key_exists("button_label", $context) ? $context["button_label"] : (function () { throw new RuntimeError('Variable "button_label" does not exist.', 55, $this->source); })()), "Save")) : ("Save")), "html", null, true);
         yield "</button>
         </td>
     </tr>
 </table>
 
 ";
-        // line 47
-        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 47, $this->source); })()), 'form_end');
+        // line 60
+        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 60, $this->source); })()), 'form_end');
         yield "
 ";
         
@@ -175,7 +197,7 @@ class __TwigTemplate_1be02f2dfd7832e5c9ccaf8a332f917f extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  145 => 47,  137 => 42,  128 => 36,  124 => 35,  119 => 33,  112 => 29,  108 => 28,  103 => 26,  96 => 22,  92 => 21,  87 => 19,  80 => 15,  76 => 14,  71 => 12,  64 => 8,  60 => 7,  55 => 5,  48 => 1,);
+        return array (  167 => 60,  159 => 55,  147 => 46,  143 => 45,  138 => 43,  128 => 36,  124 => 35,  119 => 33,  112 => 29,  108 => 28,  103 => 26,  96 => 22,  92 => 21,  87 => 19,  80 => 15,  76 => 14,  71 => 12,  64 => 8,  60 => 7,  55 => 5,  48 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -218,6 +240,19 @@ class __TwigTemplate_1be02f2dfd7832e5c9ccaf8a332f917f extends Template
             <div class=\"text-danger\">{{ form_errors(form.image) }}</div>
         </td>
     </tr>
+
+
+
+<tr>
+        <td><label>{{ form_label(form.categorie) }}</label></td>
+        <td>
+            {{ form_widget(form.categorie, {'attr': {'class': 'form-control', 'style': 'width: 350px;'}}) }}
+            <div class=\"text-danger\">{{ form_errors(form.categorie) }}</div>
+        </td>
+    </tr>
+
+
+
     
     <tr>
         <td colspan=\"2\"  style=\"padding-top: 10px;\">

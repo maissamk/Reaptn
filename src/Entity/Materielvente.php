@@ -56,9 +56,7 @@ class Materielvente
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
-    // Propriétés pour l'upload avec VichUploader
-    #[Vich\UploadableField(mapping: 'materiel_images', fileNameProperty: 'image')]
-    private ?File $imageFile = null;
+    
 
 
 
@@ -155,20 +153,7 @@ class Materielvente
     }
 
 
-    // Getter et Setter pour l'imageFile
-    public function getImageFile(): ?File
-    {
-        return $this->imageFile;
-    }
-
-    public function setImageFile(?File $imageFile = null): void
-    {
-        $this->imageFile = $imageFile;
-        if ($imageFile) {
-            // Le champ "updatedAt" doit être mis à jour à chaque changement de fichier
-            $this->updatedAt = new \DateTime();
-        }
-    }
+    
 
 
 

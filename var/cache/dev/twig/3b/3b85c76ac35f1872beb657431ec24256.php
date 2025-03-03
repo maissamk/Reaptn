@@ -100,7 +100,67 @@ class __TwigTemplate_86d6931d1dabd63ce6b0078aebc61369 extends Template
         yield "<div class=\"container d-flex flex-column justify-content-center align-items-center\" style=\"min-height: 100vh; margin-left: 260px;\">
     <h1 class=\"text-center text-light bg-primary p-3 rounded\" style=\"width: 100%;\">🚜 Matériels Agricoles A Vendre 🛠️</h1>
 
-    
+
+<form action=\"";
+        // line 10
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_tables");
+        yield "\" method=\"get\" class=\"mb-4\">
+    <div class=\"row g-3\">
+        <div class=\"col-md-3\">
+            <input type=\"text\" name=\"search\" class=\"form-control\" placeholder=\"Rechercher par nom\" value=\"";
+        // line 13
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape((isset($context["searchTerm"]) || array_key_exists("searchTerm", $context) ? $context["searchTerm"] : (function () { throw new RuntimeError('Variable "searchTerm" does not exist.', 13, $this->source); })()), "html", null, true);
+        yield "\">
+        </div>
+        <div class=\"col-md-2\">
+            <input type=\"number\" name=\"minPrice\" class=\"form-control\" placeholder=\"Prix min\" value=\"";
+        // line 16
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape((isset($context["minPrice"]) || array_key_exists("minPrice", $context) ? $context["minPrice"] : (function () { throw new RuntimeError('Variable "minPrice" does not exist.', 16, $this->source); })()), "html", null, true);
+        yield "\">
+        </div>
+        <div class=\"col-md-2\">
+            <input type=\"number\" name=\"maxPrice\" class=\"form-control\" placeholder=\"Prix max\" value=\"";
+        // line 19
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape((isset($context["maxPrice"]) || array_key_exists("maxPrice", $context) ? $context["maxPrice"] : (function () { throw new RuntimeError('Variable "maxPrice" does not exist.', 19, $this->source); })()), "html", null, true);
+        yield "\">
+        </div>
+        <div class=\"col-md-3\">
+            <select name=\"categorie\" class=\"form-control\">
+                <option value=\"\">Toutes les catégories</option>
+                ";
+        // line 24
+        $context['_parent'] = $context;
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["categories"]) || array_key_exists("categories", $context) ? $context["categories"] : (function () { throw new RuntimeError('Variable "categories" does not exist.', 24, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["categorie"]) {
+            // line 25
+            yield "                    <option value=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["categorie"], "id", [], "any", false, false, false, 25), "html", null, true);
+            yield "\" ";
+            yield ((((isset($context["categorieId"]) || array_key_exists("categorieId", $context) ? $context["categorieId"] : (function () { throw new RuntimeError('Variable "categorieId" does not exist.', 25, $this->source); })()) == CoreExtension::getAttribute($this->env, $this->source, $context["categorie"], "id", [], "any", false, false, false, 25))) ? ("selected") : (""));
+            yield ">
+                        ";
+            // line 26
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["categorie"], "nom", [], "any", false, false, false, 26), "html", null, true);
+            yield "
+                    </option>
+                ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_key'], $context['categorie'], $context['_parent']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 29
+        yield "            </select>
+        </div>
+        <div class=\"col-md-2\">
+            <button type=\"submit\" class=\"btn btn-primary w-100\">
+                <i class=\"fas fa-filter\"></i> Filtrer
+            </button>
+        </div>
+    </div>
+</form>
+
+
+
 
     <div class=\"table-responsive mt-4\" style=\"width: 90%;\">
         <table class=\"table table-striped table-bordered\">
@@ -118,9 +178,9 @@ class __TwigTemplate_86d6931d1dabd63ce6b0078aebc61369 extends Template
             </thead>
             <tbody>
                 ";
-        // line 26
+        // line 57
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["materielventes"]) || array_key_exists("materielventes", $context) ? $context["materielventes"] : (function () { throw new RuntimeError('Variable "materielventes" does not exist.', 26, $this->source); })()));
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["materielventes"]) || array_key_exists("materielventes", $context) ? $context["materielventes"] : (function () { throw new RuntimeError('Variable "materielventes" does not exist.', 57, $this->source); })()));
         $context['_iterated'] = false;
         $context['loop'] = [
           'parent' => $context['_parent'],
@@ -136,86 +196,86 @@ class __TwigTemplate_86d6931d1dabd63ce6b0078aebc61369 extends Template
             $context['loop']['last'] = 1 === $length;
         }
         foreach ($context['_seq'] as $context["_key"] => $context["materielvente"]) {
-            // line 27
+            // line 58
             yield "                    <tr>
                         <td>
                             <img src=\"";
-            // line 29
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(((CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "image", [], "any", false, false, false, 29)) ? (("uploads/images/" . CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "image", [], "any", false, false, false, 29))) : ("images/default.png"))), "html", null, true);
+            // line 60
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(((CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "image", [], "any", false, false, false, 60)) ? (("uploads/images/" . CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "image", [], "any", false, false, false, 60))) : ("images/default.png"))), "html", null, true);
             yield "\" 
                                  class=\"rounded border border-secondary\" 
                                  alt=\"";
-            // line 31
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "nom", [], "any", false, false, false, 31), "html", null, true);
+            // line 62
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "nom", [], "any", false, false, false, 62), "html", null, true);
             yield "\" width=\"70\" height=\"70\">
                         </td>
                         <td>";
-            // line 33
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "id", [], "any", false, false, false, 33), "html", null, true);
+            // line 64
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "id", [], "any", false, false, false, 64), "html", null, true);
             yield "</td>
                         <td>";
-            // line 34
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "nom", [], "any", false, false, false, 34), "html", null, true);
+            // line 65
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "nom", [], "any", false, false, false, 65), "html", null, true);
             yield "</td>
                         <td class=\"fw-bold text-primary\">";
-            // line 35
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "prix", [], "any", false, false, false, 35), "html", null, true);
+            // line 66
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "prix", [], "any", false, false, false, 66), "html", null, true);
             yield " DT</td>
                         <td>";
-            // line 36
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "description", [], "any", false, false, false, 36), "html", null, true);
+            // line 67
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "description", [], "any", false, false, false, 67), "html", null, true);
             yield "</td>
                         
                         <td>
                             <span class=\"badge ";
-            // line 39
-            if (CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "disponibilite", [], "any", false, false, false, 39)) {
+            // line 70
+            if (CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "disponibilite", [], "any", false, false, false, 70)) {
                 yield "bg-success";
             } else {
                 yield "bg-danger";
             }
             yield "\">
                                 ";
-            // line 40
-            if (CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "disponibilite", [], "any", false, false, false, 40)) {
+            // line 71
+            if (CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "disponibilite", [], "any", false, false, false, 71)) {
                 yield " Disponible ";
             } else {
                 yield " Non disponible ";
             }
-            // line 41
+            // line 72
             yield "                            </span>
                         </td>
                         <td>
                             ";
-            // line 44
-            if (CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "categorie", [], "any", false, false, false, 44)) {
-                // line 45
+            // line 75
+            if (CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "categorie", [], "any", false, false, false, 75)) {
+                // line 76
                 yield "                                ";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "categorie", [], "any", false, false, false, 45), "nom", [], "any", false, false, false, 45), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "categorie", [], "any", false, false, false, 76), "nom", [], "any", false, false, false, 76), "html", null, true);
                 yield "
                             ";
             } else {
-                // line 47
+                // line 78
                 yield "                                <span class=\"text-danger\">Aucune catégorie</span>
                             ";
             }
-            // line 49
+            // line 80
             yield "                        </td>
                         <td>
                             <a href=\"";
-            // line 51
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materielvente_aff", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "id", [], "any", false, false, false, 51)]), "html", null, true);
+            // line 82
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materielvente_aff", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "id", [], "any", false, false, false, 82)]), "html", null, true);
             yield "\" class=\"btn btn-info btn-sm\">
                                 <i class=\"fas fa-eye\"></i> Voir
                             </a>
                             <a href=\"";
-            // line 54
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_materielvente_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "id", [], "any", false, false, false, 54)]), "html", null, true);
+            // line 85
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_materielvente_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "id", [], "any", false, false, false, 85)]), "html", null, true);
             yield "\" class=\"btn btn-warning btn-sm\">
                                 <i class=\"fas fa-edit\"></i> Modifier
                             </a>
                             ";
-            // line 57
+            // line 88
             yield Twig\Extension\CoreExtension::include($this->env, $context, "admin/materielagricole/supprimer.html.twig");
             yield "
                         </td>
@@ -231,9 +291,9 @@ class __TwigTemplate_86d6931d1dabd63ce6b0078aebc61369 extends Template
                 $context['loop']['last'] = 0 === $context['loop']['revindex0'];
             }
         }
-        // line 60
+        // line 91
         if (!$context['_iterated']) {
-            // line 61
+            // line 92
             yield "                    <tr>
                         <td colspan=\"7\" class=\"text-center\">Aucun matériel disponible pour le moment.</td>
                     </tr>
@@ -242,20 +302,36 @@ class __TwigTemplate_86d6931d1dabd63ce6b0078aebc61369 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['materielvente'], $context['_parent'], $context['_iterated'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 65
+        // line 96
         yield "            </tbody>
         </table>
     </div>
 
+    
+    <div class=\"text-center mt-4\">
+    <a href=\"";
+        // line 102
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_materielagricole_stats");
+        yield "\" class=\"btn btn-info\">
+        <i class=\"fas fa-chart-line\"></i> Afficher les Statistiques
+    </a>
+</div>
+
+
     <div class=\"text-center mt-4\">
         <a href=\"";
-        // line 70
+        // line 109
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_materielvente_new");
         yield "\" class=\"btn btn-success\">
             <i class=\"fas fa-plus-circle\"></i> Ajouter un matériel
         </a>
     </div>
 </div>
+
+
+
+
+
 
 <style>
     .table th, .table td {
@@ -266,6 +342,12 @@ class __TwigTemplate_86d6931d1dabd63ce6b0078aebc61369 extends Template
         margin: 2px;
     }
 </style>
+
+
+
+
+
+
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -297,7 +379,7 @@ class __TwigTemplate_86d6931d1dabd63ce6b0078aebc61369 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  253 => 70,  246 => 65,  237 => 61,  235 => 60,  219 => 57,  213 => 54,  207 => 51,  203 => 49,  199 => 47,  193 => 45,  191 => 44,  186 => 41,  180 => 40,  172 => 39,  166 => 36,  162 => 35,  158 => 34,  154 => 33,  149 => 31,  144 => 29,  140 => 27,  122 => 26,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  324 => 109,  314 => 102,  306 => 96,  297 => 92,  295 => 91,  279 => 88,  273 => 85,  267 => 82,  263 => 80,  259 => 78,  253 => 76,  251 => 75,  246 => 72,  240 => 71,  232 => 70,  226 => 67,  222 => 66,  218 => 65,  214 => 64,  209 => 62,  204 => 60,  200 => 58,  182 => 57,  152 => 29,  143 => 26,  136 => 25,  132 => 24,  124 => 19,  118 => 16,  112 => 13,  106 => 10,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -310,7 +392,38 @@ class __TwigTemplate_86d6931d1dabd63ce6b0078aebc61369 extends Template
 <div class=\"container d-flex flex-column justify-content-center align-items-center\" style=\"min-height: 100vh; margin-left: 260px;\">
     <h1 class=\"text-center text-light bg-primary p-3 rounded\" style=\"width: 100%;\">🚜 Matériels Agricoles A Vendre 🛠️</h1>
 
-    
+
+<form action=\"{{ path('app_tables') }}\" method=\"get\" class=\"mb-4\">
+    <div class=\"row g-3\">
+        <div class=\"col-md-3\">
+            <input type=\"text\" name=\"search\" class=\"form-control\" placeholder=\"Rechercher par nom\" value=\"{{ searchTerm }}\">
+        </div>
+        <div class=\"col-md-2\">
+            <input type=\"number\" name=\"minPrice\" class=\"form-control\" placeholder=\"Prix min\" value=\"{{ minPrice }}\">
+        </div>
+        <div class=\"col-md-2\">
+            <input type=\"number\" name=\"maxPrice\" class=\"form-control\" placeholder=\"Prix max\" value=\"{{ maxPrice }}\">
+        </div>
+        <div class=\"col-md-3\">
+            <select name=\"categorie\" class=\"form-control\">
+                <option value=\"\">Toutes les catégories</option>
+                {% for categorie in categories %}
+                    <option value=\"{{ categorie.id }}\" {{ categorieId == categorie.id ? 'selected' : '' }}>
+                        {{ categorie.nom }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class=\"col-md-2\">
+            <button type=\"submit\" class=\"btn btn-primary w-100\">
+                <i class=\"fas fa-filter\"></i> Filtrer
+            </button>
+        </div>
+    </div>
+</form>
+
+
+
 
     <div class=\"table-responsive mt-4\" style=\"width: 90%;\">
         <table class=\"table table-striped table-bordered\">
@@ -370,12 +483,25 @@ class __TwigTemplate_86d6931d1dabd63ce6b0078aebc61369 extends Template
         </table>
     </div>
 
+    
+    <div class=\"text-center mt-4\">
+    <a href=\"{{ path('admin_materielagricole_stats') }}\" class=\"btn btn-info\">
+        <i class=\"fas fa-chart-line\"></i> Afficher les Statistiques
+    </a>
+</div>
+
+
     <div class=\"text-center mt-4\">
         <a href=\"{{ path('admin_materielvente_new') }}\" class=\"btn btn-success\">
             <i class=\"fas fa-plus-circle\"></i> Ajouter un matériel
         </a>
     </div>
 </div>
+
+
+
+
+
 
 <style>
     .table th, .table td {
@@ -386,6 +512,12 @@ class __TwigTemplate_86d6931d1dabd63ce6b0078aebc61369 extends Template
         margin: 2px;
     }
 </style>
+
+
+
+
+
+
 {% endblock %}
 ", "admin/materielagricole/tables.html.twig", "C:\\Users\\asus\\Desktop\\PI2025\\pi2025\\templates\\admin\\materielagricole\\tables.html.twig");
     }

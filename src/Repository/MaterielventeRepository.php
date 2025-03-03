@@ -76,6 +76,42 @@ class MaterielventeRepository extends ServiceEntityRepository
          
         return $qb;
     }
+
+
+
+    public function searchByFiltersadmin(?string $searchTerm, ?float $minPrice, ?float $maxPrice, ?int $categorieId): QueryBuilder
+    {
+        // Créer un QueryBuilder pour l'entité Materielvente
+        $qb = $this->createQueryBuilder('m');
+
+        // Appliquer les filtres dynamiquement
+        if ($searchTerm) {
+            $qb->andWhere('m.nom LIKE :searchTerm OR m.description LIKE :searchTerm')
+               ->setParameter('searchTerm', '%' . $searchTerm . '%');
+        }
+
+        if ($minPrice !== null) {
+            $qb->andWhere('m.prix >= :minPrice')
+               ->setParameter('minPrice', $minPrice);
+        }
+
+        if ($maxPrice !== null) {
+            $qb->andWhere('m.prix <= :maxPrice')
+               ->setParameter('maxPrice', $maxPrice);
+        }
+
+        if ($categorieId !== null) {
+            $qb->andWhere('m.categorie = :categorieId')
+               ->setParameter('categorieId', $categorieId);
+        }
+
+        // Retourner le QueryBuilder
+        return $qb;
+    }
+
+
+
+    
 }
 
     

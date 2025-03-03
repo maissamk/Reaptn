@@ -98,7 +98,7 @@ class __TwigTemplate_22310a92552ec09e7478278d5c5f90e5 extends Template
 
         // line 6
         yield "
-<div class=\"container mt-5 pt-5\" style=\"margin-left: 250px;\">
+<div class=\"containermt-5 pt-5\" style=\"margin-left: 250px;\">
     <div class=\"row justify-content-center\">
         <div class=\"col-md-8\">
             <div class=\"card shadow-lg\">
@@ -167,7 +167,7 @@ class __TwigTemplate_22310a92552ec09e7478278d5c5f90e5 extends Template
 
 {% block body %}
 
-<div class=\"container mt-5 pt-5\" style=\"margin-left: 250px;\">
+<div class=\"containermt-5 pt-5\" style=\"margin-left: 250px;\">
     <div class=\"row justify-content-center\">
         <div class=\"col-md-8\">
             <div class=\"card shadow-lg\">

@@ -199,13 +199,11 @@ class __TwigTemplate_9ea719f06df13feabf1f451102cc7def extends Template
 
 
 
-
-
     <div class=\"row\">
         ";
-        // line 80
+        // line 78
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["materielventes"]) || array_key_exists("materielventes", $context) ? $context["materielventes"] : (function () { throw new RuntimeError('Variable "materielventes" does not exist.', 80, $this->source); })()));
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["materielventes"]) || array_key_exists("materielventes", $context) ? $context["materielventes"] : (function () { throw new RuntimeError('Variable "materielventes" does not exist.', 78, $this->source); })()));
         $context['_iterated'] = false;
         $context['loop'] = [
           'parent' => $context['_parent'],
@@ -221,7 +219,7 @@ class __TwigTemplate_9ea719f06df13feabf1f451102cc7def extends Template
             $context['loop']['last'] = 1 === $length;
         }
         foreach ($context['_seq'] as $context["_key"] => $context["materielvente"]) {
-            // line 81
+            // line 79
             yield "            <div class=\"col-md-4 mb-4\">
                 <div class=\"position-relative border border-secondary rounded shadow-sm card-container\">
                     <!-- Badge Catégorie -->
@@ -231,88 +229,88 @@ class __TwigTemplate_9ea719f06df13feabf1f451102cc7def extends Template
 
                     <!-- Image du matériel -->
                     <img src=\"";
-            // line 89
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(((CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "image", [], "any", false, false, false, 89)) ? (("uploads/images/" . CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "image", [], "any", false, false, false, 89))) : ("images/default.png"))), "html", null, true);
+            // line 87
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(((CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "image", [], "any", false, false, false, 87)) ? (("uploads/images/" . CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "image", [], "any", false, false, false, 87))) : ("images/default.png"))), "html", null, true);
             yield "\" 
                          class=\"img-fluid card-img-fixed\" alt=\"";
-            // line 90
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "nom", [], "any", false, false, false, 90), "html", null, true);
+            // line 88
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "nom", [], "any", false, false, false, 88), "html", null, true);
             yield "\"
                          loading=\"lazy\">
 
                     <!-- Détails du matériel -->
                     <div class=\"p-4 border border-secondary border-top-0 rounded-bottom\">
                         <h4>";
-            // line 95
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "nom", [], "any", false, false, false, 95), "html", null, true);
+            // line 93
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "nom", [], "any", false, false, false, 93), "html", null, true);
             yield "</h4>
                         <p>";
-            // line 96
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "description", [], "any", false, false, false, 96), "html", null, true);
+            // line 94
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "description", [], "any", false, false, false, 94), "html", null, true);
             yield "</p>
 
                         <div class=\"d-flex justify-content-between align-items-center\">
                             <p class=\"text-dark fs-5 fw-bold mb-0\">";
-            // line 99
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "prix", [], "any", false, false, false, 99), "html", null, true);
+            // line 97
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "prix", [], "any", false, false, false, 97), "html", null, true);
             yield " DT</p>
                             ";
-            // line 100
-            if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 100, $this->source); })()), "user", [], "any", false, false, false, 100)) {
-                // line 101
+            // line 98
+            if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 98, $this->source); })()), "user", [], "any", false, false, false, 98)) {
+                // line 99
                 yield "                            <a href=\"";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_to_cart", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "id", [], "any", false, false, false, 101)]), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_to_cart", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "id", [], "any", false, false, false, 99)]), "html", null, true);
                 yield "\" class=\"btn border border-secondary rounded-pill px-3 text-primary\">
                                 <i class=\"fa fa-shopping-bag me-2 text-primary\"></i> Ajouter au panier
                             </a>
                             ";
             }
-            // line 105
+            // line 103
             yield "                        </div>
 
                        <!-- Boutons \"Show\", \"Edit\" et \"Delete\" -->
-<div class=\"d-flex flex-wrap gap-3 mt-3\">  
-    <a href=\"";
-            // line 109
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materielvente_show", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "id", [], "any", false, false, false, 109)]), "html", null, true);
+        <div class=\"d-flex flex-wrap gap-3 mt-3\">  
+        <a href=\"";
+            // line 107
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materielvente_show", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "id", [], "any", false, false, false, 107)]), "html", null, true);
             yield "\" 
        class=\"btn btn-info btn-sm text-white\">
-       <i class=\"fas fa-eye\"></i> Plus de détails
-    </a>
+        <i class=\"fas fa-eye\"></i> Plus de détails
+         </a>
     
-    ";
-            // line 114
+        ";
+            // line 112
             if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_AGRICULTEUR")) {
-                // line 115
-                yield "        <a href=\"";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materielvente_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "id", [], "any", false, false, false, 115)]), "html", null, true);
+                // line 113
+                yield "          <a href=\"";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materielvente_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "id", [], "any", false, false, false, 113)]), "html", null, true);
                 yield "\" 
            class=\"btn btn-warning btn-sm text-white\">
            <i class=\"fas fa-edit\"></i> Modifier
-        </a>
+         </a>
         
         ";
-                // line 120
+                // line 118
                 yield Twig\Extension\CoreExtension::include($this->env, $context, "materielvente/_delete_form.html.twig");
                 yield "
-    ";
+         ";
             }
-            // line 122
+            // line 120
             yield "
 
-<!-- Bouton de téléchargement du PDF -->
-    <a href=\"";
-            // line 125
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materielvente_download_pdf", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "id", [], "any", false, false, false, 125)]), "html", null, true);
+        <!-- Bouton de téléchargement du PDF -->
+      <a href=\"";
+            // line 123
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materielvente_download_pdf", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["materielvente"], "id", [], "any", false, false, false, 123)]), "html", null, true);
             yield "\" 
        class=\"btn btn-primary btn-sm text-white\">
        <i class=\"fas fa-download\"></i> Télécharger PDF
-    </a>
+         </a>
 
 
 
 
-</div>
+        </div>
 
                     </div>
                 </div>
@@ -328,9 +326,9 @@ class __TwigTemplate_9ea719f06df13feabf1f451102cc7def extends Template
                 $context['loop']['last'] = 0 === $context['loop']['revindex0'];
             }
         }
-        // line 138
+        // line 136
         if (!$context['_iterated']) {
-            // line 139
+            // line 137
             yield "            <div class=\"col-12 text-center\">
                 <p>Aucun matériel disponible pour le moment.</p>
             </div>
@@ -339,7 +337,7 @@ class __TwigTemplate_9ea719f06df13feabf1f451102cc7def extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['materielvente'], $context['_parent'], $context['_iterated'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 143
+        // line 141
         yield "    </div>
 
 
@@ -360,8 +358,8 @@ class __TwigTemplate_9ea719f06df13feabf1f451102cc7def extends Template
     <!-- Pagination -->
     <div class=\"pagination\">
         ";
-        // line 162
-        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->render($this->env, (isset($context["materielventes"]) || array_key_exists("materielventes", $context) ? $context["materielventes"] : (function () { throw new RuntimeError('Variable "materielventes" does not exist.', 162, $this->source); })()));
+        // line 160
+        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->render($this->env, (isset($context["materielventes"]) || array_key_exists("materielventes", $context) ? $context["materielventes"] : (function () { throw new RuntimeError('Variable "materielventes" does not exist.', 160, $this->source); })()));
         yield "
     </div>
 
@@ -373,25 +371,25 @@ class __TwigTemplate_9ea719f06df13feabf1f451102cc7def extends Template
 </a>
 
 ";
-        // line 172
+        // line 170
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_AGRICULTEUR")) {
-            // line 173
+            // line 171
             yield "<div class=\"d-flex justify-content-center\">
     <a href=\"";
-            // line 174
+            // line 172
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materielvente_new");
             yield "\" class=\"btn btn-success me-2\" title=\"Create New Property\">
         <i class=\"fas fa-plus-circle\"></i> Ajouter une nouvelle matériel
     </a>
     <a href=\"";
-            // line 177
+            // line 175
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_categorie");
             yield "\" class=\"btn btn-success me-2\" title=\"Create New Contract\">
          <i class=\"fas fas fa-list\"></i> Créer une catégorie
     </a>
 </div>";
         }
-        // line 181
+        // line 179
         yield "
 <!-- Styles pour l'effet de zoom sur l'image -->
 <style>
@@ -425,7 +423,7 @@ class __TwigTemplate_9ea719f06df13feabf1f451102cc7def extends Template
         let searchTerm = this.value;
 
         fetch('";
-        // line 213
+        // line 211
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materielvente_search");
         yield "?search=' + encodeURIComponent(searchTerm), {
             headers: { 'X-Requested-With': 'XMLHttpRequest' }
@@ -475,7 +473,7 @@ class __TwigTemplate_9ea719f06df13feabf1f451102cc7def extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  429 => 213,  395 => 181,  388 => 177,  382 => 174,  379 => 173,  377 => 172,  364 => 162,  343 => 143,  334 => 139,  332 => 138,  306 => 125,  301 => 122,  296 => 120,  287 => 115,  285 => 114,  277 => 109,  271 => 105,  263 => 101,  261 => 100,  257 => 99,  251 => 96,  247 => 95,  239 => 90,  235 => 89,  225 => 81,  207 => 80,  188 => 63,  186 => 62,  159 => 37,  150 => 34,  141 => 33,  137 => 32,  131 => 29,  127 => 28,  123 => 27,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  427 => 211,  393 => 179,  386 => 175,  380 => 172,  377 => 171,  375 => 170,  362 => 160,  341 => 141,  332 => 137,  330 => 136,  304 => 123,  299 => 120,  294 => 118,  285 => 113,  283 => 112,  275 => 107,  269 => 103,  261 => 99,  259 => 98,  255 => 97,  249 => 94,  245 => 93,  237 => 88,  233 => 87,  223 => 79,  205 => 78,  188 => 63,  186 => 62,  159 => 37,  150 => 34,  141 => 33,  137 => 32,  131 => 29,  127 => 28,  123 => 27,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -556,8 +554,6 @@ class __TwigTemplate_9ea719f06df13feabf1f451102cc7def extends Template
 
 
 
-
-
     <div class=\"row\">
         {% for materielvente in materielventes %}
             <div class=\"col-md-4 mb-4\">
@@ -587,32 +583,32 @@ class __TwigTemplate_9ea719f06df13feabf1f451102cc7def extends Template
                         </div>
 
                        <!-- Boutons \"Show\", \"Edit\" et \"Delete\" -->
-<div class=\"d-flex flex-wrap gap-3 mt-3\">  
-    <a href=\"{{ path('app_materielvente_show', {'id': materielvente.id}) }}\" 
+        <div class=\"d-flex flex-wrap gap-3 mt-3\">  
+        <a href=\"{{ path('app_materielvente_show', {'id': materielvente.id}) }}\" 
        class=\"btn btn-info btn-sm text-white\">
-       <i class=\"fas fa-eye\"></i> Plus de détails
-    </a>
+        <i class=\"fas fa-eye\"></i> Plus de détails
+         </a>
     
-    {% if is_granted('ROLE_AGRICULTEUR') %}
-        <a href=\"{{ path('app_materielvente_edit', {'id': materielvente.id}) }}\" 
+        {% if is_granted('ROLE_AGRICULTEUR') %}
+          <a href=\"{{ path('app_materielvente_edit', {'id': materielvente.id}) }}\" 
            class=\"btn btn-warning btn-sm text-white\">
            <i class=\"fas fa-edit\"></i> Modifier
-        </a>
+         </a>
         
         {{ include('materielvente/_delete_form.html.twig') }}
-    {% endif %}
+         {% endif %}
 
 
-<!-- Bouton de téléchargement du PDF -->
-    <a href=\"{{ path('app_materielvente_download_pdf', {'id': materielvente.id}) }}\" 
+        <!-- Bouton de téléchargement du PDF -->
+      <a href=\"{{ path('app_materielvente_download_pdf', {'id': materielvente.id}) }}\" 
        class=\"btn btn-primary btn-sm text-white\">
        <i class=\"fas fa-download\"></i> Télécharger PDF
-    </a>
+         </a>
 
 
 
 
-</div>
+        </div>
 
                     </div>
                 </div>
