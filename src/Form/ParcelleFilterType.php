@@ -24,10 +24,16 @@ class ParcelleFilterType extends AbstractType
             'placeholder' => 'Choisir un type de terrain',
             'required' => false,
         ])
-            ->add('emplacement', TextType::class, [
-                'required' => false,
-                'attr' => ['placeholder' => 'Ville ou région'],
-            ])
+        ->add('emplacement', TextType::class, [
+            'required' => true,
+            'attr' => [
+                'id' => 'autocomplete',
+                'placeholder' => 'Entrez un emplacement '
+            ]
+        ])
+        
+        
+        
             ->add('prixMin', NumberType::class, [
                 'required' => false,
                 'attr' => ['placeholder' => 'Prix min'],
@@ -36,7 +42,7 @@ class ParcelleFilterType extends AbstractType
                 'required' => false,
                 'attr' => ['placeholder' => 'Prix max'],
             ])
-            ->add('Rechercher', SubmitType::class);
+            ;
         
     }
 

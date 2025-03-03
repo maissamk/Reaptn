@@ -126,8 +126,6 @@ final class ParcelleProprietesController extends AbstractController
         ]);
     }
 
-    
-     
 
     
     #[Route('/{id}', name: 'app_parcelle_proprietes_show', methods: ['GET', 'POST'])]
