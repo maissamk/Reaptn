@@ -14,64 +14,63 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Mime\Email;
+use Symfony\Component\Mailer\MailerInterface;
+use App\Form\ContactType;
+use App\Service\EmailMessage;
+use App\Service\EmailMessageHandler;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+
 
 #[Route('/parcelle/proprietes')]
 final class ParcelleProprietesController extends AbstractController
 {
     #[Route(name: 'app_parcelle_proprietes_index', methods: ['GET'])]
-public function index(Request $request, ParcelleProprietesRepository $parcelleProprietesRepository, EntityManagerInterface $entityManager): Response
-{
-    $form = $this->createForm(ParcelleFilterType::class);
-    $form->handleRequest($request);
+    public function index(Request $request, ParcelleProprietesRepository $parcelleProprietesRepository, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(ParcelleFilterType::class);
+        $form->handleRequest($request);
 
-    $queryBuilder = $entityManager->getRepository(ParcelleProprietes::class)->createQueryBuilder('p');
+        $queryBuilder = $entityManager->getRepository(ParcelleProprietes::class)->createQueryBuilder('p');
 
-    // Gestion de la barre de recherche
-    $search = $request->query->get('search');
-    if (!empty($search)) {
-        $queryBuilder->andWhere('p.titre LIKE :search OR p.description LIKE :search')
-                     ->setParameter('search', '%' . $search . '%');
+        // Gestion de la barre de recherche
+        $search = $request->query->get('search');
+        if (!empty($search)) {
+            $queryBuilder->andWhere('p.titre LIKE :search OR p.description LIKE :search')
+                         ->setParameter('search', '%' . $search . '%');
+        }
+
+        // Gestion des filtres avancés
+        if ($form->isSubmitted() || $request->query->has('type_terrain')) {  
+            $data = $form->getData();
+
+            if (!empty($data['type_terrain'])) {
+                $queryBuilder->andWhere('p.type_terrain = :type')
+                             ->setParameter('type', $data['type_terrain']);
+            }
+
+            if (!empty($data['prixMin'])) {
+                $queryBuilder->andWhere('p.prix >= :prixMin')
+                             ->setParameter('prixMin', $data['prixMin']);
+            }
+
+            if (!empty($data['prixMax'])) {
+                $queryBuilder->andWhere('p.prix <= :prixMax')
+                             ->setParameter('prixMax', $data['prixMax']);
+            }
+        }
+
+        $parcelles = $queryBuilder->getQuery()->getResult();
+
+        // Récupérer les 3 annonces les plus récentes
+        $recentes = $parcelleProprietesRepository->findBy([], ['date_creation_annonce' => 'DESC'], 3);
+
+        return $this->render('parcelle_proprietes/index.html.twig', [
+            'parcelle_proprietes' => $parcelles,
+            'recentes' => $recentes,
+            'form' => $form->createView(),
+        ]);
     }
-
-    // Gestion des filtres avancés
-    if ($form->isSubmitted() || $request->query->has('type_terrain')) {  
-        $data = $form->getData();
-
-        if (!empty($data['type_terrain'])) {
-            $queryBuilder->andWhere('p.typeTerrain = :type')
-                         ->setParameter('type', $data['type_terrain']);
-        }
-
-        if (!empty($data['emplacement'])) {
-            $queryBuilder->andWhere('p.emplacement LIKE :emplacement')
-                         ->setParameter('emplacement', '%' . $data['emplacement'] . '%');
-        }
-
-        if (!empty($data['prixMin'])) {
-            $queryBuilder->andWhere('p.prix >= :prixMin')
-                         ->setParameter('prixMin', $data['prixMin']);
-        }
-
-        if (!empty($data['prixMax'])) {
-            $queryBuilder->andWhere('p.prix <= :prixMax')
-                         ->setParameter('prixMax', $data['prixMax']);
-        }
-    }
-
-    $parcelles = $queryBuilder->getQuery()->getResult();
-
-    // Récupérer les 3 annonces les plus récentes
-    $recentes = $parcelleProprietesRepository->findBy([], ['date_creation_annonce' => 'DESC'], 3);
-
-    return $this->render('parcelle_proprietes/index.html.twig', [
-        'parcelle_proprietes' => $parcelles,
-        'recentes' => $recentes,
-        'form' => $form->createView(),
-    ]);
-}
-
-    
-    
 
     #[Route('/new', name: 'app_parcelle_proprietes_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
@@ -127,11 +126,49 @@ public function index(Request $request, ParcelleProprietesRepository $parcellePr
         ]);
     }
 
-    #[Route('/{id}', name: 'app_parcelle_proprietes_show', methods: ['GET'])]
-    public function show(ParcelleProprietes $parcellePropriete): Response
-    {
+    
+     
+
+    
+    #[Route('/{id}', name: 'app_parcelle_proprietes_show', methods: ['GET', 'POST'])]
+    public function show(
+        ParcelleProprietes $parcellePropriete,
+        Request $request,
+        MailerInterface $mailer
+    ): Response {
+        $contactForm = $this->createForm(ContactType::class);
+        $contactForm->handleRequest($request);
+
+        if ($contactForm->isSubmitted() && $contactForm->isValid()) {
+            $data = $contactForm->getData();
+            
+            try {
+                $email = (new Email())
+                    ->from($data['email'])
+                    ->to($parcellePropriete->getContactProprietaire())
+                    ->subject('Message concernant votre parcelle : ' . $parcellePropriete->getTitre())
+                    ->html($this->renderView(
+                        'emails/contact.html.twig',
+                        [
+                            'data' => $data,
+                            'parcelle' => $parcellePropriete
+                        ]
+                    ));
+
+                $mailer->send($email);
+                $this->addFlash('success', 'Votre message a été envoyé avec succès !');
+            } catch (\Exception $e) {
+                $this->addFlash('danger', 'Une erreur est survenue lors de l\'envoi du message.');
+            }
+
+            return $this->redirectToRoute('app_parcelle_proprietes_show', [
+                'id' => $parcellePropriete->getId()
+            ]);
+        }
+
         return $this->render('parcelle_proprietes/show.html.twig', [
             'parcelle_propriete' => $parcellePropriete,
+            'contactForm' => $contactForm->createView(),
         ]);
     }
 
@@ -200,7 +237,6 @@ public function index(Request $request, ParcelleProprietesRepository $parcellePr
         // Rediriger vers la liste des parcelles
         return $this->redirectToRoute('app_parcelle_proprietes_index');
     }
-    
 
     // Validation de l'image (taille et dimensions)
     private function validateImage(UploadedFile $file): array
@@ -233,16 +269,11 @@ public function index(Request $request, ParcelleProprietesRepository $parcellePr
     {
         // Fetch parcels by the given type_terrain
         $parcellePropriete = $repository->findBy(['type_terrain' => $type_terrain]);
-    
+
         // Render the view with the correct variable name
         return $this->render('parcelle_proprietes/parcelles_par_type.html.twig', [
             'parcelle_propriete' => $parcellePropriete, // Corrected variable name
             'type_terrain' => $type_terrain,
         ]);
-    
     }
-
-    
-    
-    
 }

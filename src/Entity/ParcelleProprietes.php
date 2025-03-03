@@ -24,10 +24,10 @@ class ParcelleProprietes
     #[Assert\NotBlank(message: 'Le titre est obligatoire')]
     #[Assert\Length(min: 3, max: 255, minMessage: 'Le titre doit avoir au moins {{ limit }} caractères', maxMessage: 'Le titre ne peut pas dépasser {{ limit }} caractères')]
     private ?string $titre = null;
-
-    #[ORM\Column(length: 255)]
+    
+    #[ORM\Column(type: Types::TEXT)]
     #[Assert\NotBlank(message: 'La description est obligatoire')]
-    #[Assert\Length(min: 10, max: 255, minMessage: 'La description doit avoir au moins {{ limit }} caractères', maxMessage: 'La description ne peut pas dépasser {{ limit }} caractères')]
+    #[Assert\Length(min: 10)]
     private ?string $description = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 0)]
@@ -106,9 +106,20 @@ class ParcelleProprietes
     private ?user $user_id_parcelle = null;
 
    
+ #[ORM\Column(length: 255)]
+         #[Assert\NotBlank(message: 'Le type de terrain est obligatoire')]
+         private ?string $type_terrain = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $latitude = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $longitude = null;
+
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message: 'Le type de terrain est obligatoire')]
-    private ?string $type_terrain = null;
+    #[Assert\NotBlank(message: 'L\'email est obligatoire')]
+    #[Assert\Email(message: 'L\'email doit être valide')]
+    private ?string $email = null;
     
 
     
@@ -318,6 +329,42 @@ class ParcelleProprietes
     {
         $this->type_terrain = $type_terrain;
     
+        return $this;
+    }
+
+    public function getLatitude(): ?string
+    {
+        return $this->latitude;
+    }
+
+    public function setLatitude(?string $latitude): static
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    public function getLongitude(): ?string
+    {
+        return $this->longitude;
+    }
+
+    public function setLongitude(?string $longitude): static
+    {
+        $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): static
+    {
+        $this->email = $email;
+
         return $this;
     }
     

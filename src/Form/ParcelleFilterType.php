@@ -14,16 +14,16 @@ class ParcelleFilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('type_terrain', ChoiceType::class, [
-                'choices' => [
-                    'Agricole' => 'agricole',
-                    'Constructible' => 'constructible',
-                    'Forêt' => 'foret',
-                    'Industriel' => 'industriel',
-                ],
-                'required' => false,
-                'placeholder' => 'Tous les types',
-            ])
+        ->add('type_terrain', ChoiceType::class, [
+            'choices' => [
+                'Agricole' => 'agricole',
+                'Constructible' => 'constructible',
+                'Forêt' => 'foret',
+                'Industriel' => 'industriel',
+            ],
+            'placeholder' => 'Choisir un type de terrain',
+            'required' => false,
+        ])
             ->add('emplacement', TextType::class, [
                 'required' => false,
                 'attr' => ['placeholder' => 'Ville ou région'],
@@ -37,7 +37,9 @@ class ParcelleFilterType extends AbstractType
                 'attr' => ['placeholder' => 'Prix max'],
             ])
             ->add('Rechercher', SubmitType::class);
+        
     }
+
 
     public function configureOptions(OptionsResolver $resolver): void
     {

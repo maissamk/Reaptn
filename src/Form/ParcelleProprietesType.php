@@ -13,6 +13,9 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
+
 
 class ParcelleProprietesType extends AbstractType
 {
@@ -24,10 +27,8 @@ class ParcelleProprietesType extends AbstractType
             'empty_data' => '',
         ])
         
-            ->add('description', null, [
-                'required' => true,
-                'empty_data' => '',
-            ])
+        ->add('description', CKEditorType::class)
+        
             ->add('prix')
             ->add('status', ChoiceType::class, [
                 'choices' => [
@@ -80,6 +81,14 @@ class ParcelleProprietesType extends AbstractType
                 'placeholder' => 'Sélectionnez un type de terrain', // Optionnel
                 'label' => 'Type de terrain',
                 'required' => true,
+            ])
+            ->add('email', EmailType::class, [
+                'required' => true,
+                'label' => 'Email',
+                'empty_data' => '',
+                'attr' => [
+                    'placeholder' => 'Entrez un email valide'
+                ]
             ])
             ->add('image', FileType::class, [
                 'label' => 'Image de la parcelle',

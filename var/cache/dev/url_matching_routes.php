@@ -188,63 +188,69 @@ return [
                     .'|/edit(*:1352)'
                     .'|(*:1361)'
                 .')'
-                .'|/materiel(?'
-                    .'|location/([^/]++)(?'
-                        .'|(*:1403)'
-                        .'|/edit(*:1417)'
-                        .'|(*:1426)'
-                    .')'
-                    .'|vente/(?'
-                        .'|([^/]++)(?'
-                            .'|(*:1456)'
-                            .'|/edit(*:1470)'
-                            .'|(*:1479)'
+                .'|/m(?'
+                    .'|ateriel(?'
+                        .'|location/([^/]++)(?'
+                            .'|(*:1406)'
+                            .'|/edit(*:1420)'
+                            .'|(*:1429)'
                         .')'
-                        .'|materiels(*:1498)'
+                        .'|vente/(?'
+                            .'|([^/]++)(?'
+                                .'|(*:1459)'
+                                .'|/edit(*:1473)'
+                                .'|(*:1482)'
+                            .')'
+                            .'|materiels(*:1501)'
+                        .')'
+                    .')'
+                    .'|edia/cache/resolve/(?'
+                        .'|([A-z0-9_-]*)/rc/([^/]++)/(.+)(*:1564)'
+                        .'|([A-z0-9_-]*)/(.+)(*:1591)'
                     .')'
                 .')'
                 .'|/offre/(?'
                     .'|([^/]++)(?'
-                        .'|(*:1530)'
-                        .'|/edit(*:1544)'
-                        .'|(*:1553)'
+                        .'|(*:1623)'
+                        .'|/edit(*:1637)'
+                        .'|(*:1646)'
                     .')'
                     .'|admin/offre/([^/]++)(?'
-                        .'|(*:1586)'
+                        .'|(*:1679)'
                         .'|/(?'
-                            .'|edit(*:1603)'
-                            .'|delete(*:1618)'
+                            .'|edit(*:1696)'
+                            .'|delete(*:1711)'
                         .')'
                     .')'
                 .')'
-                .'|/temp/shop\\-detail/([^/]++)(*:1657)'
+                .'|/temp/shop\\-detail/([^/]++)(*:1750)'
                 .'|/pa(?'
                     .'|iement/(?'
                         .'|([^/]++)(?'
-                            .'|(*:1693)'
-                            .'|/traitement(*:1713)'
+                            .'|(*:1786)'
+                            .'|/traitement(*:1806)'
                         .')'
-                        .'|confirmation/([^/]++)(*:1744)'
+                        .'|confirmation/([^/]++)(*:1837)'
                     .')'
                     .'|nier/(?'
-                        .'|mettre\\-a\\-jour\\-quantite/([^/]++)(*:1796)'
-                        .'|supprimer/([^/]++)(*:1823)'
+                        .'|mettre\\-a\\-jour\\-quantite/([^/]++)(*:1889)'
+                        .'|supprimer/([^/]++)(*:1916)'
                     .')'
                     .'|rcelle/proprietes/(?'
                         .'|([^/]++)(?'
                             .'|/(?'
                                 .'|confirm(?'
-                                    .'|(*:1879)'
-                                    .'|\\-delete(*:1896)'
+                                    .'|(*:1972)'
+                                    .'|\\-delete(*:1989)'
                                 .')'
-                                .'|edit(*:1910)'
+                                .'|edit(*:2003)'
                             .')'
-                            .'|(*:1920)'
+                            .'|(*:2013)'
                         .')'
-                        .'|parcelles/type/([^/]++)(*:1953)'
+                        .'|parcelles/type/([^/]++)(*:2046)'
                     .')'
                 .')'
-                .'|/reset\\-password/reset(?:/([^/]++))?(*:2000)'
+                .'|/reset\\-password/reset(?:/([^/]++))?(*:2093)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -302,31 +308,33 @@ return [
         1338 => [[['_route' => 'app_livraison_show', '_controller' => 'App\\Controller\\LivraisonController::show'], ['id'], ['GET' => 0], null, false, true, null]],
         1352 => [[['_route' => 'app_livraison_edit', '_controller' => 'App\\Controller\\LivraisonController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
         1361 => [[['_route' => 'app_livraison_delete', '_controller' => 'App\\Controller\\LivraisonController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        1403 => [[['_route' => 'app_materiellocation_show', '_controller' => 'App\\Controller\\MateriellocationController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        1417 => [[['_route' => 'app_materiellocation_edit', '_controller' => 'App\\Controller\\MateriellocationController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        1426 => [[['_route' => 'app_materiellocation_delete', '_controller' => 'App\\Controller\\MateriellocationController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        1456 => [[['_route' => 'app_materielvente_show', '_controller' => 'App\\Controller\\MaterielventeController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        1470 => [[['_route' => 'app_materielvente_edit', '_controller' => 'App\\Controller\\MaterielventeController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        1479 => [[['_route' => 'app_materielvente_delete', '_controller' => 'App\\Controller\\MaterielventeController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        1498 => [[['_route' => 'materiels_list', '_controller' => 'App\\Controller\\MaterielventeController::showMateriels'], [], null, null, false, false, null]],
-        1530 => [[['_route' => 'app_offre_show', '_controller' => 'App\\Controller\\OffreController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        1544 => [[['_route' => 'app_offre_edit', '_controller' => 'App\\Controller\\OffreController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        1553 => [[['_route' => 'app_offre_delete', '_controller' => 'App\\Controller\\OffreController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        1586 => [[['_route' => 'admin_offre_show', '_controller' => 'App\\Controller\\OffreController::showBack'], ['id'], ['GET' => 0], null, false, true, null]],
-        1603 => [[['_route' => 'admin_offre_edit', '_controller' => 'App\\Controller\\OffreController::editBack'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        1618 => [[['_route' => 'admin_offre_delete', '_controller' => 'App\\Controller\\OffreController::deleteBack'], ['id'], ['POST' => 0], null, false, false, null]],
-        1657 => [[['_route' => 'app_temp_shop_detail', '_controller' => 'App\\Controller\\PageController::tempShopDetail'], ['id'], null, null, false, true, null]],
-        1693 => [[['_route' => 'paiement_afficher', '_controller' => 'App\\Controller\\PaiementController::showPaiement'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
-        1713 => [[['_route' => 'paiement_process', '_controller' => 'App\\Controller\\PaiementController::processPaiement'], ['id'], ['POST' => 0], null, false, false, null]],
-        1744 => [[['_route' => 'paiement_confirmation', '_controller' => 'App\\Controller\\PaiementController::confirmation'], ['id'], ['GET' => 0], null, false, true, null]],
-        1796 => [[['_route' => 'panier_update_quantity', '_controller' => 'App\\Controller\\PanierController::updateQuantity'], ['id'], ['POST' => 0], null, false, true, null]],
-        1823 => [[['_route' => 'panier_supprimer', '_controller' => 'App\\Controller\\PanierController::removeFromCart'], ['id'], ['POST' => 0], null, false, true, null]],
-        1879 => [[['_route' => 'app_parcelle_proprietes_confirm', '_controller' => 'App\\Controller\\ParcelleProprietesController::confirm'], ['id'], ['GET' => 0], null, false, false, null]],
-        1896 => [[['_route' => 'app_parcelle_proprietes_delete', '_controller' => 'App\\Controller\\ParcelleProprietesController::confirmDelete'], ['id'], ['POST' => 0], null, false, false, null]],
-        1910 => [[['_route' => 'app_parcelle_proprietes_edit', '_controller' => 'App\\Controller\\ParcelleProprietesController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        1920 => [[['_route' => 'app_parcelle_proprietes_show', '_controller' => 'App\\Controller\\ParcelleProprietesController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        1953 => [[['_route' => 'parcelles_par_type', '_controller' => 'App\\Controller\\ParcelleProprietesController::parcellesParType'], ['type_terrain'], ['GET' => 0], null, false, true, null]],
-        2000 => [
+        1406 => [[['_route' => 'app_materiellocation_show', '_controller' => 'App\\Controller\\MateriellocationController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        1420 => [[['_route' => 'app_materiellocation_edit', '_controller' => 'App\\Controller\\MateriellocationController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1429 => [[['_route' => 'app_materiellocation_delete', '_controller' => 'App\\Controller\\MateriellocationController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        1459 => [[['_route' => 'app_materielvente_show', '_controller' => 'App\\Controller\\MaterielventeController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        1473 => [[['_route' => 'app_materielvente_edit', '_controller' => 'App\\Controller\\MaterielventeController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1482 => [[['_route' => 'app_materielvente_delete', '_controller' => 'App\\Controller\\MaterielventeController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        1501 => [[['_route' => 'materiels_list', '_controller' => 'App\\Controller\\MaterielventeController::showMateriels'], [], null, null, false, false, null]],
+        1564 => [[['_route' => 'liip_imagine_filter_runtime', '_controller' => 'Liip\\ImagineBundle\\Controller\\ImagineController::filterRuntimeAction'], ['filter', 'hash', 'path'], ['GET' => 0], null, false, true, null]],
+        1591 => [[['_route' => 'liip_imagine_filter', '_controller' => 'Liip\\ImagineBundle\\Controller\\ImagineController::filterAction'], ['filter', 'path'], ['GET' => 0], null, false, true, null]],
+        1623 => [[['_route' => 'app_offre_show', '_controller' => 'App\\Controller\\OffreController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        1637 => [[['_route' => 'app_offre_edit', '_controller' => 'App\\Controller\\OffreController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1646 => [[['_route' => 'app_offre_delete', '_controller' => 'App\\Controller\\OffreController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        1679 => [[['_route' => 'admin_offre_show', '_controller' => 'App\\Controller\\OffreController::showBack'], ['id'], ['GET' => 0], null, false, true, null]],
+        1696 => [[['_route' => 'admin_offre_edit', '_controller' => 'App\\Controller\\OffreController::editBack'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1711 => [[['_route' => 'admin_offre_delete', '_controller' => 'App\\Controller\\OffreController::deleteBack'], ['id'], ['POST' => 0], null, false, false, null]],
+        1750 => [[['_route' => 'app_temp_shop_detail', '_controller' => 'App\\Controller\\PageController::tempShopDetail'], ['id'], null, null, false, true, null]],
+        1786 => [[['_route' => 'paiement_afficher', '_controller' => 'App\\Controller\\PaiementController::showPaiement'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
+        1806 => [[['_route' => 'paiement_process', '_controller' => 'App\\Controller\\PaiementController::processPaiement'], ['id'], ['POST' => 0], null, false, false, null]],
+        1837 => [[['_route' => 'paiement_confirmation', '_controller' => 'App\\Controller\\PaiementController::confirmation'], ['id'], ['GET' => 0], null, false, true, null]],
+        1889 => [[['_route' => 'panier_update_quantity', '_controller' => 'App\\Controller\\PanierController::updateQuantity'], ['id'], ['POST' => 0], null, false, true, null]],
+        1916 => [[['_route' => 'panier_supprimer', '_controller' => 'App\\Controller\\PanierController::removeFromCart'], ['id'], ['POST' => 0], null, false, true, null]],
+        1972 => [[['_route' => 'app_parcelle_proprietes_confirm', '_controller' => 'App\\Controller\\ParcelleProprietesController::confirm'], ['id'], ['GET' => 0], null, false, false, null]],
+        1989 => [[['_route' => 'app_parcelle_proprietes_delete', '_controller' => 'App\\Controller\\ParcelleProprietesController::confirmDelete'], ['id'], ['POST' => 0], null, false, false, null]],
+        2003 => [[['_route' => 'app_parcelle_proprietes_edit', '_controller' => 'App\\Controller\\ParcelleProprietesController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        2013 => [[['_route' => 'app_parcelle_proprietes_show', '_controller' => 'App\\Controller\\ParcelleProprietesController::show'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
+        2046 => [[['_route' => 'parcelles_par_type', '_controller' => 'App\\Controller\\ParcelleProprietesController::parcellesParType'], ['type_terrain'], ['GET' => 0], null, false, true, null]],
+        2093 => [
             [['_route' => 'app_reset_password', 'token' => null, '_controller' => 'App\\Controller\\ResetPasswordController::reset'], ['token'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\PdfGeneratorService;
 use App\Repository\ParcelleProprietesRepository;
+use App\Service\YousignService; 
 
 
 #[Route('/contrat')]
@@ -148,56 +149,54 @@ final class ContratController extends AbstractController
 
     // route signature :
 
-
     #[Route('/{id}/signature', name: 'app_contrat_signature', methods: ['GET'])]
     public function signature(
         Contrat $contrat, 
         YousignService $yousignService, 
         EntityManagerInterface $entityManager
     ): Response {
-        // Vérification de la création de la demande de signature
-        $yousignSignatureRequest = $yousignService->signatureRequest();
-        if (!isset($yousignSignatureRequest['id'])) {
+        // Création de la demande de signature
+        $signatureRequestResponse = json_decode($yousignService->SignatureRequest(), true);
+        if (!isset($signatureRequestResponse['id'])) {
             $this->addFlash('error', 'Échec de la création de la demande de signature.');
             return $this->redirectToRoute('app_contrat_index');
         }
         
-        // Stockage de l'ID de signature dans le contrat
-        $contrat->setSignatureId($yousignSignatureRequest['id']);
+        // Stockage en base de données
+        $contrat->setSignatureId($signatureRequestResponse['id']);
         $entityManager->persist($contrat);
         $entityManager->flush();
-    
-        // Vérification de l'upload du document
+        
+        // Téléchargement du document
         $uploadedDocument = $yousignService->uploadDocument($contrat->getSignatureId(), $contrat);
         if (!isset($uploadedDocument['id'])) {
             $this->addFlash('error', 'Échec du téléchargement du document.');
             return $this->redirectToRoute('app_contrat_index');
         }
         
-        // Stockage de l'ID du document dans le contrat
         $contrat->setDocumentId($uploadedDocument['id']);
         $entityManager->persist($contrat);
         $entityManager->flush();
-    
-        // Vérification de l'ajout des signataires
-        $signerId = $yousignService->addSigner(
-            $contrat->getSignatureId(),
-            $contrat->getDocumentId(),
-            $contrat->getNomAcheteur(),
-            $contrat->getNomVendeur(),
-            $contrat->getInformationContrat()
-        );
-        if (!isset($signerId['id'])) {
+        
+        // Ajout du signataire - pass the signatureRequestId and documentId
+        $signerResponse = json_decode($yousignService->addSignerToSignatureRequest($contrat, $contrat->getSignatureId(), $contrat->getDocumentId()), true);
+        if (!isset($signerResponse['id'])) {
             $this->addFlash('error', 'Échec de l\'ajout du signataire.');
             return $this->redirectToRoute('app_contrat_index');
         }
-    
+        
         // Activation de la demande de signature
-        $yousignService->activateSignatureRequest($contrat->getSignatureId());
-    
+        $activationResponse = $yousignService->activateSignatureRequest($contrat->getSignatureId());
+        if (!isset($activationResponse['id'])) {
+            $this->addFlash('error', 'Échec de l\'activation de la demande de signature.');
+            return $this->redirectToRoute('app_contrat_index');
+        }
+        
         $this->addFlash('success', 'La demande de signature a été créée avec succès.');
         return $this->redirectToRoute('app_contrat_index');
     }
+    
+    
     
 
 }

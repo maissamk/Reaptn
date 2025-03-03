@@ -145,6 +145,8 @@ return [
     'app_logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/logout']], [], [], []],
     'admin_login' => [[], ['_controller' => 'App\\Controller\\SecurityController::adminLogin'], [], [['text', '/admin/login']], [], [], []],
     'admin_logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::adminLogout'], [], [['text', '/admin/logout']], [], [], []],
+    'liip_imagine_filter_runtime' => [['filter', 'hash', 'path'], ['_controller' => 'Liip\\ImagineBundle\\Controller\\ImagineController::filterRuntimeAction'], ['filter' => '[A-z0-9_-]*', 'path' => '.+'], [['variable', '/', '.+', 'path', true], ['variable', '/', '[^/]++', 'hash', true], ['text', '/rc'], ['variable', '/', '[A-z0-9_-]*', 'filter', true], ['text', '/media/cache/resolve']], [], [], []],
+    'liip_imagine_filter' => [['filter', 'path'], ['_controller' => 'Liip\\ImagineBundle\\Controller\\ImagineController::filterAction'], ['filter' => '[A-z0-9_-]*', 'path' => '.+'], [['variable', '/', '.+', 'path', true], ['variable', '/', '[A-z0-9_-]*', 'filter', true], ['text', '/media/cache/resolve']], [], [], []],
     'App\Controller\AdminController::index' => [[], ['_controller' => 'App\\Controller\\AdminController::index'], [], [['text', '/admin/admin']], [], [], []],
     'App\Controller\AdminController::offreIndex' => [[], ['_controller' => 'App\\Controller\\OffreController::indexBack'], [], [['text', '/offre/admin/offre']], [], [], []],
     'App\Controller\AdminController::tablesIndex' => [[], ['_controller' => 'App\\Controller\\AdminController::tablesIndex'], [], [['text', '/admin/admin/tables']], [], [], []],
