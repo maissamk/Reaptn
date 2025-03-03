@@ -38,7 +38,10 @@
                     <label for="avatar" class="form-label">Télécharger un Nouvel Avatar</label>
                     {{ form_widget(form.avatar, { 'attr': {'class': 'form-control-file', 'style': 'width: 350px; margin-top: 10px;'} }) }}
                 </div>
-
+  <div class="form-group mb-4">
+                        <label for="status" class="form-label">Changer le status</label>
+                        {{ form_widget(form.status, { 'attr': {'class': 'form-control-file'} }) }}
+                    </div>
                             <!-- Bouton de Sauvegarde -->
                             <div class="text-center mt-4">
                                 <button class="btn btn-success btn-lg w-75">Enregistrer les Modifications</button>

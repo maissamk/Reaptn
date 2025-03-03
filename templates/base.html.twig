@@ -27,6 +27,8 @@
 
         <!-- Template Stylesheet -->
         <link href="{{ asset('frontoffice/css/style.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-1MKQNd22frHCZdZvqSHIvQe32htNH8HTlfF4lIuvSmHg9Rj6XbP3MjUnmXNx8kG0" crossorigin=""/>
+
         {% endblock %}
 
     </head>
@@ -1015,12 +1017,15 @@
 
         {% block js %}
     <!-- JavaScript Libraries -->
+    <script src="https://cdn.ckeditor.com/4.21.0/full/ckeditor.js"></script>
+
     <script src="{{asset('https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js')}}"></script>
     <script src="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('lib/easing/easing.min.js')}}"></script>
     <script src="{{asset('lib/waypoints/waypoints.min.js')}}"></script>
     <script src="{{asset('lib/lightbox/js/lightbox.min.js')}}"></script>
     <script src="{{asset('lib/owlcarousel/owl.carousel.min.js')}}"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-Jt7KuFe3V72I+vhcft8oT8kHEaRBARUmF9tZfjDQzO28x/5Fd0FD3Btd0scm2qPC" crossorigin=""></script>
 
     <!-- Template Javascript -->
     <script src="{{asset('js/main.js')}}"></script>

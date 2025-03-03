@@ -1332,3 +1332,6 @@ cd5605,127.0.0.1,GET,http://127.0.0.1:8000/lib/owlcarousel/assets/owl.carousel.m
 905c0b,127.0.0.1,GET,http://127.0.0.1:8000/employe/admin/statistics/employe,1741017597,,200,request
 b95bf6,127.0.0.1,GET,http://127.0.0.1:8000/employe/admin/statistics/backoffice/img/profile2.jpg,1741017597,c3eba7,404,request
 c3eba7,127.0.0.1,GET,http://127.0.0.1:8000/employe/admin/statistics/backoffice/img/profile2.jpg,1741017597,,404,request
+9b4cba,127.0.0.1,GET,http://127.0.0.1:8000/employe/admin/statistics/employe,1741018967,,200,request
+64f177,127.0.0.1,GET,http://127.0.0.1:8000/employe/admin/statistics/backoffice/img/profile2.jpg,1741018968,107151,404,request
+107151,127.0.0.1,GET,http://127.0.0.1:8000/employe/admin/statistics/backoffice/img/profile2.jpg,1741018968,,404,request
