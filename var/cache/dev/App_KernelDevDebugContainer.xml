@@ -2323,10 +2323,6 @@
     <service id="mailer.transport_factory" class="Symfony\Component\Mailer\Transport">
       <argument type="tagged_iterator" tag="mailer.transport_factory"/>
     </service>
-    <service id="mailer.default_transport" class="Symfony\Component\Mailer\Transport\TransportInterface">
-      <argument>%env(MAILER_DSN)%</argument>
-      <factory service="mailer.transport_factory" method="fromString"/>
-    </service>
     <service id="mailer.messenger.message_handler" class="Symfony\Component\Mailer\Messenger\MessageHandler">
       <tag name="messenger.message_handler"/>
       <argument type="service" id="mailer.transports"/>
@@ -12383,7 +12379,8 @@
     <service id="Psr\Http\Client\ClientInterface" alias="psr18.http_client"/>
     <service id="mailer" alias="mailer.mailer"/>
     <service id="Symfony\Component\Mailer\MailerInterface" alias="mailer.mailer"/>
-    <service id="Symfony\Component\Mailer\Transport\TransportInterface" alias="mailer.default_transport"/>
+    <service id="mailer.default_transport" alias="mailer.transports"/>
+    <service id="Symfony\Component\Mailer\Transport\TransportInterface" alias="mailer.transports"/>
     <service id="Symfony\Component\Translation\Reader\TranslationReaderInterface" alias="translation.reader"/>
     <service id="Symfony\Component\Translation\Extractor\ExtractorInterface" alias="translation.extractor"/>
     <service id="Symfony\Component\Translation\Writer\TranslationWriterInterface" alias="translation.writer"/>
