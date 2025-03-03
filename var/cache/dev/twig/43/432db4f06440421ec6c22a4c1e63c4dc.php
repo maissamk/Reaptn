@@ -151,21 +151,27 @@ class __TwigTemplate_ac0fa28b374d6fa9e4139cf67185ead4 extends Template
         yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 39, $this->source); })()), "avatar", [], "any", false, false, false, 39), 'widget', ["attr" => ["class" => "form-control-file", "style" => "width: 350px; margin-top: 10px;"]]);
         yield "
                 </div>
-
+  <div class=\"form-group mb-4\">
+                        <label for=\"status\" class=\"form-label\">Changer le status</label>
+                        ";
+        // line 43
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 43, $this->source); })()), "status", [], "any", false, false, false, 43), 'widget', ["attr" => ["class" => "form-control-file"]]);
+        yield "
+                    </div>
                             <!-- Bouton de Sauvegarde -->
                             <div class=\"text-center mt-4\">
                                 <button class=\"btn btn-success btn-lg w-75\">Enregistrer les Modifications</button>
                             </div>
                         ";
-        // line 46
-        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 46, $this->source); })()), 'form_end');
+        // line 49
+        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 49, $this->source); })()), 'form_end');
         yield "
                     </div>
                 </div>
 
                 <div class=\"text-center mt-4\">
                     <a href=\"";
-        // line 51
+        // line 54
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_users");
         yield "\" class=\"btn btn-outline-secondary\">
                         <i class=\"fas fa-arrow-left\"></i> Retour à la liste des utilisateurs
@@ -184,7 +190,7 @@ class __TwigTemplate_ac0fa28b374d6fa9e4139cf67185ead4 extends Template
         yield from [];
     }
 
-    // line 60
+    // line 63
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -197,7 +203,7 @@ class __TwigTemplate_ac0fa28b374d6fa9e4139cf67185ead4 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
-        // line 61
+        // line 64
         yield "    <style>
         .container {
             width: 80%;
@@ -290,7 +296,7 @@ class __TwigTemplate_ac0fa28b374d6fa9e4139cf67185ead4 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  201 => 61,  188 => 60,  169 => 51,  161 => 46,  151 => 39,  142 => 33,  134 => 28,  126 => 23,  118 => 18,  111 => 14,  101 => 6,  88 => 5,  65 => 3,  42 => 1,);
+        return array (  207 => 64,  194 => 63,  175 => 54,  167 => 49,  158 => 43,  151 => 39,  142 => 33,  134 => 28,  126 => 23,  118 => 18,  111 => 14,  101 => 6,  88 => 5,  65 => 3,  42 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -335,7 +341,10 @@ class __TwigTemplate_ac0fa28b374d6fa9e4139cf67185ead4 extends Template
                     <label for=\"avatar\" class=\"form-label\">Télécharger un Nouvel Avatar</label>
                     {{ form_widget(form.avatar, { 'attr': {'class': 'form-control-file', 'style': 'width: 350px; margin-top: 10px;'} }) }}
                 </div>
-
+  <div class=\"form-group mb-4\">
+                        <label for=\"status\" class=\"form-label\">Changer le status</label>
+                        {{ form_widget(form.status, { 'attr': {'class': 'form-control-file'} }) }}
+                    </div>
                             <!-- Bouton de Sauvegarde -->
                             <div class=\"text-center mt-4\">
                                 <button class=\"btn btn-success btn-lg w-75\">Enregistrer les Modifications</button>

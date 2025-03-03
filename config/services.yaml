@@ -1,8 +1,3 @@
-# This file is the entry point to configure your own services.
-# Files in the packages/ subdirectory configure your dependencies.
-
-# Put parameters here that don't need to change on each machine where the app is deployed
-# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
     product_images_directory: '%kernel.project_dir%/public/uploads/products'
     images_directory: '%kernel.project_dir%/public/uploads/images'
@@ -13,6 +8,10 @@ parameters:
 # config/services.yaml
 
 # config/services.yaml
+    face_images_directory: '%kernel.project_dir%/public/uploads/face_images'
+    captured_images_directory: '%kernel.project_dir%/public/uploads/captured_images'
+    recaptcha.site_key: '%env(RECAPTCHA_SITE_KEY)%'
+    recaptcha.secret_key: '%env(RECAPTCHA_SECRET_KEY)%'
 services:
     App\Service\EmailMessageHandler:
         arguments:
@@ -26,14 +25,15 @@ services:
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        
     App\Service\CartService:
         autowire: true
         arguments:
             $session: '@session'
-    Symfony\Component\HttpFoundation\Session\SessionInterface:
-        alias: 'session'       
 
-        
+    Symfony\Component\HttpFoundation\Session\SessionInterface:
+        alias: 'session'
+
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
     App\:
@@ -42,8 +42,38 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
-    
-    
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    App\EventListener\LogoutListener:
+        arguments:
+            $entityManager: '@doctrine.orm.entity_manager'
+            $logger: '@logger'
+            $security: '@security.helper'
+        tags:
+            - { name: 'kernel.event_subscriber' }
+
+    App\EventListener\CheckUserStatusListener:
+        tags:
+            - { name: kernel.event_listener, event: security.interactive_login, method: onSecurityInteractiveLogin }
+
+    App\Security\OAuthSuccessHandler:
+        arguments:
+            $tokenStorage: '@security.token_storage'
+            $entityManager: '@doctrine.orm.entity_manager'
+
+    # knpu.oauth2.client.google:
+    #     class: KnpU\OAuth2ClientBundle\Client\OAuth2Client
+    #     arguments:
+    #         - '@knpu.oauth2.registry' # Use the correct registry service
+    #         - '%env(OAUTH_GOOGLE_CLIENT_ID)%'
+    #         - '%env(OAUTH_GOOGLE_CLIENT_SECRET)%'
+    #         - '%env(OAUTH_GOOGLE_REDIRECT_URI)%'
+
+    App\Service\UserStatisticsService:
+        public: true
+
+    App\Security\FaceLoginFormAuthenticator:
+        arguments:
+            $httpClient: '@http_client'
+            $entityManager: '@doctrine.orm.entity_manager'
+            $urlGenerator: '@router.default'
+    App\Service\FaceComparisonService: ~

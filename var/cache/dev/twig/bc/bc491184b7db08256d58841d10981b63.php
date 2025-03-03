@@ -148,6 +148,7 @@ class __TwigTemplate_d296564915ee0d1daaf4f059eac70d10 extends Template
         // line 29
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 29, $this->source); })()), "telephone", [], "any", false, false, false, 29), "html", null, true);
         yield "</p>
+                                
                             </div>
                         </div>
                     </div>
@@ -156,7 +157,7 @@ class __TwigTemplate_d296564915ee0d1daaf4f059eac70d10 extends Template
                 <!-- Edit Profile Button -->
                 <div class=\"mt-4 text-center\">
                     <a href=\"";
-        // line 37
+        // line 38
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_edit_profile");
         yield "\" class=\"btn btn-warning btn-lg px-5 py-2\">Modifier le Profil</a>
                 </div>
@@ -194,7 +195,7 @@ class __TwigTemplate_d296564915ee0d1daaf4f059eac70d10 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  160 => 37,  149 => 29,  145 => 28,  141 => 27,  137 => 26,  124 => 19,  118 => 17,  112 => 15,  110 => 14,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  161 => 38,  149 => 29,  145 => 28,  141 => 27,  137 => 26,  124 => 19,  118 => 17,  112 => 15,  110 => 14,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -228,6 +229,7 @@ class __TwigTemplate_d296564915ee0d1daaf4f059eac70d10 extends Template
                                 <p><strong>Nom :</strong> {{ user.nom }}</p>
                                 <p><strong>Email :</strong> {{ user.email }}</p>
                                 <p><strong>Téléphone :</strong> {{ user.telephone }}</p>
+                                
                             </div>
                         </div>
                     </div>

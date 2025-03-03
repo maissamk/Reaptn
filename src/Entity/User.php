@@ -94,6 +94,21 @@ private Collection $employes;
  */
 #[ORM\OneToMany(targetEntity: Contrat::class, mappedBy: 'user_id_contrat')]
 private Collection $contrats;
+#[ORM\Column(length: 20)]
+private ?string $status = 'inactive';
+
+#[ORM\Column(nullable: true)]
+private ?int $loginAttempts = null;
+
+#[ORM\Column(length: 255, nullable: true)]
+private ?string $google_id = null;
+
+#[ORM\Column(type: 'string', length: 255, nullable: true)]
+private ?string $faceToken = null;
+
+#[ORM\Column(type: 'string', length: 255, nullable: true)]
+private ?string $faceImagePath = null;
+
 
 public function __construct()
 {
@@ -103,6 +118,7 @@ public function __construct()
     $this->commandes = new ArrayCollection();
     $this->employes = new ArrayCollection();
     $this->contrats = new ArrayCollection();
+    //$this->status = 'active';
 }
 
 
@@ -393,7 +409,16 @@ public function __construct()
         if (!$this->contrats->contains($contrat)) {
             $this->contrats->add($contrat);
             $contrat->setUserIdContrat($this);
-        }
+        } return $this;
+    }
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): static
+    {
+        $this->status = $status;
 
         return $this;
     }
@@ -409,4 +434,57 @@ public function __construct()
 
         return $this;
     }
+
+       
+    public function getLoginAttempts(): ?int
+    {
+        return $this->loginAttempts;
+    }
+
+    public function setLoginAttempts(?int $loginAttempts): static
+    {
+        $this->loginAttempts = $loginAttempts;
+
+        return $this;
+    }
+    public function incrementLoginAttempts(): static
+{
+    $this->loginAttempts = $this->loginAttempts ? $this->loginAttempts + 1 : 1;
+
+    return $this;
 }
+
+    public function getGoogleId(): ?string
+    {
+        return $this->google_id;
+    }
+
+    public function setGoogleId(?string $google_id): static
+    {
+        $this->google_id = $google_id;
+
+        return $this;
+    }
+    public function getFaceToken(): ?string
+    {
+        return $this->faceToken;
+    }
+
+    public function setFaceToken(?string $faceToken): self
+    {
+        $this->faceToken = $faceToken;
+        return $this;
+    }
+
+    public function getFaceImagePath(): ?string
+    {
+        return $this->faceImagePath;
+    }
+
+    public function setFaceImagePath(?string $faceImagePath): self
+    {
+        $this->faceImagePath = $faceImagePath;
+        return $this;
+    }
+}
+
