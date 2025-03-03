@@ -162,6 +162,6 @@ class __TwigTemplate_786b34e4aac77896c77a673d27668877 extends Template
         <button type=\"submit\" class=\"btn btn-primary\">Confirmer le Paiement</button>
     </form>
 {% endblock %}
-", "paiement/new.html.twig", "C:\\Users\\romdh\\OneDrive\\Bureau\\PI2025\\Reaptn\\templates\\paiement\\new.html.twig");
+", "paiement/new.html.twig", "C:\\Games\\Reaptn\\templates\\paiement\\new.html.twig");
     }
 }

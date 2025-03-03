@@ -512,6 +512,6 @@ class __TwigTemplate_b653888bb70cab057478ca57741c4c25 extends Template
 
 
 {% endblock %}
-", "page/buyland.html.twig", "C:\\Users\\romdh\\OneDrive\\Bureau\\PI2025\\Reaptn\\templates\\page\\buyland.html.twig");
+", "page/buyland.html.twig", "C:\\Games\\Reaptn\\templates\\page\\buyland.html.twig");
     }
 }

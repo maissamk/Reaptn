@@ -1,3 +1,27 @@
+# knpu_oauth:
+#     resource: "@KnpUOAuthBundle/Resources/config/routing/connect.xml"
+#     prefix: /connect
+connect_google:
+    path: /connect/google
+    controller: App\Controller\SecurityController::connectGoogle
+
+connect_google_check:
+    path: /connect/google/check
+    controller: App\Controller\SecurityController::connectGoogleCheck
+
+face_recognition:
+    path: /face-recognition
+    controller: App\Controller\FaceRecognitionController::index
+
+upload_image:
+    path: /upload_image
+    controller: App\Controller\FaceRecognitionController::uploadImage
+    methods: POST
+face_login:
+    path: /face-login
+    controller: App\Controller\FaceLoginController::faceLogin
+    methods: [GET, POST]
+    
 controllers:
     resource:
         path: ../src/Controller/

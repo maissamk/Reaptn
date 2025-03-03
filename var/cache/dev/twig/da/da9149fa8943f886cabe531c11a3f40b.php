@@ -2100,6 +2100,6 @@ class __TwigTemplate_56e6237aab8cffa8cfa331f3059fd200 extends Template
 
 
 {% endblock %}
-", "page/index.html.twig", "C:\\Users\\romdh\\OneDrive\\Bureau\\PI2025\\Reaptn\\templates\\page\\index.html.twig");
+", "page/index.html.twig", "C:\\Games\\Reaptn\\templates\\page\\index.html.twig");
     }
 }

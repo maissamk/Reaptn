@@ -141,6 +141,6 @@ class __TwigTemplate_c9446edcfe3fb79331ca662ddc787549 extends Template
 {% block body %}
 
 {% endblock %}
-", "admin/index.html.twig", "C:\\Users\\romdh\\OneDrive\\Bureau\\PI2025\\Reaptn\\templates\\admin\\index.html.twig");
+", "admin/index.html.twig", "C:\\Games\\Reaptn\\templates\\admin\\index.html.twig");
     }
 }

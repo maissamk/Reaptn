@@ -176,6 +176,6 @@ class __TwigTemplate_2be4541eb681789d06eee945d8942be1 extends Template
     </a>
 </li>
 // ...existing code...
-", "temp/admin/_sidebar.html.twig", "C:\\Users\\romdh\\OneDrive\\Bureau\\PI2025\\Reaptn\\templates\\temp\\admin\\_sidebar.html.twig");
+", "temp/admin/_sidebar.html.twig", "C:\\Games\\Reaptn\\templates\\temp\\admin\\_sidebar.html.twig");
     }
 }

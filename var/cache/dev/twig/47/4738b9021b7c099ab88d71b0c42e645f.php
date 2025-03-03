@@ -37,7 +37,7 @@ class __TwigTemplate_be1a29846b8eeda39a92e42d351e96dc extends Template
     protected function doGetParent(array $context): bool|string|Template|TemplateWrapper
     {
         // line 1
-        return "temp/base.html.twig";
+        return "base.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = []): iterable
@@ -49,7 +49,7 @@ class __TwigTemplate_be1a29846b8eeda39a92e42d351e96dc extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "temp/index.html.twig"));
 
-        $this->parent = $this->loadTemplate("temp/base.html.twig", "temp/index.html.twig", 1);
+        $this->parent = $this->loadTemplate("base.html.twig", "temp/index.html.twig", 1);
         yield from $this->parent->unwrap()->yield($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -171,7 +171,7 @@ class __TwigTemplate_be1a29846b8eeda39a92e42d351e96dc extends Template
 
     public function getSourceContext(): Source
     {
-        return new Source("{% extends 'temp/base.html.twig' %}
+        return new Source("{% extends 'base.html.twig' %}
 
 {% block content %}
     <!-- Hero Start -->
@@ -219,6 +219,6 @@ class __TwigTemplate_be1a29846b8eeda39a92e42d351e96dc extends Template
     {{ include('temp/sections/_facts.html.twig', ignore_missing = true) }}
     {{ include('temp/sections/_features.html.twig', ignore_missing = true) }}
 {% endblock %}
-", "temp/index.html.twig", "C:\\Users\\romdh\\OneDrive\\Bureau\\PI2025\\Reaptn\\templates\\temp\\index.html.twig");
+", "temp/index.html.twig", "C:\\Games\\Reaptn\\templates\\temp\\index.html.twig");
     }
 }

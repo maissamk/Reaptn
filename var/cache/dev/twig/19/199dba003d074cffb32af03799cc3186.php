@@ -641,6 +641,6 @@ class __TwigTemplate_940456ff9ed00c4b57e02fdd15f8a50e extends Template
 
     
 {% endblock %}
-", "paiement/confirmation.html.twig", "C:\\Users\\romdh\\OneDrive\\Bureau\\PI2025\\Reaptn\\templates\\paiement\\confirmation.html.twig");
+", "paiement/confirmation.html.twig", "C:\\Games\\Reaptn\\templates\\paiement\\confirmation.html.twig");
     }
 }

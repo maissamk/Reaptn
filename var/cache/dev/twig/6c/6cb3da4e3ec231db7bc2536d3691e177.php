@@ -200,6 +200,6 @@ class __TwigTemplate_ef299a5d6f30fa31c2d5350ce514e75e extends Template
     </div>
 </div>
 {% endblock %}
-", "offre/edit.html.twig", "C:\\Users\\romdh\\OneDrive\\Bureau\\PI2025\\Reaptn\\templates\\offre\\edit.html.twig");
+", "offre/edit.html.twig", "C:\\Games\\Reaptn\\templates\\offre\\edit.html.twig");
     }
 }

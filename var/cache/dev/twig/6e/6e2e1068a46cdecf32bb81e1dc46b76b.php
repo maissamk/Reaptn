@@ -184,6 +184,6 @@ class __TwigTemplate_3fadbddfac8b00f7961d438937e6e36f extends Template
         </div>
     </div>
 </div>
-{% endblock %}", "admin/offre/edit_back.html.twig", "C:\\Users\\romdh\\OneDrive\\Bureau\\PI2025\\Reaptn\\templates\\admin\\offre\\edit_back.html.twig");
+{% endblock %}", "admin/offre/edit_back.html.twig", "C:\\Games\\Reaptn\\templates\\admin\\offre\\edit_back.html.twig");
     }
 }

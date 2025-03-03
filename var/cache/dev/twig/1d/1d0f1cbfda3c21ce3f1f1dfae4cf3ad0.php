@@ -732,6 +732,6 @@ function removeItem(itemId) {
 
     </script>
 {% endblock %}
-", "panier/index.html.twig", "C:\\Users\\romdh\\OneDrive\\Bureau\\PI2025\\Reaptn\\templates\\panier\\index.html.twig");
+", "panier/index.html.twig", "C:\\Games\\Reaptn\\templates\\panier\\index.html.twig");
     }
 }

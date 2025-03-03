@@ -172,10 +172,6 @@ class __TwigTemplate_b3e06ecf1543b46eb4369e6dec04c6e6 extends Template
     <a href=\"{{ path('app_offre_index') }}\">back to list</a>
 
 
-<<<<<<< HEAD
 {% endblock %}", "offre/new.html.twig", "C:\\Games\\Reaptn\\templates\\offre\\new.html.twig");
-=======
-{% endblock %}", "offre/new.html.twig", "C:\\Users\\romdh\\OneDrive\\Bureau\\PI2025\\Reaptn\\templates\\offre\\new.html.twig");
->>>>>>> integrationval
     }
 }

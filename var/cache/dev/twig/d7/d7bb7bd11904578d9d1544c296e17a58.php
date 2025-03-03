@@ -94,6 +94,6 @@ class __TwigTemplate_d0d489d81addf4bfaff56ccf27162146 extends Template
     <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ parcelle_propriete.id) }}\">
     <button class=\"btn btn-danger btn-sm \"><i class=\"fa fa-trash\"></i>Supprimer</button>
 </form>
-", "parcelle_proprietes/_delete_form.html.twig", "C:\\Users\\romdh\\OneDrive\\Bureau\\PI2025\\Reaptn\\templates\\parcelle_proprietes\\_delete_form.html.twig");
+", "parcelle_proprietes/_delete_form.html.twig", "C:\\Games\\Reaptn\\templates\\parcelle_proprietes\\_delete_form.html.twig");
     }
 }

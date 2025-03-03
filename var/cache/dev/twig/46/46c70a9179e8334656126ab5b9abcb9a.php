@@ -268,6 +268,6 @@ class __TwigTemplate_3f466e90a5105e3549fba3b06f56b753 extends Template
         </div>
     </div>
 {% endblock %}
-", "offre/index.html.twig", "C:\\Users\\romdh\\OneDrive\\Bureau\\PI2025\\Reaptn\\templates\\offre\\index.html.twig");
+", "offre/index.html.twig", "C:\\Games\\Reaptn\\templates\\offre\\index.html.twig");
     }
 }

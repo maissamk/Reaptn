@@ -39,7 +39,7 @@ class __TwigTemplate_a7bbea08028118ccb54a382b42f66c70 extends Template
     protected function doGetParent(array $context): bool|string|Template|TemplateWrapper
     {
         // line 1
-        return "temp/base.html.twig";
+        return "base.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = []): iterable
@@ -51,7 +51,7 @@ class __TwigTemplate_a7bbea08028118ccb54a382b42f66c70 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "temp/shop-detail.html.twig"));
 
-        $this->parent = $this->loadTemplate("temp/base.html.twig", "temp/shop-detail.html.twig", 1);
+        $this->parent = $this->loadTemplate("base.html.twig", "temp/shop-detail.html.twig", 1);
         yield from $this->parent->unwrap()->yield($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -428,7 +428,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     public function getSourceContext(): Source
     {
-        return new Source("{% extends 'temp/base.html.twig' %}
+        return new Source("{% extends 'base.html.twig' %}
 
 {% block title %}Product Detail - Fruitables{% endblock %}
 
@@ -611,6 +611,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 {% endblock %}
-", "temp/shop-detail.html.twig", "C:\\Users\\romdh\\OneDrive\\Bureau\\PI2025\\Reaptn\\templates\\temp\\shop-detail.html.twig");
+", "temp/shop-detail.html.twig", "C:\\Games\\Reaptn\\templates\\temp\\shop-detail.html.twig");
     }
 }

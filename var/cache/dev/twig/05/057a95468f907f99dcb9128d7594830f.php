@@ -39,7 +39,7 @@ class __TwigTemplate_d693d5020e9d8096969dc3308d41e35d extends Template
     protected function doGetParent(array $context): bool|string|Template|TemplateWrapper
     {
         // line 1
-        return "temp/base.html.twig";
+        return "base.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = []): iterable
@@ -51,7 +51,7 @@ class __TwigTemplate_d693d5020e9d8096969dc3308d41e35d extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "temp/checkout.html.twig"));
 
-        $this->parent = $this->loadTemplate("temp/base.html.twig", "temp/checkout.html.twig", 1);
+        $this->parent = $this->loadTemplate("base.html.twig", "temp/checkout.html.twig", 1);
         yield from $this->parent->unwrap()->yield($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -458,7 +458,7 @@ class __TwigTemplate_d693d5020e9d8096969dc3308d41e35d extends Template
 
     public function getSourceContext(): Source
     {
-        return new Source("{% extends 'temp/base.html.twig' %}
+        return new Source("{% extends 'base.html.twig' %}
 
 {% block title %}Checkout - Fruitables{% endblock %}
 
@@ -616,6 +616,6 @@ class __TwigTemplate_d693d5020e9d8096969dc3308d41e35d extends Template
     {{ parent() }}
     <script src=\"{{ asset('js/main.js') }}\"></script>
 {% endblock %}
-", "temp/checkout.html.twig", "C:\\Users\\romdh\\OneDrive\\Bureau\\PI2025\\Reaptn\\templates\\temp\\checkout.html.twig");
+", "temp/checkout.html.twig", "C:\\Games\\Reaptn\\templates\\temp\\checkout.html.twig");
     }
 }

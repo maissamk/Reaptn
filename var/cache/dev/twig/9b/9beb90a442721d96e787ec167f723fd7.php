@@ -493,10 +493,6 @@ class __TwigTemplate_9bafdc99a4b655778d3cd5784d94ee2a extends Template
 </div>
 
 {% endblock %}
-<<<<<<< HEAD
 ", "parcelle_proprietes/edit.html.twig", "C:\\Games\\Reaptn\\templates\\parcelle_proprietes\\edit.html.twig");
-=======
-", "parcelle_proprietes/edit.html.twig", "C:\\Users\\romdh\\OneDrive\\Bureau\\PI2025\\Reaptn\\templates\\parcelle_proprietes\\edit.html.twig");
->>>>>>> integrationval
     }
 }

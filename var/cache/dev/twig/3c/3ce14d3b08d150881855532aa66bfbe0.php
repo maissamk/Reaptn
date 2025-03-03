@@ -83,6 +83,6 @@ class __TwigTemplate_e944d09279534af1abd69b5768f88124 extends Template
     <div class=\"spinner-grow text-primary\" role=\"status\"></div>
 </div>
 <!-- Spinner End -->
-", "temp/partials/_spinner.html.twig", "C:\\Users\\romdh\\OneDrive\\Bureau\\PI2025\\Reaptn\\templates\\temp\\partials\\_spinner.html.twig");
+", "temp/partials/_spinner.html.twig", "C:\\Games\\Reaptn\\templates\\temp\\partials\\_spinner.html.twig");
     }
 }

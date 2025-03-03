@@ -220,21 +220,38 @@ class __TwigTemplate_88589a8a575a91438576644e99c1c076 extends Template
         yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 63, $this->source); })()), "avatar", [], "any", false, false, false, 63), 'errors');
         yield "
                         </div>
+                    </div>";
+        // line 66
+        yield "                    <div class=\"mb-3\">
+                        ";
+        // line 67
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 67, $this->source); })()), "faceImage", [], "any", false, false, false, 67), 'label', ["label" => "Ajouter une reconnaissance"]);
+        yield "
+                        ";
+        // line 68
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 68, $this->source); })()), "faceImage", [], "any", false, false, false, 68), 'widget', ["attr" => ["class" => "form-control"]]);
+        yield "
+                        <div class=\"text-danger\">
+                            ";
+        // line 70
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 70, $this->source); })()), "faceImage", [], "any", false, false, false, 70), 'errors');
+        yield "
+                        </div>
                     </div>
 
                     ";
-        // line 68
+        // line 75
         yield "                    <button type=\"submit\" class=\"btn btn-success w-100 mt-3\">Enregistrer les Modifications</button>
                       
 
                 ";
-        // line 71
-        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 71, $this->source); })()), 'form_end');
+        // line 78
+        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 78, $this->source); })()), 'form_end');
         yield "
                 
             </div>
             <a href=\"";
-        // line 74
+        // line 81
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_profile");
         yield "\" class=\"btn btn-primary me-3\"><i class=\"fa fa-arrow-left\"></i>  Retour</a>
         </div>
@@ -271,7 +288,7 @@ class __TwigTemplate_88589a8a575a91438576644e99c1c076 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  238 => 74,  232 => 71,  227 => 68,  220 => 63,  215 => 61,  211 => 60,  208 => 59,  201 => 54,  196 => 52,  192 => 51,  189 => 50,  182 => 45,  177 => 43,  173 => 42,  170 => 41,  163 => 36,  158 => 34,  154 => 33,  151 => 32,  144 => 27,  139 => 25,  135 => 24,  132 => 23,  127 => 20,  123 => 18,  117 => 16,  111 => 14,  109 => 13,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  255 => 81,  249 => 78,  244 => 75,  237 => 70,  232 => 68,  228 => 67,  225 => 66,  220 => 63,  215 => 61,  211 => 60,  208 => 59,  201 => 54,  196 => 52,  192 => 51,  189 => 50,  182 => 45,  177 => 43,  173 => 42,  170 => 41,  163 => 36,  158 => 34,  154 => 33,  151 => 32,  144 => 27,  139 => 25,  135 => 24,  132 => 23,  127 => 20,  123 => 18,  117 => 16,  111 => 14,  109 => 13,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -340,6 +357,13 @@ class __TwigTemplate_88589a8a575a91438576644e99c1c076 extends Template
                         <div class=\"text-danger\">
                             {{ form_errors(form.avatar) }}
                         </div>
+                    </div>{# Avatar Upload Field #}
+                    <div class=\"mb-3\">
+                        {{ form_label(form.faceImage, 'Ajouter une reconnaissance') }}
+                        {{ form_widget(form.faceImage, {'attr': {'class': 'form-control'}}) }}
+                        <div class=\"text-danger\">
+                            {{ form_errors(form.faceImage) }}
+                        </div>
                     </div>
 
                     {# Submit Button #}
@@ -354,6 +378,6 @@ class __TwigTemplate_88589a8a575a91438576644e99c1c076 extends Template
         
     </div>
 {% endblock %}
-", "profile/edit.html.twig", "C:\\Users\\romdh\\OneDrive\\Bureau\\PI2025\\Reaptn\\templates\\profile\\edit.html.twig");
+", "profile/edit.html.twig", "C:\\Games\\Reaptn\\templates\\profile\\edit.html.twig");
     }
 }

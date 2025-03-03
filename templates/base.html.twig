@@ -92,7 +92,12 @@
                             {% if app.user %}
 <a href="{{ path('app_profile') }}" class="my-auto">
 
-                                <i class="fas fa-user fa-2x"></i>
+                                {% if app.user.avatar %}
+                                <img src="{{ asset('uploads/avatars/' ~ app.user.avatar) }}" class="rounded-circle mb-3" width="40" height="40" alt="Avatar Utilisateur">
+                            {% else %}
+                                <img src="{{ asset('uploads/avatars/defaultavatar.png') }}" class="rounded-circle mb-3" width="50" height="50" alt="Avatar par défaut">
+                            {% endif %}
+                            {{app.user.nom}}
                             </a>
                              {% endif %}
                         </div>

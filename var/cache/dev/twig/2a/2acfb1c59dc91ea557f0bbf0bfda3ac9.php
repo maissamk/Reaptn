@@ -289,6 +289,6 @@ class __TwigTemplate_63ee0537df4c32e2619a1906aeb9c86c extends Template
         color: white;
     }
 </style>
-{% endblock %}", "admin/offre/show_back.html.twig", "C:\\Users\\romdh\\OneDrive\\Bureau\\PI2025\\Reaptn\\templates\\admin\\offre\\show_back.html.twig");
+{% endblock %}", "admin/offre/show_back.html.twig", "C:\\Games\\Reaptn\\templates\\admin\\offre\\show_back.html.twig");
     }
 }
