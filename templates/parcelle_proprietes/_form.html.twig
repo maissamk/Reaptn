@@ -30,6 +30,9 @@
     <div class="invalid-feedback text-danger">{{ form_errors(form.emplacement) }}</div>
 </div>
 
+<!-- Carte interactive -->
+<div id="map" style="height: 400px; margin-top: 20px;"></div>
+
 <div class="mb-3">
     {{ form_label(form.taille, 'Taille (m²)', {'label_attr': {'class': 'form-label'}}) }}
     {{ form_widget(form.taille, {'attr': {'class': 'form-control' ~ (form.taille.vars.errors|length > 0 ? ' is-invalid' : ''), 'min': '1', 'step': '0.01'}}) }}
@@ -64,15 +67,68 @@
     {{ form_widget(form.contact_proprietaire, {'attr': {'class': 'form-control' ~ (form.contact_proprietaire.vars.errors|length > 0 ? ' is-invalid' : ''), 'pattern': '^\+?[0-9]*$', 'title': 'Numéro de téléphone valide requis'}}) }}
     <div class="invalid-feedback text-danger">{{ form_errors(form.contact_proprietaire) }}</div>
 </div>
+<div class="mb-3">
+    {{ form_label(form.email, 'Email', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.email, {'attr': {'class': 'form-control' ~ (form.email.vars.errors|length > 0 ? ' is-invalid' : '')}}) }}
+    <div class="invalid-feedback text-danger">{{ form_errors(form.email) }}</div>
+</div>
+
+
 
 <div class="mb-3">
     {{ form_label(form.image, 'Image', {'label_attr': {'class': 'form-label'}}) }}
     {{ form_widget(form.image, {'attr': {'class': 'form-control' ~ (form.image.vars.errors|length > 0 ? ' is-invalid' : '')}}) }}
-    <div class="invalid-feedback text-danger">
-        {{ form_errors(form.image) }}
-    </div>
+    <div class="invalid-feedback text-danger">{{ form_errors(form.image) }}</div>
 </div>
 
-<button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+
+<div class="mb-3">
+    {{ form_label(form.type_terrain, 'Type de terrain', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.type_terrain, {'attr': {'class': 'form-control' ~ (form.type_terrain.vars.errors|length > 0 ? ' is-invalid' : '')}}) }}
+    <div class="invalid-feedback text-danger">{{ form_errors(form.type_terrain) }}</div>
+</div>
+
+<button type="submit" class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
 
 {{ form_end(form) }}
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const map = L.map('map').setView([36.8065, 10.1815], 7); // Coordonnées par défaut : Tunis
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+    let marker = null;
+
+    // Gestion du clic sur la carte
+    map.on('click', async (e) => {
+        const { lat, lng } = e.latlng;
+        if (marker) map.removeLayer(marker);
+        marker = L.marker([lat, lng]).addTo(map);
+
+        // Appeler Nominatim pour le géocodage inversé
+        try {
+            const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`);
+            const data = await response.json();
+            const address = data.display_name || `${lat.toFixed(4)}, ${lng.toFixed(4)}`;
+
+            // Stocker l'adresse dans le champ emplacement
+            const emplacementInput = document.querySelector('#parcelle_proprietes_emplacement');
+            emplacementInput.value = address;
+        } catch (error) {
+            console.error('Erreur lors du géocodage inversé:', error);
+        }
+    });
+});
+
+
+
+
+
+
+</script>
+<script src="https://cdn.ckeditor.com/4.21.0/full-all/ckeditor.js"></script>
+
+

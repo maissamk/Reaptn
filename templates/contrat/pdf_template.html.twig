@@ -1,0 +1,84 @@
+{# templates/contrat/pdf_template.html.twig #}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contrat - {{ contrat.id }}</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 40px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            color: #0066cc;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        td {
+            color: #555;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .contract-info {
+            margin-bottom: 20px;
+        }
+
+        .contract-info span {
+            font-weight: bold;
+        }
+
+        .contract-details {
+            margin-top: 20px;
+            border-top: 2px solid #0066cc;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contrat #{{ contrat.id }}</h1>
+
+    <div class="contract-info">
+        <p><span>Date Début Contrat:</span> {{ contrat.dateDebutContrat ? contrat.dateDebutContrat|date('d/m/Y') : '' }}</p>
+        <p><span>Date Fin Contrat:</span> {{ contrat.datefinContrat ? contrat.datefinContrat|date('d/m/Y') : '' }}</p>
+        <p><span>Nom Acheteur:</span> {{ contrat.nomAcheteur }}</p>
+        <p><span>Nom Vendeur:</span> {{ contrat.nomVendeur }}</p>
+    </div>
+
+    <div class="contract-details">
+        <h2>Détails du Contrat</h2>
+        <table>
+            <tr>
+                <th>Information Contrat</th>
+                <td>{{ contrat.informationContrat }}</td>
+            </tr>
+            <tr>
+                <th>Date Création Contrat</th>
+                <td>{{ contrat.datecreationContrat ? contrat.datecreationContrat|date('d/m/Y H:i:s') : '' }}</td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

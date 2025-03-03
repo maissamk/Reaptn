@@ -91,11 +91,49 @@
                 </div>
 
                 <!-- Upload image -->
-                <div class="mb-3">
-                    <label for="image" class="form-label fw-semibold">Image de la Parcelle</label>
-                    <input type="file" name="parcelle_propriete[image]" id="image" class="form-control shadow-sm">
-                    <div class="invalid-feedback d-block text-danger"> {{ form_errors(form.image) }} </div>
-                </div>
+                <!-- Upload image -->
+<div class="mb-3">
+    {{ form_label(form.image, 'Image de la Parcelle', {
+        'label_attr': {
+            'class': 'form-label fw-semibold',
+            'for': 'image'
+        }
+    }) }}
+    {{ form_widget(form.image, {
+        'attr': {
+            'class': 'form-control shadow-sm',
+            'id': 'image'
+        }
+    }) }}
+    <div class="invalid-feedback d-block text-danger">
+        {{ form_errors(form.image) }}
+    </div>
+</div>
+
+
+                 <div class="mb-3">
+                        {{ form_label(form.type_terrain, 'Type De Terrain', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
+                        {{ form_widget(form.type_terrain, {'attr': {'class': 'form-control shadow-sm'}}) }}
+                        <div class="invalid-feedback d-block text-danger"> {{ form_errors(form.type_terrain) }} </div>
+                    </div>
+                  <div class="form-check mb-3">
+    {{ form_widget(form.estDisponible, {
+        'attr': {
+            'class': 'form-check-input shadow-sm',
+            'id': 'estDisponibleCheckbox'
+        }
+    }) }}
+    {{ form_label(form.estDisponible, 'Disponible', {
+        'label_attr': {
+            'class': 'form-check-label fw-semibold',
+            'for': 'estDisponibleCheckbox'
+        }
+    }) }}
+    <div class="invalid-feedback d-block text-danger">
+        {{ form_errors(form.estDisponible) }}
+    </div>
+</div>
+
 
                 <!-- Bouton de mise à jour -->
                 <div class="text-center mt-4">

@@ -89,6 +89,11 @@ private Collection $commandes;
 #[ORM\OneToMany(targetEntity: Employe::class, mappedBy: 'user_id_employe')]
 private Collection $employes;
 
+/**
+ * @var Collection<int, Contrat>
+ */
+#[ORM\OneToMany(targetEntity: Contrat::class, mappedBy: 'user_id_contrat')]
+private Collection $contrats;
 #[ORM\Column(length: 20)]
 private ?string $status = 'inactive';
 
@@ -112,6 +117,7 @@ public function __construct()
     $this->materiellocations = new ArrayCollection();
     $this->commandes = new ArrayCollection();
     $this->employes = new ArrayCollection();
+    $this->contrats = new ArrayCollection();
     //$this->status = 'active';
 }
 
@@ -390,6 +396,21 @@ public function __construct()
         return $this;
     }
 
+    /**
+     * @return Collection<int, Contrat>
+     */
+    public function getContrats(): Collection
+    {
+        return $this->contrats;
+    }
+
+    public function addContrat(Contrat $contrat): static
+    {
+        if (!$this->contrats->contains($contrat)) {
+            $this->contrats->add($contrat);
+            $contrat->setUserIdContrat($this);
+        } return $this;
+    }
     public function getStatus(): ?string
     {
         return $this->status;
@@ -402,6 +423,19 @@ public function __construct()
         return $this;
     }
 
+    public function removeContrat(Contrat $contrat): static
+    {
+        if ($this->contrats->removeElement($contrat)) {
+            // set the owning side to null (unless already changed)
+            if ($contrat->getUserIdContrat() === $this) {
+                $contrat->setUserIdContrat(null);
+            }
+        }
+
+        return $this;
+    }
+
+       
     public function getLoginAttempts(): ?int
     {
         return $this->loginAttempts;
