@@ -681,6 +681,7 @@ $context["user"], "status", [], "any", false, false, false, 82) == "blocked")) {
     });
 </script>
 
-{% endblock %}", "admin/user/users.html.twig", "C:\\Games\\Reaptn\\templates\\admin\\user\\users.html.twig");
+{% endblock %}
+", "admin/user/users.html.twig", "C:\\Games\\Reaptn\\templates\\admin\\user\\users.html.twig");
     }
 }
