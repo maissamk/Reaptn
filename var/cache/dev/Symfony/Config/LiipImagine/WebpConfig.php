@@ -18,7 +18,7 @@ class WebpConfig
     private $dataLoader;
     private $postProcessors;
     private $_usedProperties = [];
-    
+
     /**
      * @default false
      * @param ParamConfigurator|bool $value
@@ -28,10 +28,10 @@ class WebpConfig
     {
         $this->_usedProperties['generate'] = true;
         $this->generate = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @default 100
      * @param ParamConfigurator|int $value
@@ -41,10 +41,10 @@ class WebpConfig
     {
         $this->_usedProperties['quality'] = true;
         $this->quality = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
@@ -54,10 +54,10 @@ class WebpConfig
     {
         $this->_usedProperties['cache'] = true;
         $this->cache = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
@@ -67,10 +67,10 @@ class WebpConfig
     {
         $this->_usedProperties['dataLoader'] = true;
         $this->dataLoader = $value;
-    
+
         return $this;
     }
-    
+
     public function postProcessors(string $name, array $value = []): \Symfony\Config\LiipImagine\Webp\PostProcessorsConfig
     {
         if (!isset($this->postProcessors[$name])) {
@@ -79,10 +79,10 @@ class WebpConfig
         } elseif (1 < \func_num_args()) {
             throw new InvalidConfigurationException('The node created by "postProcessors()" has already been initialized. You cannot pass values the second time you call postProcessors().');
         }
-    
+
         return $this->postProcessors[$name];
     }
-    
+
     public function __construct(array $value = [])
     {
         if (array_key_exists('generate', $value)) {
@@ -90,36 +90,36 @@ class WebpConfig
             $this->generate = $value['generate'];
             unset($value['generate']);
         }
-    
+
         if (array_key_exists('quality', $value)) {
             $this->_usedProperties['quality'] = true;
             $this->quality = $value['quality'];
             unset($value['quality']);
         }
-    
+
         if (array_key_exists('cache', $value)) {
             $this->_usedProperties['cache'] = true;
             $this->cache = $value['cache'];
             unset($value['cache']);
         }
-    
+
         if (array_key_exists('data_loader', $value)) {
             $this->_usedProperties['dataLoader'] = true;
             $this->dataLoader = $value['data_loader'];
             unset($value['data_loader']);
         }
-    
+
         if (array_key_exists('post_processors', $value)) {
             $this->_usedProperties['postProcessors'] = true;
             $this->postProcessors = array_map(fn ($v) => new \Symfony\Config\LiipImagine\Webp\PostProcessorsConfig($v), $value['post_processors']);
             unset($value['post_processors']);
         }
-    
+
         if ([] !== $value) {
             throw new InvalidConfigurationException(sprintf('The following keys are not supported by "%s": ', __CLASS__).implode(', ', array_keys($value)));
         }
     }
-    
+
     public function toArray(): array
     {
         $output = [];
@@ -138,7 +138,7 @@ class WebpConfig
         if (isset($this->_usedProperties['postProcessors'])) {
             $output['post_processors'] = array_map(fn ($v) => $v->toArray(), $this->postProcessors);
         }
-    
+
         return $output;
     }
 

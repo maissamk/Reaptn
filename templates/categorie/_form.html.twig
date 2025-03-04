@@ -1,0 +1,17 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'container mt-4 p-4 bg-light rounded shadow'}}) }}
+
+<div class="mb-3">
+    {{ form_label(form.nom, null, {'attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+    <div class="text-danger">{{ form_errors(form.nom) }}</div>
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.description, null, {'attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+    <div class="text-danger">{{ form_errors(form.description) }}</div>
+</div>
+
+<button class="btn btn-primary w-100">{{ button_label|default('Enregistrer') }}</button>
+
+{{ form_end(form) }}

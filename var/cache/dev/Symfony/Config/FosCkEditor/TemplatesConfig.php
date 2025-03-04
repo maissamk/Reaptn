@@ -15,7 +15,7 @@ class TemplatesConfig
     private $imagesPath;
     private $templates;
     private $_usedProperties = [];
-    
+
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
@@ -25,17 +25,17 @@ class TemplatesConfig
     {
         $this->_usedProperties['imagesPath'] = true;
         $this->imagesPath = $value;
-    
+
         return $this;
     }
-    
+
     public function templates(array $value = []): \Symfony\Config\FosCkEditor\TemplatesConfig\TemplatesConfig
     {
         $this->_usedProperties['templates'] = true;
-    
+
         return $this->templates[] = new \Symfony\Config\FosCkEditor\TemplatesConfig\TemplatesConfig($value);
     }
-    
+
     public function __construct(array $value = [])
     {
         if (array_key_exists('imagesPath', $value)) {
@@ -43,18 +43,18 @@ class TemplatesConfig
             $this->imagesPath = $value['imagesPath'];
             unset($value['imagesPath']);
         }
-    
+
         if (array_key_exists('templates', $value)) {
             $this->_usedProperties['templates'] = true;
             $this->templates = array_map(fn ($v) => new \Symfony\Config\FosCkEditor\TemplatesConfig\TemplatesConfig($v), $value['templates']);
             unset($value['templates']);
         }
-    
+
         if ([] !== $value) {
             throw new InvalidConfigurationException(sprintf('The following keys are not supported by "%s": ', __CLASS__).implode(', ', array_keys($value)));
         }
     }
-    
+
     public function toArray(): array
     {
         $output = [];
@@ -64,7 +64,7 @@ class TemplatesConfig
         if (isset($this->_usedProperties['templates'])) {
             $output['templates'] = array_map(fn ($v) => $v->toArray(), $this->templates);
         }
-    
+
         return $output;
     }
 

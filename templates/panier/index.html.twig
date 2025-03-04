@@ -4,255 +4,212 @@
 
 {% block body %}
 
-     
+      <!-- Modal Search Start -->
+      <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-fullscreen">
+              <div class="modal-content rounded-0">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Search by keyword</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body d-flex align-items-center">
+                      <div class="input-group w-75 mx-auto d-flex">
+                          <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
+                          <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
 
+  <!-- Single Page Header start -->
+  <div class="container-fluid page-header py-5">
+      <h1 class="text-center text-white display-6">Panier</h1>
+      <ol class="breadcrumb justify-content-center mb-0">
+          <li class="breadcrumb-item"><a>Accueil</a></li>
+          <li class="breadcrumb-item active text-white">Panier</li>
+      </ol>
+  </div>
+  <!-- Single Page Header End -->
 
-      
-
-        <!-- Modal Search Start -->
-        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-fullscreen">
-                <div class="modal-content rounded-0">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Search by keyword</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body d-flex align-items-center">
-                        <div class="input-group w-75 mx-auto d-flex">
-                            <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
-                            <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <!-- Single Page Header start -->
-    <div class="container-fluid page-header py-5">
-        <h1 class="text-center text-white display-6">Panier</h1>
-        <ol class="breadcrumb justify-content-center mb-0">
-            <li class="breadcrumb-item"><a>Accueil</a></li>
-            <li class="breadcrumb-item active text-white">Panier</li>
-        </ol>
-    </div>
-    <!-- Single Page Header End -->
-
-    <!-- Cart Page Start -->
-    <div class="container-fluid py-5">
-        <div class="container py-5">
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Image</th>
-                            <th scope="col">Nom</th>
-                            <th scope="col">Prix</th>
-                            <th scope="col">Quantité</th>
-                            <th scope="col">Total</th>
-                            <th scope="col">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for item in cart %}
-                            <tr id="item-{{ item.id }}">
-                                 <th scope="row">
-            <div class="d-flex align-items-center">
-                {% if item.image %}
-                    <img src="{{ asset('uploads/images/' ~ item.image) }}" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="{{ item.nom }}">
-                {% endif %}
-            </div>
-        </th>
-                                <td>
-                                    <p class="mb-0 mt-4">{{ item.nom }}</p>
-                                </td>
-                                <td>
-                                    <p class="mb-0 mt-4">{{ item.prix }} DT</p>
-                                </td>
-                                <td>
-                                    <div class="input-group quantity mt-4" style="width: 100px;">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-sm btn-minus rounded-circle bg-light border" onclick="changeQuantity({{ item.id }}, -1)">
-                                                <i class="fa fa-minus"></i>
-                                            </button>
-                                        </div>
-                                        <input type="text" class="form-control form-control-sm text-center border-0" value="{{ item.quantity }}" id="quantity-{{ item.id }}">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-sm btn-plus rounded-circle bg-light border" onclick="changeQuantity({{ item.id }}, 1)">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <p class="mb-0 mt-4" id="total-{{ item.id }}">{{ item.prix * item.quantity }} DT</p>
-                                </td>
-                                <td>
-                                 <form action="{{ path('panier_supprimer', {'id': item.id}) }}" method="post">
+  <!-- Cart Page Start -->
+  <div class="container-fluid py-5">
+      <div class="container py-5">
+          <div class="table-responsive">
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th scope="col">Image</th>
+                          <th scope="col">Nom</th>
+                          <th scope="col">Prix</th>
+                          <th scope="col">Quantité</th>
+                          <th scope="col">Total</th>
+                          <th scope="col">Actions</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {% for item in cart %}
+                          <tr id="item-{{ item.id }}">
+                               <th scope="row">
+          <div class="d-flex align-items-center">
+              {% if item.image %}
+                  <img src="{{ asset('uploads/images/' ~ item.image) }}" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="{{ item.nom }}">
+              {% endif %}
+          </div>
+      </th>
+                              <td>
+                                  <p class="mb-0 mt-4">{{ item.nom }}</p>
+                              </td>
+                              <td>
+                                  <p class="mb-0 mt-4">{{ item.prix }} DT</p>
+                              </td>
+                              <td>
+                                  <div class="input-group quantity mt-4" style="width: 100px;">
+                                      <div class="input-group-btn">
+                                          <button class="btn btn-sm btn-minus rounded-circle bg-light border" onclick="changeQuantity({{ item.id }}, -1)">
+                                              <i class="fa fa-minus"></i>
+                                          </button>
+                                      </div>
+                                      <input type="text" class="form-control form-control-sm text-center border-0" value="{{ item.quantity }}" id="quantity-{{ item.id }}">
+                                      <div class="input-group-btn">
+                                          <button class="btn btn-sm btn-plus rounded-circle bg-light border" onclick="changeQuantity({{ item.id }}, 1)">
+                                              <i class="fa fa-plus"></i>
+                                          </button>
+                                      </div>
+                                  </div>
+                              </td>
+                              <td>
+                                  <p class="mb-0 mt-4" id="total-{{ item.id }}">{{ item.prix * item.quantity }} DT</p>
+                              </td>
+                              <td>
+                               <form action="{{ path('panier_supprimer', {'id': item.id}) }}" method="post">
+<form action="{{ path('panier_supprimer', {'id': item.id}) }}" method="post">
     <button type="submit" class="btn btn-md rounded-circle bg-light border mt-4">
         <i class="fa fa-times text-danger"></i>
     </button>
 </form>
+                              </td>
+                          </tr>
+                      {% else %}
+                          <tr>
+                              <td colspan="6" class="text-center">Votre panier est vide.</td>
+                          </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+          </div>
 
+          
+          <!-- Coupon Code Section -->
+          <div class="mt-5">
+              <input type="text" class="border-0 border-bottom rounded me-5 py-3 mb-4" placeholder="Code promo">
+              <button class="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button">Appliquer le code</button>
+          </div>
 
-                                </td>
-                            </tr>
-                        {% else %}
-                            <tr>
-                                <td colspan="6" class="text-center">Votre panier est vide.</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Coupon Code Section -->
-            <div class="mt-5">
-                <input type="text" class="border-0 border-bottom rounded me-5 py-3 mb-4" placeholder="Code promo">
-                <button class="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button">Appliquer le code</button>
-            </div>
-
-            <!-- Cart Summary -->
-            <div class="row g-4 justify-content-end">
-                <div class="col-8"></div>
-                <div class="col-sm-8 col-md-7 col-lg-6 col-xl-4">
-                    <div class="bg-light rounded">
-                        <div class="p-4">
-                            <h1 class="display-6 mb-4">Total du Panier</h1>
-                            <div class="d-flex justify-content-between mb-4">
-                                <h5 class="mb-0 me-4">Sous-total:</h5>
-                                <p class="mb-0" id="cart-total">{{ total }} DT</p>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-0 me-4">Livraison</h5>
-                                <p class="mb-0">Forfait: 7.000 DT</p>
-                            </div>
-                            <p class="mb-0 text-end">Livraison en Tunisie.</p>
-                        </div>
-                        <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
-                            <h5 class="mb-0 ps-4 me-4">Total</h5>
-                            <p class="mb-0 pe-4" id="final-total">{{ total + 7 }} DT</p>
-                        </div>
-{% if cart|length > 0 %}
-    <a href="{{ path('paiement', {'id': commande.id}) }}" 
-       class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4">
-        Passer à la caisse
-    </a>
-{% else %}
-    <button class="btn border-secondary rounded-pill px-4 py-3 text-secondary text-uppercase mb-4 ms-4 disabled" disabled>
-        Passer à la caisse
-    </button>
-{% endif %}
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Cart Page End -->
-
-    
-
+          <!-- Cart Summary -->
+          <div class="row g-4 justify-content-end">
+              <div class="col-8"></div>
+              <div class="col-sm-8 col-md-7 col-lg-6 col-xl-4">
+                  <div class="bg-light rounded">
+                      <div class="p-4">
+                          <h1 class="display-6 mb-4">Total du Panier</h1>
+                          <div class="d-flex justify-content-between mb-4">
+                              <h5 class="mb-0 me-4">Sous-total:</h5>
+                              <p class="mb-0" id="cart-total">{{ total }} DT</p>
+                          </div>
+                          <div class="d-flex justify-content-between">
+                              <h5 class="mb-0 me-4">Livraison</h5>
+                              <p class="mb-0">Forfait: 7.000 DT</p>
+                          </div>
+                          <p class="mb-0 text-end">Livraison en Tunisie.</p>
+                      </div>
+                      <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+                          <h5 class="mb-0 ps-4 me-4">Total</h5>
+                          <p class="mb-0 pe-4" id="final-total">{{ total + 7 }} DT</p>
+                      </div>
+  {% if cart|length > 0 %}
+      <a href="{{ path('paiement', {'id': commande.id}) }}" 
+         class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4">
+          Passer à la caisse
+      </a>
+  {% else %}
+      <button class="btn border-secondary rounded-pill px-4 py-3 text-secondary text-uppercase mb-4 ms-4 disabled" disabled>
+          Passer à la caisse
+      </button>
+  {% endif %}
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Cart Page End -->
 
 {% endblock %}
 
 {% block javascripts %}
     <script>
         // Fonction pour changer la quantité d'un produit
- function changeQuantity(itemId, change) {
-    console.log("Button clicked for item:", itemId, "Change:", change);
+        function changeQuantity(itemId, change) {
+            console.log("Button clicked for item:", itemId, "Change:", change);
 
-    // Récupérer la quantité actuelle
-    var quantityField = document.getElementById('quantity-' + itemId);
-    if (!quantityField) {
-        console.error("Quantity field not found for item:", itemId);
-        return;
-    }
-
-    var currentQuantity = parseInt(quantityField.value);
-    var newQuantity = currentQuantity + change;
-    if (newQuantity < 1) {
-        newQuantity = 1; // Empêche une quantité inférieure à 1
-    }
-
-    // Mettre à jour la valeur de la quantité dans le DOM
-    quantityField.value = newQuantity;
-
-    // Mettre à jour le total pour cet article dans le DOM
-    var price = parseFloat(document.querySelector(`#item-${itemId} td:nth-child(3)`).textContent.replace(' DT', '').trim());
-    var total = price * newQuantity;
-    document.getElementById('total-' + itemId).textContent = total.toFixed(2) + ' DT';
-
-    // Mettre à jour le total du panier
-    updateCartTotal();
-
-    // Envoyer la mise à jour au serveur
-    fetch(`/panier/mettre-a-jour-quantite/${itemId}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ quantity: newQuantity }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.status !== 'success') {
-            console.error("Erreur lors de la mise à jour de la quantité sur le serveur");
-        }
-    })
-    .catch(error => {
-        console.error("Erreur lors de l'appel AJAX :", error);
-    });
-}
-
-
-
-function updateCartTotal() {
-    // Calculer le total du panier
-    let total = 0;
-    document.querySelectorAll('.table tbody tr').forEach(function(row) {
-        var itemTotal = parseFloat(row.querySelector('td:nth-child(5) p').textContent.replace(' DT', '').trim());
-        total += itemTotal;
-    });
-
-    // Ajouter la livraison
-    total += 7; // Livraison forfaitaire
-
-    // Mettre à jour le total dans la page
-    document.getElementById('cart-total').textContent = total.toFixed(2) + ' DT';
-    document.getElementById('final-total').textContent = total.toFixed(2) + ' DT';
-}
-
-
-
-
-
-       // Fonction pour supprimer un matériel du panier
-// Supprimer l'élément du panier (serveur + DOM)
-function removeItem(itemId) {
-    // Faire une requête DELETE pour supprimer du serveur
-    fetch(`/panier/supprimer/${itemId}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.status === 'success') {
-            // Supprimer l'élément du DOM
-            const itemRow = document.getElementById('item-' + itemId);
-            if (itemRow) {
-                itemRow.remove();
+            // Récupérer la quantité actuelle
+            var quantityField = document.getElementById('quantity-' + itemId);
+            if (!quantityField) {
+                console.error("Quantity field not found for item:", itemId);
+                return;
             }
+
+            var currentQuantity = parseInt(quantityField.value);
+            var newQuantity = currentQuantity + change;
+            if (newQuantity < 1) {
+                newQuantity = 1; // Empêche une quantité inférieure à 1
+            }
+
+            // Mettre à jour la valeur de la quantité dans le DOM
+            quantityField.value = newQuantity;
+
+            // Mettre à jour le total pour cet article dans le DOM
+            var price = parseFloat(document.querySelector(`#item-${itemId} td:nth-child(3)`).textContent.replace(' DT', '').trim());
+            var total = price * newQuantity;
+            document.getElementById('total-' + itemId).textContent = total.toFixed(2) + ' DT';
 
             // Mettre à jour le total du panier
             updateCartTotal();
-        }
-    })
-    .catch(error => {
-        console.error('Erreur lors de la suppression:', error);
-    });
-}
 
+            // Envoyer la mise à jour au serveur
+            fetch(`/panier/mettre-a-jour-quantite/${itemId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ quantity: newQuantity }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status !== 'success') {
+                    console.error("Erreur lors de la mise à jour de la quantité sur le serveur");
+                }
+            })
+            .catch(error => {
+                console.error("Erreur lors de l'appel AJAX :", error);
+            });
+        }
+
+        function updateCartTotal() {
+            // Calculer le total du panier
+            let total = 0;
+            document.querySelectorAll('.table tbody tr').forEach(function(row) {
+                var itemTotal = parseFloat(row.querySelector('td:nth-child(5) p').textContent.replace(' DT', '').trim());
+                total += itemTotal;
+            });
+
+            // Ajouter la livraison
+            total += 7; // Livraison forfaitaire
+
+            // Mettre à jour le total dans la page
+            document.getElementById('cart-total').textContent = total.toFixed(2) + ' DT';
+            document.getElementById('final-total').textContent = total.toFixed(2) + ' DT';
+        }
     </script>
+    
 {% endblock %}

@@ -13,7 +13,7 @@ class TwigConfig
     private $mode;
     private $assetsVersion;
     private $_usedProperties = [];
-    
+
     /**
      * Twig mode: none/lazy/legacy (default)
      * @default 'legacy'
@@ -24,10 +24,10 @@ class TwigConfig
     {
         $this->_usedProperties['mode'] = true;
         $this->mode = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
@@ -37,10 +37,10 @@ class TwigConfig
     {
         $this->_usedProperties['assetsVersion'] = true;
         $this->assetsVersion = $value;
-    
+
         return $this;
     }
-    
+
     public function __construct(array $value = [])
     {
         if (array_key_exists('mode', $value)) {
@@ -48,18 +48,18 @@ class TwigConfig
             $this->mode = $value['mode'];
             unset($value['mode']);
         }
-    
+
         if (array_key_exists('assets_version', $value)) {
             $this->_usedProperties['assetsVersion'] = true;
             $this->assetsVersion = $value['assets_version'];
             unset($value['assets_version']);
         }
-    
+
         if ([] !== $value) {
             throw new InvalidConfigurationException(sprintf('The following keys are not supported by "%s": ', __CLASS__).implode(', ', array_keys($value)));
         }
     }
-    
+
     public function toArray(): array
     {
         $output = [];
@@ -69,7 +69,7 @@ class TwigConfig
         if (isset($this->_usedProperties['assetsVersion'])) {
             $output['assets_version'] = $this->assetsVersion;
         }
-    
+
         return $output;
     }
 

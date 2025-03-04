@@ -22,7 +22,6 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'App\Entity'
                 alias: App
-
 when@test:
     doctrine:
         dbal:
@@ -48,3 +47,11 @@ when@prod:
                     adapter: cache.app
                 doctrine.system_cache_pool:
                     adapter: cache.system
+
+stof_doctrine_extensions:
+    default_locale: en_US
+    orm:
+        default:
+            tree: true
+            sluggable: true
+            #timestampable: false # not needed: listeners are not enabled by default

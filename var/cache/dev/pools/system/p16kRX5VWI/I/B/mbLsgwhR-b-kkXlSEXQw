@@ -1,3 +1,0 @@
-<?php //32cc8319f4f0631e1c4f1ffec7ee1ef4
-
-return [PHP_INT_MAX, 'backoffice/css/bootstrap.min.css'];

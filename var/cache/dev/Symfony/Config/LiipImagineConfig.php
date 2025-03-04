@@ -35,7 +35,7 @@ class LiipImagineConfig implements \Symfony\Component\Config\Builder\ConfigBuild
     private $templating;
     private $webp;
     private $_usedProperties = [];
-    
+
     public function resolvers(string $name, array $value = []): \Symfony\Config\LiipImagine\ResolversConfig
     {
         if (!isset($this->resolvers[$name])) {
@@ -44,10 +44,10 @@ class LiipImagineConfig implements \Symfony\Component\Config\Builder\ConfigBuild
         } elseif (1 < \func_num_args()) {
             throw new InvalidConfigurationException('The node created by "resolvers()" has already been initialized. You cannot pass values the second time you call resolvers().');
         }
-    
+
         return $this->resolvers[$name];
     }
-    
+
     public function loaders(string $name, array $value = []): \Symfony\Config\LiipImagine\LoadersConfig
     {
         if (!isset($this->loaders[$name])) {
@@ -56,10 +56,10 @@ class LiipImagineConfig implements \Symfony\Component\Config\Builder\ConfigBuild
         } elseif (1 < \func_num_args()) {
             throw new InvalidConfigurationException('The node created by "loaders()" has already been initialized. You cannot pass values the second time you call loaders().');
         }
-    
+
         return $this->loaders[$name];
     }
-    
+
     /**
      * @default 'gd'
      * @param ParamConfigurator|mixed $value
@@ -69,10 +69,10 @@ class LiipImagineConfig implements \Symfony\Component\Config\Builder\ConfigBuild
     {
         $this->_usedProperties['driver'] = true;
         $this->driver = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @default 'default'
      * @param ParamConfigurator|mixed $value
@@ -82,10 +82,10 @@ class LiipImagineConfig implements \Symfony\Component\Config\Builder\ConfigBuild
     {
         $this->_usedProperties['cache'] = true;
         $this->cache = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @param ParamConfigurator|mixed $value
      * @return $this
@@ -94,10 +94,10 @@ class LiipImagineConfig implements \Symfony\Component\Config\Builder\ConfigBuild
     {
         $this->_usedProperties['cacheBasePath'] = true;
         $this->cacheBasePath = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @default 'default'
      * @param ParamConfigurator|mixed $value
@@ -107,10 +107,10 @@ class LiipImagineConfig implements \Symfony\Component\Config\Builder\ConfigBuild
     {
         $this->_usedProperties['dataLoader'] = true;
         $this->dataLoader = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
@@ -120,10 +120,10 @@ class LiipImagineConfig implements \Symfony\Component\Config\Builder\ConfigBuild
     {
         $this->_usedProperties['defaultImage'] = true;
         $this->defaultImage = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @default {"quality":100,"jpeg_quality":null,"png_compression_level":null,"png_compression_filter":null,"format":null,"animated":false,"cache":null,"data_loader":null,"default_image":null,"filters":[],"post_processors":[]}
     */
@@ -135,10 +135,10 @@ class LiipImagineConfig implements \Symfony\Component\Config\Builder\ConfigBuild
         } elseif (0 < \func_num_args()) {
             throw new InvalidConfigurationException('The node created by "defaultFilterSetSettings()" has already been initialized. You cannot pass values the second time you call defaultFilterSetSettings().');
         }
-    
+
         return $this->defaultFilterSetSettings;
     }
-    
+
     /**
      * @default {"filter_action":"Liip\\ImagineBundle\\Controller\\ImagineController::filterAction","filter_runtime_action":"Liip\\ImagineBundle\\Controller\\ImagineController::filterRuntimeAction","redirect_response_code":302}
     */
@@ -150,10 +150,10 @@ class LiipImagineConfig implements \Symfony\Component\Config\Builder\ConfigBuild
         } elseif (0 < \func_num_args()) {
             throw new InvalidConfigurationException('The node created by "controller()" has already been initialized. You cannot pass values the second time you call controller().');
         }
-    
+
         return $this->controller;
     }
-    
+
     public function filterSet(string $name, array $value = []): \Symfony\Config\LiipImagine\FilterSetConfig
     {
         if (!isset($this->filterSets[$name])) {
@@ -162,10 +162,10 @@ class LiipImagineConfig implements \Symfony\Component\Config\Builder\ConfigBuild
         } elseif (1 < \func_num_args()) {
             throw new InvalidConfigurationException('The node created by "filterSet()" has already been initialized. You cannot pass values the second time you call filterSet().');
         }
-    
+
         return $this->filterSets[$name];
     }
-    
+
     /**
      * @default {"mode":"legacy","assets_version":null}
     */
@@ -177,10 +177,10 @@ class LiipImagineConfig implements \Symfony\Component\Config\Builder\ConfigBuild
         } elseif (0 < \func_num_args()) {
             throw new InvalidConfigurationException('The node created by "twig()" has already been initialized. You cannot pass values the second time you call twig().');
         }
-    
+
         return $this->twig;
     }
-    
+
     /**
      * Enables integration with enqueue if set true. Allows resolve image caches in background by sending messages to MQ.
      * @default false
@@ -191,10 +191,10 @@ class LiipImagineConfig implements \Symfony\Component\Config\Builder\ConfigBuild
     {
         $this->_usedProperties['enqueue'] = true;
         $this->enqueue = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @template TValue
      * @param TValue $value
@@ -208,20 +208,20 @@ class LiipImagineConfig implements \Symfony\Component\Config\Builder\ConfigBuild
         if (!\is_array($value)) {
             $this->_usedProperties['messenger'] = true;
             $this->messenger = $value;
-    
+
             return $this;
         }
-    
+
         if (!$this->messenger instanceof \Symfony\Config\LiipImagine\MessengerConfig) {
             $this->_usedProperties['messenger'] = true;
             $this->messenger = new \Symfony\Config\LiipImagine\MessengerConfig($value);
         } elseif (0 < \func_num_args()) {
             throw new InvalidConfigurationException('The node created by "messenger()" has already been initialized. You cannot pass values the second time you call messenger().');
         }
-    
+
         return $this->messenger;
     }
-    
+
     /**
      * Enables integration with symfony/templating component
      * @default true
@@ -232,10 +232,10 @@ class LiipImagineConfig implements \Symfony\Component\Config\Builder\ConfigBuild
     {
         $this->_usedProperties['templating'] = true;
         $this->templating = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @default {"generate":false,"quality":100,"cache":null,"data_loader":null,"post_processors":[]}
     */
@@ -247,15 +247,15 @@ class LiipImagineConfig implements \Symfony\Component\Config\Builder\ConfigBuild
         } elseif (0 < \func_num_args()) {
             throw new InvalidConfigurationException('The node created by "webp()" has already been initialized. You cannot pass values the second time you call webp().');
         }
-    
+
         return $this->webp;
     }
-    
+
     public function getExtensionAlias(): string
     {
         return 'liip_imagine';
     }
-    
+
     public function __construct(array $value = [])
     {
         if (array_key_exists('resolvers', $value)) {
@@ -263,96 +263,96 @@ class LiipImagineConfig implements \Symfony\Component\Config\Builder\ConfigBuild
             $this->resolvers = array_map(fn ($v) => new \Symfony\Config\LiipImagine\ResolversConfig($v), $value['resolvers']);
             unset($value['resolvers']);
         }
-    
+
         if (array_key_exists('loaders', $value)) {
             $this->_usedProperties['loaders'] = true;
             $this->loaders = array_map(fn ($v) => new \Symfony\Config\LiipImagine\LoadersConfig($v), $value['loaders']);
             unset($value['loaders']);
         }
-    
+
         if (array_key_exists('driver', $value)) {
             $this->_usedProperties['driver'] = true;
             $this->driver = $value['driver'];
             unset($value['driver']);
         }
-    
+
         if (array_key_exists('cache', $value)) {
             $this->_usedProperties['cache'] = true;
             $this->cache = $value['cache'];
             unset($value['cache']);
         }
-    
+
         if (array_key_exists('cache_base_path', $value)) {
             $this->_usedProperties['cacheBasePath'] = true;
             $this->cacheBasePath = $value['cache_base_path'];
             unset($value['cache_base_path']);
         }
-    
+
         if (array_key_exists('data_loader', $value)) {
             $this->_usedProperties['dataLoader'] = true;
             $this->dataLoader = $value['data_loader'];
             unset($value['data_loader']);
         }
-    
+
         if (array_key_exists('default_image', $value)) {
             $this->_usedProperties['defaultImage'] = true;
             $this->defaultImage = $value['default_image'];
             unset($value['default_image']);
         }
-    
+
         if (array_key_exists('default_filter_set_settings', $value)) {
             $this->_usedProperties['defaultFilterSetSettings'] = true;
             $this->defaultFilterSetSettings = new \Symfony\Config\LiipImagine\DefaultFilterSetSettingsConfig($value['default_filter_set_settings']);
             unset($value['default_filter_set_settings']);
         }
-    
+
         if (array_key_exists('controller', $value)) {
             $this->_usedProperties['controller'] = true;
             $this->controller = new \Symfony\Config\LiipImagine\ControllerConfig($value['controller']);
             unset($value['controller']);
         }
-    
+
         if (array_key_exists('filter_sets', $value)) {
             $this->_usedProperties['filterSets'] = true;
             $this->filterSets = array_map(fn ($v) => new \Symfony\Config\LiipImagine\FilterSetConfig($v), $value['filter_sets']);
             unset($value['filter_sets']);
         }
-    
+
         if (array_key_exists('twig', $value)) {
             $this->_usedProperties['twig'] = true;
             $this->twig = new \Symfony\Config\LiipImagine\TwigConfig($value['twig']);
             unset($value['twig']);
         }
-    
+
         if (array_key_exists('enqueue', $value)) {
             $this->_usedProperties['enqueue'] = true;
             $this->enqueue = $value['enqueue'];
             unset($value['enqueue']);
         }
-    
+
         if (array_key_exists('messenger', $value)) {
             $this->_usedProperties['messenger'] = true;
             $this->messenger = \is_array($value['messenger']) ? new \Symfony\Config\LiipImagine\MessengerConfig($value['messenger']) : $value['messenger'];
             unset($value['messenger']);
         }
-    
+
         if (array_key_exists('templating', $value)) {
             $this->_usedProperties['templating'] = true;
             $this->templating = $value['templating'];
             unset($value['templating']);
         }
-    
+
         if (array_key_exists('webp', $value)) {
             $this->_usedProperties['webp'] = true;
             $this->webp = new \Symfony\Config\LiipImagine\WebpConfig($value['webp']);
             unset($value['webp']);
         }
-    
+
         if ([] !== $value) {
             throw new InvalidConfigurationException(sprintf('The following keys are not supported by "%s": ', __CLASS__).implode(', ', array_keys($value)));
         }
     }
-    
+
     public function toArray(): array
     {
         $output = [];
@@ -401,7 +401,7 @@ class LiipImagineConfig implements \Symfony\Component\Config\Builder\ConfigBuild
         if (isset($this->_usedProperties['webp'])) {
             $output['webp'] = $this->webp->toArray();
         }
-    
+
         return $output;
     }
 

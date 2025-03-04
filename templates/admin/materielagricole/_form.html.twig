@@ -36,6 +36,19 @@
             <div class="text-danger">{{ form_errors(form.image) }}</div>
         </td>
     </tr>
+
+
+
+<tr>
+        <td><label>{{ form_label(form.categorie) }}</label></td>
+        <td>
+            {{ form_widget(form.categorie, {'attr': {'class': 'form-control', 'style': 'width: 350px;'}}) }}
+            <div class="text-danger">{{ form_errors(form.categorie) }}</div>
+        </td>
+    </tr>
+
+
+
     
     <tr>
         <td colspan="2"  style="padding-top: 10px;">

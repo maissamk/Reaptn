@@ -17,7 +17,7 @@ class ResolversConfig
     private $awsS3;
     private $flysystem;
     private $_usedProperties = [];
-    
+
     public function webPath(array $value = []): \Symfony\Config\LiipImagine\ResolversConfig\WebPathConfig
     {
         if (null === $this->webPath) {
@@ -26,10 +26,10 @@ class ResolversConfig
         } elseif (0 < \func_num_args()) {
             throw new InvalidConfigurationException('The node created by "webPath()" has already been initialized. You cannot pass values the second time you call webPath().');
         }
-    
+
         return $this->webPath;
     }
-    
+
     public function awsS3(array $value = []): \Symfony\Config\LiipImagine\ResolversConfig\AwsS3Config
     {
         if (null === $this->awsS3) {
@@ -38,10 +38,10 @@ class ResolversConfig
         } elseif (0 < \func_num_args()) {
             throw new InvalidConfigurationException('The node created by "awsS3()" has already been initialized. You cannot pass values the second time you call awsS3().');
         }
-    
+
         return $this->awsS3;
     }
-    
+
     public function flysystem(array $value = []): \Symfony\Config\LiipImagine\ResolversConfig\FlysystemConfig
     {
         if (null === $this->flysystem) {
@@ -50,10 +50,10 @@ class ResolversConfig
         } elseif (0 < \func_num_args()) {
             throw new InvalidConfigurationException('The node created by "flysystem()" has already been initialized. You cannot pass values the second time you call flysystem().');
         }
-    
+
         return $this->flysystem;
     }
-    
+
     public function __construct(array $value = [])
     {
         if (array_key_exists('web_path', $value)) {
@@ -61,24 +61,24 @@ class ResolversConfig
             $this->webPath = new \Symfony\Config\LiipImagine\ResolversConfig\WebPathConfig($value['web_path']);
             unset($value['web_path']);
         }
-    
+
         if (array_key_exists('aws_s3', $value)) {
             $this->_usedProperties['awsS3'] = true;
             $this->awsS3 = new \Symfony\Config\LiipImagine\ResolversConfig\AwsS3Config($value['aws_s3']);
             unset($value['aws_s3']);
         }
-    
+
         if (array_key_exists('flysystem', $value)) {
             $this->_usedProperties['flysystem'] = true;
             $this->flysystem = new \Symfony\Config\LiipImagine\ResolversConfig\FlysystemConfig($value['flysystem']);
             unset($value['flysystem']);
         }
-    
+
         if ([] !== $value) {
             throw new InvalidConfigurationException(sprintf('The following keys are not supported by "%s": ', __CLASS__).implode(', ', array_keys($value)));
         }
     }
-    
+
     public function toArray(): array
     {
         $output = [];
@@ -91,7 +91,7 @@ class ResolversConfig
         if (isset($this->_usedProperties['flysystem'])) {
             $output['flysystem'] = $this->flysystem->toArray();
         }
-    
+
         return $output;
     }
 

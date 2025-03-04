@@ -17,7 +17,7 @@ class FilesystemConfig
     private $allowUnresolvableDataRoots;
     private $bundleResources;
     private $_usedProperties = [];
-    
+
     /**
      * Using the "filesystem_insecure" locator is not recommended due to a less secure resolver mechanism, but is provided for those using heavily symlinked projects.
      * @default 'filesystem'
@@ -28,10 +28,10 @@ class FilesystemConfig
     {
         $this->_usedProperties['locator'] = true;
         $this->locator = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @param ParamConfigurator|list<ParamConfigurator|mixed>|string $value
      *
@@ -41,10 +41,10 @@ class FilesystemConfig
     {
         $this->_usedProperties['dataRoot'] = true;
         $this->dataRoot = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @default false
      * @param ParamConfigurator|bool $value
@@ -54,10 +54,10 @@ class FilesystemConfig
     {
         $this->_usedProperties['allowUnresolvableDataRoots'] = true;
         $this->allowUnresolvableDataRoots = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @default {"enabled":false,"access_control_type":"blacklist","access_control_list":[]}
     */
@@ -69,10 +69,10 @@ class FilesystemConfig
         } elseif (0 < \func_num_args()) {
             throw new InvalidConfigurationException('The node created by "bundleResources()" has already been initialized. You cannot pass values the second time you call bundleResources().');
         }
-    
+
         return $this->bundleResources;
     }
-    
+
     public function __construct(array $value = [])
     {
         if (array_key_exists('locator', $value)) {
@@ -80,30 +80,30 @@ class FilesystemConfig
             $this->locator = $value['locator'];
             unset($value['locator']);
         }
-    
+
         if (array_key_exists('data_root', $value)) {
             $this->_usedProperties['dataRoot'] = true;
             $this->dataRoot = $value['data_root'];
             unset($value['data_root']);
         }
-    
+
         if (array_key_exists('allow_unresolvable_data_roots', $value)) {
             $this->_usedProperties['allowUnresolvableDataRoots'] = true;
             $this->allowUnresolvableDataRoots = $value['allow_unresolvable_data_roots'];
             unset($value['allow_unresolvable_data_roots']);
         }
-    
+
         if (array_key_exists('bundle_resources', $value)) {
             $this->_usedProperties['bundleResources'] = true;
             $this->bundleResources = new \Symfony\Config\LiipImagine\LoadersConfig\Filesystem\BundleResourcesConfig($value['bundle_resources']);
             unset($value['bundle_resources']);
         }
-    
+
         if ([] !== $value) {
             throw new InvalidConfigurationException(sprintf('The following keys are not supported by "%s": ', __CLASS__).implode(', ', array_keys($value)));
         }
     }
-    
+
     public function toArray(): array
     {
         $output = [];
@@ -119,7 +119,7 @@ class FilesystemConfig
         if (isset($this->_usedProperties['bundleResources'])) {
             $output['bundle_resources'] = $this->bundleResources->toArray();
         }
-    
+
         return $output;
     }
 

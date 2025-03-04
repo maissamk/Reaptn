@@ -7,7 +7,7 @@ namespace Proxies\__CG__\App\Entity;
  */
 class ParcelleProprietes extends \App\Entity\ParcelleProprietes implements \Doctrine\ORM\Proxy\InternalProxy
 {
-     use \Symfony\Component\VarExporter\LazyGhostTrait {
+    use \Symfony\Component\VarExporter\LazyGhostTrait {
         initializeLazyObject as private;
         setLazyObjectAsInitialized as public __setInitialized;
         isLazyObjectInitialized as private;
@@ -60,7 +60,7 @@ class ParcelleProprietes extends \App\Entity\ParcelleProprietes implements \Doct
         'type_Contrat' => [parent::class, 'type_Contrat', null],
         'type_terrain' => [parent::class, 'type_terrain', null],
         'user_id_parcelle' => [parent::class, 'user_id_parcelle', null],
-    ];
+    ];
 
     public function __isInitialized(): bool
     {

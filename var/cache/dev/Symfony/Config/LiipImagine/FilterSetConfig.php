@@ -25,7 +25,7 @@ class FilterSetConfig
     private $filters;
     private $postProcessors;
     private $_usedProperties = [];
-    
+
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
@@ -35,10 +35,10 @@ class FilterSetConfig
     {
         $this->_usedProperties['quality'] = true;
         $this->quality = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
@@ -48,10 +48,10 @@ class FilterSetConfig
     {
         $this->_usedProperties['jpegQuality'] = true;
         $this->jpegQuality = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
@@ -61,10 +61,10 @@ class FilterSetConfig
     {
         $this->_usedProperties['pngCompressionLevel'] = true;
         $this->pngCompressionLevel = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
@@ -74,10 +74,10 @@ class FilterSetConfig
     {
         $this->_usedProperties['pngCompressionFilter'] = true;
         $this->pngCompressionFilter = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
@@ -87,10 +87,10 @@ class FilterSetConfig
     {
         $this->_usedProperties['format'] = true;
         $this->format = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @default null
      * @param ParamConfigurator|bool $value
@@ -100,10 +100,10 @@ class FilterSetConfig
     {
         $this->_usedProperties['animated'] = true;
         $this->animated = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
@@ -113,10 +113,10 @@ class FilterSetConfig
     {
         $this->_usedProperties['cache'] = true;
         $this->cache = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
@@ -126,10 +126,10 @@ class FilterSetConfig
     {
         $this->_usedProperties['dataLoader'] = true;
         $this->dataLoader = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
@@ -139,10 +139,10 @@ class FilterSetConfig
     {
         $this->_usedProperties['defaultImage'] = true;
         $this->defaultImage = $value;
-    
+
         return $this;
     }
-    
+
     public function filter(string $name, array $value = []): \Symfony\Config\LiipImagine\FilterSetConfig\FilterConfig
     {
         if (!isset($this->filters[$name])) {
@@ -151,10 +151,10 @@ class FilterSetConfig
         } elseif (1 < \func_num_args()) {
             throw new InvalidConfigurationException('The node created by "filter()" has already been initialized. You cannot pass values the second time you call filter().');
         }
-    
+
         return $this->filters[$name];
     }
-    
+
     public function postProcessors(string $name, array $value = []): \Symfony\Config\LiipImagine\FilterSetConfig\PostProcessorsConfig
     {
         if (!isset($this->postProcessors[$name])) {
@@ -163,10 +163,10 @@ class FilterSetConfig
         } elseif (1 < \func_num_args()) {
             throw new InvalidConfigurationException('The node created by "postProcessors()" has already been initialized. You cannot pass values the second time you call postProcessors().');
         }
-    
+
         return $this->postProcessors[$name];
     }
-    
+
     public function __construct(array $value = [])
     {
         if (array_key_exists('quality', $value)) {
@@ -174,72 +174,72 @@ class FilterSetConfig
             $this->quality = $value['quality'];
             unset($value['quality']);
         }
-    
+
         if (array_key_exists('jpeg_quality', $value)) {
             $this->_usedProperties['jpegQuality'] = true;
             $this->jpegQuality = $value['jpeg_quality'];
             unset($value['jpeg_quality']);
         }
-    
+
         if (array_key_exists('png_compression_level', $value)) {
             $this->_usedProperties['pngCompressionLevel'] = true;
             $this->pngCompressionLevel = $value['png_compression_level'];
             unset($value['png_compression_level']);
         }
-    
+
         if (array_key_exists('png_compression_filter', $value)) {
             $this->_usedProperties['pngCompressionFilter'] = true;
             $this->pngCompressionFilter = $value['png_compression_filter'];
             unset($value['png_compression_filter']);
         }
-    
+
         if (array_key_exists('format', $value)) {
             $this->_usedProperties['format'] = true;
             $this->format = $value['format'];
             unset($value['format']);
         }
-    
+
         if (array_key_exists('animated', $value)) {
             $this->_usedProperties['animated'] = true;
             $this->animated = $value['animated'];
             unset($value['animated']);
         }
-    
+
         if (array_key_exists('cache', $value)) {
             $this->_usedProperties['cache'] = true;
             $this->cache = $value['cache'];
             unset($value['cache']);
         }
-    
+
         if (array_key_exists('data_loader', $value)) {
             $this->_usedProperties['dataLoader'] = true;
             $this->dataLoader = $value['data_loader'];
             unset($value['data_loader']);
         }
-    
+
         if (array_key_exists('default_image', $value)) {
             $this->_usedProperties['defaultImage'] = true;
             $this->defaultImage = $value['default_image'];
             unset($value['default_image']);
         }
-    
+
         if (array_key_exists('filters', $value)) {
             $this->_usedProperties['filters'] = true;
             $this->filters = array_map(fn ($v) => new \Symfony\Config\LiipImagine\FilterSetConfig\FilterConfig($v), $value['filters']);
             unset($value['filters']);
         }
-    
+
         if (array_key_exists('post_processors', $value)) {
             $this->_usedProperties['postProcessors'] = true;
             $this->postProcessors = array_map(fn ($v) => new \Symfony\Config\LiipImagine\FilterSetConfig\PostProcessorsConfig($v), $value['post_processors']);
             unset($value['post_processors']);
         }
-    
+
         if ([] !== $value) {
             throw new InvalidConfigurationException(sprintf('The following keys are not supported by "%s": ', __CLASS__).implode(', ', array_keys($value)));
         }
     }
-    
+
     public function toArray(): array
     {
         $output = [];
@@ -276,7 +276,7 @@ class FilterSetConfig
         if (isset($this->_usedProperties['postProcessors'])) {
             $output['post_processors'] = array_map(fn ($v) => $v->toArray(), $this->postProcessors);
         }
-    
+
         return $output;
     }
 

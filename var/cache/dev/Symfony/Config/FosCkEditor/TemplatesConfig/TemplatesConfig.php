@@ -17,7 +17,7 @@ class TemplatesConfig
     private $template;
     private $templateParameters;
     private $_usedProperties = [];
-    
+
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
@@ -27,10 +27,10 @@ class TemplatesConfig
     {
         $this->_usedProperties['title'] = true;
         $this->title = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
@@ -40,10 +40,10 @@ class TemplatesConfig
     {
         $this->_usedProperties['image'] = true;
         $this->image = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
@@ -53,10 +53,10 @@ class TemplatesConfig
     {
         $this->_usedProperties['description'] = true;
         $this->description = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
@@ -66,10 +66,10 @@ class TemplatesConfig
     {
         $this->_usedProperties['html'] = true;
         $this->html = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
@@ -79,10 +79,10 @@ class TemplatesConfig
     {
         $this->_usedProperties['template'] = true;
         $this->template = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @return $this
      */
@@ -90,10 +90,10 @@ class TemplatesConfig
     {
         $this->_usedProperties['templateParameters'] = true;
         $this->templateParameters[$name] = $value;
-    
+
         return $this;
     }
-    
+
     public function __construct(array $value = [])
     {
         if (array_key_exists('title', $value)) {
@@ -101,42 +101,42 @@ class TemplatesConfig
             $this->title = $value['title'];
             unset($value['title']);
         }
-    
+
         if (array_key_exists('image', $value)) {
             $this->_usedProperties['image'] = true;
             $this->image = $value['image'];
             unset($value['image']);
         }
-    
+
         if (array_key_exists('description', $value)) {
             $this->_usedProperties['description'] = true;
             $this->description = $value['description'];
             unset($value['description']);
         }
-    
+
         if (array_key_exists('html', $value)) {
             $this->_usedProperties['html'] = true;
             $this->html = $value['html'];
             unset($value['html']);
         }
-    
+
         if (array_key_exists('template', $value)) {
             $this->_usedProperties['template'] = true;
             $this->template = $value['template'];
             unset($value['template']);
         }
-    
+
         if (array_key_exists('template_parameters', $value)) {
             $this->_usedProperties['templateParameters'] = true;
             $this->templateParameters = $value['template_parameters'];
             unset($value['template_parameters']);
         }
-    
+
         if ([] !== $value) {
             throw new InvalidConfigurationException(sprintf('The following keys are not supported by "%s": ', __CLASS__).implode(', ', array_keys($value)));
         }
     }
-    
+
     public function toArray(): array
     {
         $output = [];
@@ -158,7 +158,7 @@ class TemplatesConfig
         if (isset($this->_usedProperties['templateParameters'])) {
             $output['template_parameters'] = $this->templateParameters;
         }
-    
+
         return $output;
     }
 

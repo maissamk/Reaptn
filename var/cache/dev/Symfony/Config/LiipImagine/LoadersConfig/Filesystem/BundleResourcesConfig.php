@@ -14,7 +14,7 @@ class BundleResourcesConfig
     private $accessControlType;
     private $accessControlList;
     private $_usedProperties = [];
-    
+
     /**
      * @default false
      * @param ParamConfigurator|bool $value
@@ -24,10 +24,10 @@ class BundleResourcesConfig
     {
         $this->_usedProperties['enabled'] = true;
         $this->enabled = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * Sets the access control method applied to bundle names in "access_control_list" into a blacklist or whitelist.
      * @default 'blacklist'
@@ -38,10 +38,10 @@ class BundleResourcesConfig
     {
         $this->_usedProperties['accessControlType'] = true;
         $this->accessControlType = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
      *
@@ -51,10 +51,10 @@ class BundleResourcesConfig
     {
         $this->_usedProperties['accessControlList'] = true;
         $this->accessControlList = $value;
-    
+
         return $this;
     }
-    
+
     public function __construct(array $value = [])
     {
         if (array_key_exists('enabled', $value)) {
@@ -62,24 +62,24 @@ class BundleResourcesConfig
             $this->enabled = $value['enabled'];
             unset($value['enabled']);
         }
-    
+
         if (array_key_exists('access_control_type', $value)) {
             $this->_usedProperties['accessControlType'] = true;
             $this->accessControlType = $value['access_control_type'];
             unset($value['access_control_type']);
         }
-    
+
         if (array_key_exists('access_control_list', $value)) {
             $this->_usedProperties['accessControlList'] = true;
             $this->accessControlList = $value['access_control_list'];
             unset($value['access_control_list']);
         }
-    
+
         if ([] !== $value) {
             throw new InvalidConfigurationException(sprintf('The following keys are not supported by "%s": ', __CLASS__).implode(', ', array_keys($value)));
         }
     }
-    
+
     public function toArray(): array
     {
         $output = [];
@@ -92,7 +92,7 @@ class BundleResourcesConfig
         if (isset($this->_usedProperties['accessControlList'])) {
             $output['access_control_list'] = $this->accessControlList;
         }
-    
+
         return $output;
     }
 

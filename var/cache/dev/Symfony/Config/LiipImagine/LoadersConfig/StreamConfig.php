@@ -13,7 +13,7 @@ class StreamConfig
     private $wrapper;
     private $context;
     private $_usedProperties = [];
-    
+
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
@@ -23,10 +23,10 @@ class StreamConfig
     {
         $this->_usedProperties['wrapper'] = true;
         $this->wrapper = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
@@ -36,10 +36,10 @@ class StreamConfig
     {
         $this->_usedProperties['context'] = true;
         $this->context = $value;
-    
+
         return $this;
     }
-    
+
     public function __construct(array $value = [])
     {
         if (array_key_exists('wrapper', $value)) {
@@ -47,18 +47,18 @@ class StreamConfig
             $this->wrapper = $value['wrapper'];
             unset($value['wrapper']);
         }
-    
+
         if (array_key_exists('context', $value)) {
             $this->_usedProperties['context'] = true;
             $this->context = $value['context'];
             unset($value['context']);
         }
-    
+
         if ([] !== $value) {
             throw new InvalidConfigurationException(sprintf('The following keys are not supported by "%s": ', __CLASS__).implode(', ', array_keys($value)));
         }
     }
-    
+
     public function toArray(): array
     {
         $output = [];
@@ -68,7 +68,7 @@ class StreamConfig
         if (isset($this->_usedProperties['context'])) {
             $output['context'] = $this->context;
         }
-    
+
         return $output;
     }
 

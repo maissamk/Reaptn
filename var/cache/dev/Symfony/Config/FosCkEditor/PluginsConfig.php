@@ -13,7 +13,7 @@ class PluginsConfig
     private $path;
     private $filename;
     private $_usedProperties = [];
-    
+
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
@@ -23,10 +23,10 @@ class PluginsConfig
     {
         $this->_usedProperties['path'] = true;
         $this->path = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
@@ -36,10 +36,10 @@ class PluginsConfig
     {
         $this->_usedProperties['filename'] = true;
         $this->filename = $value;
-    
+
         return $this;
     }
-    
+
     public function __construct(array $value = [])
     {
         if (array_key_exists('path', $value)) {
@@ -47,18 +47,18 @@ class PluginsConfig
             $this->path = $value['path'];
             unset($value['path']);
         }
-    
+
         if (array_key_exists('filename', $value)) {
             $this->_usedProperties['filename'] = true;
             $this->filename = $value['filename'];
             unset($value['filename']);
         }
-    
+
         if ([] !== $value) {
             throw new InvalidConfigurationException(sprintf('The following keys are not supported by "%s": ', __CLASS__).implode(', ', array_keys($value)));
         }
     }
-    
+
     public function toArray(): array
     {
         $output = [];
@@ -68,7 +68,7 @@ class PluginsConfig
         if (isset($this->_usedProperties['filename'])) {
             $output['filename'] = $this->filename;
         }
-    
+
         return $output;
     }
 

@@ -15,7 +15,7 @@ class ToolbarsConfig
     private $configs;
     private $items;
     private $_usedProperties = [];
-    
+
     public function configs(string $name, array $value = []): \Symfony\Config\FosCkEditor\Toolbars\ConfigsConfig
     {
         if (!isset($this->configs[$name])) {
@@ -24,10 +24,10 @@ class ToolbarsConfig
         } elseif (1 < \func_num_args()) {
             throw new InvalidConfigurationException('The node created by "configs()" has already been initialized. You cannot pass values the second time you call configs().');
         }
-    
+
         return $this->configs[$name];
     }
-    
+
     public function items(string $name, array $value = []): \Symfony\Config\FosCkEditor\Toolbars\ItemsConfig
     {
         if (!isset($this->items[$name])) {
@@ -36,10 +36,10 @@ class ToolbarsConfig
         } elseif (1 < \func_num_args()) {
             throw new InvalidConfigurationException('The node created by "items()" has already been initialized. You cannot pass values the second time you call items().');
         }
-    
+
         return $this->items[$name];
     }
-    
+
     public function __construct(array $value = [])
     {
         if (array_key_exists('configs', $value)) {
@@ -47,18 +47,18 @@ class ToolbarsConfig
             $this->configs = array_map(fn ($v) => new \Symfony\Config\FosCkEditor\Toolbars\ConfigsConfig($v), $value['configs']);
             unset($value['configs']);
         }
-    
+
         if (array_key_exists('items', $value)) {
             $this->_usedProperties['items'] = true;
             $this->items = array_map(fn ($v) => new \Symfony\Config\FosCkEditor\Toolbars\ItemsConfig($v), $value['items']);
             unset($value['items']);
         }
-    
+
         if ([] !== $value) {
             throw new InvalidConfigurationException(sprintf('The following keys are not supported by "%s": ', __CLASS__).implode(', ', array_keys($value)));
         }
     }
-    
+
     public function toArray(): array
     {
         $output = [];
@@ -68,7 +68,7 @@ class ToolbarsConfig
         if (isset($this->_usedProperties['items'])) {
             $output['items'] = array_map(fn ($v) => $v->toArray(), $this->items);
         }
-    
+
         return $output;
     }
 

@@ -19,7 +19,7 @@ class AwsS3Config
     private $putOptions;
     private $proxies;
     private $_usedProperties = [];
-    
+
     /**
      * @default null
      * @param ParamConfigurator|mixed $value
@@ -29,10 +29,10 @@ class AwsS3Config
     {
         $this->_usedProperties['bucket'] = true;
         $this->bucket = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @default false
      * @param ParamConfigurator|mixed $value
@@ -42,10 +42,10 @@ class AwsS3Config
     {
         $this->_usedProperties['cache'] = true;
         $this->cache = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @default 'public-read'
      * @param ParamConfigurator|mixed $value
@@ -55,10 +55,10 @@ class AwsS3Config
     {
         $this->_usedProperties['acl'] = true;
         $this->acl = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @param ParamConfigurator|mixed $value
      * @return $this
@@ -67,10 +67,10 @@ class AwsS3Config
     {
         $this->_usedProperties['cachePrefix'] = true;
         $this->cachePrefix = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @param ParamConfigurator|list<ParamConfigurator|mixed> $value
      *
@@ -80,10 +80,10 @@ class AwsS3Config
     {
         $this->_usedProperties['clientConfig'] = true;
         $this->clientConfig = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @return $this
      */
@@ -91,10 +91,10 @@ class AwsS3Config
     {
         $this->_usedProperties['getOptions'] = true;
         $this->getOptions[$key] = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @return $this
      */
@@ -102,10 +102,10 @@ class AwsS3Config
     {
         $this->_usedProperties['putOptions'] = true;
         $this->putOptions[$key] = $value;
-    
+
         return $this;
     }
-    
+
     /**
      * @return $this
      */
@@ -113,10 +113,10 @@ class AwsS3Config
     {
         $this->_usedProperties['proxies'] = true;
         $this->proxies[$name] = $value;
-    
+
         return $this;
     }
-    
+
     public function __construct(array $value = [])
     {
         if (array_key_exists('bucket', $value)) {
@@ -124,54 +124,54 @@ class AwsS3Config
             $this->bucket = $value['bucket'];
             unset($value['bucket']);
         }
-    
+
         if (array_key_exists('cache', $value)) {
             $this->_usedProperties['cache'] = true;
             $this->cache = $value['cache'];
             unset($value['cache']);
         }
-    
+
         if (array_key_exists('acl', $value)) {
             $this->_usedProperties['acl'] = true;
             $this->acl = $value['acl'];
             unset($value['acl']);
         }
-    
+
         if (array_key_exists('cache_prefix', $value)) {
             $this->_usedProperties['cachePrefix'] = true;
             $this->cachePrefix = $value['cache_prefix'];
             unset($value['cache_prefix']);
         }
-    
+
         if (array_key_exists('client_config', $value)) {
             $this->_usedProperties['clientConfig'] = true;
             $this->clientConfig = $value['client_config'];
             unset($value['client_config']);
         }
-    
+
         if (array_key_exists('get_options', $value)) {
             $this->_usedProperties['getOptions'] = true;
             $this->getOptions = $value['get_options'];
             unset($value['get_options']);
         }
-    
+
         if (array_key_exists('put_options', $value)) {
             $this->_usedProperties['putOptions'] = true;
             $this->putOptions = $value['put_options'];
             unset($value['put_options']);
         }
-    
+
         if (array_key_exists('proxies', $value)) {
             $this->_usedProperties['proxies'] = true;
             $this->proxies = $value['proxies'];
             unset($value['proxies']);
         }
-    
+
         if ([] !== $value) {
             throw new InvalidConfigurationException(sprintf('The following keys are not supported by "%s": ', __CLASS__).implode(', ', array_keys($value)));
         }
     }
-    
+
     public function toArray(): array
     {
         $output = [];
@@ -199,7 +199,7 @@ class AwsS3Config
         if (isset($this->_usedProperties['proxies'])) {
             $output['proxies'] = $this->proxies;
         }
-    
+
         return $output;
     }
 
