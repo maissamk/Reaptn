@@ -14,8 +14,6 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordC
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\SecurityRequestAttributes;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
-use Doctrine\ORM\EntityManagerInterface;
-
 
 class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 {
@@ -23,10 +21,8 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 
     public const LOGIN_ROUTE = 'app_login';
 
-    public function __construct(UrlGeneratorInterface $urlGenerator, EntityManagerInterface $entityManager)
+    public function __construct(private UrlGeneratorInterface $urlGenerator)
     {
-        $this->urlGenerator = $urlGenerator;
-        $this->entityManager = $entityManager;
     }
 
     public function authenticate(Request $request): Passport
@@ -46,15 +42,6 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-        
-        $user = $token->getUser();
-        $user->incrementLoginAttempts(); // Increment login attempts
-        // if ($user) {
-        //     $user->setStatus('active'); // ✅ Set status to "active"
-        //     $this->entityManager->persist($user);
-        //     $this->entityManager->flush();
-        // }
-        
         // If the user is an admin, redirect to the admin index page
         if (in_array('ROLE_ADMIN', $token->getUser()->getRoles())) {
             return new RedirectResponse($this->urlGenerator->generate('app_admin')); // Redirect to the admin index page

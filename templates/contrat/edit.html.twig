@@ -1,161 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier une Parcelle ou Propriété{% endblock %}
+{% block title %}Edit Contrat{% endblock %}
 
 {% block body %}
+
+
 <div class="container mt-5 pt-5">
-    <h1 class="text-center text-primary fw-bold mb-4">Modifier une Parcelle ou Propriété</h1>
 
-    <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6">
-            <div class="card p-4 shadow-lg border-0">
-                
-                {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'needs-validation'}}) }}
+    <h1 class="text-center">Edit Contrat</h1>
+{{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'container mt-4 p-4 bg-light rounded shadow'}}) }}
 
-                <!-- Affichage de l'image actuelle -->
-                <div class="text-center mb-4">
-                    {% if parcelle_propriete.image %}
-                        <img src="{{ asset('uploads/images/' ~ parcelle_propriete.image) }}" 
-                             class="rounded shadow-sm border" width="200" height="150" 
-                             alt="Image de la parcelle">
-                    {% else %}
-                        <img src="{{ asset('uploads/images/default.png') }}" 
-                             class="rounded shadow-sm border" width="200" height="150" 
-                             alt="Image par défaut">
-                    {% endif %}
-                </div>
-
-                <!-- Champs du formulaire avec erreurs en rouge -->
-                <div class="mb-3">
-                    {{ form_label(form.titre, 'Titre', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
-                    {{ form_widget(form.titre, {'attr': {'class': 'form-control shadow-sm'}}) }}
-                    <div class="invalid-feedback d-block text-danger"> {{ form_errors(form.titre) }} </div>
-                </div>
-
-                <div class="mb-3">
-                    {{ form_label(form.description, 'Description', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
-                    {{ form_widget(form.description, {'attr': {'class': 'form-control shadow-sm', 'rows': '3'}}) }}
-                    <div class="invalid-feedback d-block text-danger"> {{ form_errors(form.description) }} </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        {{ form_label(form.prix, 'Prix', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
-                        {{ form_widget(form.prix, {'attr': {'class': 'form-control shadow-sm'}}) }}
-                        <div class="invalid-feedback d-block text-danger"> {{ form_errors(form.prix) }} </div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        {{ form_label(form.status, 'Status', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
-                        {{ form_widget(form.status, {'attr': {'class': 'form-select shadow-sm'}}) }}
-                        <div class="invalid-feedback d-block text-danger"> {{ form_errors(form.status) }} </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        {{ form_label(form.emplacement, 'Emplacement', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
-                        {{ form_widget(form.emplacement, {'attr': {'class': 'form-control shadow-sm'}}) }}
-                        <div class="invalid-feedback d-block text-danger"> {{ form_errors(form.emplacement) }} </div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        {{ form_label(form.taille, 'Taille', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
-                        {{ form_widget(form.taille, {'attr': {'class': 'form-control shadow-sm'}}) }}
-                        <div class="invalid-feedback d-block text-danger"> {{ form_errors(form.taille) }} </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        {{ form_label(form.date_creation_annonce, 'Date de création', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
-                        {{ form_widget(form.date_creation_annonce, {'attr': {'class': 'form-control shadow-sm'}}) }}
-                        <div class="invalid-feedback d-block text-danger"> {{ form_errors(form.date_creation_annonce) }} </div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        {{ form_label(form.date_misajour_annonce, 'Date de mise à jour', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
-                        {{ form_widget(form.date_misajour_annonce, {'attr': {'class': 'form-control shadow-sm'}}) }}
-                        <div class="invalid-feedback d-block text-danger"> {{ form_errors(form.date_misajour_annonce) }} </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        {{ form_label(form.nom_proprietaire, 'Nom du propriétaire', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
-                        {{ form_widget(form.nom_proprietaire, {'attr': {'class': 'form-control shadow-sm'}}) }}
-                        <div class="invalid-feedback d-block text-danger"> {{ form_errors(form.nom_proprietaire) }} </div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        {{ form_label(form.contact_proprietaire, 'Contact du propriétaire', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
-                        {{ form_widget(form.contact_proprietaire, {'attr': {'class': 'form-control shadow-sm'}}) }}
-                        <div class="invalid-feedback d-block text-danger"> {{ form_errors(form.contact_proprietaire) }} </div>
-                    </div>
-                </div>
-
-                <!-- Upload image -->
-                <div class="mb-3">
-                    {{ form_label(form.imageFile, 'Image de la Parcelle', {
-                        'label_attr': {
-                            'class': 'form-label fw-semibold',
-                            'for': 'imageFile'
-                        }
-                    }) }}
-                    {{ form_widget(form.imageFile, {
-                        'attr': {
-                            'class': 'form-control shadow-sm',
-                            'id': 'imageFile'
-                        }
-                    }) }}
-                    <div class="invalid-feedback d-block text-danger">
-                        {{ form_errors(form.imageFile) }}
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    {{ form_label(form.type_terrain, 'Type De Terrain', {'label_attr': {'class': 'form-label fw-semibold'}}) }}
-                    {{ form_widget(form.type_terrain, {'attr': {'class': 'form-control shadow-sm'}}) }}
-                    <div class="invalid-feedback d-block text-danger"> {{ form_errors(form.type_terrain) }} </div>
-                </div>
-
-                <div class="form-check mb-3">
-                    {{ form_widget(form.estDisponible, {
-                        'attr': {
-                            'class': 'form-check-input shadow-sm',
-                            'id': 'estDisponibleCheckbox'
-                        }
-                    }) }}
-                    {{ form_label(form.estDisponible, 'Disponible', {
-                        'label_attr': {
-                            'class': 'form-check-label fw-semibold',
-                            'for': 'estDisponibleCheckbox'
-                        }
-                    }) }}
-                    <div class="invalid-feedback d-block text-danger">
-                        {{ form_errors(form.estDisponible) }}
-                    </div>
-                </div>
-
-                <!-- Bouton de mise à jour -->
-                <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-primary btn-lg shadow-sm">
-                        <i class="fas fa-save me-2"></i>Mettre à jour
-                    </button>
-                </div>
-                
-                {{ form_end(form) }}  
-            </div>
+    <div class="card p-4 mt-3">
+        {{ include('contrat/_form.html.twig', {'button_label': 'Update'}) }}
+    </div>
+<div class="d-flex justify-content-center mt-4">
+            <a href="{{ path('app_contrat_index') }}" class="btn btn-primary me-3">
+                <i class="fa fa-arrow-left"></i> Retour
+            </a>
+           
         </div>
-    </div>
 
-    <!-- Bouton Retour -->
-    <div class="d-flex justify-content-center mt-4">
-        <a href="{{ path('app_parcelle_proprietes_index') }}" class="btn btn-primary me-3">
-            <i class="fa fa-arrow-left"></i> Retour
-        </a>
-    </div>
-
-    <!-- Formulaire de suppression -->
+    
     <div class="text-center mt-3">
-        {{ include('parcelle_proprietes/_delete_form.html.twig') }}
+        {{ include('contrat/_delete_form.html.twig') }}
     </div>
 </div>
-
+{{ form_end(form) }} 
+     
 {% endblock %}

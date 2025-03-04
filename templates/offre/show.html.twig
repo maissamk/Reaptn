@@ -5,83 +5,169 @@
 {% block body %}
     <div class="pt-5">
         <div class="container mt-5 pt-5">
-            <h1>Details D'Offre </h1>
+            <h1>{{ 'Details D\'Offre'|trans }}</h1>
 
             <table class="table">
                 <tbody>
                     <tr>
-                        <th>ID</th>
+                        <th>{{ 'ID'|trans }}</th>
                         <td>{{ offre.id }}</td>
                     </tr>
                     <tr>
-                        <th>ID A</th>
+                        <th>{{ 'ID A'|trans }}</th>
                         <td>{{ offre.ida }}</td>
                     </tr>
                     <tr>
-                        <th>ID E</th>
+                        <th>{{ 'ID E'|trans }}</th>
                         <td>{{ offre.ide }}</td>
                     </tr>
                     <tr>
-                        <th>Status</th>
-                        <td>{{ offre.statut ? 'Active' : 'Inactive' }}</td>
+                        <th>{{ 'Status'|trans }}</th>
+                        <td>{{ offre.statut ? 'Active'|trans : 'Inactive'|trans }}</td>
                     </tr>
                     <tr>
-                        <th>Description</th>
+                        <th>{{ 'Description'|trans }}</th>
                         <td>{{ offre.descr }}</td>
                     </tr>
                     <tr>
-                        <th>Title</th>
+                        <th>{{ 'Title'|trans }}</th>
                         <td>{{ offre.titre }}</td>
                     </tr>
                     <tr>
-                        <th>Competence</th>
+                        <th>{{ 'Competence'|trans }}</th>
                         <td>{{ offre.comp }}</td>
                     </tr>
                 </tbody>
             </table>
-<div class="d-flex justify-content-center mt-4">
-            <a href="{{ path('app_offre_index') }}" class="btn btn-primary me-3">
-                <i class="fa fa-arrow-left"></i> Retour
-            </a>
-           
-        </div>
 
+             <!-- Export to PDF Button -->
+            <div class="d-flex justify-content-center mt-4">
+                <a href="{{ path('app_offre_export_pdf', { id: offre.id }) }}" class="btn btn-success">
+                    <i class="fa fa-file-pdf"></i> {{ 'Export to PDF'|trans }}
+                </a>
+            </div>
             
+            <div class="d-flex justify-content-center mt-4">
+                <a href="{{ path('app_offre_index') }}" class="btn btn-primary me-3">
+                    <i class="fa fa-arrow-left"></i> {{ 'Retour'|trans }}
+                </a>
+            </div>
+
+            <!-- Search Form for Employees -->
+            <h3>{{ 'Search Employees'|trans }}</h3>
+            <form method="GET" action="{{ path('app_offre_show', { id: offre.id }) }}">
+                <div class="form-group mb-3">
+                    <input type="text" name="search" value="{{ search }}" placeholder="{{ 'Search by user or competence'|trans }}" class="form-control" />
+                </div>
+
+                <div class="form-group mb-3">
+                    <select name="dispo" class="form-control">
+                        <option value="">{{ 'Filter by Availability'|trans }}</option>
+                        {% for day in ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] %}
+                            <option value="{{ day }}" {% if dispoFilter == day %}selected{% endif %}>{{ day }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">{{ 'Search'|trans }}</button>
+                <a href="{{ path('app_offre_show', { id: offre.id }) }}" class="btn btn-secondary">{{ 'Reset Filters'|trans }}</a>
+            </form>
+
+            <hr>
+
             <!-- Employees List -->
-            <h3>Employés inscrits:</h3>
-            <ul>
-                {% for employe in offre.employes %}
-                    <li>
-                        User ID: {{ employe.userIdentifier }} - Competence: {{ employe.comp }}
+            <h3>{{ 'Employés inscrits'|trans }}:</h3>
+            <ul class="list-group">
+                {% for employe in employes %}
+                    <li class="list-group-item {% if employe.conf == 1 %}border border-success{% endif %} p-3 mb-2">
+                        <strong>{{ 'User ID'|trans }}:</strong> {{ employe.userIdentifier }} - <strong>{{ 'Competence'|trans }}:</strong> {{ employe.comp }} 
+                        <br>
+                        <strong>{{ 'Disponibilité'|trans }}:</strong>
+                        <span>
+                            {% set daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] %}
+                            {% for day in daysOfWeek %}
+                                <span style="color: {% if day in employe.dispo %}green{% else %}red{% endif %};">
+                                    {{ day }}
+                                </span>
+                                {% if not loop.last %}, {% endif %}
+                            {% endfor %}
+                        </span>
+                        {% if employe.suggested is not null %}
+    {% if employe.suggested == 1 %}
+        <span class="badge bg-info">{{ 'Suggested'|trans }}</span>
+    {% else %}
+        <span class="badge bg-secondary">{{ 'Not Suggested'|trans }}</span>
+    {% endif %}
+{% else %}
+    <span class="badge bg-warning">{{ 'Status Pending'|trans }}</span>
+{% endif %}
+                        
+                        <!-- Confirmation Status -->
+                        {% if employe.conf == 1 %}
+                            <span class="badge bg-success">✔ {{ 'Confirmed'|trans }}</span>
+                        {% else %}
+                            <!-- Confirm Button -->
+                            <form action="{{ path('employe_confirm', {'id': employe.id}) }}" method="post" style="display:inline;">
+                                <button type="submit" class="btn btn-success">✔ {{ 'Confirm'|trans }}</button>
+                            </form>
+
+                            <!-- Reject Button -->
+                            <form action="{{ path('employe_reject', {'id': employe.id}) }}" method="post" style="display:inline;">
+                                <button type="submit" class="btn btn-danger">✖ {{ 'Reject'|trans }}</button>
+                            </form>
+                        {% endif %}
+                        
+                        <br>
+                        <strong>{{ 'Date d\'inscription'|trans }}:</strong> {{ employe.dateJoin|date('Y-m-d H:i') }} <!-- ✅ Display join date -->
                     </li>
                 {% else %}
-                    <li>Aucun Employés Inscrits.</li>
+                    <li class="list-group-item">{{ 'Aucun Employés Inscrits.'|trans }}</li>
                 {% endfor %}
             </ul>
 
             <hr>
 
             <!-- Subscription Form -->
-            {% if  is_granted('ROLE_CLIENT') %}
-            <h3>Entrez vos détails</h3>
-            <form action="{{ path('app_employe_new', {'id': offre.id}) }}" method="POST">
-                <div class="mb-3">
-                    <label for="employeId" class="form-label">Enter Your ID:</label>
-                    <input type="number" id="employeId" name="employeId" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label for="comp" class="form-label">Entrez votre Competence:</label>
-                    <input type="text" id="comp" name="comp" class="form-control" required>
-                </div>
-                <button type="submit" class="btn btn-success">Joindre cette offre</button>
+{% if is_granted('ROLE_CLIENT') %}
+    <div class="subscription-container">
+        {% if existingEmploye %}
+            <div class="alert alert-info">
+                <p>{{ 'You are already subscribed to this offer.'|trans }}</p>
+            </div>
+            <form action="{{ path('app_employe_delete', { id: offre.id }) }}" method="post">
+                <button type="submit" class="btn btn-danger mt-3">{{ 'Delete Subscription'|trans }}</button>
             </form>
+        {% else %}
+            {% if form is not null %}
+                <div class="subscription-form">
+                    <h3>{{ 'Subscribe to this offer'|trans }}</h3>
+                    {{ form_start(form) }}
+                        <div class="form-group">
+                            {{ form_label(form.comp) }}
+                            {{ form_widget(form.comp, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.dispo) }}
+                            {{ form_widget(form.dispo, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success mt-3">{{ 'Subscribe'|trans }}</button>
+                        </div>
+                    {{ form_end(form) }}
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endif %}
 
             <hr>
-            {% endif %}
+
             <!-- Delete Offer Form -->
-            {% if  is_granted('ROLE_AGRICULTEUR') %}
-            {{ include('offre/_delete_form.html.twig') }}
+            {% if is_granted('ROLE_AGRICULTEUR') %}
+                {{ include('offre/_delete_form.html.twig') }}
             {% endif %}
+            
         </div>
     </div>
 {% endblock %}
+

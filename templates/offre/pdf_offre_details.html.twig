@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Offre Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Offre Details - {{ offre.titre }}</h1>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <td>{{ offre.id }}</td>
+        </tr>
+        <tr>
+            <th>ID A</th>
+            <td>{{ offre.ida }}</td>
+        </tr>
+        <tr>
+            <th>ID E</th>
+            <td>{{ offre.ide }}</td>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td>{{ offre.statut ? 'Active' : 'Inactive' }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ offre.descr }}</td>
+        </tr>
+        <tr>
+            <th>Title</th>
+            <td>{{ offre.titre }}</td>
+        </tr>
+        <tr>
+            <th>Competence</th>
+            <td>{{ offre.comp }}</td>
+        </tr>
+    </table>
+</body>
+</html>

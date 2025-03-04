@@ -1,0 +1,93 @@
+# base navbar
+
+Esprit: "Esprit"
+Agrivision@Example.com: "Agrivision@gmail.com"
+Privacy Policy: "سياسة الخصوصية"
+Terms of Use: "شروط الاستخدام"
+Sales and Refunds: "المبيعات والاسترداد"
+Accueil: "الصفحة الرئيسية"
+Produits: "المنتجات"
+Produits Detail: "تفاصيل المنتج"
+Parcelle: "القطعة الأرضية"
+Offres disponibles: "العروض المتاحة"
+Matériel Agricole: "المعدات الزراعية"
+Matériel A Vendre: "المعدات للبيع"
+Matériel A Louer: "المعدات للإيجار"
+Déconnexion: "تسجيل الخروج"
+Connexion: "تسجيل الدخول"
+
+#base footer
+
+No Translation: "بدون ترجمة"
+Arabic: "العربية"
+Your Email: "بريدك الإلكتروني"
+Subscribe Now: "اشترك الآن"
+Team: "الفريق"
+Med Nour Romdhani: "مـد نور رمضانـي"
+Maissa Khemiri: "مـايسة خيري"
+Baligh Laouini: "باليغ اللاويـني"
+Yosr Sfaihi: "يـسرى الفـيحي"
+Nihel Hassad: "نهيـل حـساد"
+Takoua Aouadi: "تقوى العوادي"
+Contact: "اتصال"
+Address: "العنوان"
+Email: "البريد الإلكتروني"
+Phone: "الهاتف"
+Payment Accepted: "الدفع مقبول"
+
+#page/index
+
+YOU Sow,You Reap: "أنت تزرع، أنت تحصد"
+
+#offre/index
+
+Our Organic Products: "منتجاتنا العضوية"
+Statut: "الحالة"
+Description: "الوصف"
+Compétences demandées: "المهارات المطلوبة"
+Voir: "عرض"
+Modifier: "تعديل"
+No records found: "لا توجد سجلات"
+Ajouter Offre: "إضافة عرض"
+
+
+#offre/show
+
+Details D'Offre: "تفاصيل العرض"
+ID: "الهوية"
+ID A: "الهوية A"
+ID E: "الهوية E"
+Status: "الحالة"
+Active: "نشط"
+Inactive: "غير نشط"
+Title: "العنوان"
+Export to PDF: "تصدير إلى PDF"
+Retour: "الرجوع"
+Search Employees: "بحث عن الموظفين"
+Search by user or competence: "ابحث حسب المستخدم أو المهارة"
+Filter by Availability: "تصفية حسب التوفر"
+Reset Filters: "إعادة تعيين الفلاتر"
+Employés inscrits: "الموظفون المسجلون"
+User ID: "هوية المستخدم"
+Competence: "المهارة"
+Disponibilité: "التوفر"
+Suggested: "مقترح"
+Not Suggested: "غير مقترح"
+Status Pending: "الحالة قيد الانتظار"
+Confirmed: "تم التأكيد"
+Confirm: "تأكيد"
+Reject: "رفض"
+You are already subscribed to this offer: "لقد اشتركت بالفعل في هذا العرض"
+Delete Subscription: "حذف الاشتراك"
+Subscribe to this offer: "اشترك في هذا العرض"
+Delete Offer: "حذف العرض"
+
+#offre/new
+
+New Offre: "عرض جديد"
+Create new Offre: "إنشاء عرض جديد"
+back to list: "الرجوع إلى القائمة"
+
+Enregistrer: "حفظ"
+
+#offre

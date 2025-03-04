@@ -6,17 +6,80 @@ use App\Entity\Employe;
 use App\Entity\Offre;
 use App\Form\EmployeType;
 use App\Repository\EmployeRepository;
+use App\Repository\OffreRepository;
+
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Bundle\SecurityBundle\Security;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
+
+use App\Service\HuggingFaceService;
+use Phpml\FeatureExtraction\TokenCountVectorizer;
+use Phpml\Tokenization\WhitespaceTokenizer;
 
 #[Route('/employe')]
 final class EmployeController extends AbstractController
 {
     // Front office functions
+    #[Route('/employe/{id}/confirm', name: 'employe_confirm')]
+public function confirmAction(int $id, EntityManagerInterface $entityManager): Response
+{
+    $employe = $entityManager->getRepository(Employe::class)->find($id);
+
+    if (!$employe) {
+        throw $this->createNotFoundException('Employé non trouvé.');
+    }
+
+    $employe->setConf(1); // Set conf to confirmed
+    $entityManager->persist($employe);
+    $entityManager->flush();
+
+    return $this->redirectToRoute('app_offre_show', ['id' => $employe->getOffre()->getId()]);
+}
+#[Route('/employe/{id}/reject', name: 'employe_reject', methods: ['POST'])]
+public function rejectEmploye(Employe $employe, EntityManagerInterface $entityManager): Response
+{
+    $offreId = $employe->getOffre()->getId(); // Get the offer ID before deletion
+    $entityManager->remove($employe);
+    $entityManager->flush();
+
+    $this->addFlash('danger', 'Employee rejected and removed!');
+    return $this->redirectToRoute('app_offre_show', ['id' => $offreId]);
+}
+
+#[Route('/evaluate-local/{id}', name: 'evaluate_employe_local')]
+public function evaluateLocal(Employe $employe, EntityManagerInterface $entityManager): Response
+{
+    $offreComp = strtolower($employe->getOffre()->getComp());  
+    $employeComp = strtolower($employe->getComp());
+
+    // Tokenize manually (split by whitespace)
+    $tokenizer = new WhitespaceTokenizer();
+    $offreWords = $tokenizer->tokenize($offreComp);
+    $employeWords = $tokenizer->tokenize($employeComp);
+
+    // Find common words (case insensitive match)
+    $commonWords = array_intersect($offreWords, $employeWords);
+    $similarityScore = count($commonWords);  
+
+    // Define a threshold for "suitability"
+    $threshold = 2;
+    $suggested = $similarityScore >= $threshold;
+
+    // Save result
+    $employe->setSuggested($suggested);
+    $entityManager->flush();
+
+    // Redirect to the same page where employee is displayed, to update badge
+    return $this->redirectToRoute('employe_show', ['id' => $employe->getId()]);
+}
+    //not using this
     #[Route('/', name: 'app_employe_index', methods: ['GET'])]
     public function index(EmployeRepository $employeRepository): Response
     {
@@ -25,42 +88,7 @@ final class EmployeController extends AbstractController
         ]);
     }
 
-    #[Route('/new/{id}', name: 'app_employe_new', methods: ['POST'])]
-    public function new(Request $request, int $id, EntityManagerInterface $entityManager): Response
-    {
-        $offre = $entityManager->getRepository(Offre::class)->find($id);
-        if (!$offre) {
-            throw $this->createNotFoundException('Offer not found.');
-        }
-
-        $userId = $request->request->get('employeId');
-        $competence = $request->request->get('comp');
-        if (!$userId) {
-            $this->addFlash('error', 'Please enter a valid ID.');
-            return $this->redirectToRoute('app_offre_show', ['id' => $id]);
-        }
-
-        // Check if this user is already subscribed
-        $existingEmploye = $entityManager->getRepository(Employe::class)
-            ->findOneBy(['userIdentifier' => $userId, 'offre' => $offre]);
-        if ($existingEmploye) {
-            $this->addFlash('error', 'You are already subscribed to this offer.');
-            return $this->redirectToRoute('app_offre_show', ['id' => $id]);
-        }
-
-        // Create new employee record
-        $employe = new Employe();
-        $employe->setUserIdentifier($userId);
-        $employe->setComp($competence);
-        // Set competence
-        $employe->setOffre($offre);
-        $entityManager->persist($employe);
-        $entityManager->flush();
-
-        $this->addFlash('success', 'You have successfully subscribed to this offer!');
-        return $this->redirectToRoute('app_offre_show', ['id' => $id]);
-    }
-
+    
     #[Route('/{id}', name: 'app_employe_show', methods: ['GET'])]
     public function show(Employe $employe): Response
     {
@@ -87,16 +115,35 @@ final class EmployeController extends AbstractController
     }
 
     #[Route('/delete/{id}', name: 'app_employe_delete', methods: ['POST'])]
-    public function delete(Request $request, Employe $employe, EntityManagerInterface $entityManager): Response
-    {
-        if ($this->isCsrfTokenValid('delete' . $employe->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($employe);
-            $entityManager->flush();
-            $this->addFlash('success', 'Employee deleted successfully.');
-        }
-
-        return $this->redirectToRoute('app_employe_index', [], Response::HTTP_SEE_OTHER);
+public function delete(int $id, EntityManagerInterface $entityManager, Security $security): Response
+{
+    $user = $security->getUser();
+    if (!$user) {
+        $this->addFlash('error', 'You must be logged in to delete your subscription.');
+        return $this->redirectToRoute('app_offre_show', ['id' => $id]);
     }
+
+    // Find the subscription (Employe entity)
+    $employe = $entityManager->getRepository(Employe::class)
+        ->findOneBy(['userIdentifier' => $user->getId(), 'offre' => $entityManager->getReference(Offre::class, $id)]);
+
+    if (!$employe) {
+        $this->addFlash('error', 'You are not subscribed to this offer.');
+        return $this->redirectToRoute('app_offre_show', ['id' => $id]);
+    }
+
+    // Remove the subscription
+    $entityManager->remove($employe);
+    $entityManager->flush();
+
+    $this->addFlash('success', 'Your subscription has been deleted.');
+    return $this->redirectToRoute('app_offre_show', ['id' => $id]);
+}
+
+
+
+
+
 
     // Back office functions
 
@@ -179,4 +226,28 @@ final class EmployeController extends AbstractController
 
         return $this->redirectToRoute('admin_employe_index');
     }
+
+    #[Route('/admin/statistics/employe', name: 'statistics_employe')]
+    public function statistics(OffreRepository $offreRepository): Response
+    {
+        // Fetch all offers
+        $offres = $offreRepository->findAll();
+        $statistics = [];
+
+        // Count the number of employees for each offer
+        foreach ($offres as $offre) {
+            $statistics[$offre->getId()] = count($offre->getEmployes());
+        }
+
+        // Prepare data for the template
+        $labels = array_keys($statistics); // Get the offer IDs
+        $data = array_values($statistics); // Get the counts of employees
+
+        return $this->render('admin/employe/statistics_employe.html.twig', [
+            'labels' => $labels,
+            'data' => $data,
+        ]);
+    }
+
+
 }

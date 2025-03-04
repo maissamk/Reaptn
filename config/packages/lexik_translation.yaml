@@ -1,0 +1,7 @@
+lexik_translation:
+    fallback_locale: 'fr'  # Set your desired fallback locale here
+    managed_locales:       # List the locales you want to manage
+        - 'en'             # English
+        - 'fr'             # French
+        - 'ar'             # arabic
+        # Add more locales as needed
