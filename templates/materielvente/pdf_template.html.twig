@@ -84,12 +84,12 @@
     <div class="container">
         <!-- Logo -->
         <div class="logo">
-<img src="{{ absolute_url(asset('uploads/images/logoreaptn.png')) }}" alt="Logo de l'application">
+            <img src="{{ absolute_url(asset('uploads/images/logoreaptn.png')) }}" alt="Logo de l'application">
         </div>
 
         <!-- Titre -->
         <div class="header">
-            Fiche Matériel : {{ materielvente.nom }}
+            Fiche Matériel : {{ materielvente.nom ?? 'Nom non disponible' }}
         </div>
 
         <!-- Détails du matériel -->
@@ -97,31 +97,35 @@
             <table class="details">
                 <tr>
                     <th>Nom</th>
-                    <td>{{ materielvente.nom }}</td>
+                    <td>{{ materielvente.nom ?? 'Non défini' }}</td>
                 </tr>
                 <tr>
                     <th>Description</th>
-                    <td>{{ materielvente.description }}</td>
+                    <td>{{ materielvente.description ?? 'Non définie' }}</td>
                 </tr>
                 <tr>
                     <th>Prix</th>
-                    <td>{{ materielvente.prix }} DT</td>
+                    <td>{{ materielvente.prix is defined ? materielvente.prix ~ ' DT' : 'Non défini' }}</td>
                 </tr>
                 <tr>
                     <th>Catégorie</th>
-                    <td>{{ materielvente.categorie.nom }}</td>
+                    <td>{{ materielvente.categorie.nom ?? 'Non définie' }}</td>
                 </tr>
                 <tr>
                     <th>Disponibilité</th>
-                    <td>{{ materielvente.disponibilite ? 'Disponible' : 'Indisponible' }}</td>
+                    <td>{{ materielvente.disponibilite is defined and materielvente.disponibilite ? 'Disponible' : 'Indisponible' }}</td>
                 </tr>
             </table>
 
             <!-- Image du matériel -->
-            <div class="image-container">
-                <p><strong>Image du matériel :</strong></p>
-                <img src="{{ absolute_url(asset('uploads/images/' ~ materielvente.image)) }}" alt="Image du matériel">
-            </div>
+            {% if materielvente.image is defined and materielvente.image %}
+                <div class="image-container">
+                    <p><strong>Image du matériel :</strong></p>
+                    <img src="{{ absolute_url(asset('uploads/images/' ~ materielvente.image)) }}" alt="Image du matériel">
+                </div>
+            {% else %}
+                <p style="text-align: center; color: red;">Aucune image disponible</p>
+            {% endif %}
         </div>
 
         <!-- Pied de page -->

@@ -949,7 +949,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.OpTZDt8"/>
+      <argument type="service" id=".service_locator.mT0aCP."/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -4103,7 +4103,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.OpTZDt8"/>
+      <argument type="service" id=".service_locator.mT0aCP."/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <tag name="kernel.reset" method="reset"/>
@@ -10500,6 +10500,10 @@
         <argument key="paginator" type="service_closure" id="knp_paginator"/>
       </argument>
     </service>
+    <service id=".service_locator.FPvicFO" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection"/>
+    </service>
     <service id=".service_locator.kjLqtAK" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -10635,7 +10639,7 @@
         <argument key="userStatisticsService" type="service_closure" id="App\Service\UserStatisticsService"/>
       </argument>
     </service>
-    <service id=".service_locator.OpTZDt8" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.mT0aCP." class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminController::adminIndex" type="service_closure" id=".service_locator.vs9Bn8g"/>
@@ -10719,7 +10723,6 @@
         <argument key="App\Controller\MateriellocationController::new" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\MateriellocationController::show" type="service_closure" id=".service_locator.jUvKOz0"/>
         <argument key="App\Controller\MaterielventeController::delete" type="service_closure" id=".service_locator.wZGs69i"/>
-        <argument key="App\Controller\MaterielventeController::downloadPdf" type="service_closure" id=".service_locator.kbe5N4e"/>
         <argument key="App\Controller\MaterielventeController::edit" type="service_closure" id=".service_locator.wZGs69i"/>
         <argument key="App\Controller\MaterielventeController::index" type="service_closure" id=".service_locator.uiNF2f4"/>
         <argument key="App\Controller\MaterielventeController::new" type="service_closure" id=".service_locator.CsMkqUa"/>
@@ -10856,7 +10859,6 @@
         <argument key="App\Controller\MateriellocationController:new" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\MateriellocationController:show" type="service_closure" id=".service_locator.jUvKOz0"/>
         <argument key="App\Controller\MaterielventeController:delete" type="service_closure" id=".service_locator.wZGs69i"/>
-        <argument key="App\Controller\MaterielventeController:downloadPdf" type="service_closure" id=".service_locator.kbe5N4e"/>
         <argument key="App\Controller\MaterielventeController:edit" type="service_closure" id=".service_locator.wZGs69i"/>
         <argument key="App\Controller\MaterielventeController:index" type="service_closure" id=".service_locator.uiNF2f4"/>
         <argument key="App\Controller\MaterielventeController:new" type="service_closure" id=".service_locator.CsMkqUa"/>
@@ -13704,7 +13706,7 @@
     <service id="KnpU\OAuth2ClientBundle\Client\Provider\GoogleClient" alias="knpu.oauth2.client.google"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.w7.f4fT" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.OpTZDt8"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.mT0aCP."/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -13748,7 +13750,7 @@
     <service id=".service_locator.QImd_2F" alias=".service_locator.04N4F4X"/>
     <service id=".service_locator.V6D1oJY" alias=".service_locator.e_4zbH4"/>
     <service id=".service_locator.WW2Kq9d" alias=".service_locator.m5PcCSp"/>
-    <service id=".service_locator.HfUMLNe" alias=".service_locator.OpTZDt8"/>
+    <service id=".service_locator.sIHj_N_" alias=".service_locator.mT0aCP."/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
     <service id=".service_locator.sylX_aB" alias=".service_locator.O4vY9Ir"/>
     <service id=".service_locator.MUZiAeS" alias=".service_locator.qG7yQvv"/>

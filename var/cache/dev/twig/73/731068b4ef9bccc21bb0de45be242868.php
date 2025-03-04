@@ -131,7 +131,7 @@ class __TwigTemplate_de3c4d9f0589d8c5c880445f4c76052c extends Template
     <div class=\"container\">
         <!-- Logo -->
         <div class=\"logo\">
-<img src=\"";
+            <img src=\"";
         // line 87
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\HttpFoundationExtension']->generateAbsoluteUrl($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("uploads/images/logoreaptn.png")), "html", null, true);
         yield "\" alt=\"Logo de l'application\">
@@ -141,7 +141,7 @@ class __TwigTemplate_de3c4d9f0589d8c5c880445f4c76052c extends Template
         <div class=\"header\">
             Fiche Matériel : ";
         // line 92
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 92, $this->source); })()), "nom", [], "any", false, false, false, 92), "html", null, true);
+        yield (((CoreExtension::getAttribute($this->env, $this->source, ($context["materielvente"] ?? null), "nom", [], "any", true, true, false, 92) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 92, $this->source); })()), "nom", [], "any", false, false, false, 92)))) ? ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 92, $this->source); })()), "nom", [], "any", false, false, false, 92), "html", null, true)) : ("Nom non disponible"));
         yield "
         </div>
 
@@ -152,48 +152,59 @@ class __TwigTemplate_de3c4d9f0589d8c5c880445f4c76052c extends Template
                     <th>Nom</th>
                     <td>";
         // line 100
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 100, $this->source); })()), "nom", [], "any", false, false, false, 100), "html", null, true);
+        yield (((CoreExtension::getAttribute($this->env, $this->source, ($context["materielvente"] ?? null), "nom", [], "any", true, true, false, 100) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 100, $this->source); })()), "nom", [], "any", false, false, false, 100)))) ? ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 100, $this->source); })()), "nom", [], "any", false, false, false, 100), "html", null, true)) : ("Non défini"));
         yield "</td>
                 </tr>
                 <tr>
                     <th>Description</th>
                     <td>";
         // line 104
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 104, $this->source); })()), "description", [], "any", false, false, false, 104), "html", null, true);
+        yield (((CoreExtension::getAttribute($this->env, $this->source, ($context["materielvente"] ?? null), "description", [], "any", true, true, false, 104) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 104, $this->source); })()), "description", [], "any", false, false, false, 104)))) ? ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 104, $this->source); })()), "description", [], "any", false, false, false, 104), "html", null, true)) : ("Non définie"));
         yield "</td>
                 </tr>
                 <tr>
                     <th>Prix</th>
                     <td>";
         // line 108
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 108, $this->source); })()), "prix", [], "any", false, false, false, 108), "html", null, true);
-        yield " DT</td>
+        yield ((CoreExtension::getAttribute($this->env, $this->source, ($context["materielvente"] ?? null), "prix", [], "any", true, true, false, 108)) ? ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape((CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 108, $this->source); })()), "prix", [], "any", false, false, false, 108) . " DT"), "html", null, true)) : ("Non défini"));
+        yield "</td>
                 </tr>
                 <tr>
                     <th>Catégorie</th>
                     <td>";
         // line 112
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 112, $this->source); })()), "categorie", [], "any", false, false, false, 112), "nom", [], "any", false, false, false, 112), "html", null, true);
+        yield (((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["materielvente"] ?? null), "categorie", [], "any", false, true, false, 112), "nom", [], "any", true, true, false, 112) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 112, $this->source); })()), "categorie", [], "any", false, false, false, 112), "nom", [], "any", false, false, false, 112)))) ? ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 112, $this->source); })()), "categorie", [], "any", false, false, false, 112), "nom", [], "any", false, false, false, 112), "html", null, true)) : ("Non définie"));
         yield "</td>
                 </tr>
                 <tr>
                     <th>Disponibilité</th>
                     <td>";
         // line 116
-        yield ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 116, $this->source); })()), "disponibilite", [], "any", false, false, false, 116)) ? ("Disponible") : ("Indisponible"));
+        yield (((CoreExtension::getAttribute($this->env, $this->source, ($context["materielvente"] ?? null), "disponibilite", [], "any", true, true, false, 116) && CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 116, $this->source); })()), "disponibilite", [], "any", false, false, false, 116))) ? ("Disponible") : ("Indisponible"));
         yield "</td>
                 </tr>
             </table>
 
             <!-- Image du matériel -->
-            <div class=\"image-container\">
-                <p><strong>Image du matériel :</strong></p>
-                <img src=\"";
-        // line 123
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\HttpFoundationExtension']->generateAbsoluteUrl($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/images/" . CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 123, $this->source); })()), "image", [], "any", false, false, false, 123)))), "html", null, true);
-        yield "\" alt=\"Image du matériel\">
-            </div>
-        </div>
+            ";
+        // line 121
+        if ((CoreExtension::getAttribute($this->env, $this->source, ($context["materielvente"] ?? null), "image", [], "any", true, true, false, 121) && CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 121, $this->source); })()), "image", [], "any", false, false, false, 121))) {
+            // line 122
+            yield "                <div class=\"image-container\">
+                    <p><strong>Image du matériel :</strong></p>
+                    <img src=\"";
+            // line 124
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\HttpFoundationExtension']->generateAbsoluteUrl($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/images/" . CoreExtension::getAttribute($this->env, $this->source, (isset($context["materielvente"]) || array_key_exists("materielvente", $context) ? $context["materielvente"] : (function () { throw new RuntimeError('Variable "materielvente" does not exist.', 124, $this->source); })()), "image", [], "any", false, false, false, 124)))), "html", null, true);
+            yield "\" alt=\"Image du matériel\">
+                </div>
+            ";
+        } else {
+            // line 127
+            yield "                <p style=\"text-align: center; color: red;\">Aucune image disponible</p>
+            ";
+        }
+        // line 129
+        yield "        </div>
 
         <!-- Pied de page -->
         <div class=\"footer\">
@@ -233,7 +244,7 @@ class __TwigTemplate_de3c4d9f0589d8c5c880445f4c76052c extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  193 => 123,  183 => 116,  176 => 112,  169 => 108,  162 => 104,  155 => 100,  144 => 92,  136 => 87,  48 => 1,);
+        return array (  207 => 129,  203 => 127,  197 => 124,  193 => 122,  191 => 121,  183 => 116,  176 => 112,  169 => 108,  162 => 104,  155 => 100,  144 => 92,  136 => 87,  48 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -324,12 +335,12 @@ class __TwigTemplate_de3c4d9f0589d8c5c880445f4c76052c extends Template
     <div class=\"container\">
         <!-- Logo -->
         <div class=\"logo\">
-<img src=\"{{ absolute_url(asset('uploads/images/logoreaptn.png')) }}\" alt=\"Logo de l'application\">
+            <img src=\"{{ absolute_url(asset('uploads/images/logoreaptn.png')) }}\" alt=\"Logo de l'application\">
         </div>
 
         <!-- Titre -->
         <div class=\"header\">
-            Fiche Matériel : {{ materielvente.nom }}
+            Fiche Matériel : {{ materielvente.nom ?? 'Nom non disponible' }}
         </div>
 
         <!-- Détails du matériel -->
@@ -337,31 +348,35 @@ class __TwigTemplate_de3c4d9f0589d8c5c880445f4c76052c extends Template
             <table class=\"details\">
                 <tr>
                     <th>Nom</th>
-                    <td>{{ materielvente.nom }}</td>
+                    <td>{{ materielvente.nom ?? 'Non défini' }}</td>
                 </tr>
                 <tr>
                     <th>Description</th>
-                    <td>{{ materielvente.description }}</td>
+                    <td>{{ materielvente.description ?? 'Non définie' }}</td>
                 </tr>
                 <tr>
                     <th>Prix</th>
-                    <td>{{ materielvente.prix }} DT</td>
+                    <td>{{ materielvente.prix is defined ? materielvente.prix ~ ' DT' : 'Non défini' }}</td>
                 </tr>
                 <tr>
                     <th>Catégorie</th>
-                    <td>{{ materielvente.categorie.nom }}</td>
+                    <td>{{ materielvente.categorie.nom ?? 'Non définie' }}</td>
                 </tr>
                 <tr>
                     <th>Disponibilité</th>
-                    <td>{{ materielvente.disponibilite ? 'Disponible' : 'Indisponible' }}</td>
+                    <td>{{ materielvente.disponibilite is defined and materielvente.disponibilite ? 'Disponible' : 'Indisponible' }}</td>
                 </tr>
             </table>
 
             <!-- Image du matériel -->
-            <div class=\"image-container\">
-                <p><strong>Image du matériel :</strong></p>
-                <img src=\"{{ absolute_url(asset('uploads/images/' ~ materielvente.image)) }}\" alt=\"Image du matériel\">
-            </div>
+            {% if materielvente.image is defined and materielvente.image %}
+                <div class=\"image-container\">
+                    <p><strong>Image du matériel :</strong></p>
+                    <img src=\"{{ absolute_url(asset('uploads/images/' ~ materielvente.image)) }}\" alt=\"Image du matériel\">
+                </div>
+            {% else %}
+                <p style=\"text-align: center; color: red;\">Aucune image disponible</p>
+            {% endif %}
         </div>
 
         <!-- Pied de page -->

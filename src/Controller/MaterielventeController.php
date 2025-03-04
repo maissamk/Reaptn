@@ -237,36 +237,37 @@ final class MaterielventeController extends AbstractController
 
 
     #[Route('/materielvente/{id}/download', name: 'app_materielvente_download_pdf')]
-    public function downloadPdf(Materielvente $materielvente): Response
-    {
-        
-        $options = new Options();
-        $options->set('isHtml5ParserEnabled', true);
-        $options->set('isPhpEnabled', true);
-        
-        $dompdf = new Dompdf($options);
-        
-        $html = $this->renderView('materielvente/pdf_template.html.twig', [
-            'materielvente' => $materielvente,
-        ]);
-
-        
-        $dompdf->loadHtml($html);
-
-        $dompdf->setPaper('A4');
-
-        $dompdf->render();
-
-        // Télécharger le PDF
-        return new Response(
-            $dompdf->output(),
-            200,
-            [
-                'Content-Type' => 'application/pdf',
-                'Content-Disposition' => 'attachment; filename="materielvente_' . $materielvente->getId() . '.pdf"',
-            ]
-        );
+public function downloadPdf(?Materielvente $materielvente): Response
+{
+    // Vérifier si le matériel existe
+    if (!$materielvente) {
+        throw $this->createNotFoundException('Le matériel demandé n\'existe pas.');
     }
+
+    $options = new Options();
+    $options->set('isHtml5ParserEnabled', true);
+    $options->set('isPhpEnabled', true);
+
+    $dompdf = new Dompdf($options);
+
+    $html = $this->renderView('materielvente/pdf_template.html.twig', [
+        'materielvente' => $materielvente,
+    ]);
+
+    $dompdf->loadHtml($html);
+    $dompdf->setPaper('A4');
+    $dompdf->render();
+
+    return new Response(
+        $dompdf->output(),
+        200,
+        [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'attachment; filename="materielvente_' . $materielvente->getId() . '.pdf"',
+        ]
+    );
+}
+
 
 
 
