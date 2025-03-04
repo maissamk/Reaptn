@@ -10,13 +10,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\HttpClient\HttpClient;
-
-
+use App\Entity\Materielvente;
 
 class RegistrationController extends AbstractController
 {
-    #[Route('/register1', name: 'app_register')]
     #[Route('/register1', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
@@ -25,37 +22,16 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
     
         if ($form->isSubmitted() && $form->isValid()) {
-            // Validate reCAPTCHA
-            $recaptchaResponse = $request->request->get('g-recaptcha-response');
-            $recaptchaSecret = $this->getParameter('recaptcha.secret_key');
-    
-            $httpClient = HttpClient::create();
-            $response = $httpClient->request('POST', 'https://www.google.com/recaptcha/api/siteverify', [
-                'body' => [
-                    'secret' => $recaptchaSecret,
-                    'response' => $recaptchaResponse,
-                ],
-            ]);
-    
-            $responseData = $response->toArray();
-    
-            if (!$responseData['success']) {
-                $this->addFlash('error', 'CAPTCHA validation failed. Please try again.');
-                return $this->redirectToRoute('app_register');
-            }
-    
             // Hash the password
             $plainPassword = $form->get('plainPassword')->getData();
             $user->setPassword($userPasswordHasher->hashPassword($user, $plainPassword));
     
-            // Get the selected role
+            // Get the selected role (this should return just one role, e.g., 'ROLE_AGRICULTEUR' or 'ROLE_CLIENT')
             $role = $form->get('roles')->getData();
+    
+            // Assign the role as an array (even if it's just one role)
             if ($role) {
                 $user->setRoles([$role]);
-            }
-    
-            if (!$user->getAvatar()) {
-                $user->setAvatar('defaultavatar.png');
             }
     
             // Persist the user entity to the database
@@ -67,8 +43,11 @@ class RegistrationController extends AbstractController
         }
     
         return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form->createView(),
-            'recaptcha_site_key' => $this->getParameter('recaptcha.site_key'),
+            'registrationForm' => $form,
         ]);
     }
+    
+
+    
+
 }

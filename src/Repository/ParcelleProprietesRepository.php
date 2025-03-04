@@ -40,5 +40,4 @@ class ParcelleProprietesRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
-    
 }

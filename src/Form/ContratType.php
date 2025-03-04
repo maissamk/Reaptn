@@ -45,10 +45,7 @@ class ContratType extends AbstractType
             ])
             ->add('parcelle', EntityType::class, [
                 'class' => ParcelleProprietes::class,
-                'choice_label' => 'titre',
-                'disabled' => !empty($options['data']->getParcelle()),
-                'required' => true,
-                'placeholder' => 'Sélectionnez une parcelle',
+                'choice_label' => 'id',
             ])
         ;
     }
