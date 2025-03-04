@@ -4,40 +4,40 @@
 
 {% block body %}
     <div class="container-fluid fruite py-5">
-        <div class="container py-5">
-            <div class="tab-class text-center">
+        <div class="container py-5 ">
+            <div class="tab-class text-center ">
                 <div class="row g-4">
                     <div class="col-lg-4 text-start">
-                        <h1>{{ 'Our Organic Products'|trans }}</h1>
+                        <h1>Our Organic Products</h1>
                     </div>
                 </div>
                 <div class="tab-content">
                     <div id="tab-1" class="tab-pane fade show p-0 active">
                         <div class="row g-4 flex-column">
                             {% for offre in offres %}
-                                <div class="card p-3 mb-3 d-flex flex-row align-items-center" style="width: 100%; border: 1px solid #ccc;">
+                                <div class="card p-3 mb-3 d-flex flex-row align-items-center" style="width: 100%;">
                                     <div class="flex-grow-1">
                                         <h4 class="fw-bold">{{ offre.titre }}</h4>
-                                        <p><strong>{{ 'Statut'|trans }}:</strong> {{ offre.statut ? 'Yes'|trans : 'No'|trans }}</p>
-                                        <p><strong>{{ 'Description'|trans }}:</strong> {{ offre.descr }}</p>
-                                        <p><strong>{{ 'Compétences demandées'|trans }}:</strong> {{ offre.comp }}</p>
+                                        <p><strong>Statut:</strong> {{ offre.statut ? 'Yes' : 'No' }}</p>
+                                        <p><strong>Description:</strong> {{ offre.descr }}</p>
+                                        <p><strong>Compétences demandées:</strong> {{ offre.comp }}</p>
                                     </div>
                                     <div class="text-end">
-                                        <a href="{{ path('app_offre_show', {'id': offre.id}) }}" class="btn btn-info btn-sm text-white"><i class="fas fa-eye"></i> {{ 'Voir'|trans }}</a>
-                                        {% if is_granted('ROLE_AGRICULTEUR') %}
-                                            <a href="{{ path('app_offre_edit', {'id': offre.id}) }}" class="btn btn-warning btn-sm text-white"><i class="fas fa-edit"></i> {{ 'Modifier'|trans }}</a>
-                                        {% endif %}
+                                        <a href="{{ path('app_offre_show', {'id': offre.id}) }}"  class="btn btn-info btn-sm text-white"><i class="fas fa-eye"></i>Voir</a>
+                                        {% if  is_granted('ROLE_AGRICULTEUR') %}
+                                        <a href="{{ path('app_offre_edit', {'id': offre.id}) }}" class="btn btn-warning btn-sm text-white"><i class="fas fa-edit"></i> Modifier</a>
                                     </div>
+                                    {% endif %}
                                 </div>
                             {% else %}
                                 <div class="text-center">
-                                    <p>{{ 'No records found'|trans }}</p>
+                                    <p>No records found</p>
                                 </div>
                             {% endfor %}
-                            {% if is_granted('ROLE_AGRICULTEUR') %}
-                                <div class="text-end">
-                                    <a href="{{ path('app_offre_new') }}" class="btn btn-success">{{ 'Ajouter Offre'|trans }}</a>
-                                </div>
+                            {% if  is_granted('ROLE_AGRICULTEUR') %}
+                            <div class="text-end">
+                                <a href="{{ path('app_offre_new') }}" class="btn btn-success">Ajouter Offre</a>
+                            </div>
                             {% endif %}
                         </div>
                     </div>

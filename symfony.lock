@@ -48,10 +48,7 @@
             "branch": "main",
             "version": "1.5",
             "ref": "c81bdcf4a9d4e7b1959071457f9608631865d381"
-        },
-        "files": [
-            "./config/packages/knp_snappy.yaml"
-        ]
+        }
     },
     "knpuniversity/oauth2-client-bundle": {
         "version": "2.18",
@@ -60,13 +57,7 @@
             "branch": "main",
             "version": "1.20",
             "ref": "1ff300d8c030f55c99219cc55050b97a695af3f6"
-        },
-        "files": [
-            "./config/packages/knpu_oauth2_client.yaml"
-        ]
-    },
-    "lexik/translation-bundle": {
-        "version": "v6.0"
+        }
     },
     "liip/imagine-bundle": {
         "version": "2.13",
@@ -75,11 +66,7 @@
             "branch": "main",
             "version": "1.8",
             "ref": "d1227d002b70d1a1f941d91845fcd7ac7fbfc929"
-        },
-        "files": [
-            "./config/packages/liip_imagine.yaml",
-            "./config/routes/liip_imagine.yaml"
-        ]
+        }
     },
     "phpunit/phpunit": {
         "version": "9.6",
@@ -102,10 +89,7 @@
             "branch": "main",
             "version": "1.2",
             "ref": "e805aba9eff5372e2d149a9ff56566769e22819d"
-        },
-        "files": [
-            "./config/packages/stof_doctrine_extensions.yaml"
-        ]
+        }
     },
     "symfony/asset-mapper": {
         "version": "6.4",
@@ -177,6 +161,15 @@
             "./src/Controller/.gitignore",
             "./src/Kernel.php"
         ]
+    },
+    "symfony/google-mailer": {
+        "version": "6.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "4.4",
+            "ref": "f8fd4ddb9b477510f8f4bce2b9c054ab428c0120"
+        }
     },
     "symfony/mailer": {
         "version": "6.4",

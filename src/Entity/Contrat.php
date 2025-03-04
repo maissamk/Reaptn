@@ -62,6 +62,18 @@ class Contrat
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $datecreation_contrat = null;
 
+    #[ORM\ManyToOne(inversedBy: 'contrats')]
+    private ?user $user_id_contrat = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $signatureId = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $documentId = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $signerId = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -147,6 +159,54 @@ class Contrat
     public function setDatecreationContrat(\DateTimeInterface $datecreation_contrat): static
     {
         $this->datecreation_contrat = $datecreation_contrat;
+
+        return $this;
+    }
+
+    public function getUserIdContrat(): ?user
+    {
+        return $this->user_id_contrat;
+    }
+
+    public function setUserIdContrat(?user $user_id_contrat): static
+    {
+        $this->user_id_contrat = $user_id_contrat;
+
+        return $this;
+    }
+
+    public function getSignatureId(): ?string
+    {
+        return $this->signatureId;
+    }
+
+    public function setSignatureId(?string $signatureId): static
+    {
+        $this->signatureId = $signatureId;
+
+        return $this;
+    }
+
+    public function getDocumentId(): ?string
+    {
+        return $this->documentId;
+    }
+
+    public function setDocumentId(?string $documentId): static
+    {
+        $this->documentId = $documentId;
+
+        return $this;
+    }
+
+    public function getSignerId(): ?string
+    {
+        return $this->signerId;
+    }
+
+    public function setSignerId(?string $signerId): static
+    {
+        $this->signerId = $signerId;
 
         return $this;
     }

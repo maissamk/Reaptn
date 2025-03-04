@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit794f74d534c86efc6cdfc5aa34604fba
+class ComposerStaticInitc3905b8ea57558fc8df7947b9079ad24
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
@@ -95,6 +95,7 @@ class ComposerStaticInit794f74d534c86efc6cdfc5aa34604fba
             'Symfony\\Component\\Mime\\' => 23,
             'Symfony\\Component\\Messenger\\Bridge\\Doctrine\\' => 44,
             'Symfony\\Component\\Messenger\\' => 28,
+            'Symfony\\Component\\Mailer\\Bridge\\Google\\' => 39,
             'Symfony\\Component\\Mailer\\' => 25,
             'Symfony\\Component\\Intl\\' => 23,
             'Symfony\\Component\\HttpKernel\\' => 29,
@@ -144,7 +145,6 @@ class ComposerStaticInit794f74d534c86efc6cdfc5aa34604fba
             'Psr\\Container\\' => 14,
             'Psr\\Clock\\' => 10,
             'Psr\\Cache\\' => 10,
-            'Phpml\\' => 6,
             'PhpParser\\' => 10,
             'PhpOffice\\PhpSpreadsheet\\' => 25,
             'PHPStan\\PhpDocParser\\' => 21,
@@ -159,7 +159,6 @@ class ComposerStaticInit794f74d534c86efc6cdfc5aa34604fba
         'L' => 
         array (
             'Liip\\ImagineBundle\\' => 19,
-            'Lexik\\Bundle\\TranslationBundle\\' => 31,
             'League\\OAuth2\\Client\\' => 21,
         ),
         'K' => 
@@ -413,6 +412,10 @@ class ComposerStaticInit794f74d534c86efc6cdfc5aa34604fba
         array (
             0 => __DIR__ . '/..' . '/symfony/messenger',
         ),
+        'Symfony\\Component\\Mailer\\Bridge\\Google\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/google-mailer',
+        ),
         'Symfony\\Component\\Mailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/mailer',
@@ -598,10 +601,6 @@ class ComposerStaticInit794f74d534c86efc6cdfc5aa34604fba
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
         ),
-        'Phpml\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/php-ai/php-ml/src',
-        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
@@ -633,10 +632,6 @@ class ComposerStaticInit794f74d534c86efc6cdfc5aa34604fba
         'Liip\\ImagineBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/liip/imagine-bundle',
-        ),
-        'Lexik\\Bundle\\TranslationBundle\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/lexik/translation-bundle',
         ),
         'League\\OAuth2\\Client\\' => 
         array (
@@ -1455,9 +1450,9 @@ class ComposerStaticInit794f74d534c86efc6cdfc5aa34604fba
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit794f74d534c86efc6cdfc5aa34604fba::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit794f74d534c86efc6cdfc5aa34604fba::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit794f74d534c86efc6cdfc5aa34604fba::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitc3905b8ea57558fc8df7947b9079ad24::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitc3905b8ea57558fc8df7947b9079ad24::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitc3905b8ea57558fc8df7947b9079ad24::$classMap;
 
         }, null, ClassLoader::class);
     }

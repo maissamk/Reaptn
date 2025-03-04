@@ -3,12 +3,12 @@
  /.env.local
  /.env.local.php
  /.env.*.local
+ /.env
+
 # /config/secrets/prod/prod.decrypt.private.php
 # /public/bundles/
- var/
+ /var
 # /vendor/
-.env
-
 # ###< symfony/framework-bundle ###
 
 # ###> phpunit/phpunit ###
@@ -25,10 +25,4 @@
 # /public/assets/
 # /assets/vendor/
 # ###< symfony/asset-mapper ###
-.env
-.env.dev
-.env.test
-
-###> liip/imagine-bundle ###
-/public/media/cache/
-###< liip/imagine-bundle ###
+/.env

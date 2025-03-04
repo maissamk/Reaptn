@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (confirm("Voulez-vous poursuivre et créer un contrat pour cette parcelle ?")) {
+                window.location.href = "{{ path('app_contrat_new', { 'parcelle_id': id }) }}";
+            } else {
+                window.location.href = "{{ path('app_parcelle_proprietes_index') }}";
+            }
+        });
+    </script>
+{% endblock %}

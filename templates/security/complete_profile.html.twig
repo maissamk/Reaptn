@@ -1,0 +1,79 @@
+{# templates/security/complete_profile.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Complete Your Profile{% endblock %}
+{% block navbar %}
+    <div style="display:none;">
+        <!-- Navbar content -->
+    </div>
+{% endblock %}
+
+{% block footer %}
+    <div style="display:none;">
+        <!-- Footer content -->
+    </div>
+{% endblock %}
+{% block body %}
+    <!-- Background Image -->
+    <div class="background-container" style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('{{ asset('frontoffice/img/backgroundlog.jpg') }}');
+        background-size: cover;
+        background-position: center;
+        filter: brightness(0.8); /* Darken the background slightly */
+        z-index: -1;
+    "></div>
+
+    <!-- Profile Completion Container -->
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="card p-4 shadow-lg" style="
+            background-color: rgba(241, 241, 241, 0.8); /* Semi-transparent grey background */
+            max-width: 600px;
+            width: 100%;
+            border-radius: 15px;
+            backdrop-filter: blur(5px); /* Add a blur effect for a frosted glass look */
+        ">
+            <h1 class="text-center mb-4" style="color: #333; font-weight: bold;">Complete Your Profile</h1>
+
+            <!-- Profile Completion Form -->
+            {{ form_start(form) }}
+                <!-- Password Input -->
+                <div class="mb-3">
+                    <label for="{{ form.plainPassword.vars.id }}" class="form-label" style="color: #555;">
+                        <i class="fas fa-lock"></i> Password
+                    </label>
+                    {{ form_widget(form.plainPassword, { 'attr': { 'class': 'form-control', 'style': 'border-radius: 10px;' } }) }}
+                </div>
+
+                <!-- Role Selection -->
+                <div class="mb-3">
+                    <label for="{{ form.roles.vars.id }}" class="form-label" style="color: #555;">
+                        <i class="fas fa-user-tag"></i> Role
+                    </label>
+                    {{ form_widget(form.roles, { 'attr': { 'class': 'form-control', 'style': 'border-radius: 10px;' } }) }}
+                </div>
+
+                <!-- Telephone Input -->
+                <div class="mb-3">
+                    <label for="{{ form.telephone.vars.id }}" class="form-label" style="color: #555;">
+                        <i class="fas fa-phone"></i> Telephone Number
+                    </label>
+                    {{ form_widget(form.telephone, { 'attr': { 'class': 'form-control', 'style': 'border-radius: 10px;' } }) }}
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary w-100" style="background-color: #28a745; border: none; border-radius: 10px; padding: 10px;">
+                    <i class="fas fa-save"></i> Save
+                </button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+{% endblock %}

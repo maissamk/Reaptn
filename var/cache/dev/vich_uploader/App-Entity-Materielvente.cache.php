@@ -1,0 +1,1 @@
+<?php return unserialize('O:42:"Vich\\UploaderBundle\\Metadata\\ClassMetadata":1:{i:0;s:207:"a:2:{i:0;a:0:{}i:1;s:178:"a:5:{i:0;s:24:"App\\Entity\\Materielvente";i:1;a:0:{}i:2;a:0:{}i:3;a:1:{i:0;s:77:"C:\\Users\\romdh\\OneDrive\\Bureau\\New folder\\Reaptn\\src\\Entity\\Materielvente.php";}i:4;i:1741061736;}";}";}');
