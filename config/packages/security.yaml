@@ -4,10 +4,17 @@ security:
             algorithm: auto  # Uses the best algorithm available (bcrypt, argon2, etc.)
 
     providers:
-        app_user_provider:
+        entity_provider:
             entity:
                 class: App\Entity\User
                 property: email
+
+        custom_provider:
+            id: App\Service\CustomUserProvider
+
+        app_user_provider:
+            chain:
+                providers: [entity_provider, custom_provider]
 
     firewalls:
         dev:
@@ -16,6 +23,7 @@ security:
 
         main:
             provider: app_user_provider
+            
             entry_point: App\Security\LoginFormAuthenticator
             form_login:
                 login_path: app_login
@@ -26,11 +34,17 @@ security:
             logout:
                 path: app_logout
                 target: app_page  # Redirect after logout
-            custom_authenticator: App\Security\LoginFormAuthenticator
+            custom_authenticator:
+                - App\Security\LoginFormAuthenticator
+                - App\Service\GoogleAuthenticator
+                - App\Security\FaceLoginFormAuthenticator
             remember_me:
                 secret: '%kernel.secret%'
                 lifetime: 604800
                 path: /
+        face_login:
+            pattern: ^/face-login
+            security: false
 
         # Admin firewall
         admin:

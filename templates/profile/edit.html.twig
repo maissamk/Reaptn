@@ -62,6 +62,13 @@
                         <div class="text-danger">
                             {{ form_errors(form.avatar) }}
                         </div>
+                    </div>{# Avatar Upload Field #}
+                    <div class="mb-3">
+                        {{ form_label(form.faceImage, 'Ajouter une reconnaissance') }}
+                        {{ form_widget(form.faceImage, {'attr': {'class': 'form-control'}}) }}
+                        <div class="text-danger">
+                            {{ form_errors(form.faceImage) }}
+                        </div>
                     </div>
 
                     {# Submit Button #}
