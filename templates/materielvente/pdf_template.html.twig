@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Fiche Matériel à vendre</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            padding: 0;
+            background: #f8f8f8;
+        }
+
+        .container {
+            width: 100%;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo img {
+            width: 120px;
+            height: auto;
+        }
+
+        .header {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            padding: 10px 0;
+            border-bottom: 2px solid #007BFF;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .details {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .details th, .details td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .details th {
+            background: #007BFF;
+            color: white;
+            font-weight: bold;
+        }
+
+        .image-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .image-container img {
+            max-width: 300px;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #555;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo -->
+        <div class="logo">
+<img src="{{ absolute_url(asset('uploads/images/logoreaptn.png')) }}" alt="Logo de l'application">
+        </div>
+
+        <!-- Titre -->
+        <div class="header">
+            Fiche Matériel : {{ materielvente.nom }}
+        </div>
+
+        <!-- Détails du matériel -->
+        <div class="content">
+            <table class="details">
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ materielvente.nom }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ materielvente.description }}</td>
+                </tr>
+                <tr>
+                    <th>Prix</th>
+                    <td>{{ materielvente.prix }} DT</td>
+                </tr>
+                <tr>
+                    <th>Catégorie</th>
+                    <td>{{ materielvente.categorie.nom }}</td>
+                </tr>
+                <tr>
+                    <th>Disponibilité</th>
+                    <td>{{ materielvente.disponibilite ? 'Disponible' : 'Indisponible' }}</td>
+                </tr>
+            </table>
+
+            <!-- Image du matériel -->
+            <div class="image-container">
+                <p><strong>Image du matériel :</strong></p>
+                <img src="{{ absolute_url(asset('uploads/images/' ~ materielvente.image)) }}" alt="Image du matériel">
+            </div>
+        </div>
+
+        <!-- Pied de page -->
+        <div class="footer">
+            <p>Merci de votre intérêt pour notre matériel !</p>
+        </div>
+    </div>
+</body>
+</html>

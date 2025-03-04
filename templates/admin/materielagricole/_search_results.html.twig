@@ -1,0 +1,19 @@
+{% if materielventes is not empty %}
+    <div class="row">
+        {% for materiel in materielventes %}
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm">
+                    <img src="{{ asset(materiel.image) }}" class="card-img-top" alt="{{ materiel.nom }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ materiel.nom }}</h5>
+                        <p class="card-text">Prix: {{ materiel.prix }} €</p>
+                        <p class="card-text">Catégorie: {{ materiel.categorie.nom }}</p>
+                        <a href="{{ path('app_materielvente_show', {'id': materiel.id}) }}" class="btn btn-primary">Voir détails</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p class="text-center text-muted">Aucun matériel trouvé.</p>
+{% endif %}

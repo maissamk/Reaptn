@@ -24,12 +24,20 @@
             <h4 class="text-warning text-center">Informations sur le matériel</h4>
             <table class="table table-bordered mt-3">
                 <tbody>
-                    
                     <tr>
                         <th class="bg-light">Nom</th>
                         <td>{{ materielvente.nom }}</td>
                     </tr>
                     <tr>
+                        <th class="bg-light">Catégorie</th>
+                        <td>
+                            {% if materielvente.categorie %}
+                                {{ materielvente.categorie.nom }}
+                            {% else %}
+                                <span class="text-danger">Aucune catégorie</span>
+                            {% endif %}
+                        </td>
+                    </tr>
                         <th class="bg-light">Prix</th>
                         <td class="fw-bold text-primary">{{ materielvente.prix }} DT</td>
                     </tr>
@@ -51,16 +59,31 @@
             </table>
         </div>
 
+ 
+
+
+
         <div class="d-flex justify-content-center mt-4">
             <a href="{{ path('app_materielvente_index') }}" class="btn btn-primary me-3">
                 <i class="fa fa-arrow-left"></i> Retour
             </a>
-           
-        </div>
+            <form id="analyze-form">
+					<input type="hidden" id="image-path" value="{{ materielvente.image }}">
+					<button type="submit" id="analyze-btn" class="btn btn-primary flex items-center gap-2">
+						<i class="fa fa-circle-plus"></i>
+						Generate a description for the image
+					</button>
+				</form>
 
-        
+				<div id="loading-spinner" class="spinner-border text-primary mt-2" style="display: none;" role="status">
+					<span class="visually-hidden">Loading...</span>
+				</div>
+
+				<p id="analysis-result" class="text-center text-success mt-2"></p>
+        </div>
     </div>
 </div>
+
 
 <style>
     .card {
@@ -77,5 +100,43 @@
         width: 70%;
     }
 </style>
+
+<script>
+		document.getElementById('analyze-form').addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    const imagePath = document.getElementById('image-path').value;
+    const materielId = "{{ materielvente.id }}"; // Get the material ID from Twig
+    const analyzeBtn = document.getElementById('analyze-btn');
+    const spinner = document.getElementById('loading-spinner');
+    const resultElement = document.getElementById('analysis-result');
+
+    // Show spinner and disable button
+    analyzeBtn.disabled = true;
+    spinner.style.display = "block";
+    resultElement.innerText = "";
+
+    try {
+        const response = await fetch(`/materielvente/${materielId}/analyze`, {  // Include ID in the URL
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ image: imagePath })
+        });
+
+        if (!response.ok) throw new Error("Server error");
+
+        const data = await response.json();
+        resultElement.innerText = data.description;
+
+    } catch (error) {
+        console.error("Error:", error);
+        resultElement.innerText = "Error processing image.";
+    } finally {
+        // Hide spinner and enable button
+        spinner.style.display = "none";
+        analyzeBtn.disabled = false;
+    }
+});
+	</script>
 
 {% endblock %}

@@ -28,3 +28,7 @@
 .env
 .env.dev
 .env.test
+
+###> liip/imagine-bundle ###
+/public/media/cache/
+###< liip/imagine-bundle ###

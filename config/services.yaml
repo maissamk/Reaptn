@@ -9,6 +9,8 @@ parameters:
     avatars_directory: '%kernel.project_dir%/public/uploads/avatars'
     hugging_face_api_token: '%env(HUGGING_FACE_API_TOKEN)%'
     is_arabic_enabled: true   # Change to false if you don't want Arabic
+    huggingface_api_key: "%env(HUGGINGFACE_API_KEY)%"
+    mailer_dsn: '%env(MAILER_DSN)%'
 
 services:
     # Default configuration for services in *this* file
@@ -65,3 +67,43 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    App\Service\ImageAnalysisService:
+        arguments:
+            $huggingFaceApiKey: "%huggingface_api_key%"
+    
+    
+
+    App\EventListener\LogoutListener:
+        arguments:
+            $entityManager: '@doctrine.orm.entity_manager'
+            $logger: '@logger'
+            $security: '@security.helper'
+        tags:
+            - { name: 'kernel.event_subscriber' }
+
+    App\EventListener\CheckUserStatusListener:
+        tags:
+            - { name: kernel.event_listener, event: security.interactive_login, method: onSecurityInteractiveLogin }
+
+    App\Security\OAuthSuccessHandler:
+        arguments:
+            $tokenStorage: '@security.token_storage'
+            $entityManager: '@doctrine.orm.entity_manager'
+
+    # knpu.oauth2.client.google:
+    #     class: KnpU\OAuth2ClientBundle\Client\OAuth2Client
+    #     arguments:
+    #         - '@knpu.oauth2.registry' # Use the correct registry service
+    #         - '%env(OAUTH_GOOGLE_CLIENT_ID)%'
+    #         - '%env(OAUTH_GOOGLE_CLIENT_SECRET)%'
+    #         - '%env(OAUTH_GOOGLE_REDIRECT_URI)%'
+
+    App\Service\UserStatisticsService:
+        public: true
+
+    App\Security\FaceLoginFormAuthenticator:
+        arguments:
+            $httpClient: '@http_client'
+            $entityManager: '@doctrine.orm.entity_manager'
+            $urlGenerator: '@router.default'
+    App\Service\FaceComparisonService: ~

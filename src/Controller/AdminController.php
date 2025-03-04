@@ -39,6 +39,14 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use Dompdf\Dompdf;
+use Dompdf\Options;
+use App\Repository\CategorieRepository;
+
+
+
 
 /*ghhghgggghhghghghggggghghggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg*/
 #[Route('/admin')]
@@ -61,15 +69,37 @@ class AdminController extends AbstractController
 
     
    //Matériel de vente partie Admin
-    #[Route('/admin/tables', name: 'app_tables')]
-    public function tablesIndex(MaterielVenteRepository $materielVenteRepository): Response
-    {
-        $materielventes = $materielVenteRepository->findAll();
-        
-        return $this->render('admin/materielagricole/tables.html.twig', [
-            'materielventes' => $materielventes,
-        ]);
-    }
+   #[Route('/admin/tables', name: 'app_tables')]
+   public function tablesIndex(
+       Request $request,
+       MaterielVenteRepository $materielVenteRepository,
+       CategorieRepository $categorieRepository
+   ): Response {
+       $searchTerm = $request->query->get('search', '');
+       $minPrice = $request->query->get('minPrice');
+       $maxPrice = $request->query->get('maxPrice');
+       $categorieId = $request->query->get('categorie');
+   
+       $minPrice = $minPrice !== null && is_numeric($minPrice) ? (float) $minPrice : null;
+       $maxPrice = $maxPrice !== null && is_numeric($maxPrice) ? (float) $maxPrice : null;
+       $categorieId = $categorieId !== null && is_numeric($categorieId) ? (int) $categorieId : null;
+   
+       $queryBuilder = $materielVenteRepository->searchByFilters($searchTerm, $minPrice, $maxPrice, $categorieId);
+   
+      
+       $materielventes = $queryBuilder->getQuery()->getResult();
+   
+       $categories = $categorieRepository->findAll();
+   
+       return $this->render('admin/materielagricole/tables.html.twig', [
+           'materielventes' => $materielventes,
+           'searchTerm' => $searchTerm,
+           'minPrice' => $minPrice,
+           'maxPrice' => $maxPrice,
+           'categorieId' => $categorieId,
+           'categories' => $categories,
+       ]);
+   }
 
 
     #[Route('/admin/materielvente/new', name: 'admin_materielvente_new', methods: ['GET', 'POST'])]
@@ -554,7 +584,7 @@ public function newContrat(Request $request, EntityManagerInterface $entityManag
 
 
 
-    #[Route('admin/{id}/edit', name: 'admin_contrat_edit', methods: ['GET', 'POST'])]
+    #[Route('admin/{id}/edit1', name: 'admin_contrat_edit', methods: ['GET', 'POST'])]
     public function editBackconrat(Request $request, Contrat $contrat, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(ContratType::class, $contrat);
@@ -952,5 +982,51 @@ public function deleteUser($id, EntityManagerInterface $em)
         
         return $this->redirectToRoute('app_admin_orders');
     }
+
+
+#[Route('/admin/materielagricole/stats', name: 'admin_materielagricole_stats')]
+public function showStats(MaterielventeRepository $materielventeRepository): Response
+{
+    $materiels = $materielventeRepository->findAll();
+
+    $totalMateriels = count($materiels);
+    $totalPrix = array_sum(array_map(fn($m) => $m->getPrix(), $materiels)); 
+    $disponible = count(array_filter($materiels, fn($m) => $m->isDisponibilite() === true));
+    $nonDisponible = $totalMateriels - $disponible;
+
+    // Calcul de la moyenne des prix
+    $moyennePrix = $totalMateriels > 0 ? $totalPrix / $totalMateriels : 0;
+
+    return $this->render('admin/materielagricole/stats.html.twig', [
+        'totalMateriels' => $totalMateriels,
+        'totalPrix' => $totalPrix,
+        'moyennePrix' => $moyennePrix,
+        'disponible' => $disponible,
+        'nonDisponible' => $nonDisponible,
+    ]);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
 }
 

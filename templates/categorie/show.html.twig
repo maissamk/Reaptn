@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catégorie{% endblock %}
+
+{% block body %}
+<div class="container mt-5 pt-5">
+<div class="container mt-5 pt-5">
+
+    <h1 class="text-center">Catégorie</h1>
+
+    <div class="row justify-content-center"> <!-- Centrer la ligne -->
+        <div class="col-md-8"> <!-- Largeur de la colonne -->
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ categorie.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom</th>
+                        <td><span class="text-primary">{{ categorie.nom }}</span></td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ categorie.description }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a href="{{ path('app_categorie') }}" class="btn btn-secondary">Retour à la liste</a>
+                <a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}" class="btn btn-warning">Éditer</a>
+            </div>
+
+            <div class="mt-4">
+                {{ include('categorie/delete.html.twig') }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
